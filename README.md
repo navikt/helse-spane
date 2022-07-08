@@ -1,2 +1,2 @@
 # helse-spane
-spaner etterlevelse strømmen
+spaner etterlevelsesstrømmen
