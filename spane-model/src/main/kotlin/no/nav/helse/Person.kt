@@ -1,4 +1,10 @@
 package no.nav.helse
 
-class Person {
+class Person (
+    private val saker : List<Sykmeldingsperiode>
+){
+
+
+
+
 }
