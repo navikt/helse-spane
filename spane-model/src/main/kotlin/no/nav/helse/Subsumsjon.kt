@@ -23,7 +23,7 @@ internal class Subsumsjon(
 ){
     companion object{
         fun List<Subsumsjon>.finnAlle(paragraf: String) = this.filter { it.paragraf == paragraf }
-
+        fun List<Subsumsjon>.finnVedtaksperioder() = this.filter{ it.sporing["vedtaksperiode"] != null }.distinctBy { it.sporing["vedtaksperiode"] }
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
     }

@@ -1,10 +1,14 @@
 package no.nav.helse
 
+import no.nav.helse.Subsumsjon.Companion.finnVedtaksperioder
+
 class Person {
     private val subsumsjoner = mutableListOf<Subsumsjon>()
 
-    val antallVedtaksperioder: Int
-        get() = subsumsjoner.size
+    fun antallVedtaksperioder(): Int {
+        println(subsumsjoner.finnVedtaksperioder())
+        return subsumsjoner.finnVedtaksperioder().size
+    }
 
     internal fun håndter(subsumsjon: Subsumsjon){
         subsumsjoner.add(subsumsjon)
