@@ -7,30 +7,46 @@ import java.util.*
 
 internal class PersonTest {
 
+    val person = Person()
+    lateinit var sykmeldingUUID: UUID
+    lateinit var søknadUUID: UUID
+    lateinit var vedtaksperiodeUUID: UUID
 
     @Test
     fun `håndter subsumsjon`() {
-        val sykmeldingUUID = UUID.randomUUID()
-        val søknadUUID = UUID.randomUUID()
-        val vedtaksperiodeUUID = UUID.randomUUID()
+        sendSykmeldingSubsumsjon()
+        sendSøknadSubsumsjon()
+        sendVedtakSubsumsjon()
+        assertEquals(1, person.antallVedtaksperioder())
+    }
 
+    fun sendSykmeldingSubsumsjon() {
+        sykmeldingUUID = UUID.randomUUID()
         val sykmeldingSubsumsjon = lagSubsumsjon(sporing = mapOf("sykmelding" to sykmeldingUUID))
-        val søknadSubsumsjon =
-            lagSubsumsjon(sporing = mapOf("sykmelding" to sykmeldingUUID, "soknad" to søknadUUID))
-        val vedtaksperiodeSubsumsjon = lagSubsumsjon(
+        person.håndter(sykmeldingSubsumsjon)
+    }
+
+    fun sendSøknadSubsumsjon() {
+        søknadUUID = UUID.randomUUID()
+        val subsumsjon = lagSubsumsjon(
+            sporing = mapOf(
+                "sykmelding" to sykmeldingUUID,
+                "soknad" to søknadUUID
+            )
+        )
+        person.håndter(subsumsjon)
+    }
+    fun sendVedtakSubsumsjon() {
+        vedtaksperiodeUUID = UUID.randomUUID()
+        val subsumsjon = lagSubsumsjon(
             sporing = mapOf(
                 "sykmelding" to sykmeldingUUID,
                 "soknad" to søknadUUID,
                 "vedtaksperiode" to vedtaksperiodeUUID
             )
         )
-        val person = Person()
-        person.håndter(sykmeldingSubsumsjon)
-        person.håndter(søknadSubsumsjon)
-        person.håndter(vedtaksperiodeSubsumsjon)
-        assertEquals(1, person.antallVedtaksperioder())
+        person.håndter(subsumsjon)
     }
-
 
     fun lagSubsumsjon(
         paragraf: String = "8-11",
