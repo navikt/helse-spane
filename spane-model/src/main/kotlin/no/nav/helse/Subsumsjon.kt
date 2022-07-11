@@ -1,5 +1,7 @@
 package no.nav.helse
 
+import java.time.ZonedDateTime
+
 internal class Subsumsjon(
     private val id : String,
     private val versjon : String,
@@ -8,7 +10,7 @@ internal class Subsumsjon(
     private val versjonAvKode : String,
     private val fødselsnummer : String,
     private val sporing : Map<String, Any>,
-    private val tidsstempel : String,
+    private val tidsstempel : ZonedDateTime,
     private val lovverk : String,
     private val lovverksversjon : String,
     private val paragraf : String,
