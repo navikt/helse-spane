@@ -7,6 +7,8 @@ val jvmTargetVersion = "17"
 val gsonVersion = "2.9.0"
 val kafkaVersion = "3.1.0"
 val ktorVersion = "2.0.2"
+val awaitilityVersion = "4.2.0"
+val kafkaEEVersion = "3.1.6"
 
 allprojects {
     group = "no.nav.helse"
@@ -16,6 +18,7 @@ allprojects {
 
     repositories {
         mavenCentral()
+        maven("https://packages.confluent.io/maven/")
         maven("https://jitpack.io")
     }
 
@@ -34,9 +37,10 @@ allprojects {
         implementation("io.ktor:ktor-server-call-logging:$ktorVersion")
         implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
         implementation("io.ktor:ktor-serialization-jackson:$ktorVersion")
-
+        testImplementation("org.awaitility:awaitility:$awaitilityVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
+        testImplementation("no.nav:kafka-embedded-env:$kafkaEEVersion")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
     }
 

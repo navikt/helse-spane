@@ -36,7 +36,7 @@ class SubsumsjonKonsument (
     }
 
     private fun håndterSubsumsjon(melding: String){
-
+        println(melding)
     }
 
     fun start() {
