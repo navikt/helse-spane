@@ -18,7 +18,11 @@ var sikkerlogger: Logger = LoggerFactory.getLogger("tjenestekall")
 
 fun main() {
     val config = Konfig.fromEnv()
-    ApplicationBuilder(config, ::ktorServer).startBlocking()
+    ApplicationBuilder(config, ::ktorServer, ::håndterSubsumsjon).startBlocking()
+}
+
+fun håndterSubsumsjon(input: String){
+
 }
 
 fun ktorServer(appName: String): ApplicationEngine =

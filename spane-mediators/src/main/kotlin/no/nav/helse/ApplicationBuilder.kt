@@ -8,9 +8,10 @@ import kotlinx.coroutines.runBlocking
 class ApplicationBuilder (
     konfig: Konfig,
     builder: (String) -> ApplicationEngine,
-    ) {
+    håndterSubsumsjon: (input: String) -> Any?
+) {
 
-    private val konsument = SubsumsjonKonsument(konfig, konfig.topic)
+    private val konsument = SubsumsjonKonsument(konfig, konfig.topic, håndterSubsumsjon)
     private val ktor = builder(konfig.appNavn)
 
     fun startBlocking() {

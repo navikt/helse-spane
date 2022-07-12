@@ -9,7 +9,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 class SubsumsjonKonsument (
         private val konfig: Konfig,
-        clientId: String = UUID.randomUUID().toString().slice(1..5)
+        clientId: String = UUID.randomUUID().toString().slice(1..5),
+        private val håndterSubsumsjon: (input: String) -> Any?
     ) {
 
     private val konsument = KafkaConsumer(konfig.konsumentKonfig(clientId, konfig.consumerGroup), StringDeserializer(), StringDeserializer())
@@ -35,9 +36,7 @@ class SubsumsjonKonsument (
         }
     }
 
-    private fun håndterSubsumsjon(melding: String){
-        println(melding)
-    }
+
 
     fun start() {
         logger.info("Starter Spane")

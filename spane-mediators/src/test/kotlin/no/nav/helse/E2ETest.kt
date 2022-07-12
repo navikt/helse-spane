@@ -41,10 +41,19 @@ internal class E2ETest {
         withSecurity = false
     )
 
+    private var teller = 0
+    private val melding = "dette er en melding"
+
+    fun håndterSubsumsjon(input: String){
+        if (input == melding){
+            teller++
+        }
+    }
+
 
     fun startApp() {
         jobb = GlobalScope.launch {
-            val config = Konfig(
+            val konfig = Konfig(
                 "Spane",
                 listOf(embeddedKafkaEnvironment.brokersURL),
                 testTopic,
@@ -53,7 +62,7 @@ internal class E2ETest {
                 null,
                 null
             )
-            ApplicationBuilder(config, ::ktorServer).startBlocking()
+            ApplicationBuilder(konfig, ::ktorServer, ::håndterSubsumsjon).startBlocking()
         }
     }
 
@@ -104,15 +113,14 @@ internal class E2ETest {
     }
 
     @Test
-    fun `sjekk om app kjører`() {
+    fun `blir en melding lest`() {
         startApp()
-
-        produceToTopic(listOf("Dette er en melding som ikke er i jason format"))
+        produceToTopic(listOf(melding))
 
         await("wait until recods are sent")
-            .atMost(20, TimeUnit.SECONDS) // Todo endre denne til kortere tid
+            .atMost(20, TimeUnit.SECONDS)
             .until {
-                0 > 2 // TODO sjekk at appen returnerer det vi forventer i dette boolske uttrykket
+                teller == 1
             }
     }
 
