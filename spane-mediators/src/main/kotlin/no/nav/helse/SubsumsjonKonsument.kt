@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 class SubsumsjonKonsument (
         private val konfig: Konfig,
-        val clientId: String = UUID.randomUUID().toString().slice(1..5)
+        clientId: String = UUID.randomUUID().toString().slice(1..5)
     ) {
 
     private val konsument = KafkaConsumer(konfig.konsumentKonfig(clientId, konfig.consumerGroup), StringDeserializer(), StringDeserializer())
@@ -39,11 +39,18 @@ class SubsumsjonKonsument (
 
     }
 
+    fun start() {
+        logger.info("Starter Spane")
+        if (running.getAndSet(true)) return logger.info("Spane kjører allerede")
+
+        consumeMessages()
+    }
+
     private fun closeResources(lastException: Exception?) {
         if (running.getAndSet(false)) {
-            logger.warn("stopped consuming messages due to an error: ", lastException)
+            logger.warn("Slutter å konsumere meldinger pga en feil: ", lastException)
         } else {
-            logger.info("stopped consuming messages after receiving stop signal")
+            logger.info("Mottok stopp signal, slutter å konsumere meldinger")
         }
         tryAndLog(konsument::unsubscribe)
         tryAndLog(konsument::close)
