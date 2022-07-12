@@ -1,6 +1,7 @@
 package no.nav.helse
 
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import no.nav.common.KafkaEnvironment
 import org.apache.kafka.clients.CommonClientConfigs
@@ -31,6 +32,7 @@ internal class E2ETest {
     private val testTopic = "testTopic"
     private lateinit var kafkaProducer: Producer<String, String>
     private lateinit var kafkaConsumer: Consumer<String, String>
+    private lateinit var jobb: Job
     private val embeddedKafkaEnvironment = KafkaEnvironment(
         autoStart = false,
         noOfBrokers = 1,
@@ -40,19 +42,19 @@ internal class E2ETest {
     )
 
 
-    fun kjørApp() {
-
-
-        val config = Konfig(
-            "Spane",
-            listOf(embeddedKafkaEnvironment.brokersURL),
-            testTopic,
-            "kaSomHelst",
-            null,
-            null,
-            null
-        )
-        ApplicationBuilder(config, ::ktorServer).startBlocking()
+    fun startApp() {
+        jobb = GlobalScope.launch {
+            val config = Konfig(
+                "Spane",
+                listOf(embeddedKafkaEnvironment.brokersURL),
+                testTopic,
+                "kaSomHelst",
+                null,
+                null,
+                null
+            )
+            ApplicationBuilder(config, ::ktorServer).startBlocking()
+        }
     }
 
 
@@ -97,27 +99,21 @@ internal class E2ETest {
     }
 
     @AfterEach
-    internal fun avsluttJobb() {
-        // :(
+    internal fun avsluttApp() {
+        jobb.cancel()
     }
-
 
     @Test
     fun `sjekk om app kjører`() {
-
-        val jobb = GlobalScope.launch {
-            kjørApp()
-        }
+        startApp()
 
         produceToTopic(listOf("Dette er en melding som ikke er i jason format"))
 
         await("wait until recods are sent")
-            .atMost(5, TimeUnit.SECONDS)
+            .atMost(20, TimeUnit.SECONDS) // Todo endre denne til kortere tid
             .until {
-                0 > 2
+                0 > 2 // TODO sjekk at appen returnerer det vi forventer i dette boolske uttrykket
             }
-
-        jobb.cancel()
     }
 
     @Test
