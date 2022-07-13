@@ -26,6 +26,18 @@ internal class Subsumsjon(
         fun List<Subsumsjon>.finnVedtaksperioder() = this.filter{ it.sporing["vedtaksperiode"] != null }.distinctBy { it.sporing["vedtaksperiode"] }
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
+        fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon){
+            this.forEach {
+                // legger til i lista med subsumsjoner, dersom en id (sykemeldingsid????) er i sporingsmappet til lista som kaller metoden
+            }
+        }
+
+
+
+    }
+
+    fun sjekkID(other: String): Boolean{
+        return (other == sporing["sykmelding"])
     }
 
     override fun equals(other: Any?): Boolean {

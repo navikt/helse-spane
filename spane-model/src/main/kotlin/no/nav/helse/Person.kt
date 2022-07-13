@@ -1,16 +1,26 @@
 package no.nav.helse
 
 import no.nav.helse.Subsumsjon.Companion.finnVedtaksperioder
+import no.nav.helse.Vedtaksperiode.Companion.finnAlle
 
-class Person {
-    private val subsumsjoner = mutableListOf<Subsumsjon>()
+internal class Person {
+    private val vedtaksperioder = mutableListOf<Vedtaksperiode>()
 
     fun antallVedtaksperioder(): Int {
-        println(subsumsjoner.finnVedtaksperioder())
-        return subsumsjoner.finnVedtaksperioder().size
+        return vedtaksperioder.size
     }
 
     internal fun håndter(subsumsjon: Subsumsjon){
-        subsumsjoner.add(subsumsjon)
+        // todo sjekk vedtaksperiodeID istedet fra sporing
+
+        vedtaksperioder.finnAlle(subsumsjon)
+
+
+        // for hver periode i listen av vedtaksperioder
+        // kjør vedtaksperiode.sjekkSubsumsjon(subsumsjon)
+
+
+        // subsumsjon.håndtereVidere
+        //
     }
 }

@@ -22,6 +22,7 @@ fun main() {
 }
 
 fun håndterSubsumsjon(input: String){
+    // gjør meldingen om til subsumsjon
 
 }
 
