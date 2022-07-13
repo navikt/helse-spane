@@ -36,7 +36,7 @@ class Konfig(
         put(ConsumerConfig.GROUP_ID_CONFIG, consumerGroup)
         put(ConsumerConfig.CLIENT_ID_CONFIG, "consumer-$appNavn-$clientId")
         put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
-        put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true)
+        put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false)
 
         if (kafkaKeyStorePath != null) {
             this += sslConfig()

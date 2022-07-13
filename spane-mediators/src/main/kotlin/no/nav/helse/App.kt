@@ -38,7 +38,9 @@ fun håndterSubsumsjon(value: String) {
     if (melding["fodselsnummer"].toString() == fødselsnr) {
         val nySubsumsjon = lagSubsumsjonFraJson(melding)
         person.håndter(nySubsumsjon)
-        sikkerlogger.info(person.toString())
+        sikkerlogger.info("Mottok melding som hadde forventet fødselsnummer {}", person.toString())
+    } else {
+        sikkerlogger.info("Mottok melding som ikke hadde fødselsnr")
     }
 }
 
