@@ -33,7 +33,6 @@ private val objectMapper = jacksonObjectMapper()
 fun håndterSubsumsjon(value: String) {
 
     val melding = objectMapper.readTree(value)
-
     val person = Person()
 
     if (melding["fodselsnummer"].toString() == fødselsnr) {
