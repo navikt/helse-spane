@@ -1,32 +1,21 @@
 package no.nav.helse
 
+import io.ktor.http.content.*
 import no.nav.helse.Subsumsjon.Companion.erRelevant
 
 internal class Vedtaksperiode(
-    private val sykmeldingsID: String,
     private val subsumsjoner: MutableList<Subsumsjon>
-
 ) {
 
 
     companion object {
-        fun MutableList<Vedtaksperiode>.finnAlle(subsumsjon: Subsumsjon) {
+        fun MutableList<Vedtaksperiode>.håndter(subsumsjon: Subsumsjon) {
 
             this.forEach {
-                it.subsumsjoner.erRelevant(subsumsjon)
-
-                /*
-                if (subsumsjon.sjekkID(it.sykmeldingsID)) {
-                    it.subsumsjoner.add(subsumsjon)
-                    return
-                }
-
-                 */
-
+                if (it.subsumsjoner.erRelevant(subsumsjon)) return
             }
-
-
+            val nyVedtaksperiode = Vedtaksperiode(mutableListOf(subsumsjon))
+            this.add(nyVedtaksperiode)
         }
-
     }
 }
