@@ -29,7 +29,6 @@ class Subsumsjon(
         fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon): Boolean{
             this.forEach {
                 if (it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"]) {
-                    this.add(subsumsjon)
                     return true
                 }
             }

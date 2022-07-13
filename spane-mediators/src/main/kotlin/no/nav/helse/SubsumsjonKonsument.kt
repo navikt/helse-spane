@@ -37,7 +37,6 @@ class SubsumsjonKonsument (
     }
 
 
-
     fun start() {
         logger.info("Starter Spane")
         if (running.getAndSet(true)) return logger.info("Spane kjører allerede")

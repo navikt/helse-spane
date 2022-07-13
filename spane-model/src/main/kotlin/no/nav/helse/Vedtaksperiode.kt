@@ -8,7 +8,10 @@ class Vedtaksperiode(
     internal companion object {
         fun MutableList<Vedtaksperiode>.håndter(subsumsjon: Subsumsjon) {
             this.forEach {
-                if (it.subsumsjoner.erRelevant(subsumsjon)) return
+                if (it.subsumsjoner.erRelevant(subsumsjon)){
+                    it.subsumsjoner.add(subsumsjon)
+                    return
+                }
             }
             val nyVedtaksperiode = Vedtaksperiode(mutableListOf(subsumsjon))
             this.add(nyVedtaksperiode)

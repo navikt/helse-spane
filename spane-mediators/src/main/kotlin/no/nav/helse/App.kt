@@ -48,23 +48,23 @@ fun håndterSubsumsjon(value: String) {
 fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
 
     val subsumsjon = Subsumsjon(
-        melding.get("id").toString(),
-        melding.get("versjon").toString(),
-        melding.get("eventName").toString(),
-        melding.get("kilde").toString(),
-        melding.get("versjonAvKode").toString(),
-        melding.get("fødselsnummer").toString(),
+        melding.get("id").asText(),
+        melding.get("versjon").asText(),
+        melding.get("eventName").asText(),
+        melding.get("kilde").asText(),
+        melding.get("versjonAvKode").asText(),
+        melding.get("fødselsnummer").asText(),
         objectMapper.convertValue(melding.get("sporing")),
-        ZonedDateTime.parse(melding.get("tidsstempel").toString()),
-        melding.get("lovverk").toString(),
-        melding.get("lovverksversjon").toString(),
-        melding.get("paragraf").toString(),
-        Integer.parseInt(melding.get("ledd").toString()),
-        Integer.parseInt(melding.get("punktum").toString()),
-        melding.get("bokstav").toString(),
+        ZonedDateTime.parse(melding.get("tidsstempel").asText()),
+        melding.get("lovverk").asText(),
+        melding.get("lovverksversjon").asText(),
+        melding.get("paragraf").asText(),
+        Integer.parseInt(melding.get("ledd").asText()),
+        Integer.parseInt(melding.get("punktum").asText()),
+        melding.get("bokstav").asText(),
         objectMapper.convertValue(melding.get("input")),
         objectMapper.convertValue(melding.get("output")),
-        melding.get("utfall").toString(),
+        melding.get("utfall").asText(),
     )
     return subsumsjon
 }
