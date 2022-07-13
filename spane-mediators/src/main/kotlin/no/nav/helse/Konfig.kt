@@ -2,7 +2,6 @@ package no.nav.helse
 
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.ConsumerConfig
-import org.slf4j.LoggerFactory
 import java.util.*
 
 class Konfig(
@@ -44,7 +43,7 @@ class Konfig(
     }
 
     private fun sslConfig() = Properties().apply {
-        LoggerFactory.getLogger("RapidConfig").info("SSL config enabled")
+        logger.info("SSL config enabled")
         put("security.protocol", "SSL")
         put("ssl.truststore.location", trustStorePath!!)
         put("ssl.truststore.password", credStorePassword!!)
