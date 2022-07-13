@@ -63,7 +63,7 @@ fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
         Integer.parseInt(melding.get("punktum").asText()),
         melding.get("bokstav").asText(),
         objectMapper.convertValue(melding.get("input")),
-        objectMapper.convertValue(melding.get("output")),
+        objectMapper.convertValue(melding.get("output")) ?: emptyMap(),
         melding.get("utfall").asText(),
     )
     return subsumsjon
