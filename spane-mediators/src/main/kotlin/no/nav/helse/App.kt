@@ -22,6 +22,8 @@ var sikkerlogger: Logger = LoggerFactory.getLogger("tjenestekall")
 
 lateinit var fødselsnr: String
 
+val person = Person()
+
 fun main() {
     val config = Konfig.fromEnv()
     fødselsnr = "10877799145"
@@ -33,7 +35,6 @@ private val objectMapper = jacksonObjectMapper()
 fun håndterSubsumsjon(value: String) {
 
     val melding = objectMapper.readTree(value)
-    val person = Person()
 
     if (melding["fodselsnummer"].asText() == fødselsnr) {
         val nySubsumsjon = lagSubsumsjonFraJson(melding)
@@ -109,7 +110,9 @@ fun ktorServer(appName: String): ApplicationEngine =
                         "Missing id",
                         status = HttpStatusCode.BadRequest
                     )
-                    fødselsnr = id
+                    if (id == fødselsnr) {
+                        call.respondText(contentType = ContentType.Application.Json, text = "{ antallVedtaksperioder: \"${person.antallVedtaksperioder()}\" }")
+                    }
                     // Sett fødselsnr som 10877799145 eller 24068715888 (har schema feil)
                 }
             }
