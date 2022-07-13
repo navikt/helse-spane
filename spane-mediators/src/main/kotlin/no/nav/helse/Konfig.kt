@@ -53,6 +53,4 @@ class Konfig(
         put("ssl.keystore.password", credStorePassword)
         put("ssl.key.password", credStorePassword)
     }
-
-
 }
