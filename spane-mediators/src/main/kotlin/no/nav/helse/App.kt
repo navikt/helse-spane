@@ -35,7 +35,7 @@ fun håndterSubsumsjon(value: String) {
     val melding = objectMapper.readTree(value)
     val person = Person()
 
-    if (melding["fodselsnummer"].toString() == fødselsnr) {
+    if (melding["fodselsnummer"].asText() == fødselsnr) {
         val nySubsumsjon = lagSubsumsjonFraJson(melding)
         person.håndter(nySubsumsjon)
         sikkerlogger.info("Mottok melding som hadde forventet fødselsnummer {}", person.toString())
