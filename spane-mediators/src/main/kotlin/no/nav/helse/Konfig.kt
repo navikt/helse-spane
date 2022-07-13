@@ -22,7 +22,7 @@ class Konfig(
                  appNavn,
                  System.getenv("KAFKA_BROKERS").split(";"),
                  System.getenv("SUBSUMSJON_TOPIC"),
-                 System.getenv("SUBSUMSJON_CONSUMER_GROUP") ?: "consumer-$appNavn-v1",
+                 System.getenv("SUBSUMSJON_CONSUMER_GROUP") ?: "consumer-$appNavn-v2",
                  System.getenv("KAFKA_TRUSTSTORE_PATH"),
                  System.getenv("KAFKA_KEYSTORE_PATH"),
                  System.getenv("KAFKA_CREDSTORE_PASSWORD")
