@@ -1,8 +1,6 @@
 package no.nav.helse
 
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.util.JSONPObject
 import com.fasterxml.jackson.module.kotlin.convertValue
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.ktor.http.*
@@ -103,9 +101,14 @@ fun ktorServer(appName: String): ApplicationEngine =
                 get("/isready") {
                     call.respondText("OK")
                 }
-                get("/fnr/{id}") {
-                    fødselsnr = "12345612345"
-                    //TODO Her skal Sondre fortelle oss om sikkerhet
+
+                get("/fnr/{id?}") {
+                    val id = call.parameters["id"] ?: return@get call.respondText(
+                        "Missing id",
+                        status = HttpStatusCode.BadRequest
+                    )
+                    fødselsnr = id
+                    // Sett fødselsnr som 10877799145 eller 24068715888 (har schema feil)
                 }
             }
         }
