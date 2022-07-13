@@ -2,7 +2,7 @@ package no.nav.helse
 
 import java.time.ZonedDateTime
 
-internal class Subsumsjon(
+class Subsumsjon(
     private val id : String,
     private val versjon : String,
     private val eventName : String = "subsumsjon",
@@ -21,7 +21,7 @@ internal class Subsumsjon(
     private val output : Map<String, Any>,
     private val utfall : String,
 ){
-    companion object{
+    internal companion object{
         fun List<Subsumsjon>.finnAlle(paragraf: String) = this.filter { it.paragraf == paragraf }
         fun List<Subsumsjon>.finnVedtaksperioder() = this.filter{ it.sporing["vedtaksperiode"] != null }.distinctBy { it.sporing["vedtaksperiode"] }
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }

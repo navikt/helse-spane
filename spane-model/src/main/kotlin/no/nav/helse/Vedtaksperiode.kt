@@ -2,10 +2,10 @@ package no.nav.helse
 
 import no.nav.helse.Subsumsjon.Companion.erRelevant
 
-internal class Vedtaksperiode(
+class Vedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>
 ) {
-    companion object {
+    internal companion object {
         fun MutableList<Vedtaksperiode>.håndter(subsumsjon: Subsumsjon) {
             this.forEach {
                 if (it.subsumsjoner.erRelevant(subsumsjon)) return

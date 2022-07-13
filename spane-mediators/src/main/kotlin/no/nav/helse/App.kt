@@ -1,6 +1,9 @@
 package no.nav.helse
 
 import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.util.JSONPObject
+import com.fasterxml.jackson.module.kotlin.convertValue
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.ktor.http.*
 import io.ktor.serialization.jackson.*
@@ -14,6 +17,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import java.time.ZonedDateTime
 
 var logger: Logger = LoggerFactory.getLogger("Spydig")
 var sikkerlogger: Logger = LoggerFactory.getLogger("tjenestekall")
@@ -31,17 +35,38 @@ fun håndterSubsumsjon(value: String) {
 
     val melding = objectMapper.readTree(value)
 
-//    val person = Person()
+    val person = Person()
 
     if (melding["fodselsnummer"].toString() == fødselsnr) {
         val nySubsumsjon = lagSubsumsjonFraJson(melding)
-//        person.håndter(nySubsumsjon)
+        person.håndter(nySubsumsjon)
+        sikkerlogger.info(person.toString())
     }
 }
 
-fun lagSubsumsjonFraJson(melding: JsonNode) {
-//    val subsumsjon = Subsumsjon(id = melding[id])
-    return // subsumsjon
+
+fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
+
+    val subsumsjon = Subsumsjon(
+        melding.get("id").toString(),
+        melding.get("versjon").toString(),
+        melding.get("eventName").toString(),
+        melding.get("kilde").toString(),
+        melding.get("versjonAvKode").toString(),
+        melding.get("fødselsnummer").toString(),
+        objectMapper.convertValue(melding.get("sporing")),
+        ZonedDateTime.parse(melding.get("tidsstempel").toString()),
+        melding.get("lovverk").toString(),
+        melding.get("lovverksversjon").toString(),
+        melding.get("paragraf").toString(),
+        Integer.parseInt(melding.get("ledd").toString()),
+        Integer.parseInt(melding.get("punktum").toString()),
+        melding.get("bokstav").toString(),
+        objectMapper.convertValue(melding.get("input")),
+        objectMapper.convertValue(melding.get("output")),
+        melding.get("utfall").toString(),
+    )
+    return subsumsjon
 }
 
 fun ktorServer(appName: String): ApplicationEngine =
