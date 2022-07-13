@@ -1,5 +1,7 @@
 package no.nav.helse
 
+import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.ktor.http.*
 import io.ktor.serialization.jackson.*
 import io.ktor.server.application.*
@@ -16,14 +18,30 @@ import org.slf4j.LoggerFactory
 var logger: Logger = LoggerFactory.getLogger("Spydig")
 var sikkerlogger: Logger = LoggerFactory.getLogger("tjenestekall")
 
+lateinit var fødselsnr: String
+
 fun main() {
     val config = Konfig.fromEnv()
     ApplicationBuilder(config, ::ktorServer, ::håndterSubsumsjon).startBlocking()
 }
 
-fun håndterSubsumsjon(input: String){
-    // gjør meldingen om til subsumsjon
+private val objectMapper = jacksonObjectMapper()
 
+fun håndterSubsumsjon(value: String) {
+
+    val melding = objectMapper.readTree(value)
+
+//    val person = Person()
+
+    if (melding["fodselsnummer"].toString() == fødselsnr) {
+        val nySubsumsjon = lagSubsumsjonFraJson(melding)
+//        person.håndter(nySubsumsjon)
+    }
+}
+
+fun lagSubsumsjonFraJson(melding: JsonNode) {
+//    val subsumsjon = Subsumsjon(id = melding[id])
+    return // subsumsjon
 }
 
 fun ktorServer(appName: String): ApplicationEngine =
@@ -59,6 +77,10 @@ fun ktorServer(appName: String): ApplicationEngine =
 
                 get("/isready") {
                     call.respondText("OK")
+                }
+                get("/fnr/{id}") {
+                    fødselsnr = "12345612345"
+                    //TODO Her skal Sondre fortelle oss om sikkerhet
                 }
             }
         }
