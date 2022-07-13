@@ -1,9 +1,11 @@
 package no.nav.helse
 
+import no.nav.helse.Subsumsjon.Companion.erRelevant
 import no.nav.helse.Subsumsjon.Companion.finnAlle
 import no.nav.helse.Subsumsjon.Companion.sorterPåTid
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.slf4j.event.SubstituteLoggingEvent
 import java.time.*
 
 internal class SubsumsjonTest {
@@ -30,19 +32,35 @@ internal class SubsumsjonTest {
             lagSubsumsjon(tidsstempel = 4.februar(2022))
         )
         assertEquals(sortert, subsumsjoner.sorterPåTid())
-
     }
 
+    @Test
+    fun `avgjør om subsumsjon er relevant`() {
+        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc")
+        val subsumsjon = lagSubsumsjon(sporing = sporing)
+        val subsumsjoner = mutableListOf(lagSubsumsjon(sporing = sporing), lagSubsumsjon(sporing = sporing), lagSubsumsjon(sporing = sporing))
+        assertTrue(subsumsjoner.erRelevant(subsumsjon))
+    }
 
-    fun lagSubsumsjon(paragraf: String = "8-11", tidsstempel: ZonedDateTime = 1.januar(2022)): Subsumsjon {
+    @Test
+    fun `avgjør at subsumsjon ikke er relevant`() {
+        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc")
+        val sporing2 = mapOf("sykmelding" to "bbb-bbb-ccc")
+        val subsumsjon = lagSubsumsjon(sporing = sporing2)
+        val subsumsjoner = mutableListOf(lagSubsumsjon(sporing = sporing), lagSubsumsjon(sporing = sporing), lagSubsumsjon(sporing = sporing))
+        assertFalse(subsumsjoner.erRelevant(subsumsjon))
+    }
+
+    fun lagSubsumsjon(
+        paragraf: String = "8-11",
+        tidsstempel: ZonedDateTime = 1.januar(2022),
+        sporing: Map<String, Any> = emptyMap()): Subsumsjon {
         return Subsumsjon(
             "id", "3", "sub", "kildee", "3",
-            "1234567890", emptyMap(), tidsstempel, "loven", "3",
+            "1234567890", sporing, tidsstempel, "loven", "3",
             paragraf, null, null, null, emptyMap(), emptyMap(), "GODKJENT"
         )
     }
-
-
 }
 
 fun Int.januar(year: Int): ZonedDateTime =
