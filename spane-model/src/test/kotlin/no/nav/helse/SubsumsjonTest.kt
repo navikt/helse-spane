@@ -1,5 +1,6 @@
 package no.nav.helse
 
+import no.nav.helse.Subsumsjon.Companion.erRelevant
 import no.nav.helse.Subsumsjon.Companion.finnAlle
 import no.nav.helse.Subsumsjon.Companion.sorterPåTid
 import no.nav.helse.TestHjelper.Companion.februar
@@ -7,8 +8,10 @@ import no.nav.helse.TestHjelper.Companion.januar
 import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import java.time.*
 
 internal class SubsumsjonTest {
+
 
     @Test
     fun `filtrer på paragraf`() {
@@ -31,5 +34,30 @@ internal class SubsumsjonTest {
             lagSubsumsjon(tidsstempel = 4.februar(2022))
         )
         assertEquals(sortert, subsumsjoner.sorterPåTid())
+    }
+
+    @Test
+    fun `avgjør om subsumsjon er relevant`() {
+        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc")
+        val subsumsjon = lagSubsumsjon(sporing = sporing)
+        val subsumsjoner = mutableListOf(
+            lagSubsumsjon(sporing = sporing),
+            lagSubsumsjon(sporing = sporing),
+            lagSubsumsjon(sporing = sporing)
+        )
+        assertTrue(subsumsjoner.erRelevant(subsumsjon))
+    }
+
+    @Test
+    fun `avgjør at subsumsjon ikke er relevant`() {
+        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc")
+        val sporing2 = mapOf("sykmelding" to "bbb-bbb-ccc")
+        val subsumsjon = lagSubsumsjon(sporing = sporing2)
+        val subsumsjoner = mutableListOf(
+            lagSubsumsjon(sporing = sporing),
+            lagSubsumsjon(sporing = sporing),
+            lagSubsumsjon(sporing = sporing)
+        )
+        assertFalse(subsumsjoner.erRelevant(subsumsjon))
     }
 }
