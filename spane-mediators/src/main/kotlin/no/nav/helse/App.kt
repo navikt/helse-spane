@@ -53,7 +53,7 @@ fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
         melding.get("eventName").asText(),
         melding.get("kilde").asText(),
         melding.get("versjonAvKode").asText(),
-        melding.get("fødselsnummer").asText(),
+        melding.get("fodselsnummer").asText(),
         objectMapper.convertValue(melding.get("sporing")),
         ZonedDateTime.parse(melding.get("tidsstempel").asText()),
         melding.get("lovverk").asText(),
