@@ -44,10 +44,14 @@ internal class TestHjelper {
         fun Int.desember(year: Int): ZonedDateTime =
             ZonedDateTime.of(LocalDateTime.of(year, 12, this, 0, 0), ZoneId.systemDefault())
 
-        fun lagSubsumsjon(paragraf: String = "8-11", tidsstempel: ZonedDateTime = 1.januar(2022)): Subsumsjon {
+        fun lagSubsumsjon(
+            paragraf: String = "8-11",
+            tidsstempel: ZonedDateTime = 1.januar(2022),
+            sporing: Map<String, Any> = emptyMap()
+        ): Subsumsjon {
             return Subsumsjon(
                 "id", "3", "sub", "kildee", "3",
-                "1234567890", emptyMap(), tidsstempel, "loven", "3",
+                "1234567890", sporing, tidsstempel, "loven", "3",
                 paragraf, null, null, null, emptyMap(), emptyMap(), "GODKJENT"
             )
         }
