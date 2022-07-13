@@ -1,0 +1,28 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: spane
+  namespace: tbd
+  labels:
+    team: tbd
+spec:
+  image: {{image}}
+  port: 8080
+  strategy:
+    type: Recreate
+  liveness:
+    path: isalive
+  readiness:
+    path: isready
+  replicas:
+    max: 1
+    min: 1
+  ingresses:
+  {{#each ingresses as |url|}}
+     - {{url}}
+  {{/each}}
+  kafka:
+    pool: {{kafka-pool}}
+  env:
+    - name: SUBSUMSJON_TOPIC
+      value: "flex.omrade-helse-etterlevelse"

@@ -24,6 +24,7 @@ lateinit var fødselsnr: String
 
 fun main() {
     val config = Konfig.fromEnv()
+    fødselsnr = "10877799145"
     ApplicationBuilder(config, ::ktorServer, ::håndterSubsumsjon).startBlocking()
 }
 
