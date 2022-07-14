@@ -3,8 +3,11 @@ package no.nav.helse
 import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.fail
+import org.opentest4j.AssertionFailedError
 import java.time.ZonedDateTime
 import java.util.*
+import java.util.random.RandomGeneratorFactory.all
 
 
 internal class PersonTest {
@@ -19,7 +22,18 @@ internal class PersonTest {
         sendSykmeldingSubsumsjon()
         sendSøknadSubsumsjon()
         sendVedtakSubsumsjon()
-        assertTrue((person.inspektør.vedtaksperioder[0].subsumsjoner[1]["sporing"] as Map<*, *>).values.contains(søknadUUID))
+        assertSporing(0, sykmeldingUUID)
+        assertSporing(1, sykmeldingUUID, søknadUUID)
+        assertSporing(2, sykmeldingUUID, søknadUUID, vedtaksperiodeUUID)
+    }
+
+    private fun assertSporing(subsumsjon: Int, vararg uuids: UUID) {
+        val sporing = (person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon]["sporing"] as Map<*, *>)
+        uuids.forEach {
+            if(!sporing.values.contains(it)){
+                fail("Sporing inneholder ikke forventet uuid: expected: $it actual: $sporing")
+            }
+        }
     }
 
     fun sendSykmeldingSubsumsjon() {
