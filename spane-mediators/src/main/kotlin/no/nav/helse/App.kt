@@ -20,13 +20,12 @@ import java.time.ZonedDateTime
 var logger: Logger = LoggerFactory.getLogger("Spane")
 var sikkerlogger: Logger = LoggerFactory.getLogger("tjenestekall")
 
-lateinit var fødselsnr: String
-
-val person = Person()
+val fødselsnr = "10877799145"
+val person = Person(fødselsnr)
 
 fun main() {
     val config = Konfig.fromEnv()
-    fødselsnr = "10877799145"
+
     ApplicationBuilder(config, ::ktorServer, ::håndterSubsumsjon).startBlocking()
 }
 
