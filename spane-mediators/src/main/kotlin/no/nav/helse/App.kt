@@ -17,10 +17,12 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.time.ZonedDateTime
 
-var logger: Logger = LoggerFactory.getLogger("Spydig")
+var logger: Logger = LoggerFactory.getLogger("Spane")
 var sikkerlogger: Logger = LoggerFactory.getLogger("tjenestekall")
 
 lateinit var fødselsnr: String
+
+val person = Person()
 
 fun main() {
     val config = Konfig.fromEnv()
@@ -33,9 +35,8 @@ private val objectMapper = jacksonObjectMapper()
 fun håndterSubsumsjon(value: String) {
 
     val melding = objectMapper.readTree(value)
-    val person = Person()
 
-    if (melding["fodselsnummer"].toString() == fødselsnr) {
+    if (melding["fodselsnummer"].asText() == fødselsnr) {
         val nySubsumsjon = lagSubsumsjonFraJson(melding)
         person.håndter(nySubsumsjon)
         sikkerlogger.info("Mottok melding som hadde forventet fødselsnummer {}", person.toString())
@@ -53,17 +54,17 @@ fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
         melding.get("eventName").asText(),
         melding.get("kilde").asText(),
         melding.get("versjonAvKode").asText(),
-        melding.get("fødselsnummer").asText(),
+        melding.get("fodselsnummer").asText(),
         objectMapper.convertValue(melding.get("sporing")),
         ZonedDateTime.parse(melding.get("tidsstempel").asText()),
         melding.get("lovverk").asText(),
         melding.get("lovverksversjon").asText(),
         melding.get("paragraf").asText(),
-        Integer.parseInt(melding.get("ledd").asText()),
-        Integer.parseInt(melding.get("punktum").asText()),
-        melding.get("bokstav").asText(),
+        melding.get("ledd")?.asInt(),
+        melding.get("punktum")?.asInt(),
+        melding.get("bokstav")?.asText(),
         objectMapper.convertValue(melding.get("input")),
-        objectMapper.convertValue(melding.get("output")),
+        objectMapper.convertValue(melding.get("output")) ?: emptyMap(),
         melding.get("utfall").asText(),
     )
     return subsumsjon
@@ -109,7 +110,9 @@ fun ktorServer(appName: String): ApplicationEngine =
                         "Missing id",
                         status = HttpStatusCode.BadRequest
                     )
-                    fødselsnr = id
+                    if (id == fødselsnr) {
+                        call.respondText(contentType = ContentType.Application.Json, text = "{ antallVedtaksperioder: \"${person.antallVedtaksperioder()}\" }")
+                    }
                     // Sett fødselsnr som 10877799145 eller 24068715888 (har schema feil)
                 }
             }

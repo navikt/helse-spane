@@ -23,6 +23,8 @@ spec:
   {{/each}}
   kafka:
     pool: {{kafka-pool}}
+  secureLogs:
+    enabled: true
   env:
     - name: SUBSUMSJON_TOPIC
       value: "flex.omrade-helse-etterlevelse"
