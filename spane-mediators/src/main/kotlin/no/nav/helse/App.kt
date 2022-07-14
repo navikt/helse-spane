@@ -8,6 +8,7 @@ import io.ktor.serialization.jackson.*
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
+import io.ktor.server.http.content.*
 import io.ktor.server.plugins.callloging.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.request.*
@@ -75,7 +76,6 @@ fun ktorServer(appName: String): ApplicationEngine =
          * Konfigurasjon av Webserver (Ktor https://ktor.io/)
          */
 
-
         log = logger
         connector {
             port = 8080
@@ -92,9 +92,12 @@ fun ktorServer(appName: String): ApplicationEngine =
             routing {
                 get("/") {
                     call.respondText(
-                        "<html><h1>$appName</h1><html>",
+                        this::class.java.classLoader.getResource("static/index.html")!!.readText(),
                         ContentType.Text.Html
                     )
+                }
+                static("/") {
+                    resources("static/")
                 }
                 get("/isalive") {
                     call.respondText("OK")
@@ -103,6 +106,7 @@ fun ktorServer(appName: String): ApplicationEngine =
                 get("/isready") {
                     call.respondText("OK")
                 }
+
 
                 get("/fnr/{id?}") {
                     val id = call.parameters["id"] ?: return@get call.respondText(
