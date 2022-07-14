@@ -1,7 +1,10 @@
 import java.nio.file.Paths
 
+val jacksonVersion = "2.12.5"
 dependencies {
     implementation(project(":spane-model"))
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
 }
 
 tasks {
