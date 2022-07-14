@@ -4,9 +4,11 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-
   return (
-<p> Hei jeg heter jarl </p>
+      <>
+        <h1>No Spane no gain</h1>
+        <p>People call me the jarlinator, but you can call me tonight </p>
+      </>
   )
 }
 
