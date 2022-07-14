@@ -17,5 +17,10 @@ class Person {
         return "Person (antall vedtaksperioder: ${antallVedtaksperioder()})"
     }
 
+    fun accept(testVisitor: PersonVisitor) {
+
+
+    }
+
 
 }
