@@ -2,7 +2,9 @@ package no.nav.helse
 
 import no.nav.helse.Vedtaksperiode.Companion.håndter
 
-class Person {
+class Person(
+    private val fødselsnummer: String
+) {
     private val vedtaksperioder = mutableListOf<Vedtaksperiode>()
 
     fun antallVedtaksperioder(): Int {
@@ -17,9 +19,12 @@ class Person {
         return "Person (antall vedtaksperioder: ${antallVedtaksperioder()})"
     }
 
-    fun accept(testVisitor: PersonVisitor) {
-
-
+    fun accept(visitor: PersonVisitor) {
+        visitor.preVisitPerson(fødselsnummer)
+        visitor.preVisitVedtaksperioder()
+        vedtaksperioder.forEach {it.accept(visitor)}
+        visitor.postVisitVedtaksperioder()
+        visitor.postVisitPerson()
     }
 
 

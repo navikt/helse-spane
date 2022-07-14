@@ -3,30 +3,30 @@ package no.nav.helse
 import java.time.ZonedDateTime
 
 class Subsumsjon(
-    private val id : String,
-    private val versjon : String,
-    private val eventName : String = "subsumsjon",
-    private val kilde : String,
-    private val versjonAvKode : String,
-    private val fødselsnummer : String,
-    private val sporing : Map<String, Any>,
-    private val tidsstempel : ZonedDateTime,
-    private val lovverk : String,
-    private val lovverksversjon : String,
-    private val paragraf : String,
-    private val ledd : Int? = null,
-    private val punktum : Int? = null,
-    private val bokstav : String? = null,
-    private val input : Map<String, Any>,
-    private val output : Map<String, Any>,
-    private val utfall : String,
-){
-    internal companion object{
+    private val id: String,
+    private val versjon: String,
+    private val eventName: String = "subsumsjon",
+    private val kilde: String,
+    private val versjonAvKode: String,
+    private val fødselsnummer: String,
+    private val sporing: Map<String, Any>,
+    private val tidsstempel: ZonedDateTime,
+    private val lovverk: String,
+    private val lovverksversjon: String,
+    private val paragraf: String,
+    private val ledd: Int? = null,
+    private val punktum: Int? = null,
+    private val bokstav: String? = null,
+    private val input: Map<String, Any>,
+    private val output: Map<String, Any>,
+    private val utfall: String,
+) {
+    internal companion object {
         fun List<Subsumsjon>.finnAlle(paragraf: String) = this.filter { it.paragraf == paragraf }
-        fun List<Subsumsjon>.finnVedtaksperioder() = this.filter{ it.sporing["vedtaksperiode"] != null }.distinctBy { it.sporing["vedtaksperiode"] }
+
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
-        fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon): Boolean{
+        fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon): Boolean {
             this.forEach {
                 if (it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"]) {
                     return true
@@ -34,6 +34,28 @@ class Subsumsjon(
             }
             return false
         }
+    }
+
+    fun accept(visitor: VedtaksperiodeVisitor) {
+        visitor.visitSubsumsjon(
+            id,
+            versjon,
+            eventName,
+            kilde,
+            versjonAvKode,
+            fødselsnummer,
+            sporing,
+            tidsstempel,
+            lovverk,
+            lovverksversjon,
+            paragraf,
+            ledd,
+            punktum,
+            bokstav,
+            input,
+            output,
+            utfall
+        )
     }
 
 
@@ -84,4 +106,5 @@ class Subsumsjon(
         result = 31 * result + utfall.hashCode()
         return result
     }
+
 }
