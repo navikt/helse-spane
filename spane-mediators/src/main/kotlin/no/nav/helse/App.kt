@@ -40,9 +40,10 @@ fun håndterSubsumsjon(value: String) {
         val nySubsumsjon = lagSubsumsjonFraJson(melding)
         person.håndter(nySubsumsjon)
         sikkerlogger.info("Mottok melding som hadde forventet fødselsnummer {}", person.toString())
-    } else {
-        sikkerlogger.info("Mottok melding som ikke hadde fødselsnr")
     }
+//    else {
+//        sikkerlogger.info("Mottok melding som ikke hadde fødselsnr")
+//    }
 }
 
 
@@ -75,7 +76,6 @@ fun ktorServer(appName: String): ApplicationEngine =
         /**
          * Konfigurasjon av Webserver (Ktor https://ktor.io/)
          */
-
 
         log = logger
         connector {
