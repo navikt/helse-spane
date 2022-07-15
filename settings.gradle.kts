@@ -1,3 +1,3 @@
 
 rootProject.name = "helse-spane"
-include("spane-model", "spane-mediators")
+include("spane-model", "spane-mediators", "spane-visning")

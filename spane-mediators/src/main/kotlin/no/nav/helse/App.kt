@@ -1,6 +1,8 @@
 package no.nav.helse
 
 import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.SerializationFeature
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.convertValue
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.ktor.http.*
@@ -8,6 +10,7 @@ import io.ktor.serialization.jackson.*
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
+import io.ktor.server.http.content.*
 import io.ktor.server.plugins.callloging.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.request.*
@@ -25,11 +28,12 @@ val person = Person(fødselsnr)
 
 fun main() {
     val config = Konfig.fromEnv()
-
     ApplicationBuilder(config, ::ktorServer, ::håndterSubsumsjon).startBlocking()
 }
 
 private val objectMapper = jacksonObjectMapper()
+    .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+    .registerModule(JavaTimeModule())
 
 fun håndterSubsumsjon(value: String) {
 
@@ -92,9 +96,12 @@ fun ktorServer(appName: String): ApplicationEngine =
             routing {
                 get("/") {
                     call.respondText(
-                        "<html><h1>$appName</h1><html>",
+                        this::class.java.classLoader.getResource("static/index.html")!!.readText(),
                         ContentType.Text.Html
                     )
+                }
+                static("/") {
+                    resources("static/")
                 }
                 get("/isalive") {
                     call.respondText("OK")
@@ -104,16 +111,81 @@ fun ktorServer(appName: String): ApplicationEngine =
                     call.respondText("OK")
                 }
 
+
                 get("/fnr/{id?}") {
                     val id = call.parameters["id"] ?: return@get call.respondText(
                         "Missing id",
                         status = HttpStatusCode.BadRequest
                     )
                     if (id == fødselsnr) {
-                        call.respondText(contentType = ContentType.Application.Json, text = "{ antallVedtaksperioder: \"${person.antallVedtaksperioder()}\" }")
+                        val apiVisitor = APIVisitor()
+                        person.accept(apiVisitor)
+                        call.respondText(
+                            contentType = ContentType.Application.Json,
+                            text = objectMapper.writeValueAsString(apiVisitor.personMap)
+                        )
                     }
                     // Sett fødselsnr som 10877799145 eller 24068715888 (har schema feil)
                 }
             }
         }
     })
+
+
+typealias APIVedtaksperiode = Map<String, MutableList<Map<String, Any?>>>
+
+class APIVisitor : PersonVisitor {
+    val personMap = mutableMapOf<String, Any>("vedtaksperioder" to mutableListOf<APIVedtaksperiode>())
+    override fun preVisitPerson(fødselsnummer: String) {
+        personMap["fnr"] = fødselsnummer
+    }
+
+    override fun preVisitSubsumsjoner() {
+        (personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>)
+            .add(mutableMapOf("subsumsjoner" to mutableListOf()))
+
+    }
+
+    override fun visitSubsumsjon(
+        id: String,
+        versjon: String,
+        eventName: String,
+        kilde: String,
+        versjonAvKode: String,
+        fødselsnummer: String,
+        sporing: Map<String, Any>,
+        tidsstempel: ZonedDateTime,
+        lovverk: String,
+        lovverksversjon: String,
+        paragraf: String,
+        ledd: Int?,
+        punktum: Int?,
+        bokstav: String?,
+        input: Map<String, Any>,
+        output: Map<String, Any>,
+        utfall: String
+    ) {
+        (personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>).last()["subsumsjoner"]!!.add(
+            mapOf(
+                "id" to id,
+                "versjon" to versjon,
+                "eventName" to eventName,
+                "kilde" to kilde,
+                "versjonAvKode" to versjonAvKode,
+                "fødselsnummer" to fødselsnummer,
+                "sporing" to sporing,
+                "tidsstempel" to tidsstempel,
+                "lovverk" to lovverk,
+                "lovverksversjon" to lovverksversjon,
+                "paragraf" to paragraf,
+                "ledd" to ledd,
+                "punktum" to punktum,
+                "bokstav" to bokstav,
+                "input" to input,
+                "output" to output,
+                "utfall" to utfall
+            )
+        )
+    }
+
+}
