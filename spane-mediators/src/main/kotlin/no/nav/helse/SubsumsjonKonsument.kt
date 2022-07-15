@@ -24,6 +24,7 @@ class SubsumsjonKonsument (
                 konsument.poll(Duration.ofSeconds(1)).onEach {
                     håndterSubsumsjon(it.value())
                 }
+                // TODO commit offset
             }
         } catch (err: WakeupException) {
             // throw exception if we have not been told to stop
