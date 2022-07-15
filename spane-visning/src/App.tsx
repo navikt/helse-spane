@@ -3,6 +3,20 @@ import "./App.css";
 import {Environment} from "./environment";
 import testPerson from "./testPerson.json"
 
+export const restBackend = (): Backend => {
+    return {
+        person(): Promise<PersonDto> {
+            return fetch(`/fnr/10877799145`, {
+                method: 'get',
+                headers: {
+                    Accept: 'application/json',
+                }
+            })
+                .then(response => response.json())
+        }
+    }
+}
+
 export const testBackend = (): Backend => {
     return {
         person(): Promise<PersonDto> {
@@ -47,7 +61,7 @@ export type SubsumsjonDto = {
 function App() {
     const backend: Backend = Environment.isDevelopment
         ? testBackend()
-        : testBackend();
+        : restBackend();
 
 
     const [person, setPerson] = useState<PersonDto>();

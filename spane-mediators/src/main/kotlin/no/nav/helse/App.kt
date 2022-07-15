@@ -124,7 +124,6 @@ fun ktorServer(appName: String): ApplicationEngine =
                             text = objectMapper.writeValueAsString(apiVisitor.personMap)
                         )
                     }
-                    // Sett fødselsnr som 10877799145 eller 24068715888 (har schema feil)
                 }
             }
         }
