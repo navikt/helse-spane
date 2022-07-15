@@ -1,0 +1,1670 @@
+{
+  "vedtaksperioder": [
+    {
+      "subsumsjoner": [
+        {
+          "id": "bc10f82a-ad18-4a2f-a254-33e09ef52da7",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.080526479+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-3",
+          "ledd": 1,
+          "punktum": 2,
+          "bokstav": "null",
+          "input": {
+            "forsteFomDato": "2022-05-02",
+            "pasientFodselsdato": "1977-07-10"
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "0f363c0f-3e8f-4467-b12e-5c32cae339cc",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.204135086+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "A000",
+              "tekst": "Kolera som skyldes Vibrio cholerae 01, biovar cholerae"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "290999c7-60d8-4645-8d4f-a2ec4b063c9e",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.206475638+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 2,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "A000",
+              "tekst": "Kolera som skyldes Vibrio cholerae 01, biovar cholerae"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "0671f28a-688a-4ed9-9a97-d316763a7152",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.208830276+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "annenFraversArsak": null,
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "A000",
+              "tekst": "Kolera som skyldes Vibrio cholerae 01, biovar cholerae"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "6fdeb117-5b1a-45c6-8232-45e7a1904986",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.210554302+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "A000",
+              "tekst": "Kolera som skyldes Vibrio cholerae 01, biovar cholerae"
+            },
+            "annenFravarsArsak": null
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "1bda1805-78a8-42bc-8f4f-49a6c2d23b43",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.212326025+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "biDiagnoser": [
+              {
+                "system": "2.16.578.1.12.4.1.1.7110",
+                "kode": "M674",
+                "tekst": "Ganglion"
+              }
+            ]
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "13b01cea-2f4f-4f2f-93c8-75a3f9d80d76",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.214204578+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-13",
+          "ledd": 1,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "perioder": [
+              {
+                "fom": "2022-05-02",
+                "tom": "2022-05-31",
+                "aktivitetIkkeMulig": {
+                  "medisinskArsak": {
+                    "beskrivelse": "medisinske årsaker til sykefravær",
+                    "arsak": [
+                      "AKTIVITET_FORHINDRER_BEDRING"
+                    ]
+                  },
+                  "arbeidsrelatertArsak": {
+                    "beskrivelse": "andre årsaker til sykefravær",
+                    "arsak": [
+                      "ANNET"
+                    ]
+                  }
+                },
+                "avventendeInnspillTilArbeidsgiver": null,
+                "behandlingsdager": null,
+                "gradert": null,
+                "reisetilskudd": false
+              }
+            ]
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "9801e024-ec08-4f7a-aa40-3ec9a8b3a087",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.216116837+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "begrunnelseIkkeKontakt": null,
+            "erKoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_IKKE_OPPFYLT"
+        },
+        {
+          "id": "15091023-c613-4694-879a-0e7615d1fad1",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.22002268+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "erEttersendingAvTidligereSykmelding": null,
+            "erFraSpesialisthelsetjenesten": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "sisteTomDato": "2022-05-31",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "282bb6db-5102-4071-a6ff-e27af6975260",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.222076006+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "sisteTomDato": "2022-05-02",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false,
+            "kontaktMedPasientDato": null
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "20353e05-6741-4f08-b41d-8cda0aa9ca31",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.223955505+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "610fa6a0-0167-4578-949a-9aa59b732d58",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.273842212+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false,
+            "utdypendeOpplysninger": {
+              "6.4": {
+                "6.4.1": {
+                  "sporsmal": "Beskriv kort sykehistorie, symptomer og funn i dagens situasjon.",
+                  "svar": "Langvarig korsryggsmerter. Ømhet og smerte",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.2": {
+                  "sporsmal": "Beskriv pågående og planlagt henvisning, utredning og/eller behandling. Lar dette seg kombinere med delvis arbeid?",
+                  "svar": "Kan ikke utføre arbeidsoppgaver 100% som kreves fra yrket. Duplikatbuster: e783328f-040e-4f8e-8961-a14090b909ab",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.3": {
+                  "sporsmal": "Hva mener du skal til for at pasienten kan komme tilbake i eget eller annet arbeid?",
+                  "svar": "Videre utredning",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                }
+              }
+            },
+            "meldingTilNav": {
+              "bistandUmiddelbart": true,
+              "beskrivBistand": "Trenger bistand"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "20691f88-0013-435e-8a14-595f81c95527",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.276812698+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "erEttersendingAvTidligereSykmelding": null,
+            "erFraSpesialisthelsetjenesten": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false,
+            "utdypendeOpplysninger": {
+              "6.4": {
+                "6.4.1": {
+                  "sporsmal": "Beskriv kort sykehistorie, symptomer og funn i dagens situasjon.",
+                  "svar": "Langvarig korsryggsmerter. Ømhet og smerte",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.2": {
+                  "sporsmal": "Beskriv pågående og planlagt henvisning, utredning og/eller behandling. Lar dette seg kombinere med delvis arbeid?",
+                  "svar": "Kan ikke utføre arbeidsoppgaver 100% som kreves fra yrket. Duplikatbuster: e783328f-040e-4f8e-8961-a14090b909ab",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.3": {
+                  "sporsmal": "Hva mener du skal til for at pasienten kan komme tilbake i eget eller annet arbeid?",
+                  "svar": "Videre utredning",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                }
+              }
+            },
+            "meldingTilNav": {
+              "bistandUmiddelbart": true,
+              "beskrivBistand": "Trenger bistand"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "8a652d4e-8d3e-4ed9-ab01-375d5701e565",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "85f5f607-9876-4606-a3fd-7991d9eb403a"
+            ]
+          },
+          "tidsstempel": "2022-07-04T12:53:07.279178234+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletDato": "2022-06-27",
+            "forsteFomDato": "2022-05-02",
+            "kontaktDato": null,
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        }
+      ]
+    },
+    {
+      "subsumsjoner": [
+        {
+          "id": "73dac689-ecf3-4a8a-8c56-8ef491959db4",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.634929904+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-3",
+          "ledd": 1,
+          "punktum": 2,
+          "bokstav": "null",
+          "input": {
+            "forsteFomDato": "2022-05-02",
+            "pasientFodselsdato": "1977-07-10"
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "3eacd08c-cb76-42d0-a7cc-9a6909cab5e0",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.641477642+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "L944",
+              "tekst": "Gottrons papler"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "090c70bf-fd60-4b05-afd3-d80b78b163be",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.6435304+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 2,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "L944",
+              "tekst": "Gottrons papler"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "e3fef813-00f5-42ce-ad78-63d3259d657a",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.645359209+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "annenFraversArsak": null,
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "L944",
+              "tekst": "Gottrons papler"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "0b001d67-7e8f-4203-b723-138d54f63ca9",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.647385391+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "L944",
+              "tekst": "Gottrons papler"
+            },
+            "annenFravarsArsak": null
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "8b765a30-4411-48a0-8ce8-32ed41dd219d",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.648955175+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "biDiagnoser": [
+              {
+                "system": "2.16.578.1.12.4.1.1.7110",
+                "kode": "M674",
+                "tekst": "Ganglion"
+              }
+            ]
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "e294bd76-db1d-4a53-bf33-ae0442400fc5",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.652875479+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-13",
+          "ledd": 1,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "perioder": [
+              {
+                "fom": "2022-05-02",
+                "tom": "2022-05-31",
+                "aktivitetIkkeMulig": {
+                  "medisinskArsak": {
+                    "beskrivelse": "medisinske årsaker til sykefravær",
+                    "arsak": [
+                      "AKTIVITET_FORHINDRER_BEDRING"
+                    ]
+                  },
+                  "arbeidsrelatertArsak": {
+                    "beskrivelse": "andre årsaker til sykefravær",
+                    "arsak": [
+                      "ANNET"
+                    ]
+                  }
+                },
+                "avventendeInnspillTilArbeidsgiver": null,
+                "behandlingsdager": null,
+                "gradert": null,
+                "reisetilskudd": false
+              }
+            ]
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "c866b370-3e77-4190-8fb3-2955d62eceda",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.654714457+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "begrunnelseIkkeKontakt": "bla \"bla\" bla",
+            "erKoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "2d3101b9-3c66-4d04-a1d3-95fd792d4ecd",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.657820481+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "erEttersendingAvTidligereSykmelding": false,
+            "erFraSpesialisthelsetjenesten": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "sisteTomDato": "2022-05-31",
+            "begrunnelseIkkeKontakt": "bla \"bla\" bla",
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "bb27bf24-c636-4faa-9527-b5eec69eba55",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.660363443+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "sisteTomDato": "2022-05-02",
+            "begrunnelseIkkeKontakt": "bla \"bla\" bla",
+            "erCoronaRelatert": false,
+            "kontaktMedPasientDato": null
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "8df20fd5-f1e2-42cf-b4ca-42be77b65528",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.662618898+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "begrunnelseIkkeKontakt": "bla \"bla\" bla",
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "7640215f-4b19-4585-b3a1-9590651e0a0f",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.664466867+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "begrunnelseIkkeKontakt": "bla \"bla\" bla",
+            "erCoronaRelatert": false,
+            "utdypendeOpplysninger": {
+              "6.4": {
+                "6.4.1": {
+                  "sporsmal": "Beskriv kort sykehistorie, symptomer og funn i dagens situasjon.",
+                  "svar": "Langvarig korsryggsmerter. Ømhet og smerte",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.2": {
+                  "sporsmal": "Beskriv pågående og planlagt henvisning, utredning og/eller behandling. Lar dette seg kombinere med delvis arbeid?",
+                  "svar": "Kan ikke utføre arbeidsoppgaver 100% som kreves fra yrket. Duplikatbuster: f74bd1ae-934a-4240-970a-af6b7debab9d",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.3": {
+                  "sporsmal": "Hva mener du skal til for at pasienten kan komme tilbake i eget eller annet arbeid?",
+                  "svar": "Videre utredning",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                }
+              }
+            },
+            "meldingTilNav": {
+              "bistandUmiddelbart": true,
+              "beskrivBistand": "Trenger bistand"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "4b416977-5915-48c5-b088-ab5f4d6eac30",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.667007073+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "erEttersendingAvTidligereSykmelding": false,
+            "erFraSpesialisthelsetjenesten": true,
+            "behandletTidspunkt": "2022-06-27T00:00:00",
+            "forsteFomDato": "2022-05-02",
+            "begrunnelseIkkeKontakt": "bla \"bla\" bla",
+            "erCoronaRelatert": false,
+            "utdypendeOpplysninger": {
+              "6.4": {
+                "6.4.1": {
+                  "sporsmal": "Beskriv kort sykehistorie, symptomer og funn i dagens situasjon.",
+                  "svar": "Langvarig korsryggsmerter. Ømhet og smerte",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.2": {
+                  "sporsmal": "Beskriv pågående og planlagt henvisning, utredning og/eller behandling. Lar dette seg kombinere med delvis arbeid?",
+                  "svar": "Kan ikke utføre arbeidsoppgaver 100% som kreves fra yrket. Duplikatbuster: f74bd1ae-934a-4240-970a-af6b7debab9d",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.3": {
+                  "sporsmal": "Hva mener du skal til for at pasienten kan komme tilbake i eget eller annet arbeid?",
+                  "svar": "Videre utredning",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                }
+              }
+            },
+            "meldingTilNav": {
+              "bistandUmiddelbart": true,
+              "beskrivBistand": "Trenger bistand"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "2ee89bbc-c565-4dde-b334-dad4a6c001fa",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:c61bc17c38e924b6ae16d6f9065a3af0724980f5",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T13:01:31.669098813+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletDato": "2022-06-27",
+            "forsteFomDato": "2022-05-02",
+            "kontaktDato": null,
+            "begrunnelseIkkeKontakt": "bla \"bla\" bla",
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "d6066e0d-7f18-4ede-9e32-0680365fec83",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "flex-syketilfelle",
+          "versjonAvKode": "ghcr.io/navikt/flex-syketilfelle:2022.06.24-13.51-ddbce5dc",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ],
+            "organisasjonsnummer": [
+              "896929119"
+            ],
+            "soknad": [
+              "6354c5fe-7cf1-3eeb-b181-90b22b47697f"
+            ]
+          },
+          "tidsstempel": "2022-07-04T11:06:23.593035176Z",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2001-01-01",
+          "paragraf": "8-19",
+          "ledd": null,
+          "punktum": null,
+          "bokstav": null,
+          "input": {
+            "soknad": "6354c5fe-7cf1-3eeb-b181-90b22b47697f",
+            "versjon": "2022-02-01"
+          },
+          "output": {
+            "oppbruktArbeidsgiverperiode": true,
+            "versjon": "2022-02-01",
+            "arbeidsgiverperiode": {
+              "fom": "2022-05-02",
+              "tom": "2022-05-17"
+            }
+          },
+          "utfall": "VILKAR_BEREGNET"
+        },
+        {
+          "id": "15604ec5-a2fb-4446-992d-83f169111cb0",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "sykepengesoknad-backend",
+          "versjonAvKode": "ghcr.io/navikt/sykepengesoknad-backend:2022.07.01-09.46-a735307f",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "soknad": [
+              "6354c5fe-7cf1-3eeb-b181-90b22b47697f"
+            ],
+            "organisasjonsnummer": [
+              "896929119"
+            ],
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T11:06:23.678439564Z",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2018-01-01",
+          "paragraf": "8-17",
+          "ledd": 1,
+          "punktum": 0,
+          "bokstav": "a",
+          "input": {
+            "oppbruktArbeidsgiverperiode": true,
+            "versjon": "2022-02-01",
+            "sykepengesoknadTom": "2022-05-31",
+            "sykepengesoknadFom": "2022-05-02",
+            "arbeidsgiverperiode": {
+              "fom": "2022-05-02",
+              "tom": "2022-05-17"
+            }
+          },
+          "output": {
+            "periode": {
+              "fom": "2022-05-02",
+              "tom": "2022-05-17"
+            },
+            "versjon": "2022-02-01"
+          },
+          "utfall": "VILKAR_IKKE_OPPFYLT"
+        },
+        {
+          "id": "2d83c4c5-9cc6-41ac-a5b9-b1bf931f9aaf",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "sykepengesoknad-backend",
+          "versjonAvKode": "ghcr.io/navikt/sykepengesoknad-backend:2022.07.01-09.46-a735307f",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "soknad": [
+              "6354c5fe-7cf1-3eeb-b181-90b22b47697f"
+            ],
+            "organisasjonsnummer": [
+              "896929119"
+            ],
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T11:06:23.929786407Z",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2018-01-01",
+          "paragraf": "8-17",
+          "ledd": 1,
+          "punktum": 0,
+          "bokstav": "a",
+          "input": {
+            "oppbruktArbeidsgiverperiode": true,
+            "versjon": "2022-02-01",
+            "sykepengesoknadTom": "2022-05-31",
+            "sykepengesoknadFom": "2022-05-02",
+            "arbeidsgiverperiode": {
+              "fom": "2022-05-02",
+              "tom": "2022-05-17"
+            }
+          },
+          "output": {
+            "periode": {
+              "fom": "2022-05-18",
+              "tom": "2022-05-31"
+            },
+            "versjon": "2022-02-01"
+          },
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "22dbd08b-363e-4812-a672-89be0236d622",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "sykepengesoknad-backend",
+          "versjonAvKode": "ghcr.io/navikt/sykepengesoknad-backend:2022.07.01-09.46-a735307f",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "soknad": [
+              "6354c5fe-7cf1-3eeb-b181-90b22b47697f"
+            ],
+            "organisasjonsnummer": [
+              "896929119"
+            ],
+            "sykmelding": [
+              "2ee05e91-2039-4907-99ea-db0a25a5a51e"
+            ]
+          },
+          "tidsstempel": "2022-07-04T11:06:23.936030478Z",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "1997-05-01",
+          "paragraf": "8-13",
+          "ledd": 0,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "fravar": [],
+            "versjon": "2022-02-01",
+            "arbeidUnderveis": [
+              {
+                "tag": "JOBBET_DU_100_PROSENT_0",
+                "svar": [
+                  "NEI"
+                ],
+                "undersporsmal": []
+              }
+            ]
+          },
+          "output": {
+            "perioder": [
+              {
+                "fom": "2022-05-02",
+                "tom": "2022-05-31",
+                "faktiskGrad": null
+              }
+            ],
+            "versjon": "2022-02-01"
+          },
+          "utfall": "VILKAR_BEREGNET"
+        }
+      ]
+    },
+    {
+      "subsumsjoner": [
+        {
+          "id": "75c0bf91-4c14-431d-bc1d-fcd913f2140f",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.502588793+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-3",
+          "ledd": 1,
+          "punktum": 2,
+          "bokstav": "null",
+          "input": {
+            "forsteFomDato": "2022-07-06",
+            "pasientFodselsdato": "1977-07-10"
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "7a20bb22-b0f3-4ebd-a1b9-0e711d71d709",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.50648952+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "A000",
+              "tekst": "Kolera som skyldes Vibrio cholerae 01, biovar cholerae"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "73278743-e04c-4482-af09-460d7434266c",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.509844729+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 2,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "A000",
+              "tekst": "Kolera som skyldes Vibrio cholerae 01, biovar cholerae"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "c4d4a780-6ca8-4726-8d58-6a74b67a328e",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.512265452+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "annenFraversArsak": null,
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "A000",
+              "tekst": "Kolera som skyldes Vibrio cholerae 01, biovar cholerae"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "20620daf-1c36-4596-91fd-09ef95b43ee7",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.515007296+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7110",
+              "kode": "A000",
+              "tekst": "Kolera som skyldes Vibrio cholerae 01, biovar cholerae"
+            },
+            "annenFravarsArsak": null
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "3a332146-9d73-478a-a9a7-aecb1bb75d8c",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.519663235+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "biDiagnoser": [
+              {
+                "system": "2.16.578.1.12.4.1.1.7110",
+                "kode": "M674",
+                "tekst": "Ganglion"
+              }
+            ]
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "96737a21-9add-4612-9db1-22553a82cabd",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.524031589+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-13",
+          "ledd": 1,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "perioder": [
+              {
+                "fom": "2022-07-06",
+                "tom": "2022-07-12",
+                "aktivitetIkkeMulig": {
+                  "medisinskArsak": {
+                    "beskrivelse": "medisinske årsaker til sykefravær",
+                    "arsak": [
+                      "AKTIVITET_FORHINDRER_BEDRING"
+                    ]
+                  },
+                  "arbeidsrelatertArsak": {
+                    "beskrivelse": "andre årsaker til sykefravær",
+                    "arsak": [
+                      "ANNET"
+                    ]
+                  }
+                },
+                "avventendeInnspillTilArbeidsgiver": null,
+                "behandlingsdager": null,
+                "gradert": null,
+                "reisetilskudd": false
+              }
+            ]
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "9a405e66-2af3-4f70-9524-d232a507e854",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.527952548+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-07-06T00:00:00",
+            "forsteFomDato": "2022-07-06",
+            "begrunnelseIkkeKontakt": null,
+            "erKoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "8801d6ef-d42a-4310-a47b-ef8706d7b9e8",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.530443671+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "erEttersendingAvTidligereSykmelding": null,
+            "erFraSpesialisthelsetjenesten": true,
+            "behandletTidspunkt": "2022-07-06T00:00:00",
+            "forsteFomDato": "2022-07-06",
+            "sisteTomDato": "2022-07-12",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "26e810ff-7d42-4021-ac28-d6b92004f1e4",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.53372611+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-07-06T00:00:00",
+            "forsteFomDato": "2022-07-06",
+            "sisteTomDato": "2022-07-06",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false,
+            "kontaktMedPasientDato": null
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "c599f793-7010-426f-af5f-282bfcd02cfa",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.536177356+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-07-06T00:00:00",
+            "forsteFomDato": "2022-07-06",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "83d58830-1f47-42ea-9f9c-74732d88fa44",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.538497747+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-07-06T00:00:00",
+            "forsteFomDato": "2022-07-06",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false,
+            "utdypendeOpplysninger": {
+              "6.4": {
+                "6.4.1": {
+                  "sporsmal": "Beskriv kort sykehistorie, symptomer og funn i dagens situasjon.",
+                  "svar": "Langvarig korsryggsmerter. Ømhet og smerte",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.2": {
+                  "sporsmal": "Beskriv pågående og planlagt henvisning, utredning og/eller behandling. Lar dette seg kombinere med delvis arbeid?",
+                  "svar": "Kan ikke utføre arbeidsoppgaver 100% som kreves fra yrket. Duplikatbuster: 43303374-22e7-428e-86e8-1ee75a949311",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.3": {
+                  "sporsmal": "Hva mener du skal til for at pasienten kan komme tilbake i eget eller annet arbeid?",
+                  "svar": "Videre utredning",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                }
+              }
+            },
+            "meldingTilNav": {
+              "bistandUmiddelbart": true,
+              "beskrivBistand": "Trenger bistand"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "65d81890-21c9-46d1-8400-e67e22c0bb18",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.540727329+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "erEttersendingAvTidligereSykmelding": null,
+            "erFraSpesialisthelsetjenesten": true,
+            "behandletTidspunkt": "2022-07-06T00:00:00",
+            "forsteFomDato": "2022-07-06",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false,
+            "utdypendeOpplysninger": {
+              "6.4": {
+                "6.4.1": {
+                  "sporsmal": "Beskriv kort sykehistorie, symptomer og funn i dagens situasjon.",
+                  "svar": "Langvarig korsryggsmerter. Ømhet og smerte",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.2": {
+                  "sporsmal": "Beskriv pågående og planlagt henvisning, utredning og/eller behandling. Lar dette seg kombinere med delvis arbeid?",
+                  "svar": "Kan ikke utføre arbeidsoppgaver 100% som kreves fra yrket. Duplikatbuster: 43303374-22e7-428e-86e8-1ee75a949311",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.4.3": {
+                  "sporsmal": "Hva mener du skal til for at pasienten kan komme tilbake i eget eller annet arbeid?",
+                  "svar": "Videre utredning",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                }
+              }
+            },
+            "meldingTilNav": {
+              "bistandUmiddelbart": true,
+              "beskrivBistand": "Trenger bistand"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "41bf2543-7412-4ff2-88d8-e3ce525be4ea",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:7e9f3cc6558fb363a56532c00748311fc5c5dddf",
+          "fødselsnummer": "10877799145",
+          "sporing": {
+            "sykmelding": [
+              "d8b3befc-f994-40b3-b674-55c8524a327e"
+            ]
+          },
+          "tidsstempel": "2022-07-13T10:25:50.59733304+02:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletDato": "2022-07-06",
+            "forsteFomDato": "2022-07-06",
+            "kontaktDato": null,
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        }
+      ]
+    }
+  ],
+  "fnr": "10877799145"
+}
