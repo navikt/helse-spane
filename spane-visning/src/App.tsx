@@ -25,7 +25,7 @@ function App() {
         Liste over vedtaksperioder
         {person
           ? person.vedtaksperioder.map((info: any) => {
-              return <div style={{ display: "block" }}>{info}</div>;
+              return <div style={{ display: "block" }}>{JSON.stringify(info)}</div>;
             })
           : "fant ingen vedtaksperioder"}
       </div>
