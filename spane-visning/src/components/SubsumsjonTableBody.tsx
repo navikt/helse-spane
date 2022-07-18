@@ -8,6 +8,16 @@ interface Props {
 
 export default function SubsumsjonTableBody(props: Props) {
     const {person} = props
+
+    function byggMapString(map: Map<string, any[]>) {
+        let resultat = ""
+
+        for (const [key, value] of Object.entries(map)) {
+            resultat += key + " : " + value + "\n"
+        }
+        return resultat;
+    }
+
     return (
         <Table.Body>
             {person.vedtaksperioder.map(
@@ -21,10 +31,12 @@ export default function SubsumsjonTableBody(props: Props) {
                                         <div className="table-row-expanded-content-container">
                                             <div className="table-row-expanded-content-column">
                                                 <div>
-                                                    <b>Output</b>
+                                                    <b>Output: </b>
+                                                    {subsumsjon.output && byggMapString(subsumsjon.output)}
                                                 </div>
                                                 <div>
-                                                    <b>Input</b>
+                                                    <b>Input: </b>
+                                                    {subsumsjon.input && byggMapString(subsumsjon.input)}
                                                 </div>
                                                 <div>
                                                     <b>Lovverk: </b>
@@ -41,7 +53,13 @@ export default function SubsumsjonTableBody(props: Props) {
                                                     {subsumsjon.versjonAvKode}
                                                 </div>
                                                 <div>
-                                                    <b>Meldingsid:</b> {subsumsjon.id}
+                                                    <b>Meldingsid: </b> {subsumsjon.id}
+                                                </div>
+                                                <div>
+                                                    <b>Sporing: </b> {
+                                                    subsumsjon.sporing &&
+                                                    byggMapString(subsumsjon.sporing)
+                                                }
                                                 </div>
                                             </div>
                                         </div>
