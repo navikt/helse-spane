@@ -18,10 +18,9 @@ abstract class AbstractPersonTest {
     }
 
     internal fun assertString(subsumsjon: Int, forventetString: String, key: String) {
-        val input = (person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon][key])
-        println(input)
-        if (input != forventetString){
-            fail("Input inneholder ikke forventede feilter. Expected: $forventetString Actual: $input ")
+        val string = person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon][key]
+        if (string != forventetString){
+            fail("Input inneholder ikke forventede feilter. Expected: $forventetString Actual: $string ")
         }
     }
 
@@ -31,6 +30,13 @@ abstract class AbstractPersonTest {
             if (!sporing.values.contains(it)) {
                 fail("Sporing inneholder ikke forventet uuid: expected: $it actual: $sporing")
             }
+        }
+    }
+
+    internal fun assertTidsstempel(subsumsjon: Int, forventetTidsstempel: ZonedDateTime) {
+        val tidsstempel = person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon]["tidsstempel"]
+        if (tidsstempel != forventetTidsstempel){
+            fail("Input inneholder ikke forventede feilter. Expected: $forventetTidsstempel Actual: $tidsstempel ")
         }
     }
 
@@ -73,13 +79,6 @@ abstract class AbstractPersonTest {
 }
 
 private val Person.inspektør: TestVisitor
-    get() {
-        val testVisitor = TestVisitor()
-        this.accept(testVisitor)
-        return testVisitor
-    }
-
-private val Subsumsjon.inspektør: TestVisitor
     get() {
         val testVisitor = TestVisitor()
         this.accept(testVisitor)

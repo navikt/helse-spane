@@ -1,7 +1,6 @@
 package no.nav.helse
 
 import no.nav.helse.TestHjelper.Companion.januar
-import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
 import org.junit.jupiter.api.Test
 
 
@@ -18,22 +17,6 @@ internal class PersonTest : AbstractPersonTest() {
         assertSporing(2, sykmeldingUUID, søknadUUID, vedtaksperiodeUUID)
     }
 
-    /*
-    fun lagSubsumsjon(
-            paragraf: String = "8-11",
-            tidsstempel: ZonedDateTime = 1.januar(2022),
-            sporing: Map<String, Any> = emptyMap(),
-            input: Map<String, Any> = emptyMap(),
-            output: Map<String, Any> = emptyMap(),
-
-        ): Subsumsjon {
-            return Subsumsjon(
-                "id", "3", "sub", "kildee", "3",
-                "1234567890", sporing, tidsstempel, "loven", "3",
-                paragraf, null, null, null, input, output, "GODKJENT"
-            )
-        }
-     */
     @Test
     fun `håndter subsumsjon`() {
         val id = "id"
@@ -59,17 +42,12 @@ internal class PersonTest : AbstractPersonTest() {
         assertString(0, eventName,"eventName")
         assertString(0, kilde,"kilde")
         assertString(0, versjonAvKode,"versjonAvKode")
-        assertString(0, fnr,"fodselsnummer")
-        //assertString(0, tidsstempel,"tidsstempel")
+        assertString(0, fnr,"fødselsnummer")
+        assertTidsstempel(0, tidsstempel)
         assertString(0, lovverk,"lovverk")
         assertString(0, lovverksversjon,"lovverksversjon")
         assertString(0, paragraf,"paragraf")
         assertString(0, utfall, "utfall")
-
-
-
-
-
     }
 }
 
