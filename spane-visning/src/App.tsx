@@ -91,6 +91,7 @@ function App(this: any) {
         <Table size="medium">
           <Table.Header>
             <Table.Row>
+              <Table.HeaderCell scope="col">Vedtaksperiode</Table.HeaderCell>
               <Table.HeaderCell scope="col">Paragraf</Table.HeaderCell>
               <Table.HeaderCell scope="col">Fødseslnummer</Table.HeaderCell>
               <Table.HeaderCell scope="col">Utfall</Table.HeaderCell>
@@ -100,11 +101,14 @@ function App(this: any) {
           <Table.Body>
             {person &&
               person.vedtaksperioder.map(
-                (vedtaksperiode: VedtaksperiodeDto) => {
+                (vedtaksperiode: VedtaksperiodeDto, vedtaksperiodeIdx) => {
                   return vedtaksperiode.subsumsjoner.map(
-                    (subsumsjon: SubsumsjonDto, key: number) => {
+                    (subsumsjon: SubsumsjonDto, subsumsjonIdx: number) => {
                       return (
-                        <Table.Row key={key}>
+                        <Table.Row key={subsumsjonIdx}>
+                          <Table.HeaderCell scope="row">
+                            {vedtaksperiodeIdx + 1}
+                          </Table.HeaderCell>
                           <Table.HeaderCell scope="row">
                             {subsumsjon.paragraf}
                           </Table.HeaderCell>
