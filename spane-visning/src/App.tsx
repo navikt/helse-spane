@@ -110,10 +110,29 @@ function App(this: any) {
                           content={
                             <div className="table-row-expanded-content-container">
                               <div className="table-row-expanded-content-column">
-                                div1
+                                <div>
+                                  <b>Output</b>
+                                </div>
+                                <div>
+                                  <b>Input</b>
+                                </div>
+                                <div>
+                                  <b>Lovverk: </b>
+                                  {subsumsjon.lovverk}
+                                </div>
+                                <div>
+                                  <b>Kilde: </b>
+                                  {subsumsjon.kilde}
+                                </div>
                               </div>
                               <div className="table-row-expanded-content-column">
-                                div2
+                                <div>
+                                  <b>Versjon av kode:</b>{" "}
+                                  {subsumsjon.versjonAvKode}
+                                </div>
+                                <div>
+                                  <b>Meldingsid:</b> {subsumsjon.id}
+                                </div>
                               </div>
                             </div>
                           }
