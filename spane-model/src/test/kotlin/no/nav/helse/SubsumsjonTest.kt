@@ -8,7 +8,6 @@ import no.nav.helse.TestHjelper.Companion.januar
 import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import java.time.*
 
 internal class SubsumsjonTest {
 
@@ -59,5 +58,18 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing)
         )
         assertFalse(subsumsjoner.erRelevant(subsumsjon))
+    }
+
+    @Test // denne skal vi endre til vedtaksperiode
+    fun `avgjør om subsumsjon med vedtaksperiode er relevant`() {
+        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "søknad" to "aaa-bbb-ccc")
+        val sporing2 = mapOf("sykmelding" to "bbb-bbb-ccc", )
+        val subsumsjon = lagSubsumsjon(sporing = sporing)
+        val subsumsjoner = mutableListOf(
+            lagSubsumsjon(sporing = sporing),
+            lagSubsumsjon(sporing = sporing),
+            lagSubsumsjon(sporing = sporing)
+        )
+        assertTrue(subsumsjoner.erRelevant(subsumsjon))
     }
 }
