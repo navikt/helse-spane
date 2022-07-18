@@ -5,8 +5,7 @@ import testPerson from "./resources/testPerson.json";
 import Vedtaksperiode from "./components/Vedtaksperiode";
 import "@navikt/ds-css";
 import "@navikt/ds-css-internal";
-import {Search} from "@navikt/ds-react";
-
+import { Search } from "@navikt/ds-react";
 
 export const restBackend = (): Backend => {
   return {
@@ -68,6 +67,7 @@ function App() {
     : restBackend();
 
   const [person, setPerson] = useState<PersonDto>();
+  const [fødselsnummer, setFødselsnummer] = useState<string>();
 
   useEffect(() => {
     backend.person().then((r) => setPerson(r));
@@ -79,22 +79,30 @@ function App() {
       <div>People call me the jarlinator, but you can call me tonight</div>
       <div>
         <Search
-            label="Søk alle NAV sine sider"
-            size="medium"
-            variant="secondary"
+          label="Søk alle NAV sine sider"
+          size="medium"
+          variant="secondary"
+          onChange={(e) => {
+            console.log(e);
+            setFødselsnummer(e);
+          }}
         />
       </div>
       <div>
         Liste over vedtaksperioder
         {person
-          ? person.vedtaksperioder.map((vedtaksperiode: VedtaksperiodeDto) => {
-              return (
-                <Vedtaksperiode subsumsjoner={vedtaksperiode.subsumsjoner} />
-              );
-            })
+          ? person.vedtaksperioder.map(
+              (vedtaksperiode: VedtaksperiodeDto, key) => {
+                return (
+                  <Vedtaksperiode
+                    key={key}
+                    subsumsjoner={vedtaksperiode.subsumsjoner}
+                  />
+                );
+              }
+            )
           : "fant ingen vedtaksperioder"}
       </div>
-
     </>
   );
 }
