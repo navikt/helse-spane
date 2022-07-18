@@ -105,7 +105,20 @@ function App(this: any) {
                   return vedtaksperiode.subsumsjoner.map(
                     (subsumsjon: SubsumsjonDto, subsumsjonIdx: number) => {
                       return (
-                        <Table.Row key={subsumsjonIdx}>
+                        <Table.ExpandableRow
+                          key={subsumsjonIdx}
+                          content={
+                            <div className="table-row-expanded-content-container">
+                              <div className="table-row-expanded-content-column">
+                                div1
+                              </div>
+                              <div className="table-row-expanded-content-column">
+                                div2
+                              </div>
+                            </div>
+                          }
+                          togglePlacement="right"
+                        >
                           <Table.HeaderCell scope="row">
                             {vedtaksperiodeIdx + 1}
                           </Table.HeaderCell>
@@ -119,7 +132,7 @@ function App(this: any) {
                           <Table.DataCell>
                             {subsumsjon.tidsstempel}
                           </Table.DataCell>
-                        </Table.Row>
+                        </Table.ExpandableRow>
                       );
                     }
                   );
