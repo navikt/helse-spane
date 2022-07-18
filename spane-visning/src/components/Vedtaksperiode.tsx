@@ -13,8 +13,9 @@ function Vedtaksperiode(props: Props) {
     <div>
       <h3>Vedtaksperiode</h3>
       Subsumsjoner:
-      {subsumsjoner.map((subsumsjon: SubsumsjonDto) => (
+      {subsumsjoner.map((subsumsjon: SubsumsjonDto, key) => (
         <Subsumsjon
+          key={key}
           id={subsumsjon.id}
           kilde={subsumsjon.kilde}
           paragraf={subsumsjon.paragraf}
