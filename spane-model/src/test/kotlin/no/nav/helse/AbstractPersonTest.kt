@@ -10,10 +10,17 @@ abstract class AbstractPersonTest {
     lateinit var søknadUUID: UUID
     lateinit var vedtaksperiodeUUID: UUID
 
-    internal fun assertInput(subsumsjon: Int, forventetIntput: Map<String, Any>){
-        val input = (person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon]["input"] as Map<*, *>)
-        if (!input.values.equals(forventetIntput.values)){
-            fail("Input inneholder ikke forventede feilter. Expected: $forventetIntput Actual: $input ")
+    internal fun assertMap(subsumsjon: Int, forventetMap: Map<String, Any>, key: String){
+        val input = (person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon][key] as Map<*, *>)
+        if (input.values != forventetMap.values){
+            fail("Input inneholder ikke forventede feilter. Expected: $forventetMap Actual: $input ")
+        }
+    }
+
+    internal fun assertString(subsumsjon: Int, forventetString: String, key: String) {
+        val string = person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon][key]
+        if (string != forventetString){
+            fail("Input inneholder ikke forventede feilter. Expected: $forventetString Actual: $string ")
         }
     }
 
@@ -23,6 +30,13 @@ abstract class AbstractPersonTest {
             if (!sporing.values.contains(it)) {
                 fail("Sporing inneholder ikke forventet uuid: expected: $it actual: $sporing")
             }
+        }
+    }
+
+    internal fun assertTidsstempel(subsumsjon: Int, forventetTidsstempel: ZonedDateTime) {
+        val tidsstempel = person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon]["tidsstempel"]
+        if (tidsstempel != forventetTidsstempel){
+            fail("Input inneholder ikke forventede feilter. Expected: $forventetTidsstempel Actual: $tidsstempel ")
         }
     }
 
@@ -85,6 +99,7 @@ class TestVisitor : PersonVisitor {
         vedtaksperioder.add(TestVedtaksperiode(mutableListOf()))
 
     }
+
 
     override fun visitSubsumsjon(
         id: String,
