@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import "./App.css";
 import { Environment } from "./environment";
 import testPerson from "./resources/testPerson.json";
@@ -9,8 +9,8 @@ import { Search } from "@navikt/ds-react";
 
 export const restBackend = (): Backend => {
   return {
-    person(): Promise<PersonDto> {
-      return fetch(`/fnr/10877799145`, {
+    person(fnr: string): Promise<PersonDto> {
+      return fetch(`/fnr/` + fnr, {
         method: "get",
         headers: {
           Accept: "application/json",
@@ -22,14 +22,14 @@ export const restBackend = (): Backend => {
 
 export const testBackend = (): Backend => {
   return {
-    person(): Promise<PersonDto> {
+    person(fnr: string): Promise<PersonDto> {
       return Promise.resolve(testPerson as unknown as PersonDto);
     },
   };
 };
 
 export type Backend = {
-  person: () => Promise<PersonDto>;
+  person: (fnr: string) => Promise<PersonDto>;
 };
 
 export type PersonDto = {
@@ -61,49 +61,49 @@ export type SubsumsjonDto = {
   utfall: string;
 };
 
-function App() {
+function App(this: any) {
   const backend: Backend = Environment.isDevelopment
     ? testBackend()
     : restBackend();
 
   const [person, setPerson] = useState<PersonDto>();
-  const [fødselsnummer, setFødselsnummer] = useState<string>();
+  const [fødselsnummer, setFødselsnummer] = useState<string>("");
 
-  useEffect(() => {
-    backend.person().then((r) => setPerson(r));
-  }, []);
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(fødselsnummer);
+    backend.person(fødselsnummer).then((r) => setPerson(r));
+  };
 
   return (
-    <>
+    <div className="main-container">
       <h1>no Spane no gain</h1>
       <div>People call me the jarlinator, but you can call me tonight</div>
-      <div>
-        <Search
-          label="Søk alle NAV sine sider"
-          size="medium"
-          variant="secondary"
-          onChange={(e) => {
-            console.log(e);
-            setFødselsnummer(e);
-          }}
-        />
+      <div className="search-container">
+        <form onSubmit={handleSubmit}>
+          <Search
+            label="Søk etter fødselsnummer"
+            size="medium"
+            variant="secondary"
+            onChange={(e) => setFødselsnummer(e)}
+          />
+        </form>
       </div>
+
       <div>
-        Liste over vedtaksperioder
-        {person
-          ? person.vedtaksperioder.map(
-              (vedtaksperiode: VedtaksperiodeDto, key) => {
-                return (
-                  <Vedtaksperiode
-                    key={key}
-                    subsumsjoner={vedtaksperiode.subsumsjoner}
-                  />
-                );
-              }
-            )
-          : "fant ingen vedtaksperioder"}
+        {person &&
+          person.vedtaksperioder.map(
+            (vedtaksperiode: VedtaksperiodeDto, key) => {
+              return (
+                <Vedtaksperiode
+                  key={key}
+                  subsumsjoner={vedtaksperiode.subsumsjoner}
+                />
+              );
+            }
+          )}
       </div>
-    </>
+    </div>
   );
 }
 
