@@ -6,17 +6,39 @@ interface Props {
     person: PersonDto
 }
 
+
 export default function SubsumsjonTableBody(props: Props) {
     const {person} = props
 
-    function byggMapString(map: Map<string, any[]>) {
-        let resultat = ""
-
+    function byggMapString(map: Map<string, any[]>, resultat: string = "") {
         for (const [key, value] of Object.entries(map)) {
-            resultat += key + " : " + value + "\n"
+            if (value === null) {
+                return "null"
+            } else if (value instanceof Map) {
+                resultat += key + "\n" + byggMapString(value, resultat) + "\n"
+            } else if (Array.isArray(value)) {
+                // Blir feil fordi liste av map skriver ut "objekt"
+                for (const val of value){
+                    if (val instanceof Map) {
+                        resultat += key + "\n" + byggMapString(val, resultat) + "\n"
+                    } else{
+                        resultat += key + " : " + value + "\n"
+                    }
+                }
+            } else if (typeof value === "number") {
+                resultat += key + " : " + value.toString() + "\n"
+            } else if (typeof value === "string") {
+                resultat += key + " : " + value + "\n"
+            } else if (typeof value === "object") {
+                let nyMap = new Map<string, any>(Object.entries(value))
+                resultat += key + "\n" + byggMapString(nyMap, resultat) + "\n"
+            } else {
+                resultat += "Typen er: " + (typeof value).toString() //key + " : " + value + "\n"
+            }
         }
         return resultat;
     }
+
 
     return (
         <Table.Body>
@@ -64,8 +86,7 @@ export default function SubsumsjonTableBody(props: Props) {
                                             </div>
                                         </div>
                                     }
-                                    togglePlacement="right"
-                                >
+                                    togglePlacement="right">
                                     <Table.HeaderCell scope="row">
                                         {vedtaksperiodeIdx + 1}
                                     </Table.HeaderCell>
