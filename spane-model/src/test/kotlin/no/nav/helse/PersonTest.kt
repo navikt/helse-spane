@@ -17,11 +17,10 @@ internal class PersonTest : AbstractPersonTest() {
     }
 
     @Test
-
     fun `håndter subsumsjon`() {
         sendSubsumsjon()
-
-        assertInput(9)
+        val input = mapOf("skjæringtidspunkt" to "2018-01-01")
+        assertInput(0, input)
     }
 }
 

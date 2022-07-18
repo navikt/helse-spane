@@ -12,10 +12,9 @@ abstract class AbstractPersonTest {
 
     internal fun assertInput(subsumsjon: Int, forventetIntput: Map<String, Any>){
         val input = (person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon]["input"] as Map<*, *>)
-        if (!input.values.contains(forventetIntput.values)){
+        if (!input.values.equals(forventetIntput.values)){
             fail("Input inneholder ikke forventede feilter. Expected: $forventetIntput Actual: $input ")
         }
-
     }
 
     internal fun assertSporing(subsumsjon: Int, vararg uuids: UUID) {
@@ -28,6 +27,7 @@ abstract class AbstractPersonTest {
     }
 
     internal fun sendSubsumsjon() {
+        sykmeldingUUID = UUID.randomUUID()
         val input = mapOf("skjæringtidspunkt" to "2018-01-01")
         val output = mapOf("antallOpptjeningsdager" to "28")
         val subsumsjon = TestHjelper.lagSubsumsjon(sporing = mapOf("sykmelding" to sykmeldingUUID), input = input, output = output)
