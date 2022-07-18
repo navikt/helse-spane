@@ -5,7 +5,7 @@ import testPerson from "./resources/testPerson.json";
 import Vedtaksperiode from "./components/Vedtaksperiode";
 import "@navikt/ds-css";
 import "@navikt/ds-css-internal";
-import { Search } from "@navikt/ds-react";
+import { Search, Table } from "@navikt/ds-react";
 
 export const restBackend = (): Backend => {
   return {
@@ -77,8 +77,6 @@ function App(this: any) {
 
   return (
     <div className="main-container">
-      <h1>no Spane no gain</h1>
-      <div>People call me the jarlinator, but you can call me tonight</div>
       <div className="search-container">
         <form onSubmit={handleSubmit}>
           <Search
@@ -89,20 +87,43 @@ function App(this: any) {
           />
         </form>
       </div>
-
-      <div>
-        {person &&
-          person.vedtaksperioder.map(
-            (vedtaksperiode: VedtaksperiodeDto, key) => {
-              return (
-                <Vedtaksperiode
-                  key={key}
-                  subsumsjoner={vedtaksperiode.subsumsjoner}
-                />
-              );
-            }
-          )}
-      </div>
+      <>
+        <Table size="medium">
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell scope="col">Paragraf</Table.HeaderCell>
+              <Table.HeaderCell scope="col">Fødseslnummer</Table.HeaderCell>
+              <Table.HeaderCell scope="col">Utfall</Table.HeaderCell>
+              <Table.HeaderCell scope="col">Tidsstempel</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {person &&
+              person.vedtaksperioder.map(
+                (vedtaksperiode: VedtaksperiodeDto) => {
+                  return vedtaksperiode.subsumsjoner.map(
+                    (subsumsjon: SubsumsjonDto, key: number) => {
+                      return (
+                        <Table.Row key={key}>
+                          <Table.HeaderCell scope="row">
+                            {subsumsjon.paragraf}
+                          </Table.HeaderCell>
+                          <Table.DataCell>
+                            {subsumsjon.fødselsnummer}
+                          </Table.DataCell>
+                          <Table.DataCell>{subsumsjon.utfall}</Table.DataCell>
+                          <Table.DataCell>
+                            {subsumsjon.tidsstempel}
+                          </Table.DataCell>
+                        </Table.Row>
+                      );
+                    }
+                  );
+                }
+              )}
+          </Table.Body>
+        </Table>
+      </>
     </div>
   );
 }
