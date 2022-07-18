@@ -27,6 +27,7 @@ class Subsumsjon(
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
         fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon): Boolean {
+            // TODO: Sjekk 'soknad' og 'vedtaksperiode' også
             this.forEach {
                 if (it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"]) {
                     return true
@@ -65,6 +66,7 @@ class Subsumsjon(
 
         other as Subsumsjon
 
+        // TODO: Er det noe poeng i å refaktorere denne koden?
         if (id != other.id) return false
         if (versjon != other.versjon) return false
         if (eventName != other.eventName) return false
@@ -87,6 +89,8 @@ class Subsumsjon(
     }
 
     override fun hashCode(): Int {
+        // TODO: Vil ikke denne bare overskrive resultatet for hver linje?
+        // Holder det å bare bruke den siste linjen?
         var result = id.hashCode()
         result = 31 * result + versjon.hashCode()
         result = 31 * result + eventName.hashCode()
