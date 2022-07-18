@@ -3,6 +3,10 @@ import "./App.css";
 import { Environment } from "./environment";
 import testPerson from "./resources/testPerson.json";
 import Vedtaksperiode from "./components/Vedtaksperiode";
+import "@navikt/ds-css";
+import "@navikt/ds-css-internal";
+import {Search} from "@navikt/ds-react";
+
 
 export const restBackend = (): Backend => {
   return {
@@ -74,6 +78,13 @@ function App() {
       <h1>no Spane no gain</h1>
       <div>People call me the jarlinator, but you can call me tonight</div>
       <div>
+        <Search
+            label="Søk alle NAV sine sider"
+            size="medium"
+            variant="secondary"
+        />
+      </div>
+      <div>
         Liste over vedtaksperioder
         {person
           ? person.vedtaksperioder.map((vedtaksperiode: VedtaksperiodeDto) => {
@@ -83,6 +94,7 @@ function App() {
             })
           : "fant ingen vedtaksperioder"}
       </div>
+
     </>
   );
 }
