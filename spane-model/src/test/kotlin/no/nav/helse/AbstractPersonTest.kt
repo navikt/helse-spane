@@ -10,10 +10,18 @@ abstract class AbstractPersonTest {
     lateinit var søknadUUID: UUID
     lateinit var vedtaksperiodeUUID: UUID
 
-    internal fun assertInput(subsumsjon: Int, forventetIntput: Map<String, Any>){
-        val input = (person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon]["input"] as Map<*, *>)
-        if (!input.values.equals(forventetIntput.values)){
-            fail("Input inneholder ikke forventede feilter. Expected: $forventetIntput Actual: $input ")
+    internal fun assertMap(subsumsjon: Int, forventetMap: Map<String, Any>, key: String){
+        val input = (person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon][key] as Map<*, *>)
+        if (input.values != forventetMap.values){
+            fail("Input inneholder ikke forventede feilter. Expected: $forventetMap Actual: $input ")
+        }
+    }
+
+    internal fun assertString(subsumsjon: Int, forventetString: String, key: String) {
+        val input = (person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon][key])
+        println(input)
+        if (input != forventetString){
+            fail("Input inneholder ikke forventede feilter. Expected: $forventetString Actual: $input ")
         }
     }
 
@@ -71,6 +79,13 @@ private val Person.inspektør: TestVisitor
         return testVisitor
     }
 
+private val Subsumsjon.inspektør: TestVisitor
+    get() {
+        val testVisitor = TestVisitor()
+        this.accept(testVisitor)
+        return testVisitor
+    }
+
 class TestVisitor : PersonVisitor {
     data class TestVedtaksperiode(val subsumsjoner: MutableList<Map<String, Any?>>)
 
@@ -85,6 +100,7 @@ class TestVisitor : PersonVisitor {
         vedtaksperioder.add(TestVedtaksperiode(mutableListOf()))
 
     }
+
 
     override fun visitSubsumsjon(
         id: String,
