@@ -1,5 +1,5 @@
 import testPerson from "./resources/testPerson.json";
-import {PersonDto} from "./App";
+import {PersonDto} from "./types";
 
 export const restBackend = (): Backend => {
     return {

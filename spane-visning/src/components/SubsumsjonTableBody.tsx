@@ -1,6 +1,6 @@
 import React from 'react';
 import {Table} from "@navikt/ds-react";
-import {PersonDto, SubsumsjonDto, VedtaksperiodeDto} from "../App";
+import {PersonDto, SubsumsjonDto, VedtaksperiodeDto} from "../types";
 
 interface Props {
     person: PersonDto

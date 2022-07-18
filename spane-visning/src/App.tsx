@@ -6,35 +6,9 @@ import "@navikt/ds-css-internal";
 import { Search, Table } from "@navikt/ds-react";
 import {Backend, restBackend, testBackend} from "./service";
 import SubsumsjonTableBody from "./components/SubsumsjonTableBody";
+import {PersonDto} from "./types";
 
-export type PersonDto = {
-  vedtaksperioder: VedtaksperiodeDto[];
-  fnr: string;
-};
 
-export type VedtaksperiodeDto = {
-  subsumsjoner: SubsumsjonDto[];
-};
-
-export type SubsumsjonDto = {
-  id: string;
-  versjon: string;
-  eventName: string;
-  kilde: string;
-  versjonAvKode: string;
-  fødselsnummer: string;
-  sporing: Map<string, string[]>;
-  tidsstempel: string;
-  lovverk: string;
-  lovverksversjon: string;
-  paragraf: string;
-  ledd: number | null;
-  punktum: number | null;
-  bokstav: string | null;
-  input: Map<string, any>;
-  output: Map<string, any>;
-  utfall: string;
-};
 
 function App(this: any) {
   const backend: Backend = Environment.isDevelopment
