@@ -1,5 +1,4 @@
 import React from "react";
-import { SubsumsjonDto } from "./App";
 
 interface Props {
   id: string;

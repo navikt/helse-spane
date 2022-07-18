@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Environment } from "./environment";
-import testPerson from "./testPerson.json";
-import Vedtaksperiode from "./Vedtaksperiode";
+import testPerson from "./resources/testPerson.json";
+import Vedtaksperiode from "./components/Vedtaksperiode";
 
 export const restBackend = (): Backend => {
   return {
@@ -64,16 +64,6 @@ function App() {
     : restBackend();
 
   const [person, setPerson] = useState<PersonDto>();
-
-  async function fetchAPI() {
-    await fetch("/fnr/10877799145")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setPerson(data);
-      });
-  }
 
   useEffect(() => {
     backend.person().then((r) => setPerson(r));

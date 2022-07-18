@@ -1,5 +1,5 @@
 import React from "react";
-import { SubsumsjonDto } from "./App";
+import { SubsumsjonDto } from "../App";
 import Subsumsjon from "./Subsumsjon";
 
 interface Props {
