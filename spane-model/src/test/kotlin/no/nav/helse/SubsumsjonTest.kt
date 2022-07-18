@@ -62,13 +62,42 @@ internal class SubsumsjonTest {
 
     @Test // denne skal vi endre til vedtaksperiode
     fun `avgjør om subsumsjon med vedtaksperiode er relevant`() {
-        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "søknad" to "aaa-bbb-ccc")
-        val sporing2 = mapOf("sykmelding" to "bbb-bbb-ccc", )
+        /*
+        Sykmelding i samme vedtaksperiode. En med vedtaksperiode og sykmelidng, og en med bare sykmelding
+         */
+
+        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "søknad" to "bbb-bbb-ccc")
+        val sporing2 = mapOf("sykmelding" to "aaa-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
         val subsumsjon = lagSubsumsjon(sporing = sporing)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing),
+            lagSubsumsjon(sporing = sporing2)
+        )
+        assertTrue(subsumsjoner.erRelevant(subsumsjon))
+    }
+
+    @Test
+    fun `avgjør om subsumsjon med vedtaksperiode ikke er relevant`(){
+        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "søknad" to "bbb-bbb-ccc")
+        val sporing2 = mapOf("sykmelding" to "abb-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
+        val subsumsjon = lagSubsumsjon(sporing = sporing)
+        val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing),
-            lagSubsumsjon(sporing = sporing)
+            lagSubsumsjon(sporing = sporing2)
+        )
+        assertFalse(subsumsjoner.erRelevant(subsumsjon))
+    }
+
+    @Test
+    fun `avgjør om subsumsjon er relevant uten vedtaksperiode`(){
+        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "søknad" to "bbb-bbb-ccc")
+        val sporing2 = mapOf("sykmelding" to "aaa-bbb-ccc" )
+        val sporing3 = mapOf("sykmelding" to "aaa-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
+
+        val subsumsjon = lagSubsumsjon(sporing = sporing3)
+        val subsumsjoner = mutableListOf(
+            lagSubsumsjon(sporing = sporing),
+            lagSubsumsjon(sporing = sporing2)
         )
         assertTrue(subsumsjoner.erRelevant(subsumsjon))
     }
