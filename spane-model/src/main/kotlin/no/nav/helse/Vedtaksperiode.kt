@@ -10,7 +10,7 @@ class Vedtaksperiode(
             if(this.none{it.håndter(subsumsjon)}) this.add(Vedtaksperiode(mutableListOf(subsumsjon)))
         }
     }
-
+    
     private fun håndter(subsumsjon: Subsumsjon): Boolean {
         return if (subsumsjoner.erRelevant(subsumsjon)) { subsumsjoner += subsumsjon; true }
         else false
