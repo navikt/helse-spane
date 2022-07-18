@@ -1,36 +1,11 @@
 import { FormEvent, useState } from "react";
 import "./App.css";
 import { Environment } from "./environment";
-import testPerson from "./resources/testPerson.json";
-import Vedtaksperiode from "./components/Vedtaksperiode";
 import "@navikt/ds-css";
 import "@navikt/ds-css-internal";
 import { Search, Table } from "@navikt/ds-react";
-
-export const restBackend = (): Backend => {
-  return {
-    person(fnr: string): Promise<PersonDto> {
-      return fetch(`/fnr/` + fnr, {
-        method: "get",
-        headers: {
-          Accept: "application/json",
-        },
-      }).then((response) => response.json());
-    },
-  };
-};
-
-export const testBackend = (): Backend => {
-  return {
-    person(fnr: string): Promise<PersonDto> {
-      return Promise.resolve(testPerson as unknown as PersonDto);
-    },
-  };
-};
-
-export type Backend = {
-  person: (fnr: string) => Promise<PersonDto>;
-};
+import {Backend, restBackend, testBackend} from "./service";
+import SubsumsjonTableBody from "./components/SubsumsjonTableBody";
 
 export type PersonDto = {
   vedtaksperioder: VedtaksperiodeDto[];
@@ -98,66 +73,7 @@ function App(this: any) {
               <Table.HeaderCell scope="col">Tidsstempel</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
-          <Table.Body>
-            {person &&
-              person.vedtaksperioder.map(
-                (vedtaksperiode: VedtaksperiodeDto, vedtaksperiodeIdx) => {
-                  return vedtaksperiode.subsumsjoner.map(
-                    (subsumsjon: SubsumsjonDto, subsumsjonIdx: number) => {
-                      return (
-                        <Table.ExpandableRow
-                          key={subsumsjonIdx}
-                          content={
-                            <div className="table-row-expanded-content-container">
-                              <div className="table-row-expanded-content-column">
-                                <div>
-                                  <b>Output</b>
-                                </div>
-                                <div>
-                                  <b>Input</b>
-                                </div>
-                                <div>
-                                  <b>Lovverk: </b>
-                                  {subsumsjon.lovverk}
-                                </div>
-                                <div>
-                                  <b>Kilde: </b>
-                                  {subsumsjon.kilde}
-                                </div>
-                              </div>
-                              <div className="table-row-expanded-content-column">
-                                <div>
-                                  <b>Versjon av kode:</b>{" "}
-                                  {subsumsjon.versjonAvKode}
-                                </div>
-                                <div>
-                                  <b>Meldingsid:</b> {subsumsjon.id}
-                                </div>
-                              </div>
-                            </div>
-                          }
-                          togglePlacement="right"
-                        >
-                          <Table.HeaderCell scope="row">
-                            {vedtaksperiodeIdx + 1}
-                          </Table.HeaderCell>
-                          <Table.HeaderCell scope="row">
-                            {subsumsjon.paragraf}
-                          </Table.HeaderCell>
-                          <Table.DataCell>
-                            {subsumsjon.fødselsnummer}
-                          </Table.DataCell>
-                          <Table.DataCell>{subsumsjon.utfall}</Table.DataCell>
-                          <Table.DataCell>
-                            {subsumsjon.tidsstempel}
-                          </Table.DataCell>
-                        </Table.ExpandableRow>
-                      );
-                    }
-                  );
-                }
-              )}
-          </Table.Body>
+            {person && <SubsumsjonTableBody person={person}/>}
         </Table>
       </>
     </div>
