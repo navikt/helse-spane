@@ -47,12 +47,15 @@ internal class TestHjelper {
         fun lagSubsumsjon(
             paragraf: String = "8-11",
             tidsstempel: ZonedDateTime = 1.januar(2022),
-            sporing: Map<String, Any> = emptyMap()
+            sporing: Map<String, Any> = emptyMap(),
+            input: Map<String, Any> = emptyMap(),
+            output: Map<String, Any> = emptyMap(),
+
         ): Subsumsjon {
             return Subsumsjon(
                 "id", "3", "sub", "kildee", "3",
                 "1234567890", sporing, tidsstempel, "loven", "3",
-                paragraf, null, null, null, emptyMap(), emptyMap(), "GODKJENT"
+                paragraf, null, null, null, input, output, "GODKJENT"
             )
         }
 

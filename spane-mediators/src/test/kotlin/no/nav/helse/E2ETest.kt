@@ -117,7 +117,14 @@ internal class E2ETest {
     }
 
     @Test
-    fun `etannan avn`() {
+    fun `håndter subsumsjon`() {
+        /*
+         * lag person vha subsumsjonsmelding
+         * test at felter i person stemmer med innhold i subsumsjonsmelding
+         */
+
         assertEquals(0, 0)
     }
+
+
 }
