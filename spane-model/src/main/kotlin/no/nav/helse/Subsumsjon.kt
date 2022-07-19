@@ -28,9 +28,14 @@ class Subsumsjon(
 
         fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon): Boolean {
             this.forEach {
-                if(it.sporing["vedtaksperiode"] != null && it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"]){
+                if((it.sporing["vedtaksperiode"] != null && it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"])){
                     return true
                 }
+                // Denne må kanskje endres
+                if (it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"]){
+                    return true
+                }
+
             }
             //TODO: Denne if - sjekken er for å legge til subsumsjonen hvis ingen av subsumsjonene i lista har en vedtaksperiode
             //Men er litt usikker på om det skal/bør gjøres på denne måten

@@ -79,10 +79,11 @@ internal class SubsumsjonTest {
     @Test
     fun `avgjør om subsumsjon med vedtaksperiode ikke er relevant`(){
         val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "søknad" to "bbb-bbb-ccc")
+        val sporing1 = mapOf("sykmelding" to "abb-bbb-ccc", "søknad" to "bbb-bbb-ccc")
         val sporing2 = mapOf("sykmelding" to "abb-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
         val subsumsjon = lagSubsumsjon(sporing = sporing)
         val subsumsjoner = mutableListOf(
-            lagSubsumsjon(sporing = sporing),
+            lagSubsumsjon(sporing = sporing1),
             lagSubsumsjon(sporing = sporing2)
         )
         assertFalse(subsumsjoner.erRelevant(subsumsjon))
