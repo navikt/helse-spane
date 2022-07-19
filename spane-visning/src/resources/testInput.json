@@ -1,0 +1,26 @@
+{
+    "perioder": [
+      {
+        "fom": "2022-05-02",
+        "tom": "2022-05-31",
+        "aktivitetIkkeMulig": {
+          "medisinskArsak": {
+            "beskrivelse": "medisinske årsaker til sykefravær",
+            "arsak": [
+              "AKTIVITET_FORHINDRER_BEDRING"
+            ]
+          },
+          "arbeidsrelatertArsak": {
+            "beskrivelse": "andre årsaker til sykefravær",
+            "arsak": [
+              "ANNET"
+            ]
+          }
+        },
+        "avventendeInnspillTilArbeidsgiver": null,
+        "behandlingsdager": null,
+        "gradert": null,
+        "reisetilskudd": false
+      }
+    ]
+}

@@ -1,6 +1,10 @@
-
 import React from 'react'
+import byggStringRekursivt from "./components/utlis";
 
-test('bruker søker opp en person', async () => {
-    console.log("test")
+test('input blir parset rett av byggStringRekursivt', async () => {
+    const json = require('./resources/testInput.json');
+
+    console.log(byggStringRekursivt(json))
+
+
 })
