@@ -19,17 +19,19 @@ export default function SubsumsjonTableBody(props: Props) {
             resultat += innhold + "\n"
         } else if (typeof innhold === "number") {
             resultat += innhold.toString() + "\n"
+        } else if (Array.isArray(innhold)) {
+            for (const elem of innhold) {
+                resultat += byggStringRekursivt(elem) + "\n"
+            }
         } else if (typeof innhold === "object") {
             for (const [key, value] of Object.entries(innhold)) {
-                if (typeof innhold === "object") {
+                if (typeof value === "object") {
                     resultat += key + ":\n" + byggStringRekursivt(value) + "\n"
+                    //TODO Finn ut hvorfor det blir en ekstra \n hvis value er en liste
+                    // eller hvorfor null blir nylinje
                 } else {
                     resultat += key + ": " + byggStringRekursivt(value) + "\n"
                 }
-            }
-        } else if (Array.isArray(innhold)) {
-            for (const [key, value] of Object.entries(innhold)) {
-                resultat += value + "\n"
             }
         } else {
             resultat += "****** Ikke gjenkjent type, noe har skjedd feil ******"
