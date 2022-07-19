@@ -10,33 +10,31 @@ interface Props {
 export default function SubsumsjonTableBody(props: Props) {
     const {person} = props
 
-    function byggMapString(map: Map<string, any[]>, resultat: string = "") {
-        for (const [key, value] of Object.entries(map)) {
-            if (value === null) {
-                return "null"
-            } else if (value instanceof Map) {
-                resultat += key + "\n" + byggMapString(value, resultat) + "\n"
-            } else if (Array.isArray(value)) {
-                // Blir feil fordi liste av map skriver ut "objekt"
-                for (const val of value){
-                    if (val instanceof Map) {
-                        resultat += key + "\n" + byggMapString(val, resultat) + "\n"
-                    } else{
-                        resultat += key + " : " + value + "\n"
-                    }
+    function byggStringRekursivt(innhold: any, resultat: string = "") {
+        if (innhold === null) {
+            resultat += "null\n"
+        } else if (typeof innhold === "string") {
+            resultat += innhold + "\n"
+        } else if (typeof innhold === "boolean") {
+            resultat += innhold + "\n"
+        } else if (typeof innhold === "number") {
+            resultat += innhold.toString() + "\n"
+        } else if (typeof innhold === "object") {
+            for (const [key, value] of Object.entries(innhold)) {
+                if (typeof innhold === "object") {
+                    resultat += key + ":\n" + byggStringRekursivt(value) + "\n"
+                } else {
+                    resultat += key + ": " + byggStringRekursivt(value) + "\n"
                 }
-            } else if (typeof value === "number") {
-                resultat += key + " : " + value.toString() + "\n"
-            } else if (typeof value === "string") {
-                resultat += key + " : " + value + "\n"
-            } else if (typeof value === "object") {
-                let nyMap = new Map<string, any>(Object.entries(value))
-                resultat += key + "\n" + byggMapString(nyMap, resultat) + "\n"
-            } else {
-                resultat += "Typen er: " + (typeof value).toString() //key + " : " + value + "\n"
             }
+        } else if (Array.isArray(innhold)) {
+            for (const [key, value] of Object.entries(innhold)) {
+                resultat += value + "\n"
+            }
+        } else {
+            resultat += "****** Ikke gjenkjent type, noe har skjedd feil ******"
         }
-        return resultat;
+        return resultat
     }
 
 
@@ -54,11 +52,13 @@ export default function SubsumsjonTableBody(props: Props) {
                                             <div className="table-row-expanded-content-column">
                                                 <div>
                                                     <b>Output: </b>
-                                                    {subsumsjon.output && byggMapString(subsumsjon.output)}
+                                                    {subsumsjon.output && byggStringRekursivt(subsumsjon.output).split("\n").map((s) =>
+                                                        <p>{s}</p>)}
                                                 </div>
                                                 <div>
                                                     <b>Input: </b>
-                                                    {subsumsjon.input && byggMapString(subsumsjon.input)}
+                                                    {subsumsjon.input && byggStringRekursivt(subsumsjon.input).split("\n").map((s) =>
+                                                        <p>{s}</p>)}
                                                 </div>
                                                 <div>
                                                     <b>Lovverk: </b>
@@ -79,8 +79,8 @@ export default function SubsumsjonTableBody(props: Props) {
                                                 </div>
                                                 <div>
                                                     <b>Sporing: </b> {
-                                                    subsumsjon.sporing &&
-                                                    byggMapString(subsumsjon.sporing)
+                                                    subsumsjon.sporing && byggStringRekursivt(subsumsjon.sporing).split("\n").map((s) =>
+                                                        <p>{s}</p>)
                                                 }
                                                 </div>
                                             </div>
