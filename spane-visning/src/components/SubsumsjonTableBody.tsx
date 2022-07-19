@@ -25,10 +25,8 @@ export default function SubsumsjonTableBody(props: Props) {
             }
         } else if (typeof innhold === "object") {
             for (const [key, value] of Object.entries(innhold)) {
-                if (typeof value === "object") {
+                if (typeof value === "object" && value) {
                     resultat += key + ":\n" + byggStringRekursivt(value) + "\n"
-                    //TODO Finn ut hvorfor det blir en ekstra \n hvis value er en liste
-                    // eller hvorfor null blir nylinje
                 } else {
                     resultat += key + ": " + byggStringRekursivt(value) + "\n"
                 }
