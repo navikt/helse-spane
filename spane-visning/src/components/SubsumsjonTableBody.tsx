@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table} from "@navikt/ds-react";
 import {PersonDto, SubsumsjonDto, VedtaksperiodeDto} from "../types";
+import UtvidetTableInnhold from "./UtvidetTableInnhold";
 
 interface Props {
     person: PersonDto
@@ -9,34 +10,6 @@ interface Props {
 
 export default function SubsumsjonTableBody(props: Props) {
     const {person} = props
-
-    function byggStringRekursivt(innhold: any, resultat: string = "") {
-        if (innhold === null) {
-            resultat += "null\n"
-        } else if (typeof innhold === "string") {
-            resultat += innhold + "\n"
-        } else if (typeof innhold === "boolean") {
-            resultat += innhold + "\n"
-        } else if (typeof innhold === "number") {
-            resultat += innhold.toString() + "\n"
-        } else if (Array.isArray(innhold)) {
-            for (const elem of innhold) {
-                resultat += byggStringRekursivt(elem) + "\n"
-            }
-        } else if (typeof innhold === "object") {
-            for (const [key, value] of Object.entries(innhold)) {
-                if (typeof value === "object" && value) {
-                    resultat += key + ":\n" + byggStringRekursivt(value) + "\n"
-                } else {
-                    resultat += key + ": " + byggStringRekursivt(value) + "\n"
-                }
-            }
-        } else {
-            resultat += "****** Ikke gjenkjent type, noe har skjedd feil ******"
-        }
-        return resultat
-    }
-
 
     return (
         <Table.Body>
@@ -48,43 +21,7 @@ export default function SubsumsjonTableBody(props: Props) {
                                 <Table.ExpandableRow
                                     key={subsumsjonIdx}
                                     content={
-                                        <div className="table-row-expanded-content-container">
-                                            <div className="table-row-expanded-content-column">
-                                                <div>
-                                                    <b>Output: </b>
-                                                    {subsumsjon.output && byggStringRekursivt(subsumsjon.output).split("\n").map((s) =>
-                                                        <p>{s}</p>)}
-                                                </div>
-                                                <div>
-                                                    <b>Input: </b>
-                                                    {subsumsjon.input && byggStringRekursivt(subsumsjon.input).split("\n").map((s) =>
-                                                        <p>{s}</p>)}
-                                                </div>
-                                                <div>
-                                                    <b>Lovverk: </b>
-                                                    {subsumsjon.lovverk}
-                                                </div>
-                                                <div>
-                                                    <b>Kilde: </b>
-                                                    {subsumsjon.kilde}
-                                                </div>
-                                            </div>
-                                            <div className="table-row-expanded-content-column">
-                                                <div>
-                                                    <b>Versjon av kode:</b>{" "}
-                                                    {subsumsjon.versjonAvKode}
-                                                </div>
-                                                <div>
-                                                    <b>Meldingsid: </b> {subsumsjon.id}
-                                                </div>
-                                                <div>
-                                                    <b>Sporing: </b> {
-                                                    subsumsjon.sporing && byggStringRekursivt(subsumsjon.sporing).split("\n").map((s) =>
-                                                        <p>{s}</p>)
-                                                }
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <UtvidetTableInnhold subsumsjon={subsumsjon}/>
                                     }
                                     togglePlacement="right">
                                     <Table.HeaderCell scope="row">

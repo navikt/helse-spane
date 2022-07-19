@@ -24,7 +24,7 @@ function App(this: any) {
     };
 
     return (
-        <div className="main-container">
+        <main className="main-container">
             <div className="search-container">
                 <form onSubmit={handleSubmit}>
                     <Search
@@ -47,7 +47,7 @@ function App(this: any) {
                 </Table.Header>
                 {person && <SubsumsjonTableBody person={person}/>}
             </Table>
-        </div>
+        </main>
     );
 }
 
