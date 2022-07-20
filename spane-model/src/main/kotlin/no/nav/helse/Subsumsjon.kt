@@ -1,6 +1,6 @@
 package no.nav.helse
 
-import no.nav.helse.Subsumsjon.Companion.erRelevantSykemelding
+import no.nav.helse.SporingNoe.*
 import java.time.ZonedDateTime
 
 class Subsumsjon(
@@ -27,51 +27,26 @@ class Subsumsjon(
 
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
-
-        fun MutableList<Subsumsjon>.erRelevantSykemelding(subsumsjon: Subsumsjon): Boolean {
+        fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon, søk : SporingNoe): Boolean {
             this.forEach {
-                // TODO ta høyde for manglende sykemeldinggsid
-                if (it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"]){
+                if(it.sporing[søk.navn] == subsumsjon.sporing[søk.navn]) {
                     this += subsumsjon
                     return true
-                }
-            }
-            return false
-        }
-
-        fun MutableList<Subsumsjon>.erRelevantEtterSoknad(subsumsjon: Subsumsjon): Boolean {
-
-            this.forEach {
-
-                // Denne må kanskje endres
-                if (it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"]){
-                    this += subsumsjon
-                    return true
-                }
-
-            }
-            //TODO: Denne if - sjekken er for å legge til subsumsjonen hvis ingen av subsumsjonene i lista har en vedtaksperiode
-            //Men er litt usikker på om det skal/bør gjøres på denne måten
-            if(subsumsjon.sporing["vedtaksperiode"] != null) {
-                this.forEach{
-                    if(it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"]){
-                        return true
-                    }
                 }
             }
             return false
         }
     }
 
-    fun skalDupliseres(): SporingNoe? {
+    fun finnSøkeParameter(): SporingNoe? {
         if (sporing["vedtaksperiode"] != null)  {
-            return SporingNoe.VEDTAKSPERIODE
+            return VEDTAKSPERIODE
         }
         if (sporing["soknad"] != null) {
-            return SporingNoe.SØKNAD
+            return SØKNAD
         }
         if (sporing["sykmelding"] != null) {
-            return SporingNoe.SYKMELDING
+            return SYKMELDING
         }
         return null
     }

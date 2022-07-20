@@ -1,7 +1,7 @@
 package no.nav.helse
 
-enum class SporingNoe {
-    VEDTAKSPERIODE,
-    SØKNAD,
-    SYKMELDING
+enum class SporingNoe(val navn: String) {
+    VEDTAKSPERIODE("vedtaksperiode"),
+    SØKNAD("soknad"),
+    SYKMELDING("sykmelding")
 }

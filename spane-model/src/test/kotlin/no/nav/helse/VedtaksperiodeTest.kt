@@ -15,7 +15,7 @@ class VedtaksperiodeTest {
         val subsumsjonAndre = lagSubsumsjon(sporing = mapOf("sykmelding" to "andre"))
 
         val vedtaksperioder = mutableListOf(Vedtaksperiode(mutableListOf(subsumsjonFørste)))
-        vedtaksperioder.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjonAndre)
+        vedtaksperioder.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjonAndre, SporingNoe.SYKMELDING)
 
         assertEquals(2, vedtaksperioder.size)
     }
@@ -26,7 +26,7 @@ class VedtaksperiodeTest {
         val subsumsjonAndre = lagSubsumsjon(sporing = mapOf("sykmelding" to "første"))
 
         val vedtaksperioder = mutableListOf(Vedtaksperiode(mutableListOf(subsumsjonFørste)))
-        vedtaksperioder.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjonAndre)
+        vedtaksperioder.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjonAndre, SporingNoe.SYKMELDING)
 
         assertEquals(1, vedtaksperioder.size)
     }

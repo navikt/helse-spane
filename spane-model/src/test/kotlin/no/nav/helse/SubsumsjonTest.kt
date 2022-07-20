@@ -1,6 +1,6 @@
 package no.nav.helse
 
-import no.nav.helse.Subsumsjon.Companion.erRelevantSykemelding
+import no.nav.helse.Subsumsjon.Companion.erRelevant
 import no.nav.helse.Subsumsjon.Companion.finnAlle
 import no.nav.helse.Subsumsjon.Companion.sorterPåTid
 import no.nav.helse.TestHjelper.Companion.februar
@@ -44,7 +44,7 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertTrue(subsumsjoner.erRelevantSykemelding(subsumsjon))
+        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingNoe.SYKMELDING))
     }
 
     @Test
@@ -57,7 +57,7 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertTrue(subsumsjoner.erRelevantSykemelding(subsumsjon))
+        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingNoe.SØKNAD))
     }
 
 
@@ -71,8 +71,9 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertFalse(subsumsjoner.erRelevantSykemelding(subsumsjon))
+        assertFalse(subsumsjoner.erRelevant(subsumsjon, SporingNoe.SYKMELDING))
     }
+
     @Test
     fun `avgjør om subsumsjon skal dupliseres`() {
         val sporingDupliser = mapOf("sykmelding" to "aaa-bbb-ccc")
@@ -80,55 +81,27 @@ internal class SubsumsjonTest {
         val sporingVedtaksperiode = mapOf(
             "sykmelding" to "aaa-bbb-ccc",
             "soknad" to "bbb-bbb-ccc",
-            "vedtaksperiode" to "abc-abc-abc" )
+            "vedtaksperiode" to "abc-abc-abc"
+        )
         val subsumsjonVedtaksperiode = lagSubsumsjon(sporing = sporingVedtaksperiode)
         val subsumsjonSøknad = lagSubsumsjon(sporing = sporingSoknad)
         val subsumsjonDup = lagSubsumsjon(sporing = sporingDupliser)
-        assertFalse(subsumsjonVedtaksperiode.skalDupliseres())
-        assertFalse(subsumsjonSøknad.skalDupliseres())
-        assertTrue(subsumsjonDup.skalDupliseres())
+        assertEquals(SporingNoe.VEDTAKSPERIODE, subsumsjonVedtaksperiode.finnSøkeParameter())
+        assertEquals(SporingNoe.SØKNAD, subsumsjonSøknad.finnSøkeParameter())
+        assertEquals(SporingNoe.SYKMELDING, subsumsjonDup.finnSøkeParameter())
     }
 
-    @Test // denne skal vi endre til vedtaksperiode
-    fun `avgjør om subsumsjon med vedtaksperiode er relevant`() {
-        /*
-        Sykmelding i samme vedtaksperiode. En med vedtaksperiode og sykmelidng, og en med bare sykmelding
-         */
-
-        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc")
-        val sporing2 = mapOf("sykmelding" to "aaa-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
-        val subsumsjon = lagSubsumsjon(sporing = sporing)
-        val subsumsjoner = mutableListOf(
-            lagSubsumsjon(sporing = sporing),
-            lagSubsumsjon(sporing = sporing2)
-        )
-        assertTrue(subsumsjoner.erRelevantSykemelding(subsumsjon))
-    }
 
     @Test
-    fun `avgjør om subsumsjon med vedtaksperiode ikke er relevant`(){
+    fun `avgjør om subsumsjon med vedtaksperiode ikke er relevant`() {
         val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc")
         val sporing1 = mapOf("sykmelding" to "abb-bbb-ccc", "soknad" to "bbb-bbb-ccc")
-        val sporing2 = mapOf("sykmelding" to "abb-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
+        val sporing2 = mapOf("sykmelding" to "abb-bbb-ccc", "vedtaksperiode" to "abc-abc-abc")
         val subsumsjon = lagSubsumsjon(sporing = sporing)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing1),
             lagSubsumsjon(sporing = sporing2)
         )
-        assertFalse(subsumsjoner.erRelevantSykemelding(subsumsjon))
-    }
-
-    @Test
-    fun `avgjør om subsumsjon er relevant uten vedtaksperiode`(){
-        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc")
-        val sporing2 = mapOf("sykmelding" to "aaa-bbb-ccc" )
-        val sporing3 = mapOf("sykmelding" to "aaa-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
-
-        val subsumsjon = lagSubsumsjon(sporing = sporing3)
-        val subsumsjoner = mutableListOf(
-            lagSubsumsjon(sporing = sporing),
-            lagSubsumsjon(sporing = sporing2)
-        )
-        assertTrue(subsumsjoner.erRelevantSykemelding(subsumsjon))
+        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingNoe.SØKNAD))
     }
 }
