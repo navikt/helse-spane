@@ -63,7 +63,10 @@ internal class SubsumsjonTest {
     fun `avgjør om subsumsjon skal dupliseres`() {
         val sporingDupliser = mapOf("sykmelding" to "aaa-bbb-ccc")
         val sporingSoknad = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc")
-        val sporingVedtaksperiode = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
+        val sporingVedtaksperiode = mapOf(
+            "sykmelding" to "aaa-bbb-ccc",
+            "soknad" to "bbb-bbb-ccc",
+            "vedtaksperiode" to "abc-abc-abc" )
         val subsumsjonVedtaksperiode = lagSubsumsjon(sporing = sporingVedtaksperiode)
         val subsumsjonSøknad = lagSubsumsjon(sporing = sporingSoknad)
         val subsumsjonDup = lagSubsumsjon(sporing = sporingDupliser)

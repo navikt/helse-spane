@@ -51,12 +51,33 @@ internal class TestHjelper {
             input: Map<String, Any> = emptyMap(),
             output: Map<String, Any> = emptyMap(),
 
-        ): Subsumsjon {
+            ): Subsumsjon {
             return Subsumsjon(
                 "id", "3", "sub", "kildee", "3",
                 "1234567890", sporing, tidsstempel, "loven", "3",
                 paragraf, null, null, null, input, output, "GODKJENT"
             )
+        }
+
+        fun lagVedtaksPeriode(
+            antallSubsumSjoner: Int,
+            paragraf: String = "8-11",
+            tidsstempel: ZonedDateTime = 1.januar(2022),
+            sporing: Map<String, Any> = emptyMap(),
+            input: Map<String, Any> = emptyMap(),
+            output: Map<String, Any> = emptyMap(),
+        ): Vedtaksperiode {
+            val subsumsjoner = mutableListOf<Subsumsjon>()
+            for (i in 1..antallSubsumSjoner) {
+                subsumsjoner.add(lagSubsumsjon(
+                    paragraf=paragraf,
+                    tidsstempel=tidsstempel,
+                    sporing = sporing,
+                    input = input,
+                    output = output
+                ))
+            }
+            return Vedtaksperiode(subsumsjoner)
         }
 
 
