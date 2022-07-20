@@ -41,10 +41,10 @@ abstract class AbstractPersonTest {
     }
 
     internal fun sendSubsumsjon() {
-        sykmeldingUUID = UUID.randomUUID()
+        val søknadUUID = UUID.randomUUID()
         val input = mapOf("skjæringtidspunkt" to "2018-01-01")
         val output = mapOf("antallOpptjeningsdager" to "28")
-        val subsumsjon = TestHjelper.lagSubsumsjon(sporing = mapOf("sykmelding" to sykmeldingUUID), input = input, output = output)
+        val subsumsjon = TestHjelper.lagSubsumsjon(sporing = mapOf("sykmelding" to søknadUUID), input = input, output = output)
         person.håndter(subsumsjon)
     }
     internal fun sendSykmeldingSubsumsjon() {
