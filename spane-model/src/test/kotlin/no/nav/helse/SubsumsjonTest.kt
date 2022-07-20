@@ -59,6 +59,18 @@ internal class SubsumsjonTest {
         )
         assertFalse(subsumsjoner.erRelevant(subsumsjon))
     }
+    @Test
+    fun `avgjør om subsumsjon skal dupliseres`() {
+        val sporingDupliser = mapOf("sykmelding" to "aaa-bbb-ccc")
+        val sporingSoknad = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc")
+        val sporingVedtaksperiode = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
+        val subsumsjonVedtaksperiode = lagSubsumsjon(sporing = sporingVedtaksperiode)
+        val subsumsjonSøknad = lagSubsumsjon(sporing = sporingSoknad)
+        val subsumsjonDup = lagSubsumsjon(sporing = sporingDupliser)
+        assertFalse(subsumsjonVedtaksperiode.skalDupliseres())
+        assertFalse(subsumsjonSøknad.skalDupliseres())
+        assertTrue(subsumsjonDup.skalDupliseres())
+    }
 
     @Test // denne skal vi endre til vedtaksperiode
     fun `avgjør om subsumsjon med vedtaksperiode er relevant`() {
@@ -66,7 +78,7 @@ internal class SubsumsjonTest {
         Sykmelding i samme vedtaksperiode. En med vedtaksperiode og sykmelidng, og en med bare sykmelding
          */
 
-        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "søknad" to "bbb-bbb-ccc")
+        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc")
         val sporing2 = mapOf("sykmelding" to "aaa-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
         val subsumsjon = lagSubsumsjon(sporing = sporing)
         val subsumsjoner = mutableListOf(
@@ -78,8 +90,8 @@ internal class SubsumsjonTest {
 
     @Test
     fun `avgjør om subsumsjon med vedtaksperiode ikke er relevant`(){
-        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "søknad" to "bbb-bbb-ccc")
-        val sporing1 = mapOf("sykmelding" to "abb-bbb-ccc", "søknad" to "bbb-bbb-ccc")
+        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc")
+        val sporing1 = mapOf("sykmelding" to "abb-bbb-ccc", "soknad" to "bbb-bbb-ccc")
         val sporing2 = mapOf("sykmelding" to "abb-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
         val subsumsjon = lagSubsumsjon(sporing = sporing)
         val subsumsjoner = mutableListOf(
@@ -91,7 +103,7 @@ internal class SubsumsjonTest {
 
     @Test
     fun `avgjør om subsumsjon er relevant uten vedtaksperiode`(){
-        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "søknad" to "bbb-bbb-ccc")
+        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc")
         val sporing2 = mapOf("sykmelding" to "aaa-bbb-ccc" )
         val sporing3 = mapOf("sykmelding" to "aaa-bbb-ccc", "vedtaksperiode" to "abc-abc-abc" )
 

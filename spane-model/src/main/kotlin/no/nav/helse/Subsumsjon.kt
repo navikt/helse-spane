@@ -26,7 +26,9 @@ class Subsumsjon(
 
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
+
         fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon): Boolean {
+
             this.forEach {
                 if((it.sporing["vedtaksperiode"] != null && it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"])){
                     return true
@@ -47,6 +49,19 @@ class Subsumsjon(
                 }
             }
             return false
+        }
+    }
+
+    fun skalDupliseres(): Boolean {
+        return if (sporing["vedtaksperiode"] != null) {
+            false
+        } else if (sporing["soknad"] != null) {
+            false
+        } else if (sporing["sykmelding"] != null) {
+            true
+        } else {
+            println("NOE HAR GÅTT VELDIG GALT I skalDupliseres")
+            false
         }
     }
 
