@@ -5,7 +5,7 @@ import java.time.ZonedDateTime
 import java.util.*
 
 abstract class AbstractPersonTest {
-    val person = Person("1234567890")
+    private val person = Person("1234567890")
     lateinit var sykmeldingUUID: UUID
     lateinit var søknadUUID: UUID
     lateinit var vedtaksperiodeUUID: UUID
@@ -88,7 +88,7 @@ private val Person.inspektør: TestVisitor
 class TestVisitor : PersonVisitor {
     data class TestVedtaksperiode(val subsumsjoner: MutableList<Map<String, Any?>>)
 
-    lateinit var fødselsnummer: String
+    private lateinit var fødselsnummer: String
     val vedtaksperioder: MutableList<TestVedtaksperiode> = mutableListOf()
 
     override fun preVisitPerson(fødselsnummer: String) {
