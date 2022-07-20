@@ -15,11 +15,19 @@ export default function SubsumsjonExpandableRow(props: Props) {
       content={<UtvidetTableInnhold subsumsjon={subsumsjon} />}
       togglePlacement="right"
       open={expand}
-      onClick={()=>setExpand(!expand)}
-      style = {{cursor:"pointer"}}
+      onClick={() => setExpand(!expand)}
+      style={{ cursor: "pointer" }}
     >
       <Table.HeaderCell scope="row">{vedtaksperiodeIdx + 1}</Table.HeaderCell>
-      <Table.HeaderCell scope="row">{subsumsjon.paragraf}</Table.HeaderCell>
+      <Table.HeaderCell scope="row">
+        §{" "}
+        {subsumsjon.paragraf +
+          (subsumsjon.ledd ? ", " + subsumsjon.ledd + ".ledd" : "") +
+          (subsumsjon.punktum ? ", " + subsumsjon.punktum + ".pkt" : "") +
+          (subsumsjon.bokstav !== "null" && subsumsjon.bokstav !== null
+            ? ", bokstav " + subsumsjon.bokstav
+            : "")}
+      </Table.HeaderCell>
       <Table.DataCell>{subsumsjon.fødselsnummer}</Table.DataCell>
       <Table.DataCell>{subsumsjon.utfall}</Table.DataCell>
       <Table.DataCell>{subsumsjon.tidsstempel}</Table.DataCell>
