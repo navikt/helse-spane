@@ -1,6 +1,6 @@
 package no.nav.helse
 
-import no.nav.helse.Subsumsjon.Companion.erRelevant
+import no.nav.helse.Subsumsjon.Companion.erRelevantSykemelding
 import no.nav.helse.Subsumsjon.Companion.finnAlle
 import no.nav.helse.Subsumsjon.Companion.sorterPåTid
 import no.nav.helse.TestHjelper.Companion.februar
@@ -37,15 +37,29 @@ internal class SubsumsjonTest {
 
     @Test
     fun `avgjør om subsumsjon er relevant`() {
-        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc")
+        val sporing = mapOf("sykmelding" to "1")
         val subsumsjon = lagSubsumsjon(sporing = sporing)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertTrue(subsumsjoner.erRelevant(subsumsjon))
+        assertTrue(subsumsjoner.erRelevantSykemelding(subsumsjon))
     }
+
+    @Test
+    fun `avgjør om subsumsjon er relevant etter søknadsid`() {
+        val sporing = mapOf("sykmelding" to "1")
+        val sporing2 = mapOf("sykmelding" to "1", "søknad" to "1")
+        val subsumsjon = lagSubsumsjon(sporing = sporing2)
+        val subsumsjoner = mutableListOf(
+            lagSubsumsjon(sporing = sporing),
+            lagSubsumsjon(sporing = sporing),
+            lagSubsumsjon(sporing = sporing)
+        )
+        assertTrue(subsumsjoner.erRelevantSykemelding(subsumsjon))
+    }
+
 
     @Test
     fun `avgjør at subsumsjon ikke er relevant`() {
@@ -57,7 +71,7 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertFalse(subsumsjoner.erRelevant(subsumsjon))
+        assertFalse(subsumsjoner.erRelevantSykemelding(subsumsjon))
     }
     @Test
     fun `avgjør om subsumsjon skal dupliseres`() {
@@ -88,7 +102,7 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing2)
         )
-        assertTrue(subsumsjoner.erRelevant(subsumsjon))
+        assertTrue(subsumsjoner.erRelevantSykemelding(subsumsjon))
     }
 
     @Test
@@ -101,7 +115,7 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing1),
             lagSubsumsjon(sporing = sporing2)
         )
-        assertFalse(subsumsjoner.erRelevant(subsumsjon))
+        assertFalse(subsumsjoner.erRelevantSykemelding(subsumsjon))
     }
 
     @Test
@@ -115,6 +129,6 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing2)
         )
-        assertTrue(subsumsjoner.erRelevant(subsumsjon))
+        assertTrue(subsumsjoner.erRelevantSykemelding(subsumsjon))
     }
 }

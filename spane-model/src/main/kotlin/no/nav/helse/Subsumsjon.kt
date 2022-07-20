@@ -1,5 +1,6 @@
 package no.nav.helse
 
+import no.nav.helse.Subsumsjon.Companion.erRelevantSykemelding
 import java.time.ZonedDateTime
 
 class Subsumsjon(
@@ -27,14 +28,24 @@ class Subsumsjon(
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
 
-        fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon): Boolean {
-
+        fun MutableList<Subsumsjon>.erRelevantSykemelding(subsumsjon: Subsumsjon): Boolean {
             this.forEach {
-                if((it.sporing["vedtaksperiode"] != null && it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"])){
+                // TODO ta høyde for manglende sykemeldinggsid
+                if (it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"]){
+                    this += subsumsjon
                     return true
                 }
+            }
+            return false
+        }
+
+        fun MutableList<Subsumsjon>.erRelevantEtterSoknad(subsumsjon: Subsumsjon): Boolean {
+
+            this.forEach {
+
                 // Denne må kanskje endres
                 if (it.sporing["sykmelding"] == subsumsjon.sporing["sykmelding"]){
+                    this += subsumsjon
                     return true
                 }
 
@@ -52,17 +63,17 @@ class Subsumsjon(
         }
     }
 
-    fun skalDupliseres(): Boolean {
-        return if (sporing["vedtaksperiode"] != null) {
-            false
-        } else if (sporing["soknad"] != null) {
-            false
-        } else if (sporing["sykmelding"] != null) {
-            true
-        } else {
-            println("NOE HAR GÅTT VELDIG GALT I skalDupliseres")
-            false
+    fun skalDupliseres(): SporingNoe? {
+        if (sporing["vedtaksperiode"] != null)  {
+            return SporingNoe.VEDTAKSPERIODE
         }
+        if (sporing["soknad"] != null) {
+            return SporingNoe.SØKNAD
+        }
+        if (sporing["sykmelding"] != null) {
+            return SporingNoe.SYKMELDING
+        }
+        return null
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {

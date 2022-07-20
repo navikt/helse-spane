@@ -34,11 +34,6 @@ class VedtaksperiodeTest {
 
     @Test
     fun `subsumsjon blir duplisert og lagt til i alle rette vedtaksperioder`() {
-        // sende inn flere subsumsjoner
-        // ha flere vedtaksperioder
-        // Send in ny subsumsjon med bare sykmelding
-        // sjekk at den er lagt til i alle relevante vedtaksperioder
-
         val børDupliseresSporing = mapOf(
             "sykmelding" to "relevant",
         )
@@ -65,5 +60,33 @@ class VedtaksperiodeTest {
         assertEquals(4, vedtaksperioder[0].antallSubsumsjoner())
         assertEquals(4, vedtaksperioder[1].antallSubsumsjoner())
         assertEquals(2, vedtaksperioder[2].antallSubsumsjoner())
+    }
+    @Test
+    fun `subsumsjon blir lagt inn rett sted basert på søknad `() {
+        val nySubsumsjon = mapOf(
+            "sykmelding" to "relevant",
+            "soknad" to "relevant"
+        )
+        val relevantSporing = mapOf(
+            "sykmelding" to "ikke-relevant",
+            "soknad" to "relevant",
+            "vedtaksperiode" to "relevant"
+        )
+        val ikkeRelevantSporing = mapOf(
+            "sykmelding" to "ikke-relevant",
+            "soknad" to "ikke-relevant",
+            "vedtaksperiode" to "ikke-relevant"
+        )
+
+
+        val vedtaksperioder = mutableListOf(
+            lagVedtaksPeriode(3, sporing = relevantSporing),
+            lagVedtaksPeriode(2, sporing = ikkeRelevantSporing)
+        )
+
+        vedtaksperioder.håndter(lagSubsumsjon(sporing= nySubsumsjon))
+
+        assertEquals(4, vedtaksperioder[0].antallSubsumsjoner())
+        assertEquals(2, vedtaksperioder[1].antallSubsumsjoner())
     }
 }

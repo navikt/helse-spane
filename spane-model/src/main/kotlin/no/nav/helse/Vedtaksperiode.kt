@@ -1,32 +1,44 @@
 package no.nav.helse
 
-import no.nav.helse.Subsumsjon.Companion.erRelevant
+import no.nav.helse.Subsumsjon.Companion.erRelevantEtterSoknad
+import no.nav.helse.Subsumsjon.Companion.erRelevantSykemelding
 
 class Vedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>
 ) {
     internal companion object {
+        // har insendte subsumsjon en vedtaksperiode: dersom den har - legg den til der den finner en match etter vedtaksperiodeid
+
+        // har insendte subsumsjon kun søknadsid: dersom den har - legg til der den finner match etter søknadsid
+
+
         fun MutableList<Vedtaksperiode>.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjon: Subsumsjon) {
-            if(this.none{it.erRelevant(subsumsjon)}) this.add(Vedtaksperiode(mutableListOf(subsumsjon)))
+            if (this.none { it.erRelevantSøknad(subsumsjon) }) this.add(Vedtaksperiode(mutableListOf(subsumsjon)))
         }
 
         fun MutableList<Vedtaksperiode>.håndter(subsumsjon: Subsumsjon) {
-            if(subsumsjon.skalDupliseres()){
-                var fantMatch = false
-                forEach {
-                    if (!fantMatch)
-                        fantMatch = it.erRelevant(subsumsjon)
-                    else
-                        it.erRelevant(subsumsjon)
+            when (subsumsjon.skalDupliseres()) {
+                SporingNoe.SYKMELDING -> {
+                    var fantMatch = false
+                    forEach {
+                        if (!fantMatch)
+                            fantMatch = it.subsumsjoner.erRelevantSykemelding(subsumsjon)
+                        else
+                            it.subsumsjoner.erRelevantSykemelding(subsumsjon)
+                    }
+                    if (!fantMatch) {
+                        this.add(Vedtaksperiode(mutableListOf(subsumsjon)))
+                        // Hvis ikke fant match, lag ny vedtaksperiode
+                    }
                 }
-                if(!fantMatch) {
-                    this.add(Vedtaksperiode(mutableListOf(subsumsjon)))
-                    // Hvis ikke fant match, lag ny vedtaksperiode
+                SporingNoe.SØKNAD -> {
+                    this.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjon)
                 }
+
+
+                else -> {}
             }
-            else {
-                this.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjon)
-            }
+
         }
     }
 
@@ -34,10 +46,10 @@ class Vedtaksperiode(
         return subsumsjoner.size
     }
 
-    // TODO vurder å ikke legge til, bare sjekke
-    private fun erRelevant(subsumsjon: Subsumsjon): Boolean {
-        return if (subsumsjoner.erRelevant(subsumsjon)) { subsumsjoner += subsumsjon; true }
-        else false
+    private fun erRelevantSøknad(subsumsjon: Subsumsjon): Boolean {
+        return if (subsumsjoner.erRelevantEtterSoknad(subsumsjon)) {
+            subsumsjoner += subsumsjon; true
+        } else false
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
