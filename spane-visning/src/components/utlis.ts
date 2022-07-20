@@ -1,6 +1,5 @@
 export default function byggStringRekursivt(innhold: any, antallInnrykk: number = 0) {
     const innrykk = " "
-
     if (innhold === null) {
         return innrykk.repeat(antallInnrykk) + "null\n"
 
