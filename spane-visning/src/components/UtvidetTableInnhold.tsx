@@ -15,13 +15,13 @@ export default function UtvidetTableInnhold(props: Props) {
             <div className="table-row-expanded-content-column">
                 <div>
                     <b>Output: </b>
-                    {subsumsjon.output && byggStringRekursivt(subsumsjon.output).split("\n").map((s) =>
-                        <p>{s}</p>)}
+                    {subsumsjon.output && byggStringRekursivt(subsumsjon.output).split("\n").map((s, key) =>
+                        <p key={key}>{s}</p>)}
                 </div>
                 <div>
                     <b>Input: </b>
-                    {subsumsjon.input && byggStringRekursivt(subsumsjon.input).split("\n").map((s) =>
-                        <p>{s}</p>)}
+                    {subsumsjon.input && byggStringRekursivt(subsumsjon.input).split("\n").map((s, key) =>
+                        <p key={key}>{s}</p>)}
                 </div>
                 <div>
                     <b>Lovverk: </b>
@@ -42,8 +42,8 @@ export default function UtvidetTableInnhold(props: Props) {
                 </div>
                 <div>
                     <b>Sporing: </b> {
-                    subsumsjon.sporing && byggStringRekursivt(subsumsjon.sporing).split("\n").map((s) =>
-                        <p>{s}</p>)
+                    subsumsjon.sporing && byggStringRekursivt(subsumsjon.sporing).split("\n").map((s, key) =>
+                        <p key={key}>{s}</p>)
                 }
                 </div>
             </div>

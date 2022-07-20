@@ -19,7 +19,7 @@ export default function SubsumsjonTableBody(props: Props) {
                     return vedtaksperiode.subsumsjoner.map(
                         (subsumsjon: SubsumsjonDto, subsumsjonIdx: number) => {
                             return (
-                               <SubsumsjonExpandlableRow subsumsjon={subsumsjon} vedtaksperiodeIdx={vedtaksperiodeIdx}/>
+                               <SubsumsjonExpandlableRow key={subsumsjonIdx} subsumsjon={subsumsjon} vedtaksperiodeIdx={vedtaksperiodeIdx}/>
                             );
                         }
                     );
