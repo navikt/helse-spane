@@ -1,26 +1,33 @@
-export default function byggStringRekursivt(innhold: any, resultat: string = "") {
+export default function byggStringRekursivt(innhold: any, antallInnrykk: number = 0) {
+    const innrykk = " "
+
     if (innhold === null) {
-        resultat += "null\n"
-    } else if (typeof innhold === "string") {
-        resultat += innhold + "\n"
-    } else if (typeof innhold === "boolean") {
-        resultat += innhold + "\n"
+        return innrykk.repeat(antallInnrykk) + "null\n"
+
     } else if (typeof innhold === "number") {
-        resultat += innhold.toString() + "\n"
+        return innrykk.repeat(antallInnrykk) + innhold.toString() + "\n"
+
+    } else if (typeof innhold === "string" || typeof innhold === "boolean") {
+        return innrykk.repeat(antallInnrykk) + innhold + "\n"
+
     } else if (Array.isArray(innhold)) {
+        let resultat = ""
         for (const elem of innhold) {
-            resultat += byggStringRekursivt(elem) + "\n"
+            resultat += innrykk.repeat(antallInnrykk) + byggStringRekursivt(elem, antallInnrykk + 1)
         }
+        return resultat
+
     } else if (typeof innhold === "object") {
+        let resultat = ""
         for (const [key, value] of Object.entries(innhold)) {
-            if (typeof value === "object" && value) {
-                resultat += key + ":\n" + byggStringRekursivt(value) + "\n"
-            } else {
-                resultat += key + ": " + byggStringRekursivt(value) + "\n"
-            }
+            resultat += typeof value === "object" && value
+                ? key + ":\n" + innrykk.repeat(antallInnrykk) + byggStringRekursivt(value, antallInnrykk) + "\n"
+                : innrykk.repeat(antallInnrykk) + key + ": " + byggStringRekursivt(value, antallInnrykk);
         }
+        return resultat
+
     } else {
-        resultat += "****** Ikke gjenkjent type, noe har skjedd feil ******"
+        return "****** Ikke gjenkjent type, noe har skjedd feil ******"
+
     }
-    return resultat
 }

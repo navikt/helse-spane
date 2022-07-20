@@ -17,6 +17,7 @@
             ]
           }
         },
+        "ekstraVerdiForTesting": [1],
         "avventendeInnspillTilArbeidsgiver": null,
         "behandlingsdager": null,
         "gradert": null,
