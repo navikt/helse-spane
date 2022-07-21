@@ -89,4 +89,8 @@ class VedtaksperiodeTest {
         assertEquals(4, vedtaksperioder[0].antallSubsumsjoner())
         assertEquals(2, vedtaksperioder[1].antallSubsumsjoner())
     }
+
+
+
+
 }

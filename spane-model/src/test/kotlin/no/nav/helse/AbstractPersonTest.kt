@@ -33,6 +33,20 @@ abstract class AbstractPersonTest {
         }
     }
 
+    internal fun assertDuplisering(antallVedtaksperioder: Int, vararg onskedeLengder: Int) {
+        // vi vil asserte at denne personen har to vedtaksperioder og lengden på de er fire
+        if (antallVedtaksperioder != person.inspektør.vedtaksperioder.size) {
+            fail("ikke forventet antall vedtaksperioder: expected: $antallVedtaksperioder actual: ${person.inspektør.vedtaksperioder.size}")
+        }
+        var counter = 0
+        onskedeLengder.forEach {
+            if (person.inspektør.vedtaksperioder[counter].subsumsjoner.size != it){
+                fail("ikke forventet antall subsumsjoner i vedtaksperiode: $counter expected: $it actual: ${person.inspektør.vedtaksperioder[counter].subsumsjoner.size}")
+            }
+            counter++
+        }
+    }
+
     internal fun assertTidsstempel(subsumsjon: Int, forventetTidsstempel: ZonedDateTime) {
         val tidsstempel = person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon]["tidsstempel"]
         if (tidsstempel != forventetTidsstempel){
@@ -47,10 +61,12 @@ abstract class AbstractPersonTest {
         val subsumsjon = TestHjelper.lagSubsumsjon(sporing = mapOf("sykmelding" to søknadUUID), input = input, output = output)
         person.håndter(subsumsjon)
     }
-    internal fun sendSykmeldingSubsumsjon() {
+    internal fun sendSykmeldingSubsumsjon(antall: Int = 1) {
         sykmeldingUUID = UUID.randomUUID()
-        val sykmeldingSubsumsjon = TestHjelper.lagSubsumsjon(sporing = mapOf("sykmelding" to sykmeldingUUID))
-        person.håndter(sykmeldingSubsumsjon)
+        for (i in 0..antall){
+            val sykmeldingSubsumsjon = TestHjelper.lagSubsumsjon(sporing = mapOf("sykmelding" to sykmeldingUUID))
+            person.håndter(sykmeldingSubsumsjon)
+        }
     }
 
     internal fun sendSøknadSubsumsjon() {
