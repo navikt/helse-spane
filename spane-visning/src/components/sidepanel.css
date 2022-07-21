@@ -1,0 +1,21 @@
+.sidepanel-container {
+  margin-top: 20px;
+  margin-left: 20px;
+  border-right: solid black;
+}
+
+.date-picker-group {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.date-picker-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+}
+
+.checkbox-group-container {
+  margin-top: 30px;
+}

@@ -23,13 +23,15 @@ export default function UtvidetTableInnhold(props: Props) {
         <div>
           <b>Output: </b>
           {outputString.split("\n").map((s, key) => (
-            <p key={key}>{s}</p>
+            <div key={key}>{s}</div>
           ))}
         </div>
         <div>
           <b>Input: </b>
           {inputString.split("\n").map((s, key) => (
-            <p key={key}>{s}</p>
+            <div style={{ overflowWrap: "break-word" }} key={key}>
+              {s}
+            </div>
           ))}
         </div>
         <div>
@@ -43,7 +45,10 @@ export default function UtvidetTableInnhold(props: Props) {
       </div>
       <div className="table-row-expanded-content-column">
         <div>
-          <b>Versjon av kode:</b> {subsumsjon.versjonAvKode}
+          <b>Versjon av kode:</b>
+          <div style={{ overflowWrap: "break-word" }}>
+            {subsumsjon.versjonAvKode}
+          </div>
         </div>
         <div>
           <b>Meldingsid: </b> {subsumsjon.id}
@@ -51,7 +56,7 @@ export default function UtvidetTableInnhold(props: Props) {
         <div>
           <b>Sporing: </b>{" "}
           {sporingString.split("\n").map((s, key) => (
-            <p key={key}>{s}</p>
+            <div key={key}>{s}</div>
           ))}
         </div>
       </div>

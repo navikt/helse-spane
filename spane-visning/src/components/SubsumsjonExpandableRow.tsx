@@ -28,7 +28,6 @@ export default function SubsumsjonExpandableRow(props: Props) {
             ? ", bokstav " + subsumsjon.bokstav
             : "")}
       </Table.HeaderCell>
-      <Table.DataCell>{subsumsjon.fødselsnummer}</Table.DataCell>
       <Table.DataCell>{subsumsjon.utfall}</Table.DataCell>
       <Table.DataCell>{subsumsjon.tidsstempel}</Table.DataCell>
     </Table.ExpandableRow>
