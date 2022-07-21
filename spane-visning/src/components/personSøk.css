@@ -1,0 +1,22 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 100;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.search-container {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.table-row-expanded-content-container {
+  display: flex;
+}
+
+.table-row-expanded-content-column {
+  width: 50%;
+  max-width: 40%;
+}
