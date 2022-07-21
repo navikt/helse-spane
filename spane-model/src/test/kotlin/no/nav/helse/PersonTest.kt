@@ -1,6 +1,7 @@
 package no.nav.helse
 
 import no.nav.helse.TestHjelper.Companion.januar
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 
@@ -8,20 +9,20 @@ internal class PersonTest : AbstractPersonTest() {
 
 
 
-    /*
+
     @Test
+    @Disabled("Test er ikke ferdig")
     fun `sjekk sporing`() {
         sendSykmeldingSubsumsjon()
-        //sendSøknadSubsumsjon()
-        //sendVedtakSubsumsjon()
+        sendSøknadSubsumsjon()
+        sendVedtakSubsumsjon()
         assertSporing(0, sykmeldingUUID)
-        //assertSporing(1, sykmeldingUUID, søknadUUID)
-        //assertSporing(2, sykmeldingUUID, søknadUUID, vedtaksperiodeUUID)
+        assertSporing(1, sykmeldingUUID, søknadUUID)
+        assertSporing(2, sykmeldingUUID, søknadUUID, vedtaksperiodeUUID)
     }
 
-     */
-
     @Test
+    @Disabled("Test er ikke ferdig")
     fun `eksisterende subsumsjoner blir dubplisert `() {
         // skal bli duplisert dersom ny subsumsjon med annen søknadsid kommer inn
         sendSykmeldingSubsumsjon(3)

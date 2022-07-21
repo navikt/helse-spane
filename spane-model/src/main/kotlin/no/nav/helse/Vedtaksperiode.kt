@@ -7,16 +7,30 @@ class Vedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>
     // liste med alle subsumsjoner med kun sykemelding - ikke begrenset til hver vedtaksperiode, men det totale antallet.
 ) {
+
+    private val alleRelevanteSykmeldingsIDer = mutableListOf<String>()
+    private val alleRelevanteSøknadsIDer = mutableListOf<String>()
+    private val alleRelevanteVetaksperiodeIDer = mutableListOf<String>()
+
+    // TODO Når legger vi til i disse listene:
+    //   Når nye vedtaksperioder blir lagd
+    //   Hver gang en subsumsjon blir lagt til, sjekk om IDene er lagret, hvis ikke legg til
+
+
     internal companion object {
         // har insendte subsumsjon en vedtaksperiode: dersom den har - legg den til der den finner en match etter vedtaksperiodeid
 
         // har insendte subsumsjon kun søknadsid: dersom den har - legg til der den finner match etter søknadsid
 
-
-        fun MutableList<Vedtaksperiode>.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjon: Subsumsjon, søk : SporingNoe) {
-            if (this.none { it.subsumsjoner.erRelevant(subsumsjon,søk) }) this.add(Vedtaksperiode(mutableListOf(subsumsjon)))
+        fun MutableList<Vedtaksperiode>.lagNyVedtaksperiode(subsumsjon: Subsumsjon) {
+            this.add(Vedtaksperiode(mutableListOf(subsumsjon)))
         }
-        fun MutableList<Vedtaksperiode>.hvisMåDupliseres(subsumsjon: Subsumsjon, søk : SporingNoe) {
+
+        fun MutableList<Vedtaksperiode>.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjon: Subsumsjon, søk: SporingNoe) {
+            if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) }) this.lagNyVedtaksperiode(subsumsjon)
+        }
+
+        fun MutableList<Vedtaksperiode>.hvisMåDupliseres(subsumsjon: Subsumsjon, søk: SporingNoe) {
 
             var fantMatch = false
             forEach {
@@ -26,7 +40,7 @@ class Vedtaksperiode(
                     it.subsumsjoner.erRelevant(subsumsjon, søk)
             }
             if (!fantMatch) {
-                this.add(Vedtaksperiode(mutableListOf(subsumsjon)))
+                this.lagNyVedtaksperiode(subsumsjon)
             }
         }
 
@@ -54,6 +68,7 @@ class Vedtaksperiode(
 
         }
     }
+
 
     fun antallSubsumsjoner(): Int {
         return subsumsjoner.size
