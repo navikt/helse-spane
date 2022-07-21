@@ -8,18 +8,16 @@ internal class PersonTest : AbstractPersonTest() {
 
 
 
-    /*
+
     @Test
     fun `sjekk sporing`() {
         sendSykmeldingSubsumsjon()
-        //sendSøknadSubsumsjon()
-        //sendVedtakSubsumsjon()
+        sendSøknadSubsumsjon()
+        sendVedtakSubsumsjon()
         assertSporing(0, sykmeldingUUID)
-        //assertSporing(1, sykmeldingUUID, søknadUUID)
-        //assertSporing(2, sykmeldingUUID, søknadUUID, vedtaksperiodeUUID)
+        assertSporing(1, sykmeldingUUID, søknadUUID)
+        assertSporing(2, sykmeldingUUID, søknadUUID, vedtaksperiodeUUID)
     }
-
-     */
 
     @Test
     fun `eksisterende subsumsjoner blir dubplisert `() {
