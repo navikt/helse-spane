@@ -17,6 +17,5 @@
 }
 
 .table-row-expanded-content-column {
-  width: 50%;
-  max-width: 40%;
+  width: 500px;
 }
