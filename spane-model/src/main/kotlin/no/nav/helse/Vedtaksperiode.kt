@@ -5,6 +5,7 @@ import no.nav.helse.Subsumsjon.Companion.erRelevant
 
 class Vedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>
+    // liste med alle subsumsjoner med kun sykemelding - ikke begrenset til hver vedtaksperiode, men det totale antallet.
 ) {
     internal companion object {
         // har insendte subsumsjon en vedtaksperiode: dersom den har - legg den til der den finner en match etter vedtaksperiodeid
@@ -37,9 +38,14 @@ class Vedtaksperiode(
                 }
                 SØKNAD -> {
                     this.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjon, SØKNAD)
+                    // f eks her - kalle hent søknadsider og se om noen matcher.
+                    // flere kan matche - legg inn flere steder her også
+                    // dersom den ikke finner noen søknadsideer som matcher skal det ikke lages ny vedtaksperiode, men her skal den dupliseres og legges etter
                 }
                 VEDTAKSPERIODE -> {
                     this.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjon, VEDTAKSPERIODE)
+                    // f eks her - kalle hent vedtaksperiodeider og se om noen matcher.
+                    // hent alle
                 }
                 else -> {
                     println("Fant ikke søkeparameter i sporing")
