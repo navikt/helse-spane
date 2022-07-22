@@ -30,8 +30,6 @@ class Vedtaksperiode(
         fun MutableList<Vedtaksperiode>.seEtterSøknadsID(subsumsjon: Subsumsjon, søk: SporingEnum) {
             if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) }) {
                 this.seEtterSykmeldingsID(subsumsjon, SYKMELDING)
-
-
             }
         }
 
@@ -74,8 +72,8 @@ class Vedtaksperiode(
                 }
 
             } else {
+                println("HALLLOOOOOO")
                 if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) }) this.lagNyVedtaksperiode(mutableListOf(subsumsjon))
-
             }
 
         }

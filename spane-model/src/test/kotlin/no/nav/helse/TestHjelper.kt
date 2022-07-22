@@ -1,5 +1,6 @@
 package no.nav.helse
 
+import org.junit.jupiter.api.fail
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -69,15 +70,30 @@ internal class TestHjelper {
         ): Vedtaksperiode {
             val subsumsjoner = mutableListOf<Subsumsjon>()
             for (i in 1..antallSubsumSjoner) {
-                subsumsjoner.add(lagSubsumsjon(
-                    paragraf=paragraf,
-                    tidsstempel=tidsstempel,
-                    sporing = sporing,
-                    input = input,
-                    output = output
-                ))
+                subsumsjoner.add(
+                    lagSubsumsjon(
+                        paragraf = paragraf,
+                        tidsstempel = tidsstempel,
+                        sporing = sporing,
+                        input = input,
+                        output = output
+                    )
+                )
             }
             return Vedtaksperiode(subsumsjoner)
+        }
+
+        fun assertVedtaksperioderAntallOgLengde(
+            vedtaksperioder: MutableList<Vedtaksperiode>,
+            forventetAntallVedtaksperioder: Int,
+            forventetAntallSubsumsjoner: Int
+        ) {
+            if (forventetAntallVedtaksperioder != vedtaksperioder.size) {
+                fail("Liste av vedtaksperioder har ikke forventet antall vedtaksperioder: expected: $forventetAntallVedtaksperioder actual: ${vedtaksperioder.size}")
+            }
+            if (forventetAntallSubsumsjoner != vedtaksperioder[0].antallSubsumsjoner()) {
+                fail("Liste av vedtaksperioder har ikke forventet antall vedtaksperioder: expected: $forventetAntallSubsumsjoner actual: ${vedtaksperioder[0].antallSubsumsjoner()}")
+            }
         }
 
 
