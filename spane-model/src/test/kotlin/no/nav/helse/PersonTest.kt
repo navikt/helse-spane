@@ -35,7 +35,7 @@ internal class PersonTest : AbstractPersonTest() {
         sendSøknadSubsumsjon()
         sendSøknadSubsumsjon()
 
-        assertVedtaksperiodeLengder(1, 4)
+        assertVedtaksperiodeLengder(2, 4, 4)
 
     }
 

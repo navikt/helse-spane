@@ -2,7 +2,7 @@ package no.nav.helse
 
 import no.nav.helse.SporingEnum.*
 import no.nav.helse.Subsumsjon.Companion.erRelevant
-import no.nav.helse.Subsumsjon.Companion.hentSubsMedID
+import no.nav.helse.Subsumsjon.Companion.finnAlleUtenSøknadId
 
 class Vedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>
@@ -23,23 +23,35 @@ class Vedtaksperiode(
             this.add(Vedtaksperiode(subsumsjoner))
         }
 
+        //TODO: Denne metoden gjør mer enn den bør
         fun MutableList<Vedtaksperiode>.seEtterVedtaksperiodeID(subsumsjon: Subsumsjon, søk: SporingEnum) {
             if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) }) this.seEtterSøknadsID(subsumsjon, SØKNAD)
         }
 
+        fun MutableList<Vedtaksperiode>.vedtaksperiodeID(subsumsjon: Subsumsjon, søk: SporingEnum): Boolean {
+          return this.none { it.subsumsjoner.erRelevant(subsumsjon, søk)}
+        }
+
+        //Sjekk om vedtaksperiode er relevant. Hvis vedtaksperiode er relevant, legg til i lista
+        //Hvis vedtaksperiode ikke er relevant
+
+        //TODO: Denne metoden gjør mer enn den bør
         fun MutableList<Vedtaksperiode>.seEtterSøknadsID(subsumsjon: Subsumsjon, søk: SporingEnum) {
             if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) }) {
                 this.seEtterSykmeldingsID(subsumsjon, SYKMELDING)
             }
         }
 
-        fun MutableList<Vedtaksperiode>.hentAlleSubsumsjonerMedSykemeldingID(subsumsjon: Subsumsjon, søk: SporingEnum): MutableList<Subsumsjon> {
-            var subsumsjoner = mutableListOf<Subsumsjon>()
+        fun MutableList<Vedtaksperiode>.hentVedtaksperiodeMedSykmeldingID(subsumsjon: Subsumsjon, søk: SporingEnum): MutableList<Vedtaksperiode> {
+            println("heya")
+            val vedtaksperioder = mutableListOf<Vedtaksperiode>()
             forEach {
-                subsumsjoner = (subsumsjoner + it.subsumsjoner.hentSubsMedID(subsumsjon, søk)) as MutableList<Subsumsjon>
+                if (it.subsumsjoner.erRelevant(subsumsjon, søk)) vedtaksperioder.add(it)
             }
-            return subsumsjoner
+            return vedtaksperioder
         }
+
+
 
         fun MutableList<Vedtaksperiode>.seEtterSykmeldingsID(subsumsjon: Subsumsjon, søk: SporingEnum) {
 
@@ -62,8 +74,9 @@ class Vedtaksperiode(
             if (subsumsjon.finnSøkeParameter() == SYKMELDING){
                 var fantMatch = false
                 forEach {
-                    if (!fantMatch)
+                    if (!fantMatch) {
                         fantMatch = it.subsumsjoner.erRelevant(subsumsjon, søk)
+                    }
                     else
                         it.subsumsjoner.erRelevant(subsumsjon, søk)
                 }
@@ -72,9 +85,27 @@ class Vedtaksperiode(
                 }
 
             } else {
-                if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) }) this.lagNyVedtaksperiode(mutableListOf(subsumsjon))
+                if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) } ) {
+                    println("helloooooo")
+                    val alleRelevanteSubsumsjoner = this.hentVedtaksperiodeMedSykmeldingID(subsumsjon, SYKMELDING).hentAlleSubsumsjonerMedRelevantSykmeldingIDUtenSøknadID()
+                    if(alleRelevanteSubsumsjoner == null){
+                        println("Alle vedtaksperioder er null?????")
+                        this.lagNyVedtaksperiode(mutableListOf(subsumsjon))
+                    }
+                    else {
+                        println("Det finnes relevante subsumsjoner")
+                        alleRelevanteSubsumsjoner.add(subsumsjon)
+                        this.lagNyVedtaksperiode(alleRelevanteSubsumsjoner)
+                    }
+                }
             }
+        }
 
+        fun MutableList<Vedtaksperiode>.hentAlleSubsumsjonerMedRelevantSykmeldingIDUtenSøknadID(): MutableList<Subsumsjon>?{
+            forEach {
+                return it.subsumsjoner.finnAlleUtenSøknadId()
+            }
+            return null
         }
 
 

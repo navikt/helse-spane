@@ -24,6 +24,8 @@ class Subsumsjon(
 ) {
     internal companion object {
         fun List<Subsumsjon>.finnAlle(paragraf: String) = this.filter { it.paragraf == paragraf }
+        fun MutableList<Subsumsjon>.finnAlleUtenSøknadId() = this.filter { it.sporing["soknad"] == null }.toMutableList()
+
 
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
