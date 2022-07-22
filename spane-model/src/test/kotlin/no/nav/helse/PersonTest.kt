@@ -8,10 +8,7 @@ import org.junit.jupiter.api.Test
 internal class PersonTest : AbstractPersonTest() {
 
 
-
-
     @Test
-    @Disabled("Test er ikke ferdig")
     fun `sjekk sporing`() {
         sendSykmeldingSubsumsjon()
         sendSøknadSubsumsjon()
@@ -21,17 +18,31 @@ internal class PersonTest : AbstractPersonTest() {
         assertSporing(2, sykmeldingUUID, søknadUUID, vedtaksperiodeUUID)
     }
 
+
+    @Test
+    fun `subsumsjon med søkID blir lagt inn i eksisterende vedtaksperiode`() {
+        sendSykmeldingSubsumsjon(3)
+        sendSøknadSubsumsjon()
+
+        assertVedtaksperiodeLengder(1, 4)
+    }
+
     @Test
     @Disabled("Test er ikke ferdig")
     fun `eksisterende subsumsjoner blir dubplisert `() {
         // skal bli duplisert dersom ny subsumsjon med annen søknadsid kommer inn
         sendSykmeldingSubsumsjon(3)
         sendSøknadSubsumsjon()
-        sendSøknadSubsumsjon()
+        //sendSøknadSubsumsjon()
 
-        assertDuplisering(2, 4, 4)
+        assertVedtaksperiodeLengder(1, 4)
 
     }
+
+
+
+
+
 
     @Test
     fun `håndter subsumsjon`() {

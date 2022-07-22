@@ -33,7 +33,7 @@ abstract class AbstractPersonTest {
         }
     }
 
-    internal fun assertDuplisering(antallVedtaksperioder: Int, vararg onskedeLengder: Int) {
+    internal fun assertVedtaksperiodeLengder(antallVedtaksperioder: Int, vararg onskedeLengder: Int) {
         // vi vil asserte at denne personen har to vedtaksperioder og lengden på de er fire
         if (antallVedtaksperioder != person.inspektør.vedtaksperioder.size) {
             fail("ikke forventet antall vedtaksperioder: expected: $antallVedtaksperioder actual: ${person.inspektør.vedtaksperioder.size}")
@@ -63,7 +63,7 @@ abstract class AbstractPersonTest {
     }
     internal fun sendSykmeldingSubsumsjon(antall: Int = 1) {
         sykmeldingUUID = UUID.randomUUID()
-        for (i in 0..antall){
+        for (i in 1..antall){
             val sykmeldingSubsumsjon = TestHjelper.lagSubsumsjon(sporing = mapOf("sykmelding" to sykmeldingUUID))
             person.håndter(sykmeldingSubsumsjon)
         }

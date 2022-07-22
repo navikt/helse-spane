@@ -44,7 +44,7 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingNoe.SYKMELDING))
+        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingEnum.SYKMELDING))
     }
 
     @Test
@@ -57,7 +57,7 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingNoe.SØKNAD))
+        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingEnum.SØKNAD))
     }
 
 
@@ -71,7 +71,7 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertFalse(subsumsjoner.erRelevant(subsumsjon, SporingNoe.SYKMELDING))
+        assertFalse(subsumsjoner.erRelevant(subsumsjon, SporingEnum.SYKMELDING))
     }
 
     @Test
@@ -86,9 +86,9 @@ internal class SubsumsjonTest {
         val subsumsjonVedtaksperiode = lagSubsumsjon(sporing = sporingVedtaksperiode)
         val subsumsjonSøknad = lagSubsumsjon(sporing = sporingSoknad)
         val subsumsjonDup = lagSubsumsjon(sporing = sporingDupliser)
-        assertEquals(SporingNoe.VEDTAKSPERIODE, subsumsjonVedtaksperiode.finnSøkeParameter())
-        assertEquals(SporingNoe.SØKNAD, subsumsjonSøknad.finnSøkeParameter())
-        assertEquals(SporingNoe.SYKMELDING, subsumsjonDup.finnSøkeParameter())
+        assertEquals(SporingEnum.VEDTAKSPERIODE, subsumsjonVedtaksperiode.finnSøkeParameter())
+        assertEquals(SporingEnum.SØKNAD, subsumsjonSøknad.finnSøkeParameter())
+        assertEquals(SporingEnum.SYKMELDING, subsumsjonDup.finnSøkeParameter())
     }
 
 
@@ -102,6 +102,6 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing1),
             lagSubsumsjon(sporing = sporing2)
         )
-        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingNoe.SØKNAD))
+        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingEnum.SØKNAD))
     }
 }

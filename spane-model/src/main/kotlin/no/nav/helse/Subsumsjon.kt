@@ -1,6 +1,6 @@
 package no.nav.helse
 
-import no.nav.helse.SporingNoe.*
+import no.nav.helse.SporingEnum.*
 import java.time.ZonedDateTime
 
 class Subsumsjon(
@@ -27,23 +27,31 @@ class Subsumsjon(
 
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
-        fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon, søk : SporingNoe): Boolean {
+        fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon, søk : SporingEnum): Boolean {
             this.forEach {
-                // for hver subsumsjon, sjekk vedtaksid, så søknadsid, så sykemeldingid
-
-
                 if(it.sporing[søk.navn] == subsumsjon.sporing[søk.navn]) {
                     this += subsumsjon
                     return true
                 }
-
-                // sjekk i de resterende
             }
             return false
         }
+
+        fun MutableList<Subsumsjon>.hentSubsMedID(subsumsjon: Subsumsjon, søk : SporingEnum): MutableList<Subsumsjon> {
+            val subsumsjoner = mutableListOf<Subsumsjon>()
+            this.forEach {
+                if (it.sporing[søk.navn] == subsumsjon.sporing[søk.navn]){
+                    subsumsjoner += it
+                }
+            }
+            subsumsjoner += subsumsjon
+            return subsumsjoner
+        }
+
+
     }
 
-    fun finnSøkeParameter(): SporingNoe? {
+    fun finnSøkeParameter(): SporingEnum? {
         if (sporing["vedtaksperiode"] != null)  {
             return VEDTAKSPERIODE
         }

@@ -2,7 +2,7 @@ package no.nav.helse
 
 import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
 import no.nav.helse.TestHjelper.Companion.lagVedtaksPeriode
-import no.nav.helse.Vedtaksperiode.Companion.hvisIkkeRelevantLagNyVedtaksperiode
+import no.nav.helse.Vedtaksperiode.Companion.seEtterVedtaksperiodeID
 import no.nav.helse.Vedtaksperiode.Companion.håndter
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -15,7 +15,7 @@ class VedtaksperiodeTest {
         val subsumsjonAndre = lagSubsumsjon(sporing = mapOf("sykmelding" to "andre"))
 
         val vedtaksperioder = mutableListOf(Vedtaksperiode(mutableListOf(subsumsjonFørste)))
-        vedtaksperioder.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjonAndre, SporingNoe.SYKMELDING)
+        vedtaksperioder.seEtterVedtaksperiodeID(subsumsjonAndre, SporingEnum.SYKMELDING)
 
         assertEquals(2, vedtaksperioder.size)
     }
@@ -26,7 +26,7 @@ class VedtaksperiodeTest {
         val subsumsjonAndre = lagSubsumsjon(sporing = mapOf("sykmelding" to "første"))
 
         val vedtaksperioder = mutableListOf(Vedtaksperiode(mutableListOf(subsumsjonFørste)))
-        vedtaksperioder.hvisIkkeRelevantLagNyVedtaksperiode(subsumsjonAndre, SporingNoe.SYKMELDING)
+        vedtaksperioder.seEtterVedtaksperiodeID(subsumsjonAndre, SporingEnum.SYKMELDING)
 
         assertEquals(1, vedtaksperioder.size)
     }
