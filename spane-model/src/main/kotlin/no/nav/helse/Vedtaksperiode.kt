@@ -72,7 +72,6 @@ class Vedtaksperiode(
                 }
 
             } else {
-                println("HALLLOOOOOO")
                 if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) }) this.lagNyVedtaksperiode(mutableListOf(subsumsjon))
             }
 

@@ -28,12 +28,12 @@ internal class PersonTest : AbstractPersonTest() {
     }
 
     @Test
-    @Disabled("Test er ikke ferdig")
+    //@Disabled("Test er ikke ferdig")
     fun `eksisterende subsumsjoner blir dubplisert `() {
         // skal bli duplisert dersom ny subsumsjon med annen søknadsid kommer inn
         sendSykmeldingSubsumsjon(3)
         sendSøknadSubsumsjon()
-        //sendSøknadSubsumsjon()
+        sendSøknadSubsumsjon()
 
         assertVedtaksperiodeLengder(1, 4)
 
