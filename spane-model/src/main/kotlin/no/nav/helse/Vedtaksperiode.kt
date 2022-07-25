@@ -23,7 +23,7 @@ class Vedtaksperiode(
             this.add(Vedtaksperiode(subsumsjoner))
         }
 
-        //TODO: Denne metoden gjør mer enn den bør
+        //TODO: Refaktorer
         fun MutableList<Vedtaksperiode>.seEtterVedtaksperiodeID(subsumsjon: Subsumsjon, søk: SporingEnum) {
             if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) }) this.seEtterSøknadsID(subsumsjon, SØKNAD)
         }
@@ -35,7 +35,7 @@ class Vedtaksperiode(
         //Sjekk om vedtaksperiode er relevant. Hvis vedtaksperiode er relevant, legg til i lista
         //Hvis vedtaksperiode ikke er relevant
 
-        //TODO: Denne metoden gjør mer enn den bør
+        //TODO: Refaktorer
         fun MutableList<Vedtaksperiode>.seEtterSøknadsID(subsumsjon: Subsumsjon, søk: SporingEnum) {
             if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) }) {
                 this.seEtterSykmeldingsID(subsumsjon, SYKMELDING)
@@ -43,7 +43,6 @@ class Vedtaksperiode(
         }
 
         fun MutableList<Vedtaksperiode>.hentVedtaksperiodeMedSykmeldingID(subsumsjon: Subsumsjon, søk: SporingEnum): MutableList<Vedtaksperiode> {
-            println("heya")
             val vedtaksperioder = mutableListOf<Vedtaksperiode>()
             forEach {
                 if (it.subsumsjoner.erRelevant(subsumsjon, søk)) vedtaksperioder.add(it)
@@ -53,6 +52,7 @@ class Vedtaksperiode(
 
 
 
+        //TODO: Refaktorer
         fun MutableList<Vedtaksperiode>.seEtterSykmeldingsID(subsumsjon: Subsumsjon, søk: SporingEnum) {
 
             // TIL DUPLISERING
@@ -74,11 +74,8 @@ class Vedtaksperiode(
             if (subsumsjon.finnSøkeParameter() == SYKMELDING){
                 var fantMatch = false
                 forEach {
-                    if (!fantMatch) {
-                        fantMatch = it.subsumsjoner.erRelevant(subsumsjon, søk)
-                    }
-                    else
-                        it.subsumsjoner.erRelevant(subsumsjon, søk)
+                    fantMatch = it.subsumsjoner.erRelevant(subsumsjon, søk)
+                    //todo: BREAK hvis true
                 }
                 if (!fantMatch) {
                     this.lagNyVedtaksperiode(mutableListOf(subsumsjon))
@@ -86,14 +83,11 @@ class Vedtaksperiode(
 
             } else {
                 if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) } ) {
-                    println("helloooooo")
                     val alleRelevanteSubsumsjoner = this.hentVedtaksperiodeMedSykmeldingID(subsumsjon, SYKMELDING).hentAlleSubsumsjonerMedRelevantSykmeldingIDUtenSøknadID()
                     if(alleRelevanteSubsumsjoner == null){
-                        println("Alle vedtaksperioder er null?????")
                         this.lagNyVedtaksperiode(mutableListOf(subsumsjon))
                     }
                     else {
-                        println("Det finnes relevante subsumsjoner")
                         alleRelevanteSubsumsjoner.add(subsumsjon)
                         this.lagNyVedtaksperiode(alleRelevanteSubsumsjoner)
                     }
