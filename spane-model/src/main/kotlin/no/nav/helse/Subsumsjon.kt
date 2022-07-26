@@ -32,12 +32,15 @@ class Subsumsjon(
         fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon, søk : SporingEnum): Boolean {
             this.forEach {
                 if(it.sporing[søk.navn] == subsumsjon.sporing[søk.navn]) {
-                    this += subsumsjon
                     return true
                 }
             }
             return false
         }
+
+
+
+
 
         fun MutableList<Subsumsjon>.hentSubsMedID(subsumsjon: Subsumsjon, søk : SporingEnum): MutableList<Subsumsjon> {
             val subsumsjoner = mutableListOf<Subsumsjon>()
@@ -52,18 +55,16 @@ class Subsumsjon(
 
 
     }
+    fun sjekkEierskap(søk : SporingEnum, ider : List<String>) :Boolean = ider.contains(sporing[søk.navn])
 
-    fun finnSøkeParameter(): SporingEnum? {
-        if (sporing["vedtaksperiode"] != null)  {
-            return VEDTAKSPERIODE
+    fun finnSøkeParameter(): SporingEnum {
+        return if (sporing["vedtaksperiode"] != null)  {
+            VEDTAKSPERIODE
+        } else if (sporing["soknad"] != null) {
+            SØKNAD
+        } else {
+            SYKMELDING
         }
-        if (sporing["soknad"] != null) {
-            return SØKNAD
-        }
-        if (sporing["sykmelding"] != null) {
-            return SYKMELDING
-        }
-        return null
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
