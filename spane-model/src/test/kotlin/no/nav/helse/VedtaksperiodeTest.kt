@@ -143,6 +143,58 @@ class VedtaksperiodeTest {
         assertEquals(3, pvps[0].antallSubsumsjoner())
         assertEquals(3, pvps[2].antallSubsumsjoner())
     }
+    @Test
+    fun `case 2, finner ingen eier`() {
+        val sporingPVP1 = mapOf("sykmelding" to "s1")
+        val sporingPVP2 = mapOf("sykmelding" to "s2")
+        val sporingNySubsumsjon = mapOf("sykmelding" to "s1", "soknad" to "sø1")
+
+        val pvpEier = lagVedtaksPeriode(2, sporing = sporingPVP1)
+        val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingPVP2)
+
+        val nySubsumsjon = lagSubsumsjon(sporing= sporingNySubsumsjon)
+
+        val pvps = mutableListOf(pvpEier,pvpIkkeEier)
+
+        val resultat = pvps.finnEiere(nySubsumsjon)
+
+        assertEquals(listOf<Vedtaksperiode>(),resultat)
+    }
+    @Test
+    fun `case 2, ny pvp blir lagd og relevante subsumsjoner blir lagt til og `() {
+        val sporingPVP1 = mapOf("sykmelding" to "s1")
+        val sporingPVP2 = mapOf("sykmelding" to "s2")
+        val sporingNySubsumsjon = mapOf("sykmelding" to "s1", "soknad" to "sø1")
+
+        val pvpEier = lagVedtaksPeriode(2, sporing = sporingPVP1)
+        val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingPVP2)
+
+        val nySubsumsjon = lagSubsumsjon(sporing= sporingNySubsumsjon)
+
+        val pvps = mutableListOf(pvpEier,pvpIkkeEier)
+
+        pvps.nyHåndter(nySubsumsjon)
+
+        assertEquals(3, pvps[2].antallSubsumsjoner())
+    }
+    @Test
+    fun `case 2, rydder opp gammel pvp, bare nye er igjen`() {
+        // denne og den over vil stort sett bare feile sammen
+        val sporingPVP1 = mapOf("sykmelding" to "s1")
+        val sporingPVP2 = mapOf("sykmelding" to "s2")
+        val sporingNySubsumsjon = mapOf("sykmelding" to "s1", "soknad" to "sø1")
+
+        val pvpEier = lagVedtaksPeriode(2, sporing = sporingPVP1)
+        val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingPVP2)
+
+        val nySubsumsjon = lagSubsumsjon(sporing= sporingNySubsumsjon)
+
+        val pvps = mutableListOf(pvpEier,pvpIkkeEier)
+
+        pvps.nyHåndter(nySubsumsjon)
+
+        assertEquals(2, pvps.size)
+    }
 
 
 

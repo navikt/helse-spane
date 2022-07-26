@@ -3,17 +3,17 @@ package no.nav.helse
 import no.nav.helse.SporingEnum.*
 
 class Vedtaksperiode(
-    private val subsumsjoner: MutableList<Subsumsjon> = mutableListOf()
+    subsumsjon: Subsumsjon? = null
 ) {
     private var alleRelevanteSykmeldingsIDer = mutableListOf<String>()
     private var alleRelevanteSøknadsIDer = mutableListOf<String>()
     private var vedtaksperiodeId: String = ""
+    private val subsumsjoner: MutableList<Subsumsjon> = mutableListOf()
+
 
     init {
-        if (subsumsjoner.isNotEmpty()) {
-            for (subsumsjon in subsumsjoner) {
-                oppdaterIDer(subsumsjon)
-            }
+        if (subsumsjon != null) {
+            leggTilSubsumsjon(mutableListOf(subsumsjon))
         }
     }
 
@@ -30,6 +30,46 @@ class Vedtaksperiode(
             return eiere
         }
 
+        fun MutableList<Vedtaksperiode>.nyErRelevant(pvpEiere: MutableList<Vedtaksperiode>) {
+
+
+            if (pvpEiere.size == 0) {
+                return
+            }
+            val eier = pvpEiere[0]
+
+            println(eier.subsumsjoner.size)
+            //                // TODO punkt 2 Er det noen andre PVPer som har subsumsjoner som er relevante for meg?
+//                // Ja? Legg til i meg
+
+            forEach {
+                if (it == eier) {
+                    //Siden den looper gjennom alle pvper sammenligner den også med seg selv
+                    return
+                }
+
+                if (it.vedtaksperiodeId.isNotEmpty()) {
+                    if (eier.vedtaksperiodeId == it.vedtaksperiodeId) {
+                        eier.leggTilSubsumsjon(it.subsumsjoner)
+                    }
+                } else if (eier.alleRelevanteSøknadsIDer == it.alleRelevanteSøknadsIDer) {
+                    eier.leggTilSubsumsjon(it.subsumsjoner)
+
+                    // SAMME SID OG SØID, IKKE VID
+                } else if (eier.alleRelevanteSykmeldingsIDer == it.alleRelevanteSykmeldingsIDer) {
+                    eier.leggTilSubsumsjon(it.subsumsjoner)
+
+                    // SAMME SID, IKKE SØID
+                } else {
+                    println("Fant ingen relevante")
+                }
+            }
+
+            // TODO mangler cleanup
+
+
+        }
+
         fun MutableList<Vedtaksperiode>.nyHåndter(subsumsjon: Subsumsjon) {
             // Punkt 1, er det noen PVPer som eier subsumsjon?
             val pvpEiere = finnEiere(subsumsjon)
@@ -37,31 +77,40 @@ class Vedtaksperiode(
             // Hvis 1 eller flere PVPer eier subsumsjonen
             if (pvpEiere.isNotEmpty()) {
                 for (eier in pvpEiere) {
-                    eier.leggTilSubsumsjon(subsumsjon)
+                    eier.leggTilSubsumsjon(mutableListOf(subsumsjon))
                     // legg til subsumsjon i pvp
                 }
             } else {
                 // hvis nei, ny PvP
-                this.add(Vedtaksperiode(mutableListOf(subsumsjon)))
+
+                this.add(Vedtaksperiode(subsumsjon))
+                pvpEiere.add(this[lastIndex])
             }
 
-            this.forEach {
-                if (pvpEiere.size > 2) {
-                    TODO("Heller sette inn duplisiering sjekk i start av nyHåndter for å unngå sjekk her?")
-                }
-//                pvpEiere[0].vedtaksperiodeId == it.vedtaksperiodeId
 
-                // TODO punkt 2 Er det noen andre PVPer som har subsumsjoner som er relevante for meg?
-                // Ja? Legg til i meg
-            }
+            this.nyErRelevant(pvpEiere)
+
+
+//            this.forEach {
+//                if (pvpEiere.size > 2) {
+//                    TODO("Heller sette inn duplisiering sjekk i start av nyHåndter for å unngå sjekk her?")
+//                }
+//
+//
+////                pvpEiere[0].vedtaksperiodeId == it.vedtaksperiodeId
+//
+
+//            }
 
             // Todo punkt 3 Fjern subsumsjoner fra andre pvper som her er søknader jeg eier.
         }
     }
 
-    private fun leggTilSubsumsjon(subsumsjon: Subsumsjon) {
-        subsumsjoner.add(subsumsjon)
-        oppdaterIDer(subsumsjon)
+    fun leggTilSubsumsjon(nyeSubsumsjoner: MutableList<Subsumsjon>) {
+        for (subsumsjon in nyeSubsumsjoner) {
+            this.subsumsjoner.add(subsumsjon)
+            oppdaterIDer(subsumsjon)
+        }
     }
 
     private fun oppdaterIDer(subsumsjon: Subsumsjon) {

@@ -80,7 +80,9 @@ internal class TestHjelper {
                     )
                 )
             }
-            return Vedtaksperiode(subsumsjoner)
+            val vedtaksperiode = Vedtaksperiode()
+            vedtaksperiode.leggTilSubsumsjon(subsumsjoner)
+            return vedtaksperiode
         }
 
         fun assertVedtaksperioderAntallOgLengde(
