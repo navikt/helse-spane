@@ -1,6 +1,6 @@
 package no.nav.helse
 
-import no.nav.helse.Vedtaksperiode.Companion.håndter
+import no.nav.helse.Vedtaksperiode.Companion.nyHåndter
 
 class Person(
     private val fødselsnummer: String
@@ -12,7 +12,7 @@ class Person(
     }
 
     fun håndter(subsumsjon: Subsumsjon) {
-        vedtaksperioder.håndter(subsumsjon)
+        vedtaksperioder.nyHåndter(subsumsjon)
     }
 
     override fun toString(): String {

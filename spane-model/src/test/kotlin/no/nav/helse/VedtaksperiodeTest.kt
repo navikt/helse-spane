@@ -4,8 +4,10 @@ import no.nav.helse.SporingEnum.*
 import no.nav.helse.TestHjelper.Companion.assertVedtaksperioderAntallOgLengde
 import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
 import no.nav.helse.TestHjelper.Companion.lagVedtaksPeriode
+import no.nav.helse.Vedtaksperiode.Companion.finnEiere
 import no.nav.helse.Vedtaksperiode.Companion.seEtterVedtaksperiodeID
 import no.nav.helse.Vedtaksperiode.Companion.håndter
+import no.nav.helse.Vedtaksperiode.Companion.nyHåndter
 import no.nav.helse.Vedtaksperiode.Companion.seEtterSykmeldingsID
 import no.nav.helse.Vedtaksperiode.Companion.seEtterSøknadsID
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -168,16 +170,7 @@ class VedtaksperiodeTest {
         assertVedtaksperioderAntallOgLengde(vedtaksperioder, 1, 4)
     }
 
-    @Test
-    fun `subsumsjon legges i eksisterende vedtaksperiode om den matcher`() {
-        val subsumsjonFørste = lagSubsumsjon(sporing = mapOf("sykmelding" to "første"))
-        val subsumsjonAndre = lagSubsumsjon(sporing = mapOf("sykmelding" to "første"))
 
-        val vedtaksperioder = mutableListOf(Vedtaksperiode(mutableListOf(subsumsjonFørste)))
-        vedtaksperioder.seEtterVedtaksperiodeID(subsumsjonAndre, SYKMELDING)
-
-        assertEquals(1, vedtaksperioder.size)
-    }
 
 
     @Test
@@ -238,6 +231,85 @@ class VedtaksperiodeTest {
         assertEquals(4, vedtaksperioder[0].antallSubsumsjoner())
         assertEquals(2, vedtaksperioder[1].antallSubsumsjoner())
     }
+
+
+
+    /* NYE TESTCASE */
+
+    @Test
+    fun `subsumsjon finner rett eier (pvp)`() {
+        val sporingEier = mapOf("sykmelding" to "s1")
+        val sporingIkkeEier = mapOf("sykmelding" to "s2")
+
+        val pvpEier = lagVedtaksPeriode(2, sporing = sporingEier)
+        val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingIkkeEier)
+        val nySubsumsjon = lagSubsumsjon(sporing= sporingEier)
+
+        val pvps = mutableListOf(pvpEier,pvpIkkeEier)
+
+
+        val resultat = pvps.finnEiere(nySubsumsjon)
+        assertEquals(pvpEier, resultat)
+    }
+
+
+    @Test
+    fun `subsumsjon blir lagt til i rett vedtaksperiode testcase 1`() {
+        val sporingSykmelding = mapOf("sykmelding" to "s1")
+
+        val vedtaksperiode = lagVedtaksPeriode(2, sporing = sporingSykmelding)
+        val nySubsumsjon = lagSubsumsjon(sporing= sporingSykmelding)
+
+        val pvps = mutableListOf(vedtaksperiode)
+
+
+        pvps.nyHåndter(nySubsumsjon)
+
+        assertEquals(1, pvps.size)
+        assertEquals(3, pvps[0].antallSubsumsjoner())
+    }
+
+    @Test
+    fun `subsumsjon finner rett eiere (pvp) duplisering`() {
+        val sporingSubsumsjon = mapOf("sykmelding" to "s1")
+        val sporingIkkeEier = mapOf("sykmelding" to "s2")
+        val sporingEier = mapOf("sykmelding" to "s1", "soknad" to "sø1")
+        val sporingOgsåEier = mapOf("sykmelding" to "s1", "soknad" to "sø2")
+
+        val pvpEier = lagVedtaksPeriode(2, sporing = sporingEier)
+        val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingIkkeEier)
+        val pvpOgsåEier = lagVedtaksPeriode(2, sporing = sporingOgsåEier)
+
+        val nySubsumsjon = lagSubsumsjon(sporing= sporingSubsumsjon)
+
+        val pvps = mutableListOf(pvpEier,pvpIkkeEier, pvpOgsåEier)
+
+        val resultat = pvps.finnEiere(nySubsumsjon)
+
+        TODO("Resultat skal være pvpEier og pvpOgsåEier")
+    }
+    @Test
+    fun `subsumsjon blir duplisert og lagt til i rette vedtaksperioder`() {
+        val sporingSubsumsjon = mapOf("sykmelding" to "s1")
+        val sporingIkkeEier = mapOf("sykmelding" to "s2")
+        val sporingEier = mapOf("sykmelding" to "s1", "soknad" to "sø1")
+        val sporingOgsåEier = mapOf("sykmelding" to "s1", "soknad" to "sø2")
+
+        val pvpEier = lagVedtaksPeriode(2, sporing = sporingEier)
+        val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingIkkeEier)
+        val pvpOgsåEier = lagVedtaksPeriode(2, sporing = sporingOgsåEier)
+
+        val nySubsumsjon = lagSubsumsjon(sporing= sporingSubsumsjon)
+
+        val pvps = mutableListOf(pvpEier,pvpIkkeEier, pvpOgsåEier)
+
+
+        pvps.nyHåndter(nySubsumsjon)
+
+        TODO("ny subsumsjon skal ha blitt lagt til i vedtaksperiode pvpEier og pvpOgsåEier")
+    }
+
+
 
 
 }

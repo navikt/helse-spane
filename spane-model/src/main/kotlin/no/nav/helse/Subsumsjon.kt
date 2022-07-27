@@ -29,15 +29,51 @@ class Subsumsjon(
 
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
+
+        fun MutableList<Subsumsjon>.hentIder(): Map<String, List<String>> {
+            val result = mutableMapOf<String, List<String>>()
+            var sykmeldingIder = mutableListOf<String>()
+            var søknadIder = mutableListOf<String>()
+            var vedtaksperiodeIder = mutableListOf<String>()
+
+            forEach {
+                when(it.finnSøkeParameter()){
+                    VEDTAKSPERIODE -> {
+                        vedtaksperiodeIder.add(it.sporing[VEDTAKSPERIODE.navn] as String)
+                        søknadIder.add(it.sporing[SØKNAD.navn] as String)
+                        sykmeldingIder.add(it.sporing[SYKMELDING.navn] as String)
+                    }
+                    SØKNAD -> {
+                        søknadIder.add(it.sporing[SØKNAD.navn] as String)
+                        sykmeldingIder.add(it.sporing[SYKMELDING.navn] as String)
+                    }
+                    SYKMELDING -> {
+                        sykmeldingIder.add(it.sporing[SYKMELDING.navn] as String)
+                    }
+
+                }
+            }
+            result += SYKMELDING.navn to sykmeldingIder
+            result += SØKNAD.navn to søknadIder
+            result += VEDTAKSPERIODE.navn to vedtaksperiodeIder
+            return result
+        }
+
+
+
         fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon, søk : SporingEnum): Boolean {
             this.forEach {
                 if(it.sporing[søk.navn] == subsumsjon.sporing[søk.navn]) {
-                    this += subsumsjon
                     return true
                 }
             }
             return false
         }
+
+
+
+
+
 
         fun MutableList<Subsumsjon>.hentSubsMedID(subsumsjon: Subsumsjon, søk : SporingEnum): MutableList<Subsumsjon> {
             val subsumsjoner = mutableListOf<Subsumsjon>()
@@ -52,18 +88,16 @@ class Subsumsjon(
 
 
     }
+    fun sjekkEierskap(søk : SporingEnum, ider : List<String>) :Boolean = ider.contains(sporing[søk.navn])
 
-    fun finnSøkeParameter(): SporingEnum? {
-        if (sporing["vedtaksperiode"] != null)  {
-            return VEDTAKSPERIODE
+    fun finnSøkeParameter(): SporingEnum {
+        return if (sporing["vedtaksperiode"] != null)  {
+            VEDTAKSPERIODE
+        } else if (sporing["soknad"] != null) {
+            SØKNAD
+        } else {
+            SYKMELDING
         }
-        if (sporing["soknad"] != null) {
-            return SØKNAD
-        }
-        if (sporing["sykmelding"] != null) {
-            return SYKMELDING
-        }
-        return null
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
