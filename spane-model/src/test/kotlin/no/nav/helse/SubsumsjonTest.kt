@@ -1,7 +1,7 @@
 package no.nav.helse
 
-import no.nav.helse.Subsumsjon.Companion.erRelevant
 import no.nav.helse.Subsumsjon.Companion.finnAlle
+import no.nav.helse.Subsumsjon.Companion.harEierskap
 import no.nav.helse.Subsumsjon.Companion.sorterPåTid
 import no.nav.helse.TestHjelper.Companion.februar
 import no.nav.helse.TestHjelper.Companion.januar
@@ -44,7 +44,7 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingEnum.SYKMELDING))
+        assertTrue(subsumsjoner.harEierskap(subsumsjon, SporingEnum.SYKMELDING))
     }
 
     @Test
@@ -57,7 +57,7 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingEnum.SØKNAD))
+        assertTrue(subsumsjoner.harEierskap(subsumsjon, SporingEnum.SØKNAD))
     }
 
 
@@ -71,7 +71,7 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertFalse(subsumsjoner.erRelevant(subsumsjon, SporingEnum.SYKMELDING))
+        assertFalse(subsumsjoner.harEierskap(subsumsjon, SporingEnum.SYKMELDING))
     }
 
     @Test
@@ -102,6 +102,6 @@ internal class SubsumsjonTest {
             lagSubsumsjon(sporing = sporing1),
             lagSubsumsjon(sporing = sporing2)
         )
-        assertTrue(subsumsjoner.erRelevant(subsumsjon, SporingEnum.SØKNAD))
+        assertTrue(subsumsjoner.harEierskap(subsumsjon, SporingEnum.SØKNAD))
     }
 }
