@@ -6,9 +6,9 @@ import java.util.*
 
 abstract class AbstractPersonTest {
     private val person = Person("1234567890")
-    lateinit var sykmeldingUUID: UUID
-    lateinit var søknadUUID: UUID
-    lateinit var vedtaksperiodeUUID: UUID
+    lateinit var sykmeldingUUID: String
+    lateinit var søknadUUID: String
+    lateinit var vedtaksperiodeUUID: String
 
     internal fun assertMap(subsumsjon: Int, forventetMap: Map<String, Any>, key: String){
         val input = (person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon][key] as Map<*, *>)
@@ -24,7 +24,7 @@ abstract class AbstractPersonTest {
         }
     }
 
-    internal fun assertSporing(subsumsjon: Int, vararg uuids: UUID) {
+    internal fun assertSporing(subsumsjon: Int, vararg uuids: String) {
         val sporing = (person.inspektør.vedtaksperioder[0].subsumsjoner[subsumsjon]["sporing"] as Map<*, *>)
         uuids.forEach {
             if (!sporing.values.contains(it)) {
@@ -55,38 +55,38 @@ abstract class AbstractPersonTest {
     }
 
     internal fun sendSubsumsjon() {
-        val søknadUUID = UUID.randomUUID()
+        val søknadUUID = UUID.randomUUID().toString()
         val input = mapOf("skjæringtidspunkt" to "2018-01-01")
         val output = mapOf("antallOpptjeningsdager" to "28")
-        val subsumsjon = TestHjelper.lagSubsumsjon(sporing = mapOf("sykmelding" to søknadUUID), input = input, output = output)
+        val subsumsjon = TestHjelper.lagSubsumsjon(sporing = mapOf("sykmelding" to listOf(søknadUUID)), input = input, output = output)
         person.håndter(subsumsjon)
     }
     internal fun sendSykmeldingSubsumsjon(antall: Int = 1) {
-        sykmeldingUUID = UUID.randomUUID()
+        sykmeldingUUID = UUID.randomUUID().toString()
         for (i in 1..antall){
-            val sykmeldingSubsumsjon = TestHjelper.lagSubsumsjon(sporing = mapOf("sykmelding" to sykmeldingUUID))
+            val sykmeldingSubsumsjon = TestHjelper.lagSubsumsjon(sporing = mapOf("sykmelding" to listOf(sykmeldingUUID)))
             person.håndter(sykmeldingSubsumsjon)
         }
     }
 
     internal fun sendSøknadSubsumsjon() {
-        søknadUUID = UUID.randomUUID()
+        søknadUUID = UUID.randomUUID().toString()
         val subsumsjon = TestHjelper.lagSubsumsjon(
             sporing = mapOf(
-                "sykmelding" to sykmeldingUUID,
-                "soknad" to søknadUUID
+                "sykmelding" to listOf(sykmeldingUUID),
+                "soknad" to listOf(søknadUUID)
             )
         )
         person.håndter(subsumsjon)
     }
 
     internal fun sendVedtakSubsumsjon() {
-        vedtaksperiodeUUID = UUID.randomUUID()
+        vedtaksperiodeUUID = UUID.randomUUID().toString()
         val subsumsjon = TestHjelper.lagSubsumsjon(
             sporing = mapOf(
-                "sykmelding" to sykmeldingUUID,
-                "soknad" to søknadUUID,
-                "vedtaksperiode" to vedtaksperiodeUUID
+                "sykmelding" to listOf(sykmeldingUUID),
+                "soknad" to listOf(søknadUUID),
+                "vedtaksperiode" to listOf(vedtaksperiodeUUID)
             )
         )
         person.håndter(subsumsjon)

@@ -15,17 +15,17 @@ class PseudoVedtaksperiodeTest {
     @Test
     fun `subsumsjon blir duplisert og lagt til i alle rette vedtaksperioder`() {
         val børDupliseresSporing = mapOf(
-            "sykmelding" to "relevant",
+            "sykmelding" to listOf("relevant"),
         )
         val relevantSporing = mapOf(
-            "sykmelding" to "relevant",
-            "soknad" to "relevant",
-            "vedtaksperiode" to "relevant"
+            "sykmelding" to listOf("relevant"),
+            "soknad" to listOf("relevant"),
+            "vedtaksperiode" to listOf("relevant")
         )
         val ikkeRelevantSporing = mapOf(
-            "sykmelding" to "ikke-relevant",
-            "soknad" to "ikke-relevant",
-            "vedtaksperiode" to "ikke-relevant"
+            "sykmelding" to listOf("ikke-relevant"),
+            "soknad" to listOf("ikke-relevant"),
+            "vedtaksperiode" to listOf("ikke-relevant")
         )
 
 
@@ -45,18 +45,18 @@ class PseudoVedtaksperiodeTest {
     @Test
     fun `subsumsjon blir lagt inn rett sted basert på søknad `() {
         val nySubsumsjon = mapOf(
-            "sykmelding" to "relevant",
-            "soknad" to "relevant"
+            "sykmelding" to listOf("relevant"),
+            "soknad" to listOf("relevant")
         )
         val relevantSporing = mapOf(
-            "sykmelding" to "ikke-relevant",
-            "soknad" to "relevant",
-            "vedtaksperiode" to "relevant"
+            "sykmelding" to listOf("ikke-relevant"),
+            "soknad" to listOf("relevant"),
+            "vedtaksperiode" to listOf("relevant")
         )
         val ikkeRelevantSporing = mapOf(
-            "sykmelding" to "ikke-relevant",
-            "soknad" to "ikke-relevant",
-            "vedtaksperiode" to "ikke-relevant"
+            "sykmelding" to listOf("ikke-relevant"),
+            "soknad" to listOf("ikke-relevant"),
+            "vedtaksperiode" to listOf("ikke-relevant")
         )
 
 
@@ -74,8 +74,8 @@ class PseudoVedtaksperiodeTest {
 
     @Test
     fun `subsumsjon finner rett eier (pvp)`() {
-        val sporingEier = mapOf("sykmelding" to "s1")
-        val sporingIkkeEier = mapOf("sykmelding" to "s2")
+        val sporingEier = mapOf("sykmelding" to listOf("s1"))
+        val sporingIkkeEier = mapOf("sykmelding" to listOf("s2"))
 
         val pvpEier = lagVedtaksPeriode(2, sporing = sporingEier)
         val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingIkkeEier)
@@ -91,7 +91,7 @@ class PseudoVedtaksperiodeTest {
 
     @Test
     fun `subsumsjon blir lagt til i rett vedtaksperiode testcase 1`() {
-        val sporingSykmelding = mapOf("sykmelding" to "s1")
+        val sporingSykmelding = mapOf("sykmelding" to listOf("s1"))
 
         val vedtaksperiode = lagVedtaksPeriode(2, sporing = sporingSykmelding)
         val nySubsumsjon = lagSubsumsjon(sporing= sporingSykmelding)
@@ -107,10 +107,10 @@ class PseudoVedtaksperiodeTest {
 
     @Test
     fun `subsumsjon finner rett eiere (pvp) duplisering`() {
-        val sporingSubsumsjon = mapOf("sykmelding" to "s1")
-        val sporingIkkeEier = mapOf("sykmelding" to "s2")
-        val sporingEier = mapOf("sykmelding" to "s1", "soknad" to "sø1")
-        val sporingOgsåEier = mapOf("sykmelding" to "s1", "soknad" to "sø2")
+        val sporingSubsumsjon = mapOf("sykmelding" to listOf("s1"))
+        val sporingIkkeEier = mapOf("sykmelding" to listOf("s2"))
+        val sporingEier = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"))
+        val sporingOgsåEier = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø2"))
 
         val pvpEier = lagVedtaksPeriode(2, sporing = sporingEier)
         val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingIkkeEier)
@@ -127,10 +127,10 @@ class PseudoVedtaksperiodeTest {
     }
     @Test
     fun `subsumsjon blir duplisert og lagt til i rette vedtaksperioder`() {
-        val sporingSubsumsjon = mapOf("sykmelding" to "s1")
-        val sporingIkkeEier = mapOf("sykmelding" to "s2")
-        val sporingEier = mapOf("sykmelding" to "s1", "soknad" to "sø1")
-        val sporingOgsåEier = mapOf("sykmelding" to "s1", "soknad" to "sø2")
+        val sporingSubsumsjon = mapOf("sykmelding" to listOf("s1"))
+        val sporingIkkeEier = mapOf("sykmelding" to listOf("s2"))
+        val sporingEier = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"))
+        val sporingOgsåEier = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø2"))
 
         val pvpEier = lagVedtaksPeriode(2, sporing = sporingEier)
         val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingIkkeEier)
@@ -149,9 +149,9 @@ class PseudoVedtaksperiodeTest {
     @Test
     @Disabled("Ikke lagt til ennå")
     fun `case 2, finner ingen eier`() {
-        val sporingPVP1 = mapOf("sykmelding" to "s1")
-        val sporingPVP2 = mapOf("sykmelding" to "s2")
-        val sporingNySubsumsjon = mapOf("sykmelding" to "s1", "soknad" to "sø1")
+        val sporingPVP1 = mapOf("sykmelding" to listOf("s1"))
+        val sporingPVP2 = mapOf("sykmelding" to listOf("s2"))
+        val sporingNySubsumsjon = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"))
 
         val pvpEier = lagVedtaksPeriode(2, sporing = sporingPVP1)
         val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingPVP2)
@@ -167,9 +167,9 @@ class PseudoVedtaksperiodeTest {
     @Test
     @Disabled("Ikke lagt til ennå")
     fun `case 2, ny pvp blir lagd og relevante subsumsjoner blir lagt til og `() {
-        val sporingPVP1 = mapOf("sykmelding" to "s1")
-        val sporingPVP2 = mapOf("sykmelding" to "s2")
-        val sporingNySubsumsjon = mapOf("sykmelding" to "s1", "soknad" to "sø1")
+        val sporingPVP1 = mapOf("sykmelding" to listOf("s1"))
+        val sporingPVP2 = mapOf("sykmelding" to listOf("s2"))
+        val sporingNySubsumsjon = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"))
 
         val pvpEier = lagVedtaksPeriode(2, sporing = sporingPVP1)
         val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingPVP2)
@@ -185,9 +185,9 @@ class PseudoVedtaksperiodeTest {
     @Test
     fun `case 2, rydder opp gammel pvp, bare nye er igjen`() {
         // denne og den over vil stort sett bare feile sammen
-        val sporingPVP1 = mapOf("sykmelding" to "s1")
-        val sporingPVP2 = mapOf("sykmelding" to "s2")
-        val sporingNySubsumsjon = mapOf("sykmelding" to "s1", "soknad" to "sø1")
+        val sporingPVP1 = mapOf("sykmelding" to listOf("s1"))
+        val sporingPVP2 = mapOf("sykmelding" to listOf("s2"))
+        val sporingNySubsumsjon = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"))
 
         val pvpEier = lagVedtaksPeriode(2, sporing = sporingPVP1)
         val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingPVP2)
