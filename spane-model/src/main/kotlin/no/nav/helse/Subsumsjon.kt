@@ -22,16 +22,12 @@ class Subsumsjon(
     private val output: Map<String, Any>,
     private val utfall: String,
 ) {
-
-    fun hentId(sporing: SporingEnum): String? = this.sporing[sporing.navn] as? String
-
     internal companion object {
         fun List<Subsumsjon>.finnAlle(paragraf: String) = this.filter { it.paragraf == paragraf }
 
-
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
-        fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon, søk : SporingEnum): Boolean {
+        fun MutableList<Subsumsjon>.harEierskap(subsumsjon: Subsumsjon, søk : SporingEnum): Boolean {
             this.forEach {
                 if(it.sporing[søk.navn] == subsumsjon.sporing[søk.navn]) {
                     return true
@@ -39,8 +35,8 @@ class Subsumsjon(
             }
             return false
         }
+
     }
-    fun sjekkEierskap(søk : SporingEnum, ider : List<String>) :Boolean = ider.contains(sporing[søk.navn])
 
     fun finnSøkeParameter(): SporingEnum {
         return if (sporing["vedtaksperiode"] != null)  {
@@ -125,7 +121,5 @@ class Subsumsjon(
         result = 31 * result + utfall.hashCode()
         return result
     }
-
-
 
 }
