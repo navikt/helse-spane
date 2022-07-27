@@ -1,27 +1,28 @@
 import {Table} from "@navikt/ds-react";
-import UtvidetSubsumsjonTableInnhold from "./UtvidetSubsumsjonTableInnhold";
 import React, {useState} from "react";
 import UtvidetVedtaksperiodeTableInnhold from "./UtvidetVedtaksperiodeTableInnhold";
+import {VedtaksperiodeDto} from "../types";
 
-function VedtaksperiodeExpandableRow() {
+interface Props {
+  vedtaksperiode: VedtaksperiodeDto;
+}
+
+function VedtaksperiodeExpandableRow(props: Props) {
+    const { vedtaksperiode } = props;
     const [expand, setExpand] = useState<boolean>(false);
-
     return (
       <Table.ExpandableRow
-          content= {<UtvidetVedtaksperiodeTableInnhold/>}
+          content= {<UtvidetVedtaksperiodeTableInnhold subsumsjoner={vedtaksperiode.subsumsjoner}/>}
           togglePlacement="right"
           open={expand}
           onClick={() => setExpand(!expand)}
           style={{ cursor: "pointer" }}
       >
-        <Table.DataCell scope="row"> hei </Table.DataCell>
-        <Table.DataCell scope="row">
-          hei2
-        </Table.DataCell>
-        <Table.DataCell>hei3</Table.DataCell>
-        <Table.DataCell>hei4</Table.DataCell>
+          <Table.DataCell scope="row"> <b> Periode: </b> {vedtaksperiode.startDato} - {vedtaksperiode.sluttDato} </Table.DataCell>
+        <Table.DataCell scope="row"> <b> Organisasjonsnummer: </b> {vedtaksperiode.orgnummer} </Table.DataCell>
+
       </Table.ExpandableRow>
-  );;
+  );
 }
 
 export default VedtaksperiodeExpandableRow;

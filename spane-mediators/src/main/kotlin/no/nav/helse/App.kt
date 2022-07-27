@@ -131,7 +131,7 @@ fun ktorServer(appName: String): ApplicationEngine =
     })
 
 
-typealias APIVedtaksperiode = Map<String, MutableList<Map<String, Any?>>>
+typealias APIVedtaksperiode = Map<String, Any>
 
 class APIVisitor : PersonVisitor {
     val personMap = mutableMapOf<String, Any>("vedtaksperioder" to mutableListOf<APIVedtaksperiode>())
@@ -141,7 +141,7 @@ class APIVisitor : PersonVisitor {
 
     override fun preVisitSubsumsjoner() {
         (personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>)
-            .add(mutableMapOf("subsumsjoner" to mutableListOf()))
+            .add(mutableMapOf("subsumsjoner" to mutableListOf<Any>(), "orgnummer" to "123456", "startDato" to "06.04.22", "sluttDato" to "18.04.22"))
 
     }
 
@@ -164,7 +164,7 @@ class APIVisitor : PersonVisitor {
         output: Map<String, Any>,
         utfall: String
     ) {
-        (personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>).last()["subsumsjoner"]!!.add(
+        ((personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>).last()["subsumsjoner"] as MutableList<Any>).add(
             mapOf(
                 "id" to id,
                 "versjon" to versjon,

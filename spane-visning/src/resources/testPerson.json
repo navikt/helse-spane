@@ -494,7 +494,10 @@
           "output": {},
           "utfall": "VILKAR_OPPFYLT"
         }
-      ]
+      ],
+      "orgnummer": "12345",
+      "startDato": "06.04.22",
+      "sluttDato": "18.04.22"
     },
     {
       "subsumsjoner": [
@@ -1167,7 +1170,10 @@
           },
           "utfall": "VILKAR_BEREGNET"
         }
-      ]
+      ],
+      "orgnummer": "12345",
+      "startDato": "06.04.22",
+      "sluttDato": "18.04.22"
     },
     {
       "subsumsjoner": [
@@ -1663,7 +1669,10 @@
           "output": {},
           "utfall": "VILKAR_OPPFYLT"
         }
-      ]
+      ],
+      "orgnummer": "12345",
+      "startDato": "06.04.22",
+      "sluttDato": "18.04.22"
     }
   ],
   "fnr": "10877799145"
