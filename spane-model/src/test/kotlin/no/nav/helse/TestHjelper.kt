@@ -4,6 +4,7 @@ import org.junit.jupiter.api.fail
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
+import java.util.UUID
 
 internal class TestHjelper {
 
@@ -51,10 +52,11 @@ internal class TestHjelper {
             sporing: Map<String, List<String>> = emptyMap(),
             input: Map<String, Any> = emptyMap(),
             output: Map<String, Any> = emptyMap(),
+            id: String = UUID.randomUUID().toString()
 
             ): Subsumsjon {
             return Subsumsjon(
-                "id", "3", "sub", "kildee", "3",
+                id, "3", "sub", "kildee", "3",
                 "1234567890", sporing, tidsstempel, "loven", "3",
                 paragraf, null, null, null, input, output, "GODKJENT"
             )

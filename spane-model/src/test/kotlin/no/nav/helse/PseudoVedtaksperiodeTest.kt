@@ -2,74 +2,13 @@ package no.nav.helse
 
 import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
 import no.nav.helse.TestHjelper.Companion.lagVedtaksPeriode
-import no.nav.helse.PseudoVedtaksperiode.Companion.etablerEierskap
-import no.nav.helse.PseudoVedtaksperiode.Companion.nyHåndter
+import no.nav.helse.PseudoVedtaksperiode.Companion.finnEiere
+import no.nav.helse.PseudoVedtaksperiode.Companion.håndter
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class PseudoVedtaksperiodeTest {
-
-
-
-    @Test
-    fun `subsumsjon blir duplisert og lagt til i alle rette vedtaksperioder`() {
-        val børDupliseresSporing = mapOf(
-            "sykmelding" to listOf("relevant"),
-        )
-        val relevantSporing = mapOf(
-            "sykmelding" to listOf("relevant"),
-            "soknad" to listOf("relevant"),
-            "vedtaksperiode" to listOf("relevant")
-        )
-        val ikkeRelevantSporing = mapOf(
-            "sykmelding" to listOf("ikke-relevant"),
-            "soknad" to listOf("ikke-relevant"),
-            "vedtaksperiode" to listOf("ikke-relevant")
-        )
-
-
-        val vedtaksperioder = mutableListOf(
-            lagVedtaksPeriode(3, sporing = relevantSporing),
-            lagVedtaksPeriode(3, sporing = relevantSporing),
-            lagVedtaksPeriode(2, sporing = ikkeRelevantSporing)
-        )
-
-        vedtaksperioder.nyHåndter(lagSubsumsjon(sporing = børDupliseresSporing))
-
-        assertEquals(4, vedtaksperioder[0].antallSubsumsjoner())
-        assertEquals(4, vedtaksperioder[1].antallSubsumsjoner())
-        assertEquals(2, vedtaksperioder[2].antallSubsumsjoner())
-    }
-
-    @Test
-    fun `subsumsjon blir lagt inn rett sted basert på søknad `() {
-        val nySubsumsjon = mapOf(
-            "sykmelding" to listOf("relevant"),
-            "soknad" to listOf("relevant")
-        )
-        val relevantSporing = mapOf(
-            "sykmelding" to listOf("ikke-relevant"),
-            "soknad" to listOf("relevant"),
-            "vedtaksperiode" to listOf("relevant")
-        )
-        val ikkeRelevantSporing = mapOf(
-            "sykmelding" to listOf("ikke-relevant"),
-            "soknad" to listOf("ikke-relevant"),
-            "vedtaksperiode" to listOf("ikke-relevant")
-        )
-
-
-        val vedtaksperioder = mutableListOf(
-            lagVedtaksPeriode(3, sporing = relevantSporing),
-            lagVedtaksPeriode(2, sporing = ikkeRelevantSporing)
-        )
-
-        vedtaksperioder.nyHåndter(lagSubsumsjon(sporing = nySubsumsjon))
-
-        assertEquals(4, vedtaksperioder[0].antallSubsumsjoner())
-        assertEquals(2, vedtaksperioder[1].antallSubsumsjoner())
-    }
 
 
     @Test
@@ -84,8 +23,8 @@ class PseudoVedtaksperiodeTest {
         val pvps = mutableListOf(pvpEier,pvpIkkeEier)
 
 
-        val resultat = pvps.etablerEierskap(nySubsumsjon)
-        assertEquals(pvpEier, resultat)
+        val resultat = pvps.finnEiere(nySubsumsjon)
+        assertEquals(pvpEier, resultat.first())
     }
 
 
@@ -98,8 +37,7 @@ class PseudoVedtaksperiodeTest {
 
         val pvps = mutableListOf(vedtaksperiode)
 
-
-        pvps.nyHåndter(nySubsumsjon)
+        pvps.håndter(nySubsumsjon)
 
         assertEquals(1, pvps.size)
         assertEquals(3, pvps[0].antallSubsumsjoner())
@@ -120,7 +58,8 @@ class PseudoVedtaksperiodeTest {
 
         val pvps = mutableListOf(pvpEier,pvpIkkeEier, pvpOgsåEier)
 
-        pvps.nyHåndter(nySubsumsjon)
+        pvps.håndter(nySubsumsjon)
+        pvps.forEach { println(it.antallSubsumsjoner()) }
         assertEquals(3, pvps.size)
         assertEquals(3, pvps[0].antallSubsumsjoner())
         assertEquals(3, pvps[2].antallSubsumsjoner())
@@ -141,7 +80,7 @@ class PseudoVedtaksperiodeTest {
         val pvps = mutableListOf(pvpEier,pvpIkkeEier, pvpOgsåEier)
 
 
-        pvps.nyHåndter(nySubsumsjon)
+        pvps.håndter(nySubsumsjon)
         assertEquals(3, pvps.size)
         assertEquals(3, pvps[0].antallSubsumsjoner())
         assertEquals(3, pvps[2].antallSubsumsjoner())
@@ -160,7 +99,7 @@ class PseudoVedtaksperiodeTest {
 
         val pvps = mutableListOf(pvpEier,pvpIkkeEier)
 
-        val resultat = pvps.etablerEierskap(nySubsumsjon)
+        val resultat = pvps.finnEiere(nySubsumsjon)
 
         assertEquals(listOf<PseudoVedtaksperiode>(),resultat)
     }
@@ -178,11 +117,12 @@ class PseudoVedtaksperiodeTest {
 
         val pvps = mutableListOf(pvpEier,pvpIkkeEier)
 
-        pvps.nyHåndter(nySubsumsjon)
+        pvps.håndter(nySubsumsjon)
 
         assertEquals(3, pvps[2].antallSubsumsjoner())
     }
     @Test
+    @Disabled("ikke begynt på case 2 ennå")
     fun `case 2, rydder opp gammel pvp, bare nye er igjen`() {
         // denne og den over vil stort sett bare feile sammen
         val sporingPVP1 = mapOf("sykmelding" to listOf("s1"))
@@ -196,7 +136,7 @@ class PseudoVedtaksperiodeTest {
 
         val pvps = mutableListOf(pvpEier,pvpIkkeEier)
 
-        pvps.nyHåndter(nySubsumsjon)
+        pvps.håndter(nySubsumsjon)
 
         assertEquals(2, pvps.size)
     }

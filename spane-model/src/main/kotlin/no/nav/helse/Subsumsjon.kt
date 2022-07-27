@@ -25,16 +25,29 @@ class Subsumsjon(
     internal companion object {
         fun List<Subsumsjon>.finnAlle(paragraf: String) = this.filter { it.paragraf == paragraf }
 
-        fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
-
         fun MutableList<Subsumsjon>.eier(subsumsjon: Subsumsjon): Boolean {
-            return subsumsjon.eiesAv(this.flatMap { it.sporing.values.flatten() })
+            return subsumsjon.eiesAv(this.sporingIder())
         }
 
+        fun MutableList<Subsumsjon>.relevante(pvpIder: List<String>) = filter { it.erRelevant(pvpIder) }
+
+        fun MutableList<Subsumsjon>.sporingIder() = this.flatMap { it.sporing.values.flatten() }
+    }
+
+    private fun erRelevant(pvpIder: List<String>): Boolean {
+        return if (!sporing["vedtaksperiode"].isNullOrEmpty()) {
+            sporing["vedtaksperiode"]!!.first() in pvpIder
+        } else if (!sporing["soknad"].isNullOrEmpty()) {
+            pvpIder.containsAll(sporing["soknad"]!!) && pvpIder.containsAll(sporing["sykmelding"]!!)
+        } else if (!sporing["sykmelding"].isNullOrEmpty()) {
+            pvpIder.containsAll(sporing["sykmelding"]!!)
+        } else {
+            false
+        }
     }
 
     fun finnSøkeParameter(): SporingEnum {
-        return if (sporing["vedtaksperiode"] != null)  {
+        return if (sporing["vedtaksperiode"] != null) {
             VEDTAKSPERIODE
         } else if (sporing["soknad"] != null) {
             SØKNAD
@@ -65,9 +78,13 @@ class Subsumsjon(
         )
     }
 
+    fun sammeVedtaksperiode(pvpIder: List<String>): Boolean {
+        return (this.sporing["vedtaksperiode"]?.first() in pvpIder)
+    }
+
     fun eiesAv(pvpIder: List<String>): Boolean {
-        if(this.sporing["vedtaksperiode"]?.first() in pvpIder) return true
-        return this.sporing.values.flatten().all{ it in pvpIder }
+        if (sammeVedtaksperiode(pvpIder)) return true
+        return this.sporing.values.flatten().all { it in pvpIder }
     }
 
     override fun equals(other: Any?): Boolean {
