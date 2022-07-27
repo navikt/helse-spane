@@ -69,6 +69,7 @@ internal class TestHjelper {
             sporing: Map<String, List<String>> = emptyMap(),
             input: Map<String, Any> = emptyMap(),
             output: Map<String, Any> = emptyMap(),
+            id: String = UUID.randomUUID().toString()
         ): PseudoVedtaksperiode {
             val subsumsjoner = mutableListOf<Subsumsjon>()
             for (i in 1..antallSubsumSjoner) {
@@ -78,7 +79,8 @@ internal class TestHjelper {
                         tidsstempel = tidsstempel,
                         sporing = sporing,
                         input = input,
-                        output = output
+                        output = output,
+                        id = id
                     )
                 )
             }

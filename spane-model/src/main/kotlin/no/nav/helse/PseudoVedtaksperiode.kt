@@ -8,7 +8,6 @@ class PseudoVedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>
 ) {
     internal companion object {
-
         fun MutableList<PseudoVedtaksperiode>.finnEiere(subsumsjon: Subsumsjon): List<PseudoVedtaksperiode> {
             return filter {
                 it.subsumsjoner.eier(subsumsjon)
@@ -23,25 +22,16 @@ class PseudoVedtaksperiode(
 
 
         fun MutableList<PseudoVedtaksperiode>.håndter(subsumsjon: Subsumsjon) {
-
-            // Punkt 1, er det noen PVPer som eier subsumsjon?
             val pvpEiere = finnEiere(subsumsjon)
             pvpEiere.forEach { it.leggTil(subsumsjon) }
 
-            // Hvis flere pvpeiere
-
-
             pvpEiere.forEach {
-                // TODO punkt 2 Er det noen andre PVPer som har subsumsjoner som er relevante for meg?
-
                 val relevante = this.relevanteSubsumsjoner(it)
-
                 it.leggTil(*relevante.toTypedArray())
-                // Ja?             }Legg til i meg
 
-                // Todo punkt 3 Fjern subsumsjoner fra andre pvper som her er søknader jeg eier.
             }
-
+            // TODO punkt 3 Fjern subsumsjoner fra andre pvper som her er søknader jeg eier
+            // TODO punkt 4 hvis pvper inneholder meg, fjern meg
         }
     }
 

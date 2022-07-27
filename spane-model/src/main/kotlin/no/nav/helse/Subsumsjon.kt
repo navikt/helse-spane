@@ -1,6 +1,5 @@
 package no.nav.helse
 
-import no.nav.helse.SporingEnum.*
 import java.time.ZonedDateTime
 
 class Subsumsjon(
@@ -25,9 +24,7 @@ class Subsumsjon(
     internal companion object {
         fun List<Subsumsjon>.finnAlle(paragraf: String) = this.filter { it.paragraf == paragraf }
 
-        fun MutableList<Subsumsjon>.eier(subsumsjon: Subsumsjon): Boolean {
-            return subsumsjon.eiesAv(this.sporingIder())
-        }
+        fun MutableList<Subsumsjon>.eier(subsumsjon: Subsumsjon) = subsumsjon.eiesAv(this.sporingIder())
 
         fun MutableList<Subsumsjon>.relevante(pvpIder: List<String>) = filter { it.erRelevant(pvpIder) }
 
@@ -46,14 +43,13 @@ class Subsumsjon(
         }
     }
 
-    fun finnSøkeParameter(): SporingEnum {
-        return if (sporing["vedtaksperiode"] != null) {
-            VEDTAKSPERIODE
-        } else if (sporing["soknad"] != null) {
-            SØKNAD
-        } else {
-            SYKMELDING
-        }
+    fun sammeVedtaksperiode(pvpIder: List<String>): Boolean {
+        return (this.sporing["vedtaksperiode"]?.first() in pvpIder)
+    }
+
+    fun eiesAv(pvpIder: List<String>): Boolean {
+        if (sammeVedtaksperiode(pvpIder)) return true
+        return this.sporing.values.flatten().all { it in pvpIder }
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
@@ -78,14 +74,6 @@ class Subsumsjon(
         )
     }
 
-    fun sammeVedtaksperiode(pvpIder: List<String>): Boolean {
-        return (this.sporing["vedtaksperiode"]?.first() in pvpIder)
-    }
-
-    fun eiesAv(pvpIder: List<String>): Boolean {
-        if (sammeVedtaksperiode(pvpIder)) return true
-        return this.sporing.values.flatten().all { it in pvpIder }
-    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

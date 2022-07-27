@@ -57,24 +57,6 @@ internal class SubsumsjonTest {
     }
 
     @Test
-    fun `avgjør om subsumsjon skal dupliseres`() {
-        val sporingDupliser = mapOf("sykmelding" to listOf("1"))
-        val sporingSoknad = mapOf("sykmelding" to listOf("1"), "soknad" to listOf("2"))
-        val sporingVedtaksperiode = mapOf(
-            "sykmelding" to listOf("1"),
-            "soknad" to listOf("2"),
-            "vedtaksperiode" to listOf("3")
-        )
-        val subsumsjonVedtaksperiode = lagSubsumsjon(sporing = sporingVedtaksperiode)
-        val subsumsjonSøknad = lagSubsumsjon(sporing = sporingSoknad)
-        val subsumsjonDup = lagSubsumsjon(sporing = sporingDupliser)
-        assertEquals(SporingEnum.VEDTAKSPERIODE, subsumsjonVedtaksperiode.finnSøkeParameter())
-        assertEquals(SporingEnum.SØKNAD, subsumsjonSøknad.finnSøkeParameter())
-        assertEquals(SporingEnum.SYKMELDING, subsumsjonDup.finnSøkeParameter())
-    }
-
-
-    @Test
     fun `avgjør om subsumsjon med vedtaksperiode ikke er relevant`() {
         val sporing = mapOf("sykmelding" to listOf("1"), "soknad" to listOf("2"))
         val sporing1 = mapOf("sykmelding" to listOf("1"), "soknad" to listOf("2"))
