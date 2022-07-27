@@ -67,7 +67,7 @@ internal class TestHjelper {
             sporing: Map<String, Any> = emptyMap(),
             input: Map<String, Any> = emptyMap(),
             output: Map<String, Any> = emptyMap(),
-        ): Vedtaksperiode {
+        ): PseudoVedtaksperiode {
             val subsumsjoner = mutableListOf<Subsumsjon>()
             for (i in 1..antallSubsumSjoner) {
                 subsumsjoner.add(
@@ -80,11 +80,11 @@ internal class TestHjelper {
                     )
                 )
             }
-            return Vedtaksperiode(subsumsjoner)
+            return PseudoVedtaksperiode(subsumsjoner)
         }
 
         fun assertVedtaksperioderAntallOgLengde(
-            vedtaksperioder: MutableList<Vedtaksperiode>,
+            vedtaksperioder: MutableList<PseudoVedtaksperiode>,
             forventetAntallVedtaksperioder: Int,
             forventetAntallSubsumsjoner: Int
         ) {

@@ -3,28 +3,28 @@ package no.nav.helse
 import no.nav.helse.SporingEnum.*
 import no.nav.helse.Subsumsjon.Companion.harEierskap
 
-class Vedtaksperiode(
+class PseudoVedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>
 ) {
     internal companion object {
 
-        fun MutableList<Vedtaksperiode>.etablerEierskap(subsumsjon: Subsumsjon): Vedtaksperiode {
+        fun MutableList<PseudoVedtaksperiode>.etablerEierskap(subsumsjon: Subsumsjon): PseudoVedtaksperiode {
             val sporing = subsumsjon.finnSøkeParameter()
             forEach {
                 if (it.subsumsjoner.harEierskap(subsumsjon, sporing)) it.subsumsjoner += subsumsjon; return it
             }
-            this.add(Vedtaksperiode(mutableListOf(subsumsjon)))
+            this.add(PseudoVedtaksperiode(mutableListOf(subsumsjon)))
             return this[this.lastIndex]
         }
 
-        fun MutableList<Vedtaksperiode>.dupliserSubsumsjon(subsumsjon: Subsumsjon) {
+        fun MutableList<PseudoVedtaksperiode>.dupliserSubsumsjon(subsumsjon: Subsumsjon) {
             forEach {
                 if (it.subsumsjoner.harEierskap(subsumsjon, SYKMELDING)) it.subsumsjoner += subsumsjon
             }
         }
 
 
-        fun MutableList<Vedtaksperiode>.nyHåndter(subsumsjon: Subsumsjon) {
+        fun MutableList<PseudoVedtaksperiode>.nyHåndter(subsumsjon: Subsumsjon) {
             // returnerer dersom subsumsjonen kun har sykemeldingsparameter
             if (subsumsjon.finnSøkeParameter() == SYKMELDING) {
                 dupliserSubsumsjon(subsumsjon)

@@ -1,11 +1,11 @@
 package no.nav.helse
 
-import no.nav.helse.Vedtaksperiode.Companion.nyHåndter
+import no.nav.helse.PseudoVedtaksperiode.Companion.nyHåndter
 
 class Person(
     private val fødselsnummer: String
 ) {
-    private val vedtaksperioder = mutableListOf<Vedtaksperiode>()
+    private val vedtaksperioder = mutableListOf<PseudoVedtaksperiode>()
 
     fun antallVedtaksperioder(): Int {
         return vedtaksperioder.size

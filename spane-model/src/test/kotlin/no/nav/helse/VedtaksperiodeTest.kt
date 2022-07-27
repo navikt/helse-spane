@@ -1,17 +1,14 @@
 package no.nav.helse
 
-import no.nav.helse.SporingEnum.*
-import no.nav.helse.TestHjelper.Companion.assertVedtaksperioderAntallOgLengde
 import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
 import no.nav.helse.TestHjelper.Companion.lagVedtaksPeriode
-import no.nav.helse.Vedtaksperiode.Companion.etablerEierskap
-import no.nav.helse.Vedtaksperiode.Companion.nyHåndter
+import no.nav.helse.PseudoVedtaksperiode.Companion.etablerEierskap
+import no.nav.helse.PseudoVedtaksperiode.Companion.nyHåndter
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
-class VedtaksperiodeTest {
-
-
+class PseudoVedtaksperiodeTest {
 
     @Test
     fun `subsumsjon blir duplisert og lagt til i alle rette vedtaksperioder`() {
@@ -73,9 +70,6 @@ class VedtaksperiodeTest {
     }
 
 
-
-    /* NYE TESTCASE */
-
     @Test
     fun `subsumsjon finner rett eier (pvp)`() {
         val sporingEier = mapOf("sykmelding" to "s1")
@@ -86,6 +80,7 @@ class VedtaksperiodeTest {
         val nySubsumsjon = lagSubsumsjon(sporing= sporingEier)
 
         val pvps = mutableListOf(pvpEier,pvpIkkeEier)
+
 
         val resultat = pvps.etablerEierskap(nySubsumsjon)
         assertEquals(pvpEier, resultat)
@@ -109,6 +104,7 @@ class VedtaksperiodeTest {
     }
 
     @Test
+    @Disabled("Ikke lagt til ennå")
     fun `subsumsjon finner rett eiere (pvp) duplisering`() {
         val sporingSubsumsjon = mapOf("sykmelding" to "s1")
         val sporingIkkeEier = mapOf("sykmelding" to "s2")
@@ -123,15 +119,12 @@ class VedtaksperiodeTest {
 
         val pvps = mutableListOf(pvpEier,pvpIkkeEier, pvpOgsåEier)
 
-        pvps.nyHåndter(nySubsumsjon)
-        assertEquals(3, pvps.size)
-        assertEquals(3, pvps[0].antallSubsumsjoner())
-        assertEquals(3, pvps[2].antallSubsumsjoner())
+        val resultat = pvps.etablerEierskap(nySubsumsjon)
+
+        assertEquals(listOf(pvpEier, pvpOgsåEier),resultat)
     }
     @Test
     fun `subsumsjon blir duplisert og lagt til i rette vedtaksperioder`() {
-        // denne gjør det samme som testen over så er muligens overfløoidg?????
-
         val sporingSubsumsjon = mapOf("sykmelding" to "s1")
         val sporingIkkeEier = mapOf("sykmelding" to "s2")
         val sporingEier = mapOf("sykmelding" to "s1", "soknad" to "sø1")
@@ -150,8 +143,63 @@ class VedtaksperiodeTest {
         assertEquals(3, pvps.size)
         assertEquals(3, pvps[0].antallSubsumsjoner())
         assertEquals(3, pvps[2].antallSubsumsjoner())
-
     }
+    @Test
+    @Disabled("Ikke lagt til ennå")
+    fun `case 2, finner ingen eier`() {
+        val sporingPVP1 = mapOf("sykmelding" to "s1")
+        val sporingPVP2 = mapOf("sykmelding" to "s2")
+        val sporingNySubsumsjon = mapOf("sykmelding" to "s1", "soknad" to "sø1")
+
+        val pvpEier = lagVedtaksPeriode(2, sporing = sporingPVP1)
+        val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingPVP2)
+
+        val nySubsumsjon = lagSubsumsjon(sporing= sporingNySubsumsjon)
+
+        val pvps = mutableListOf(pvpEier,pvpIkkeEier)
+
+        val resultat = pvps.etablerEierskap(nySubsumsjon)
+
+        assertEquals(listOf<PseudoVedtaksperiode>(),resultat)
+    }
+    @Test
+    @Disabled("Ikke lagt til ennå")
+
+    fun `case 2, ny pvp blir lagd og relevante subsumsjoner blir lagt til og `() {
+        val sporingPVP1 = mapOf("sykmelding" to "s1")
+        val sporingPVP2 = mapOf("sykmelding" to "s2")
+        val sporingNySubsumsjon = mapOf("sykmelding" to "s1", "soknad" to "sø1")
+
+        val pvpEier = lagVedtaksPeriode(2, sporing = sporingPVP1)
+        val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingPVP2)
+
+        val nySubsumsjon = lagSubsumsjon(sporing= sporingNySubsumsjon)
+
+        val pvps = mutableListOf(pvpEier,pvpIkkeEier)
+
+        pvps.nyHåndter(nySubsumsjon)
+
+        assertEquals(3, pvps[2].antallSubsumsjoner())
+    }
+    @Test
+    fun `case 2, rydder opp gammel pvp, bare nye er igjen`() {
+        // denne og den over vil stort sett bare feile sammen
+        val sporingPVP1 = mapOf("sykmelding" to "s1")
+        val sporingPVP2 = mapOf("sykmelding" to "s2")
+        val sporingNySubsumsjon = mapOf("sykmelding" to "s1", "soknad" to "sø1")
+
+        val pvpEier = lagVedtaksPeriode(2, sporing = sporingPVP1)
+        val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingPVP2)
+
+        val nySubsumsjon = lagSubsumsjon(sporing= sporingNySubsumsjon)
+
+        val pvps = mutableListOf(pvpEier,pvpIkkeEier)
+
+        pvps.nyHåndter(nySubsumsjon)
+
+        assertEquals(2, pvps.size)
+    }
+
 
 
 
