@@ -1,6 +1,6 @@
 import { Search, Table } from "@navikt/ds-react";
 import React, { FormEvent, useState } from "react";
-import SubsumsjonTableBody from "./SubsumsjonTableBody";
+import VedtaksperiodeTableBody from "./VedtaksperiodeTableBody";
 import "@navikt/ds-css-internal";
 import { Backend, restBackend, testBackend } from "../service";
 import { Environment } from "../environment";
@@ -20,7 +20,6 @@ function PersonSøkSide(props: Props) {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(fødselsnummer);
     backend.person(fødselsnummer).then((r) => setPerson(r));
   };
 
@@ -45,7 +44,7 @@ function PersonSøkSide(props: Props) {
             <Table.HeaderCell scope="col">Tidsstempel</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-        {person && <SubsumsjonTableBody person={person} />}
+        {person && <VedtaksperiodeTableBody person={person} />}
       </Table>
     </main>
   );
