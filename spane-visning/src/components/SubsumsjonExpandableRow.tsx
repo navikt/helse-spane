@@ -18,8 +18,8 @@ export default function SubsumsjonExpandableRow(props: Props) {
       onClick={() => setExpand(!expand)}
       style={{ cursor: "pointer" }}
     >
-      <Table.HeaderCell scope="row">{vedtaksperiodeIdx + 1}</Table.HeaderCell>
-      <Table.HeaderCell scope="row">
+      <Table.DataCell scope="row">{vedtaksperiodeIdx + 1}</Table.DataCell>
+      <Table.DataCell scope="row">
         §{" "}
         {subsumsjon.paragraf +
           (subsumsjon.ledd ? ", " + subsumsjon.ledd + ".ledd" : "") +
@@ -27,7 +27,7 @@ export default function SubsumsjonExpandableRow(props: Props) {
           (subsumsjon.bokstav !== "null" && subsumsjon.bokstav !== null
             ? ", bokstav " + subsumsjon.bokstav
             : "")}
-      </Table.HeaderCell>
+      </Table.DataCell>
       <Table.DataCell>{subsumsjon.utfall}</Table.DataCell>
       <Table.DataCell>{subsumsjon.tidsstempel}</Table.DataCell>
     </Table.ExpandableRow>
