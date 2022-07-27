@@ -1,7 +1,7 @@
 import React from "react";
 import { Table } from "@navikt/ds-react";
 import { PersonDto, SubsumsjonDto, VedtaksperiodeDto } from "../types";
-import UtvidetTableInnhold from "./UtvidetTableInnhold";
+import UtvidetSubsumsjonTableInnhold from "./UtvidetSubsumsjonTableInnhold";
 import SubsumsjonExpandlableRow from "./SubsumsjonExpandableRow";
 import VedtaksperiodeExpandableRow from "./VedtaksperiodeExpandableRow";
 
@@ -16,23 +16,23 @@ export default function VedtaksperiodeTableBody(props: Props) {
     <Table.Body>
       {person.vedtaksperioder.map(
         (vedtaksperiode: VedtaksperiodeDto, vedtaksperiodeIdx) =>
-          // (
-          //   <VedtaksperiodeExpandableRow />
-          // )
+          (
+            <VedtaksperiodeExpandableRow />
+          )
 
-          {
-            return vedtaksperiode.subsumsjoner.map(
-              (subsumsjon: SubsumsjonDto, subsumsjonIdx: number) => {
-                return (
-                  <SubsumsjonExpandlableRow
-                    key={subsumsjonIdx}
-                    subsumsjon={subsumsjon}
-                    vedtaksperiodeIdx={vedtaksperiodeIdx}
-                  />
-                );
-              }
-            );
-          }
+          // {
+          //   return vedtaksperiode.subsumsjoner.map(
+          //     (subsumsjon: SubsumsjonDto, subsumsjonIdx: number) => {
+          //       return (
+          //         <SubsumsjonExpandlableRow
+          //           key={subsumsjonIdx}
+          //           subsumsjon={subsumsjon}
+          //           vedtaksperiodeIdx={vedtaksperiodeIdx}
+          //         />
+          //       );
+          //     }
+          //   );
+          // }
       )}
     </Table.Body>
   );

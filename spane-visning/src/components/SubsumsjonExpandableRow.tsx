@@ -1,7 +1,7 @@
 import { Table } from "@navikt/ds-react";
 import React, { useState } from "react";
 import { SubsumsjonDto } from "../types";
-import UtvidetTableInnhold from "./UtvidetTableInnhold";
+import UtvidetSubsumsjonTableInnhold from "./UtvidetSubsumsjonTableInnhold";
 
 interface Props {
   subsumsjon: SubsumsjonDto;
@@ -12,7 +12,7 @@ export default function SubsumsjonExpandableRow(props: Props) {
   const [expand, setExpand] = useState<boolean>(false);
   return (
     <Table.ExpandableRow
-      content={<UtvidetTableInnhold subsumsjon={subsumsjon} />}
+      content={<UtvidetSubsumsjonTableInnhold subsumsjon={subsumsjon} />}
       togglePlacement="right"
       open={expand}
       onClick={() => setExpand(!expand)}

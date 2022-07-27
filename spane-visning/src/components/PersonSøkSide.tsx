@@ -36,14 +36,6 @@ function PersonSøkSide(props: Props) {
         </form>
       </div>
       <Table size="medium">
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell scope="col">Vedtaksperiode</Table.HeaderCell>
-            <Table.HeaderCell scope="col">Paragraf</Table.HeaderCell>
-            <Table.HeaderCell scope="col">Utfall</Table.HeaderCell>
-            <Table.HeaderCell scope="col">Tidsstempel</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
         {person && <VedtaksperiodeTableBody person={person} />}
       </Table>
     </main>

@@ -6,7 +6,7 @@ interface Props {
   subsumsjon: SubsumsjonDto;
 }
 
-export default function UtvidetTableInnhold(props: Props) {
+export default function UtvidetSubsumsjonTableInnhold(props: Props) {
   const { subsumsjon } = props;
   const [outputString, setOutputString] = useState<string>("");
   const [inputString, setInputString] = useState<string>("");
