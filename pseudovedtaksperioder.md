@@ -21,7 +21,7 @@ den subsumsjonen med færrest antall id'er og tar utgangspunkt i disse id'ene. D
 oss tre muligheter: 
 
 1. Dersom man har alle id'ene må de to subsumsjonene matche på vpid
-2. Dersom man har søid og sid må de to subsumsjonene matche på begge
+2. Dersom man har søid og sid må de to subsumsjonene matche på søid
 3. Dersom man har sid må de to subsumsjonene matche på denne 
 
 ## Pseudovedtaksperiode (PVP)
