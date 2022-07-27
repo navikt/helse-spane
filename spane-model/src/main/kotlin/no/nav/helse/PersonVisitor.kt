@@ -34,7 +34,7 @@ interface SubsumsjonVisitor {
         kilde : String,
         versjonAvKode : String,
         fødselsnummer : String,
-        sporing : Map<String, Any>,
+        sporing : Map<String, List<String>>,
         tidsstempel : ZonedDateTime,
         lovverk : String,
         lovverksversjon : String,
