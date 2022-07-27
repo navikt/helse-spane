@@ -24,42 +24,8 @@ class Subsumsjon(
 ) {
     internal companion object {
         fun List<Subsumsjon>.finnAlle(paragraf: String) = this.filter { it.paragraf == paragraf }
-        fun MutableList<Subsumsjon>.finnAlleUtenSøknadId() = this.filter { it.sporing["soknad"] == null }.toMutableList()
-
 
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
-
-
-        fun MutableList<Subsumsjon>.hentIder(): Map<String, List<String>> {
-            val result = mutableMapOf<String, List<String>>()
-            var sykmeldingIder = mutableListOf<String>()
-            var søknadIder = mutableListOf<String>()
-            var vedtaksperiodeIder = mutableListOf<String>()
-
-            forEach {
-                when(it.finnSøkeParameter()){
-                    VEDTAKSPERIODE -> {
-                        vedtaksperiodeIder.add(it.sporing[VEDTAKSPERIODE.navn] as String)
-                        søknadIder.add(it.sporing[SØKNAD.navn] as String)
-                        sykmeldingIder.add(it.sporing[SYKMELDING.navn] as String)
-                    }
-                    SØKNAD -> {
-                        søknadIder.add(it.sporing[SØKNAD.navn] as String)
-                        sykmeldingIder.add(it.sporing[SYKMELDING.navn] as String)
-                    }
-                    SYKMELDING -> {
-                        sykmeldingIder.add(it.sporing[SYKMELDING.navn] as String)
-                    }
-
-                }
-            }
-            result += SYKMELDING.navn to sykmeldingIder
-            result += SØKNAD.navn to søknadIder
-            result += VEDTAKSPERIODE.navn to vedtaksperiodeIder
-            return result
-        }
-
-
 
         fun MutableList<Subsumsjon>.harEierskap(subsumsjon: Subsumsjon, søk : SporingEnum): Boolean {
             this.forEach {
@@ -70,25 +36,7 @@ class Subsumsjon(
             return false
         }
 
-
-
-
-
-
-        fun MutableList<Subsumsjon>.hentSubsMedID(subsumsjon: Subsumsjon, søk : SporingEnum): MutableList<Subsumsjon> {
-            val subsumsjoner = mutableListOf<Subsumsjon>()
-            this.forEach {
-                if (it.sporing[søk.navn] == subsumsjon.sporing[søk.navn]){
-                    subsumsjoner += it
-                }
-            }
-            subsumsjoner += subsumsjon
-            return subsumsjoner
-        }
-
-
     }
-    fun sjekkEierskap(søk : SporingEnum, ider : List<String>) :Boolean = ider.contains(sporing[søk.navn])
 
     fun finnSøkeParameter(): SporingEnum {
         return if (sporing["vedtaksperiode"] != null)  {
