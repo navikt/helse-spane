@@ -18,8 +18,8 @@ function SidePanel(props: Props) {
       </div>
       <div className="checkbox-group-container">
         <CheckboxGroup legend="Arbeidsgiver">
-          <Checkbox>123456</Checkbox>
-          <Checkbox> 98765</Checkbox>
+          <Checkbox value={"123456"}>123456</Checkbox>
+          <Checkbox value={"98765"}> 98765</Checkbox>
         </CheckboxGroup>
       </div>
     </div>

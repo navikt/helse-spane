@@ -5,10 +5,9 @@ import UtvidetSubsumsjonTableInnhold from "./UtvidetSubsumsjonTableInnhold";
 
 interface Props {
   subsumsjon: SubsumsjonDto;
-  vedtaksperiodeIdx: number;
 }
 export default function SubsumsjonExpandableRow(props: Props) {
-  const { subsumsjon, vedtaksperiodeIdx } = props;
+  const { subsumsjon} = props;
   const [expand, setExpand] = useState<boolean>(false);
   return (
     <Table.ExpandableRow
@@ -18,7 +17,6 @@ export default function SubsumsjonExpandableRow(props: Props) {
       onClick={() => setExpand(!expand)}
       style={{ cursor: "pointer" }}
     >
-      <Table.DataCell scope="row">{vedtaksperiodeIdx + 1}</Table.DataCell>
       <Table.DataCell scope="row">
         §{" "}
         {subsumsjon.paragraf +
