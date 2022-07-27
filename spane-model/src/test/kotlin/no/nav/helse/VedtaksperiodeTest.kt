@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test
 
 class PseudoVedtaksperiodeTest {
 
+
+
     @Test
     fun `subsumsjon blir duplisert og lagt til i alle rette vedtaksperioder`() {
         val børDupliseresSporing = mapOf(
@@ -104,7 +106,6 @@ class PseudoVedtaksperiodeTest {
     }
 
     @Test
-    @Disabled("Ikke lagt til ennå")
     fun `subsumsjon finner rett eiere (pvp) duplisering`() {
         val sporingSubsumsjon = mapOf("sykmelding" to "s1")
         val sporingIkkeEier = mapOf("sykmelding" to "s2")
@@ -119,9 +120,10 @@ class PseudoVedtaksperiodeTest {
 
         val pvps = mutableListOf(pvpEier,pvpIkkeEier, pvpOgsåEier)
 
-        val resultat = pvps.etablerEierskap(nySubsumsjon)
-
-        assertEquals(listOf(pvpEier, pvpOgsåEier),resultat)
+        pvps.nyHåndter(nySubsumsjon)
+        assertEquals(3, pvps.size)
+        assertEquals(3, pvps[0].antallSubsumsjoner())
+        assertEquals(3, pvps[2].antallSubsumsjoner())
     }
     @Test
     fun `subsumsjon blir duplisert og lagt til i rette vedtaksperioder`() {
@@ -164,7 +166,6 @@ class PseudoVedtaksperiodeTest {
     }
     @Test
     @Disabled("Ikke lagt til ennå")
-
     fun `case 2, ny pvp blir lagd og relevante subsumsjoner blir lagt til og `() {
         val sporingPVP1 = mapOf("sykmelding" to "s1")
         val sporingPVP2 = mapOf("sykmelding" to "s2")
@@ -199,8 +200,4 @@ class PseudoVedtaksperiodeTest {
 
         assertEquals(2, pvps.size)
     }
-
-
-
-
 }
