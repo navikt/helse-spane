@@ -1,7 +1,7 @@
 package no.nav.helse
 
 import no.nav.helse.SporingEnum.*
-import no.nav.helse.Subsumsjon.Companion.harEierskap
+import no.nav.helse.Subsumsjon.Companion.eier
 
 class PseudoVedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>
@@ -11,7 +11,7 @@ class PseudoVedtaksperiode(
         fun MutableList<PseudoVedtaksperiode>.etablerEierskap(subsumsjon: Subsumsjon): PseudoVedtaksperiode {
             val sporing = subsumsjon.finnSøkeParameter()
             forEach {
-                if (it.subsumsjoner.harEierskap(subsumsjon, sporing)) it.subsumsjoner += subsumsjon; return it
+                if (it.subsumsjoner.eier(subsumsjon)) it.subsumsjoner += subsumsjon; return it
             }
             this.add(PseudoVedtaksperiode(mutableListOf(subsumsjon)))
             return this[this.lastIndex]
@@ -19,7 +19,7 @@ class PseudoVedtaksperiode(
 
         fun MutableList<PseudoVedtaksperiode>.dupliserSubsumsjon(subsumsjon: Subsumsjon) {
             forEach {
-                if (it.subsumsjoner.harEierskap(subsumsjon, SYKMELDING)) it.subsumsjoner += subsumsjon
+                if (it.subsumsjoner.eier(subsumsjon)) it.subsumsjoner += subsumsjon
             }
         }
 

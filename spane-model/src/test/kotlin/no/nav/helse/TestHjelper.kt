@@ -48,7 +48,7 @@ internal class TestHjelper {
         fun lagSubsumsjon(
             paragraf: String = "8-11",
             tidsstempel: ZonedDateTime = 1.januar(2022),
-            sporing: Map<String, Any> = emptyMap(),
+            sporing: Map<String, List<String>> = emptyMap(),
             input: Map<String, Any> = emptyMap(),
             output: Map<String, Any> = emptyMap(),
 
@@ -64,7 +64,7 @@ internal class TestHjelper {
             antallSubsumSjoner: Int,
             paragraf: String = "8-11",
             tidsstempel: ZonedDateTime = 1.januar(2022),
-            sporing: Map<String, Any> = emptyMap(),
+            sporing: Map<String, List<String>> = emptyMap(),
             input: Map<String, Any> = emptyMap(),
             output: Map<String, Any> = emptyMap(),
         ): PseudoVedtaksperiode {

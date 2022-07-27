@@ -10,7 +10,7 @@ class Subsumsjon(
     private val kilde: String,
     private val versjonAvKode: String,
     private val fødselsnummer: String,
-    private val sporing: Map<String, Any>,
+    private val sporing: Map<String, List<String>>,
     private val tidsstempel: ZonedDateTime,
     private val lovverk: String,
     private val lovverksversjon: String,
@@ -27,13 +27,8 @@ class Subsumsjon(
 
         fun List<Subsumsjon>.sorterPåTid() = this.sortedBy { it.tidsstempel }
 
-        fun MutableList<Subsumsjon>.harEierskap(subsumsjon: Subsumsjon, søk : SporingEnum): Boolean {
-            this.forEach {
-                if(it.sporing[søk.navn] == subsumsjon.sporing[søk.navn]) {
-                    return true
-                }
-            }
-            return false
+        fun MutableList<Subsumsjon>.eier(subsumsjon: Subsumsjon): Boolean {
+            return subsumsjon.eiesAv(this.flatMap { it.sporing.values.flatten() })
         }
 
     }
@@ -70,6 +65,10 @@ class Subsumsjon(
         )
     }
 
+    fun eiesAv(pvpIder: List<String>): Boolean {
+        if(this.sporing["vedtaksperiode"]?.first() in pvpIder) return true
+        return this.sporing.values.flatten().all{ it in pvpIder }
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

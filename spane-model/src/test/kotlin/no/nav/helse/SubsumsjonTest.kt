@@ -1,7 +1,7 @@
 package no.nav.helse
 
 import no.nav.helse.Subsumsjon.Companion.finnAlle
-import no.nav.helse.Subsumsjon.Companion.harEierskap
+import no.nav.helse.Subsumsjon.Companion.eier
 import no.nav.helse.Subsumsjon.Companion.sorterPåTid
 import no.nav.helse.TestHjelper.Companion.februar
 import no.nav.helse.TestHjelper.Companion.januar
@@ -37,51 +37,51 @@ internal class SubsumsjonTest {
 
     @Test
     fun `avgjør om subsumsjon er relevant`() {
-        val sporing = mapOf("sykmelding" to "1")
+        val sporing = mapOf("sykmelding" to listOf("1"))
         val subsumsjon = lagSubsumsjon(sporing = sporing)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertTrue(subsumsjoner.harEierskap(subsumsjon, SporingEnum.SYKMELDING))
+        assertTrue(subsumsjoner.eier(subsumsjon))
     }
 
     @Test
     fun `avgjør om subsumsjon er relevant etter søknadsid`() {
-        val sporing = mapOf("sykmelding" to "1")
-        val sporing2 = mapOf("sykmelding" to "1", "søknad" to "1")
+        val sporing = mapOf("sykmelding" to listOf("1"))
+        val sporing2 = mapOf("sykmelding" to listOf("1"), "søknad" to listOf("1"))
         val subsumsjon = lagSubsumsjon(sporing = sporing2)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertTrue(subsumsjoner.harEierskap(subsumsjon, SporingEnum.SØKNAD))
+        assertTrue(subsumsjoner.eier(subsumsjon))
     }
 
 
     @Test
     fun `avgjør at subsumsjon ikke er relevant`() {
-        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc")
-        val sporing2 = mapOf("sykmelding" to "bbb-bbb-ccc")
+        val sporing = mapOf("sykmelding" to listOf("1"))
+        val sporing2 = mapOf("sykmelding" to listOf("2"))
         val subsumsjon = lagSubsumsjon(sporing = sporing2)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing),
             lagSubsumsjon(sporing = sporing)
         )
-        assertFalse(subsumsjoner.harEierskap(subsumsjon, SporingEnum.SYKMELDING))
+        assertFalse(subsumsjoner.eier(subsumsjon))
     }
 
     @Test
     fun `avgjør om subsumsjon skal dupliseres`() {
-        val sporingDupliser = mapOf("sykmelding" to "aaa-bbb-ccc")
-        val sporingSoknad = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc")
+        val sporingDupliser = mapOf("sykmelding" to listOf("1"))
+        val sporingSoknad = mapOf("sykmelding" to listOf("1"), "soknad" to listOf("2"))
         val sporingVedtaksperiode = mapOf(
-            "sykmelding" to "aaa-bbb-ccc",
-            "soknad" to "bbb-bbb-ccc",
-            "vedtaksperiode" to "abc-abc-abc"
+            "sykmelding" to listOf("1"),
+            "soknad" to listOf("2"),
+            "vedtaksperiode" to listOf("3")
         )
         val subsumsjonVedtaksperiode = lagSubsumsjon(sporing = sporingVedtaksperiode)
         val subsumsjonSøknad = lagSubsumsjon(sporing = sporingSoknad)
@@ -94,14 +94,14 @@ internal class SubsumsjonTest {
 
     @Test
     fun `avgjør om subsumsjon med vedtaksperiode ikke er relevant`() {
-        val sporing = mapOf("sykmelding" to "aaa-bbb-ccc", "soknad" to "bbb-bbb-ccc")
-        val sporing1 = mapOf("sykmelding" to "abb-bbb-ccc", "soknad" to "bbb-bbb-ccc")
-        val sporing2 = mapOf("sykmelding" to "abb-bbb-ccc", "vedtaksperiode" to "abc-abc-abc")
+        val sporing = mapOf("sykmelding" to listOf("1"), "soknad" to listOf("2"))
+        val sporing1 = mapOf("sykmelding" to listOf("1"), "soknad" to listOf("2"))
+        val sporing2 = mapOf("sykmelding" to listOf("1"), "vedtaksperiode" to listOf("3"))
         val subsumsjon = lagSubsumsjon(sporing = sporing)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing1),
             lagSubsumsjon(sporing = sporing2)
         )
-        assertTrue(subsumsjoner.harEierskap(subsumsjon, SporingEnum.SØKNAD))
+        assertTrue(subsumsjoner.eier(subsumsjon))
     }
 }
