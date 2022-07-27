@@ -61,7 +61,7 @@ class Subsumsjon(
 
 
 
-        fun MutableList<Subsumsjon>.erRelevant(subsumsjon: Subsumsjon, søk : SporingEnum): Boolean {
+        fun MutableList<Subsumsjon>.harEierskap(subsumsjon: Subsumsjon, søk : SporingEnum): Boolean {
             this.forEach {
                 if(it.sporing[søk.navn] == subsumsjon.sporing[søk.navn]) {
                     return true

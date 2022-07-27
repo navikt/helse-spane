@@ -1,51 +1,13 @@
 package no.nav.helse
 
 import no.nav.helse.SporingEnum.*
-import no.nav.helse.Subsumsjon.Companion.erRelevant
 import no.nav.helse.Subsumsjon.Companion.finnAlleUtenSøknadId
-import no.nav.helse.Subsumsjon.Companion.hentIder
-import no.nav.helse.Subsumsjon.Companion.oppdaterIder
+import no.nav.helse.Subsumsjon.Companion.harEierskap
 
 class Vedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>
     // liste med alle subsumsjoner med kun sykemelding - ikke begrenset til hver vedtaksperiode, men det totale antallet.
 ) {
-
-    private var alleRelevanteSykmeldingsIDer = mutableListOf<String>()
-    private var alleRelevanteSøknadsIDer = mutableListOf<String>()
-    private lateinit var vedtaksperiodeId : String
-
-    init {
-        lagreIDer()
-    }
-
-    fun lagreIDer(){
-        val ider = subsumsjoner.hentIder()
-        if (ider[VEDTAKSPERIODE.navn]!!.size > 1) {
-            print("fant mer enn en vedtaksperiode ID")
-            return
-        }
-        vedtaksperiodeId = ider[VEDTAKSPERIODE.navn]!![0]
-        alleRelevanteSøknadsIDer = ider[SØKNAD.navn]!!.toMutableList()
-        alleRelevanteSykmeldingsIDer = ider[SYKMELDING.navn]!!.toMutableList()
-    }
-
-
-
-    fun sjekkEierskap(subsumsjon: Subsumsjon, sporing: SporingEnum) : Boolean {
-
-        return when(sporing){
-            VEDTAKSPERIODE -> {
-                subsumsjon.sjekkEierskap(sporing, listOf(vedtaksperiodeId))
-            }
-            SØKNAD -> {
-                subsumsjon.sjekkEierskap(sporing, alleRelevanteSøknadsIDer)
-            }
-            SYKMELDING -> {
-                subsumsjon.sjekkEierskap(sporing, alleRelevanteSykmeldingsIDer)
-            }
-        }
-    }
 
 
     internal companion object {
@@ -55,11 +17,11 @@ class Vedtaksperiode(
 
         //TODO: Refaktorer
         fun MutableList<Vedtaksperiode>.seEtterVedtaksperiodeID(subsumsjon: Subsumsjon, søk: SporingEnum) {
-            if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) }) this.seEtterSøknadsID(subsumsjon, SØKNAD)
+            if (this.none { it.subsumsjoner.harEierskap(subsumsjon, søk) }) this.seEtterSøknadsID(subsumsjon, SØKNAD)
         }
 
         fun MutableList<Vedtaksperiode>.vedtaksperiodeID(subsumsjon: Subsumsjon, søk: SporingEnum): Boolean {
-          return this.none { it.subsumsjoner.erRelevant(subsumsjon, søk)}
+          return this.none { it.subsumsjoner.harEierskap(subsumsjon, søk)}
         }
 
         //Sjekk om vedtaksperiode er relevant. Hvis vedtaksperiode er relevant, legg til i lista
@@ -68,7 +30,7 @@ class Vedtaksperiode(
         //TODO: Refaktorer
         fun MutableList<Vedtaksperiode>.seEtterSøknadsID(subsumsjon: Subsumsjon, søk: SporingEnum) {
 
-            if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) }) {
+            if (this.none { it.subsumsjoner.harEierskap(subsumsjon, søk) }) {
                 this.seEtterSykmeldingsID(subsumsjon, SYKMELDING)
             }
             /*
@@ -84,7 +46,7 @@ class Vedtaksperiode(
         fun MutableList<Vedtaksperiode>.hentVedtaksperiodeMedSykmeldingID(subsumsjon: Subsumsjon, søk: SporingEnum): MutableList<Vedtaksperiode> {
             val vedtaksperioder = mutableListOf<Vedtaksperiode>()
             forEach {
-                if (it.subsumsjoner.erRelevant(subsumsjon, søk)) vedtaksperioder.add(it)
+                if (it.subsumsjoner.harEierskap(subsumsjon, søk)) vedtaksperioder.add(it)
             }
             return vedtaksperioder
         }
@@ -98,7 +60,7 @@ class Vedtaksperiode(
             if (subsumsjon.finnSøkeParameter() == SYKMELDING){
                 var fantMatch = false
                 forEach {
-                    fantMatch = it.subsumsjoner.erRelevant(subsumsjon, søk)
+                    fantMatch = it.subsumsjoner.harEierskap(subsumsjon, søk)
                     //todo: BREAK hvis true
                 }
                 if (!fantMatch) {
@@ -106,7 +68,7 @@ class Vedtaksperiode(
                 }
 
             } else {
-                if (this.none { it.subsumsjoner.erRelevant(subsumsjon, søk) } ) {
+                if (this.none { it.subsumsjoner.harEierskap(subsumsjon, søk) } ) {
                     val alleRelevanteSubsumsjoner = this.hentVedtaksperiodeMedSykmeldingID(subsumsjon, SYKMELDING).hentAlleSubsumsjonerMedRelevantSykmeldingIDUtenSøknadID()
                     if(alleRelevanteSubsumsjoner == null){
                         this.lagNyVedtaksperiode(mutableListOf(subsumsjon))
@@ -128,48 +90,38 @@ class Vedtaksperiode(
 
 
 
-        fun MutableList<Vedtaksperiode>.finnEiere(subsumsjon: Subsumsjon) : MutableList<Vedtaksperiode> {
+        fun MutableList<Vedtaksperiode>.etablerEierskap(subsumsjon: Subsumsjon) : Vedtaksperiode {
             val sporing = subsumsjon.finnSøkeParameter()
-            val eiere = mutableListOf<Vedtaksperiode>()
             forEach {
-                if(it.sjekkEierskap(subsumsjon, sporing)) {
-                    eiere.add(it)
-                }
+                if(it.subsumsjoner.harEierskap(subsumsjon, sporing)) it.subsumsjoner += subsumsjon; return it
             }
-            return eiere
+            this.add(Vedtaksperiode(mutableListOf(subsumsjon)))
+            return this[this.lastIndex]
+        }
+
+        fun MutableList<Vedtaksperiode>.dupliserSubsumsjon(subsumsjon: Subsumsjon) {
+            forEach {
+                if(it.subsumsjoner.harEierskap(subsumsjon, SYKMELDING)) it.subsumsjoner += subsumsjon
+            }
         }
 
 
         fun MutableList<Vedtaksperiode>.nyHåndter(subsumsjon: Subsumsjon) {
-            /*
-            TOdo mulig refaktorering:
-             val sporing = subsumsjon.finnSøkeParameter()
-             if(sporing) == SYKEMDLING {
-                 dupliserSubsubsjon(sub)
-                 return
-             */
-
-            // Punkt 1, er det noen PVPer som eier subsumsjon?
-            val pvpEiere = finnEiere(subsumsjon)
-
-            // Hvis 1 eller flere PVPer eier subsumsjonen
-            if (pvpEiere.isNotEmpty()) {
-                for (eier in pvpEiere) {
-                    eier.subsumsjoner.add(subsumsjon)
-                   // val ider = subsumsjon.hentNyeIder()
-
-                    // legg til subsumsjon i pvp
-                }
-            } else {
-                // hvis nei, ny PvP
-                // TODO Når vi lager en ny vedtaksperiode må vi legge til sporing-ider i:
-//                  alleRelevanteSykmeldingsIDer
-//                  alleRelevanteSøknadsIDer
-//                  vedtaksperiodeId
-
+            // returnerer dersom subsumsjonen kun har sykemeldingsparameter
+            if (subsumsjon.finnSøkeParameter() == SYKMELDING){
+                dupliserSubsumsjon(subsumsjon)
+                return
             }
+            // Punkt 1, er det noen PVPer som eier subsumsjon?
+            val pvpEier = etablerEierskap(subsumsjon)
+
+
+
+
+
 
             this.forEach {
+                //pvpEier.subsumsjoner.harEierskap()
                 // TODO punkt 2 Er det noen andre PVPer som har subsumsjoner som er relevante for meg?
                 // Ja? Legg til i meg
             }
