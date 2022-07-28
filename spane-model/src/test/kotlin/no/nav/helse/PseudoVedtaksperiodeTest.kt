@@ -131,8 +131,7 @@ class PseudoVedtaksperiodeTest {
     //Steg 2
 
     @Test
-    @Disabled("Ikke ferdig implementert")
-    fun `ny vedtaksperiode lages og eksisterende subsumsjoner dubliseres inn`(){
+    fun `ny vedtaksperiode lages og eksisterende subsumsjoner dupliseres inn`(){
         val sporingPVP1 = mapOf("sykmelding" to listOf("s1"))
         val sporingNySubsumsjon1 = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"))
         val sporingNySubsumsjon2 = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø2"))
@@ -143,9 +142,8 @@ class PseudoVedtaksperiodeTest {
         pvps.håndter(lagSubsumsjon(sporing = sporingNySubsumsjon2))
 
         assertEquals(3, pvps.size) //Skal være 2, men det skjer ikke før clean up (steg 3) kommer på plass
-        println(pvps[1].antallSubsumsjoner())
         assertEquals(3, pvps[1].antallSubsumsjoner())
-        assertEquals(3, pvps[0].antallSubsumsjoner())
+        assertEquals(3, pvps[2].antallSubsumsjoner())
 
     }
 

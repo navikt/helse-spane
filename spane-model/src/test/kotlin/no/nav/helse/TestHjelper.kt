@@ -68,8 +68,7 @@ internal class TestHjelper {
             tidsstempel: ZonedDateTime = 1.januar(2022),
             sporing: Map<String, List<String>> = emptyMap(),
             input: Map<String, Any> = emptyMap(),
-            output: Map<String, Any> = emptyMap(),
-            id: String = UUID.randomUUID().toString()
+            output: Map<String, Any> = emptyMap()
         ): PseudoVedtaksperiode {
             val subsumsjoner = mutableListOf<Subsumsjon>()
             for (i in 1..antallSubsumSjoner) {
@@ -80,7 +79,7 @@ internal class TestHjelper {
                         sporing = sporing,
                         input = input,
                         output = output,
-                        id = id
+                        id = UUID.randomUUID().toString()
                     )
                 )
             }

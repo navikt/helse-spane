@@ -28,7 +28,6 @@ internal class PersonTest : AbstractPersonTest() {
 
 
     @Test
-//    @Disabled("til steg 4 (cleanup) er implementert vil antall vedtaksperioder være 2, skal være 1")
     fun `subsumsjon med søkID blir lagt inn i eksisterende vedtaksperiode`() {
         sendSykmeldingSubsumsjon(3)
         sendSøknadSubsumsjon()
@@ -43,7 +42,6 @@ internal class PersonTest : AbstractPersonTest() {
     }
 
     @Test
-
     fun `eksisterende subsumsjoner blir dubplisert `() {
         sendSykmeldingSubsumsjon(3)
         sendSøknadSubsumsjon()

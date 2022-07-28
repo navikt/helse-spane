@@ -126,4 +126,8 @@ class Subsumsjon(
         return result
     }
 
+    override fun toString(): String {
+        return "Subsumsjon(sporing=$sporing, id=${id.subSequence(0,5)}...)"
+    }
+
 }
