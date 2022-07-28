@@ -128,6 +128,21 @@ class PseudoVedtaksperiodeTest {
         assertEquals(3, pvps.size)
     }
 
+    @Test
+    fun `subsumsjon med vid uten eier oppretter ny vedtaksperiode `() {
+        val sporingPvp1 = mapOf("sykmelding" to listOf("s1"))
+        val sporingSubsumsjon1 = mapOf("sykmelding" to listOf("s2"), "soknad" to listOf("sø2"), "vedtaksperiode" to listOf("v1"))
+
+        val pvp1 = lagVedtaksPeriode(2, sporing = sporingPvp1)
+        val nySubsumsjon1 = lagSubsumsjon(sporing = sporingSubsumsjon1)
+
+        val pvps = mutableListOf(pvp1)
+
+        pvps.håndter(nySubsumsjon1)
+
+        assertEquals(2, pvps.size)
+    }
+
     //Steg 2
     @Test
     fun `ny vedtaksperiode lages og eksisterende subsumsjoner dupliseres inn`(){
@@ -167,8 +182,9 @@ class PseudoVedtaksperiodeTest {
         assertEquals(3, pvps[2].antallSubsumsjoner())
     }
 
+
     @Test
-    fun `subsumsjon med vid etablerer ny pvp og subsumsjoner med samme søid blir fjernet fra andre pvper `() {
+    fun `subsumsjoner med samme søid blir fjernet fra andre pvper `() {
         val sporingPvp1 = mapOf("sykmelding" to listOf("s1"))
         val sporingSubsumsjon1 = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"))
         val sporingSubsumsjon2 = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"), "vedtaksperiode" to listOf("v1"))
@@ -185,6 +201,41 @@ class PseudoVedtaksperiodeTest {
         assertEquals(3, pvps.size) //todo: skal egentlig være 2 npr cleanup blir implementert
         assertEquals(2, pvps[1].antallSubsumsjoner())
         assertEquals(4, pvps[2].antallSubsumsjoner())
+    }
+
+    @Test
+    fun `korrigerende søknad merger to pvper til en`(){
+        val sporingSykId1 = mapOf("sykmelding" to listOf("s1"))
+        val sporingSykId2 = mapOf("sykmelding" to listOf("s2"))
+
+        val sporingSøkId1 = mapOf("sykmelding" to listOf("s1"), "søknad" to listOf("sø1"))
+        val sporingSøkId2 = mapOf("sykmelding" to listOf("s2"), "søknad" to listOf("sø2"))
+
+        val sporingVId1 = mapOf("sykmelding" to listOf("s1"), "søknad" to listOf("sø1"), "vedtaksperiode" to listOf("v1"))
+
+        val korrigerndeSporing = mapOf("sykmelding" to listOf("s2"), "søknad" to listOf("sø2"), "vedtaksperiode" to listOf("v1"))
+        val subsumsjon = lagSubsumsjon(sporing = korrigerndeSporing)
+
+        val subsumsjoner1 = mutableListOf(
+            lagSubsumsjon(sporing = sporingSykId1),
+            lagSubsumsjon(sporing = sporingSykId1),
+            lagSubsumsjon(sporing = sporingSøkId1),
+            lagSubsumsjon(sporing = sporingVId1)
+        )
+        val pvp1 = PseudoVedtaksperiode(subsumsjoner1)
+
+        val subsumsjoner2 = mutableListOf(
+            lagSubsumsjon(sporing = sporingSykId2),
+            lagSubsumsjon(sporing = sporingSykId2),
+            lagSubsumsjon(sporing = sporingSøkId2)
+        )
+        val pvp2 = PseudoVedtaksperiode(subsumsjoner2)
+
+        val pvps = mutableListOf(pvp1, pvp2)
+
+        pvps.håndter(subsumsjon)
+        assertEquals(2, pvps.size)
+        assertEquals(8, pvps[0].antallSubsumsjoner())
     }
 
     @Test
