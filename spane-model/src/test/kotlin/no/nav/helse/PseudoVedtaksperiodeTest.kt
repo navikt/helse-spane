@@ -148,30 +148,6 @@ class PseudoVedtaksperiodeTest {
     }
 
 
-
-
-    @Test
-    fun `subsumsjon finner rett eiere (pvp) duplisering`() {
-        val sporingSubsumsjon = mapOf("sykmelding" to listOf("s1"))
-        val sporingIkkeEier = mapOf("sykmelding" to listOf("s2"))
-        val sporingEier = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"))
-        val sporingOgsåEier = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø2"))
-
-        val pvpEier = lagVedtaksPeriode(2, sporing = sporingEier)
-        val pvpIkkeEier = lagVedtaksPeriode(2, sporing = sporingIkkeEier)
-        val pvpOgsåEier = lagVedtaksPeriode(2, sporing = sporingOgsåEier)
-
-        val nySubsumsjon = lagSubsumsjon(sporing = sporingSubsumsjon)
-
-        val pvps = mutableListOf(pvpEier, pvpIkkeEier, pvpOgsåEier)
-
-        pvps.håndter(nySubsumsjon)
-        pvps.forEach { println(it.antallSubsumsjoner()) }
-        assertEquals(3, pvps.size)
-        assertEquals(3, pvps[0].antallSubsumsjoner())
-        assertEquals(3, pvps[2].antallSubsumsjoner())
-    }
-
     @Test
     fun `subsumsjon blir duplisert og lagt til i rette vedtaksperioder`() {
         val sporingSubsumsjon = mapOf("sykmelding" to listOf("s1"))
