@@ -31,6 +31,8 @@ class PseudoVedtaksperiode(
                 // it er vedtaksperioden
                 // er det noen subs i denne vedtaksperioden som skal fjernes fra it - aka har samme søknads id som jeg eier
                 //it.søknadsIder()
+                // if it.søknadsIDer() in pvpEiere.søknadsIder(): fjern fra it
+                // it.skalfjernes(
                 it.leggTil(*relevante.toTypedArray())
 
             }
