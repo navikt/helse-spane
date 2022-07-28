@@ -170,10 +170,37 @@ class PseudoVedtaksperiodeTest {
         assertEquals(3, pvps[2].antallSubsumsjoner())
     }
 
+    @Test
+    @Disabled("ikke implementert enda")
+    fun `subsumsjon med vid etablerer ny pvp og subsumsjoner med samme søid blir fjernet fra andre pvper `() {
+        val sporingPvp1 = mapOf("sykmelding" to listOf("s1"))
+        val sporingSubsumsjon1 = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"))
+        val sporingSubsumsjon2 = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"), "vedtaksperiode" to listOf("v1"))
+
+
+        val pvp1 = lagVedtaksPeriode(2, sporing = sporingPvp1)
+        val nySubsumsjon1 = lagSubsumsjon(sporing = sporingSubsumsjon1)
+        val nySubsumsjon2 = lagSubsumsjon(sporing = sporingSubsumsjon2)
+
+
+        val pvps = mutableListOf(pvp1)
+
+        pvps.håndter(nySubsumsjon1)
+        pvps.håndter(nySubsumsjon2)
+
+        assertEquals(3, pvps.size) // skal egentlig ikke være 3
+        assertEquals(2, pvps[1].antallSubsumsjoner())
+        assertEquals(3, pvps[2].antallSubsumsjoner())
+    }
+
+
+
+
+
 
 
     @Test
-    @Disabled("Ikke lagt til ennå")
+    @Disabled("Ikke lagt til ennå etter punkt 4 er implementert")
     fun `relevante subsumsjoner dubliseres inn i ny pvp og gammel pvp slettes`() {
         val sporingPVP1 = mapOf("sykmelding" to listOf("s1"))
         val sporingPVP2 = mapOf("sykmelding" to listOf("s2"))
@@ -194,4 +221,5 @@ class PseudoVedtaksperiodeTest {
         //Sjekker at eksisterende subsumsjoner fra pvp1 dupliseres inn i ny pvp
         assertEquals(3, pvps[1].antallSubsumsjoner())
     }
+
 }
