@@ -22,7 +22,7 @@ internal class PersonTest : AbstractPersonTest() {
          */
 
         assertSporing(sykmeldingUUID)
-        assertSporing(sykmeldingUUID, søknadUUID, vedtaksperiodeIndeks = 1)
+        assertSporing(sykmeldingUUID, vedtaksperiodeIndeks = 1)
         assertSporing(sykmeldingUUID, søknadUUID, vedtaksperiodeUUID, vedtaksperiodeIndeks = 2)
     }
 

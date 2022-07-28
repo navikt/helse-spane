@@ -1,9 +1,11 @@
 package no.nav.helse
 
+import no.nav.helse.PseudoVedtaksperiode.Companion.finnEiere
+import no.nav.helse.PseudoVedtaksperiode.Companion.fjernSubsumsjoner
 import no.nav.helse.Subsumsjon.Companion.eier
 import no.nav.helse.Subsumsjon.Companion.relevante
 import no.nav.helse.Subsumsjon.Companion.sporingIder
-import no.nav.helse.Subsumsjon.Companion.søknadsIder
+import no.nav.helse.Subsumsjon.Companion.subsumsjonerMedSøknadsIder
 
 class PseudoVedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>
@@ -18,9 +20,14 @@ class PseudoVedtaksperiode(
             }
         }
 
-        fun MutableList<PseudoVedtaksperiode>.relevanteSubsumsjoner(eier: PseudoVedtaksperiode) =
+        fun List<PseudoVedtaksperiode>.relevanteSubsumsjoner(eier: PseudoVedtaksperiode) =
             this.filterNot { it == eier }.map { it.subsumsjoner.relevante(eier.alleIder()) }.flatten()
 
+        fun List<PseudoVedtaksperiode>.fjernSubsumsjoner(subsumsjoner: List<Subsumsjon>) {
+            forEach {
+                it.fjernSubsumsjoner(subsumsjoner)
+            }
+        }
 
         fun MutableList<PseudoVedtaksperiode>.håndter(subsumsjon: Subsumsjon) {
             val pvpEiere = finnEiere(subsumsjon)
@@ -28,18 +35,20 @@ class PseudoVedtaksperiode(
 
             pvpEiere.forEach {
                 val relevante = this.relevanteSubsumsjoner(it)
-                // it er vedtaksperioden
-                // er det noen subs i denne vedtaksperioden som skal fjernes fra it - aka har samme søknads id som jeg eier
-                //it.søknadsIder()
-                // if it.søknadsIDer() in pvpEiere.søknadsIder(): fjern fra it
-                // it.skalfjernes(
                 it.leggTil(*relevante.toTypedArray())
-
             }
 
-            // TODO punkt 3 Fjern subsumsjoner fra andre pvper som her er søknader jeg eier
+            pvpEiere.forEach { eier ->
+                val subsumsjonerMedSøknadid = eier.subsumsjonerMedSøknadsider()
+                this.filter { it != eier }.fjernSubsumsjoner(subsumsjonerMedSøknadid)
+            }
+
             // TODO punkt 4 hvis pvper inneholder meg, fjern meg
         }
+    }
+
+    private fun fjernSubsumsjoner(subsumsjoner: List<Subsumsjon>) {
+        this.subsumsjoner.removeAll(subsumsjoner)
     }
 
     private fun leggTil(vararg subsumsjoner: Subsumsjon) {
@@ -50,8 +59,7 @@ class PseudoVedtaksperiode(
 
     private fun alleIder() = subsumsjoner.sporingIder()
 
-    private fun søknadsIder() = subsumsjoner.søknadsIder()
-
+    private fun subsumsjonerMedSøknadsider() = subsumsjoner.subsumsjonerMedSøknadsIder()
 
     fun antallSubsumsjoner(): Int {
         return subsumsjoner.size

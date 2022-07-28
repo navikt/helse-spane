@@ -26,11 +26,11 @@ class Subsumsjon(
 
         fun MutableList<Subsumsjon>.eier(subsumsjon: Subsumsjon) = subsumsjon.eiesAv(this.sporingIder())
 
-        fun MutableList<Subsumsjon>.relevante(pvpIder: List<String>) = filter { it.erRelevant(pvpIder) }
+        fun List<Subsumsjon>.relevante(pvpIder: List<String>) = filter { it.erRelevant(pvpIder) }
 
         fun MutableList<Subsumsjon>.sporingIder() = this.flatMap { it.sporing.values.flatten() }
 
-        fun MutableList<Subsumsjon>.søknadsIder() = this.flatMap { it.sporing["soknad"] ?: emptyList() }
+        fun MutableList<Subsumsjon>.subsumsjonerMedSøknadsIder() = this.filter { it.sporing["soknad"] != null }
     }
 
     private fun erRelevant(pvpIder: List<String>): Boolean {
@@ -76,14 +76,12 @@ class Subsumsjon(
         )
     }
 
-
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
         other as Subsumsjon
 
-        // TODO: Er det noe poeng i å refaktorere denne koden?
         if (id != other.id) return false
         if (versjon != other.versjon) return false
         if (eventName != other.eventName) return false
@@ -129,7 +127,6 @@ class Subsumsjon(
     }
 
     override fun toString(): String {
-        return "Subsumsjon(sporing=$sporing, id=${id.subSequence(0,5)}...)"
+        return "Subsumsjon(sporing=$sporing, id=${id.subSequence(0, 5)}...)"
     }
-
 }

@@ -111,7 +111,7 @@ class PseudoVedtaksperiodeTest {
     }
 
     @Test
-    fun `subsumsjon uten eier oppretter ny vedtaksperiode`() {
+    fun `subsumsjon med søid uten eier oppretter ny vedtaksperiode`() {
         val sporingPVP1 = mapOf("sykmelding" to listOf("s1"))
         val sporingPVP2 = mapOf("sykmelding" to listOf("s2"))
         val sporingNySubsumsjon = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"))
@@ -129,7 +129,6 @@ class PseudoVedtaksperiodeTest {
     }
 
     //Steg 2
-
     @Test
     fun `ny vedtaksperiode lages og eksisterende subsumsjoner dupliseres inn`(){
         val sporingPVP1 = mapOf("sykmelding" to listOf("s1"))
@@ -144,7 +143,6 @@ class PseudoVedtaksperiodeTest {
         assertEquals(3, pvps.size) //Skal være 2, men det skjer ikke før clean up (steg 3) kommer på plass
         assertEquals(3, pvps[1].antallSubsumsjoner())
         assertEquals(3, pvps[2].antallSubsumsjoner())
-
     }
 
 
@@ -163,7 +161,6 @@ class PseudoVedtaksperiodeTest {
 
         val pvps = mutableListOf(pvpEier, pvpIkkeEier, pvpOgsåEier)
 
-
         pvps.håndter(nySubsumsjon)
         assertEquals(3, pvps.size)
         assertEquals(3, pvps[0].antallSubsumsjoner())
@@ -171,33 +168,24 @@ class PseudoVedtaksperiodeTest {
     }
 
     @Test
-    @Disabled("ikke implementert enda")
     fun `subsumsjon med vid etablerer ny pvp og subsumsjoner med samme søid blir fjernet fra andre pvper `() {
         val sporingPvp1 = mapOf("sykmelding" to listOf("s1"))
         val sporingSubsumsjon1 = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"))
         val sporingSubsumsjon2 = mapOf("sykmelding" to listOf("s1"), "soknad" to listOf("sø1"), "vedtaksperiode" to listOf("v1"))
 
-
         val pvp1 = lagVedtaksPeriode(2, sporing = sporingPvp1)
         val nySubsumsjon1 = lagSubsumsjon(sporing = sporingSubsumsjon1)
         val nySubsumsjon2 = lagSubsumsjon(sporing = sporingSubsumsjon2)
-
 
         val pvps = mutableListOf(pvp1)
 
         pvps.håndter(nySubsumsjon1)
         pvps.håndter(nySubsumsjon2)
 
-        assertEquals(3, pvps.size) // skal egentlig ikke være 3
+        assertEquals(3, pvps.size) //todo: skal egentlig være 2 npr cleanup blir implementert
         assertEquals(2, pvps[1].antallSubsumsjoner())
-        assertEquals(3, pvps[2].antallSubsumsjoner())
+        assertEquals(4, pvps[2].antallSubsumsjoner())
     }
-
-
-
-
-
-
 
     @Test
     @Disabled("Ikke lagt til ennå etter punkt 4 er implementert")
