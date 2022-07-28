@@ -29,6 +29,8 @@ class Subsumsjon(
         fun MutableList<Subsumsjon>.relevante(pvpIder: List<String>) = filter { it.erRelevant(pvpIder) }
 
         fun MutableList<Subsumsjon>.sporingIder() = this.flatMap { it.sporing.values.flatten() }
+
+        fun MutableList<Subsumsjon>.søknadsIder() = this.flatMap { it.sporing["soknad"] ?: emptyList() }
     }
 
     private fun erRelevant(pvpIder: List<String>): Boolean {

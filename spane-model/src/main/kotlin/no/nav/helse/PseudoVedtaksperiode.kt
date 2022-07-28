@@ -3,6 +3,7 @@ package no.nav.helse
 import no.nav.helse.Subsumsjon.Companion.eier
 import no.nav.helse.Subsumsjon.Companion.relevante
 import no.nav.helse.Subsumsjon.Companion.sporingIder
+import no.nav.helse.Subsumsjon.Companion.søknadsIder
 
 class PseudoVedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>
@@ -27,9 +28,13 @@ class PseudoVedtaksperiode(
 
             pvpEiere.forEach {
                 val relevante = this.relevanteSubsumsjoner(it)
+                // it er vedtaksperioden
+                // er det noen subs i denne vedtaksperioden som skal fjernes fra it - aka har samme søknads id som jeg eier
+                //it.søknadsIder()
                 it.leggTil(*relevante.toTypedArray())
 
             }
+
             // TODO punkt 3 Fjern subsumsjoner fra andre pvper som her er søknader jeg eier
             // TODO punkt 4 hvis pvper inneholder meg, fjern meg
         }
@@ -42,6 +47,8 @@ class PseudoVedtaksperiode(
     }
 
     private fun alleIder() = subsumsjoner.sporingIder()
+
+    private fun søknadsIder() = subsumsjoner.søknadsIder()
 
 
     fun antallSubsumsjoner(): Int {
