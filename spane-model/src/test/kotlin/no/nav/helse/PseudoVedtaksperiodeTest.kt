@@ -237,14 +237,13 @@ class PseudoVedtaksperiodeTest {
         val pvps = mutableListOf(pvp1, pvp2)
 
         pvps.håndter(subsumsjon)
-        assertEquals(2, pvps.size)
+        assertEquals(1, pvps.size)
         assertEquals(8, pvps[0].antallSubsumsjoner())
-        assertEquals(2, pvps[1].antallSubsumsjoner())
     }
 
     @Test
-    @Disabled("Ikke lagt til ennå etter punkt 4 er implementert")
-    fun `relevante subsumsjoner dubliseres inn i ny pvp og gammel pvp slettes`() {
+//    @Disabled("Ikke lagt til ennå etter punkt 4 er implementert")
+    fun `relevante subsumsjone dubliseres inn i ny pvp og gammel pvp slettes`() {
         val sporingPVP1 = lagSporing(sykmeldingId = listOf("s1"))
         val sporingPVP2 = lagSporing(sykmeldingId = listOf("s2"))
         val sporingNySubsumsjon = lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"))
