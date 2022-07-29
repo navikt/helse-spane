@@ -27,6 +27,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.HashMap
 
+
 @TestInstance(Lifecycle.PER_CLASS)
 internal class E2ETest {
 
@@ -51,11 +52,23 @@ internal class E2ETest {
         }
     }
 
-
     fun startApp() {
         jobb = GlobalScope.launch {
             val konfig = Konfig(
-                "Spane", listOf(embeddedKafkaEnvironment.brokersURL), testTopic, "kaSomHelst", null, null, null
+                "Spane",
+                listOf(embeddedKafkaEnvironment.brokersURL),
+                testTopic,
+                "kaSomHelst",
+                "url",
+                "username",
+                "password",
+                1,
+                100,
+                100,
+                100,
+                null,
+                null,
+                null
             )
             ApplicationBuilder(konfig, ::ktorServer, ::håndterSubsumsjon).startBlocking()
         }
@@ -111,9 +124,9 @@ internal class E2ETest {
         startApp()
         produceToTopic(listOf(melding))
 
-        await("wait until recods are sent").atMost(5, TimeUnit.SECONDS).until {
-                teller == 1
-            }
+        await("wait until recods are sent").atMost(20, TimeUnit.SECONDS).until {
+            teller == 1
+        }
     }
 
     @Test
