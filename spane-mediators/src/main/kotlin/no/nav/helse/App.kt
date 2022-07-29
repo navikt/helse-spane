@@ -36,17 +36,33 @@ private val objectMapper = jacksonObjectMapper()
     .registerModule(JavaTimeModule())
 
 fun håndterSubsumsjon(value: String) {
-
     val melding = objectMapper.readTree(value)
 
+    /*
+    Ny melding kommer inn:
+    - hent fnr fra melding: melding["fodselsnummer"].asText()
+    - hent JSON person fra db hentPerson(fnr)
+    - person = lagPersonFraJSON(JSONperson)
+    - subsumsjon = lagSubsumsjonFraJSON(melding)
+    - person.håndter(subsumsjon)
+    - lagre person til JSON
+
+
+    Nytt søk kommer inn:
+    - hent JSON person fra db hentPerson(fnr)
+    - person.accept(visitor) ?
+    
+    Nytt søk på paragraf
+    - hent JSON personer basert på paragraf index?
+     */
+
+
     if (melding["fodselsnummer"].asText() == fødselsnr) {
+
         val nySubsumsjon = lagSubsumsjonFraJson(melding)
         person.håndter(nySubsumsjon)
         sikkerlogger.info("Mottok melding som hadde forventet fødselsnummer {}", person.toString())
     }
-//    else {
-//        sikkerlogger.info("Mottok melding som ikke hadde fødselsnr")
-//    }
 }
 
 

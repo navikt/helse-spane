@@ -4,6 +4,8 @@ import io.ktor.server.engine.*
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import no.nav.helse.spane.db.PersonPostgresRepository
+import no.nav.helse.spane.kafka.SubsumsjonKonsument
 
 class ApplicationBuilder (
     konfig: Konfig,
@@ -13,6 +15,11 @@ class ApplicationBuilder (
 
     private val konsument = SubsumsjonKonsument(konfig, konfig.topic, håndterSubsumsjon)
     private val ktor = builder(konfig.appNavn)
+
+    private val dataSourceBuilder = DataSourceBuilder(konfig)
+    private val dataSource = dataSourceBuilder.getDataSource()
+    private val personRepository = PersonPostgresRepository(dataSource)
+
 
     fun startBlocking() {
         runBlocking { start() }
