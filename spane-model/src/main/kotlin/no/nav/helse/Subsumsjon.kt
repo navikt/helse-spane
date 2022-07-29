@@ -30,7 +30,7 @@ class Subsumsjon(
 
         fun MutableList<Subsumsjon>.sporingIder() = this.flatMap { it.sporing.values.flatten() }
 
-        fun MutableList<Subsumsjon>.subsumsjonerMedSøknadsIder() = this.filter { it.sporing["soknad"] != null }
+        fun MutableList<Subsumsjon>.subsumsjonerMedSøknadsIder() = this.filter { !it.sporing["soknad"].isNullOrEmpty() }
     }
 
     private fun erRelevant(pvpIder: List<String>): Boolean {
@@ -46,7 +46,7 @@ class Subsumsjon(
     }
 
     fun sammeVedtaksperiode(pvpIder: List<String>): Boolean {
-        return (this.sporing["vedtaksperiode"]?.first() in pvpIder)
+        return (this.sporing["vedtaksperiode"].takeUnless { it.isNullOrEmpty() }?.first() in pvpIder)
     }
 
     fun eiesAv(pvpIder: List<String>): Boolean {

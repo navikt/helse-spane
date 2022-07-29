@@ -49,23 +49,8 @@ internal class TestHjelper {
 
         fun lagSporing(
             sykmeldingId: List<String>,
-        ): Map<String, List<String>>{
-
-            return mapOf("sykmelding" to sykmeldingId)
-        }
-
-        fun lagSporing(
-            sykmeldingId: List<String>,
-            søknadId: List<String>,
-        ): Map<String, List<String>>{
-
-            return mapOf("sykmelding" to sykmeldingId,
-                "soknad" to søknadId)
-        }
-        fun lagSporing(
-            sykmeldingId: List<String>,
-            søknadId: List<String>,
-            vedtaksperiodeId: List<String>,
+            søknadId: List<String> = emptyList(),
+            vedtaksperiodeId: List<String> = emptyList(),
         ): Map<String, List<String>>{
 
             return mapOf("sykmelding" to sykmeldingId,
