@@ -204,6 +204,7 @@ class PseudoVedtaksperiodeTest {
     }
 
     @Test
+    @Disabled("se på asserten på linje 248  - søid2 burde bli fjernet fra subsumsjon på indeks 1")
     fun `korrigerende søknad merger to pvper til en`(){
         val sporingSykId1 = mapOf("sykmelding" to listOf("s1"))
         val sporingSykId2 = mapOf("sykmelding" to listOf("s2"))
@@ -236,6 +237,7 @@ class PseudoVedtaksperiodeTest {
         pvps.håndter(subsumsjon)
         assertEquals(2, pvps.size)
         assertEquals(8, pvps[0].antallSubsumsjoner())
+        assertEquals(2, pvps[1].antallSubsumsjoner()) // jarl og nora se på dette
     }
 
     @Test
