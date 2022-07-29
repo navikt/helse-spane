@@ -9,6 +9,8 @@ val kafkaVersion = "3.1.0"
 val ktorVersion = "2.0.2"
 val awaitilityVersion = "4.2.0"
 val kafkaEEVersion = "3.1.6"
+val testcontainersPostgresqlVersion = "1.17.1"
+val flywayVersion = "8.5.7"
 
 allprojects {
     group = "no.nav.helse"
@@ -42,6 +44,16 @@ allprojects {
         testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
         testImplementation("no.nav:kafka-embedded-env:$kafkaEEVersion")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
+
+        testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+        testImplementation("org.testcontainers:testcontainers:1.17.3")
+        testImplementation ("org.testcontainers:junit-jupiter:1.17.3")
+
+        testImplementation("org.testcontainers:postgresql:$testcontainersPostgresqlVersion") {
+            exclude("com.fasterxml.jackson.core")
+        }
+
+        implementation("org.flywaydb:flyway-core:$flywayVersion")
 
     }
 

@@ -16,9 +16,9 @@ class ApplicationBuilder (
     private val konsument = SubsumsjonKonsument(konfig, konfig.topic, håndterSubsumsjon)
     private val ktor = builder(konfig.appNavn)
 
-    private val dataSourceBuilder = DataSourceBuilder(konfig)
-    private val dataSource = dataSourceBuilder.getDataSource()
-    private val personRepository = PersonPostgresRepository(dataSource)
+    //private val dataSourceBuilder = DataSourceBuilder(konfig)
+    //private val dataSource = dataSourceBuilder.getDataSource()
+    //private val personRepository = PersonPostgresRepository(dataSource)
 
 
     fun startBlocking() {
