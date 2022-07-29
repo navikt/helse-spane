@@ -46,6 +46,17 @@ internal class TestHjelper {
         fun Int.desember(year: Int): ZonedDateTime =
             ZonedDateTime.of(LocalDateTime.of(year, 12, this, 0, 0), ZoneId.systemDefault())
 
+
+        fun lagSporing(
+            sykmeldingId: List<String>,
+            søknadId: List<String> = emptyList(),
+            vedtaksperiodeId: List<String> = emptyList(),
+        ): Map<String, List<String>>{
+
+            return mapOf("sykmelding" to sykmeldingId,
+                "soknad" to søknadId,
+                "vedtaksperiode" to vedtaksperiodeId)
+        }
         fun lagSubsumsjon(
             paragraf: String = "8-11",
             tidsstempel: ZonedDateTime = 1.januar(2022),
@@ -85,22 +96,5 @@ internal class TestHjelper {
             }
             return PseudoVedtaksperiode(subsumsjoner)
         }
-
-        fun assertVedtaksperioderAntallOgLengde(
-            vedtaksperioder: MutableList<PseudoVedtaksperiode>,
-            forventetAntallVedtaksperioder: Int,
-            forventetAntallSubsumsjoner: Int
-        ) {
-            if (forventetAntallVedtaksperioder != vedtaksperioder.size) {
-                fail("Liste av vedtaksperioder har ikke forventet antall vedtaksperioder: expected: $forventetAntallVedtaksperioder actual: ${vedtaksperioder.size}")
-            }
-            if (forventetAntallSubsumsjoner != vedtaksperioder[0].antallSubsumsjoner()) {
-                fail("Liste av vedtaksperioder har ikke forventet antall vedtaksperioder: expected: $forventetAntallSubsumsjoner actual: ${vedtaksperioder[0].antallSubsumsjoner()}")
-            }
-        }
-
-
     }
-
-
 }
