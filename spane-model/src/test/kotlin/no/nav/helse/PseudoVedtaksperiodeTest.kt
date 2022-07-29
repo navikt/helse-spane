@@ -227,7 +227,6 @@ class PseudoVedtaksperiodeTest {
     }
 
     @Test
-//    @Disabled("Ikke lagt til ennå etter punkt 4 er implementert")
     fun `relevante subsumsjone dubliseres inn i ny pvp og gammel pvp slettes`() {
         val sporingPVP1 = lagSporing(sykmeldingId = listOf("s1"))
         val sporingPVP2 = lagSporing(sykmeldingId = listOf("s2"))
