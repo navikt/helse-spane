@@ -30,18 +30,30 @@ class PseudoVedtaksperiode(
         }
 
         fun MutableList<PseudoVedtaksperiode>.håndter(subsumsjon: Subsumsjon) {
+
+            // Punkt 1
             val pvpEiere = finnEiere(subsumsjon)
             pvpEiere.forEach { it.leggTil(subsumsjon) }
 
+            // Punkt 2
             pvpEiere.forEach {
                 val relevante = this.relevanteSubsumsjoner(it)
                 it.leggTil(*relevante.toTypedArray())
             }
 
+            // Punkt 3
             pvpEiere.forEach { eier ->
                 val subsumsjonerMedSøknadid = eier.subsumsjonerMedSøknadsider()
                 this.filter { it != eier }.fjernSubsumsjoner(subsumsjonerMedSøknadid)
             }
+
+            // Punkt 4
+            this.filterNot { it in pvpEiere }.forEach {
+                pvpEiere.forEach{pvpEier ->
+                    if (pvpEier.subsumsjoner.containsAll(it.subsumsjoner)) this.remove(it)
+                }
+            }
+
 
             // TODO punkt 4 hvis pvper inneholder meg, fjern meg
         }

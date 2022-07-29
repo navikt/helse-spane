@@ -1,6 +1,5 @@
 package no.nav.helse
 
-import org.junit.jupiter.api.fail
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
