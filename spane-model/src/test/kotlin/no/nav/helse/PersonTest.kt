@@ -22,8 +22,8 @@ internal class PersonTest : AbstractPersonTest() {
          */
 
         assertSporing(sykmeldingUUID)
-        assertSporing(sykmeldingUUID, vedtaksperiodeIndeks = 1)
-        assertSporing(sykmeldingUUID, søknadUUID, vedtaksperiodeUUID, vedtaksperiodeIndeks = 2)
+        assertSporing(sykmeldingUUID)
+        assertSporing(sykmeldingUUID, søknadUUID, vedtaksperiodeUUID)
     }
 
 
@@ -32,13 +32,8 @@ internal class PersonTest : AbstractPersonTest() {
         sendSykmeldingSubsumsjon(3)
         sendSøknadSubsumsjon()
 
-        /*
-        TODO, når steg 4 blir implementert vil denne gå i stykker
-         - antallPseudoVedtaksperioder() skal ta inn 1 (da den overflødige pvpen blir slettet om steg 4 er implementert.
-         - assertPseudoVedtaksperiodeLengde() skal ta inn 0,4, da ny pvp vil være på indeks 0 etter overflødig er slettet
-         */
-        assertAntallVedtaksPerioder(2)
-        assertPseudoVedtaksperiodeLengde(1, 4)
+        assertAntallVedtaksPerioder(1)
+        assertPseudoVedtaksperiodeLengde(0, 4)
     }
 
     @Test
@@ -47,15 +42,9 @@ internal class PersonTest : AbstractPersonTest() {
         sendSøknadSubsumsjon()
         sendSøknadSubsumsjon()
 
-        /*
-        TODO, når steg 4 blir implementert vil denne gå i stykker
-         - antallPseudoVedtaksperioder() skal ta inn 2 (da den overflødige pvpen blir slettet om steg 4 er implementert.
-         - assertPseudoVedtaksperiodeLengde() skal ta inn 0,4 og 1,4 , da nye pvp vil være på indeks 0 og 1 etter overflødig er slettet
-         */
-
-        assertAntallVedtaksPerioder(3)
+        assertAntallVedtaksPerioder(2)
+        assertPseudoVedtaksperiodeLengde(0, 4)
         assertPseudoVedtaksperiodeLengde(1, 4)
-        assertPseudoVedtaksperiodeLengde(2, 4)
     }
 
     @Test
