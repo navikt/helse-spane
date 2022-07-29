@@ -1,5 +1,7 @@
-package no.nav.helse
+package no.nav.helse.spane.kafka
 
+import no.nav.helse.Konfig
+import no.nav.helse.logger
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.errors.WakeupException
 import org.apache.kafka.common.serialization.StringDeserializer
@@ -8,9 +10,9 @@ import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
 class SubsumsjonKonsument (
-        private val konfig: Konfig,
-        clientId: String = UUID.randomUUID().toString().slice(1..5),
-        private val håndterSubsumsjon: (input: String) -> Any?
+    private val konfig: Konfig,
+    clientId: String = UUID.randomUUID().toString().slice(1..5),
+    private val håndterSubsumsjon: (input: String) -> Any?
     ) {
 
     private val konsument = KafkaConsumer(konfig.konsumentKonfig(clientId, konfig.consumerGroup), StringDeserializer(), StringDeserializer())

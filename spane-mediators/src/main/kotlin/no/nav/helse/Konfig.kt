@@ -2,6 +2,7 @@ package no.nav.helse
 
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.ConsumerConfig
+import java.time.Duration
 import java.util.*
 
 class Konfig(
@@ -9,24 +10,44 @@ class Konfig(
     val kafkaBrokers: List<String>,
     val topic: String,
     val consumerGroup: String,
+    val jdbcUrl: String,
+    val dbUsername: String,
+    val dbPassword: String,
+    val dbMaximumPoolSize: Int,
+    val dbConnectionTimeout: Long,
+    val dbMaxLifetime: Long,
+    val dbInitializationFailTimeout: Long,
     private val trustStorePath: String?,
     private val kafkaKeyStorePath: String?,
-    private val credStorePassword: String?,
+    private val credStorePassword: String?
 ) {
 
-    companion object{
-         fun fromEnv(): Konfig {
-             val appNavn = System.getenv("NAIS_APP_NAME")
-             return Konfig(
-                 appNavn,
-                 System.getenv("KAFKA_BROKERS").split(";"),
-                 System.getenv("SUBSUMSJON_TOPIC"),
-                 System.getenv("SUBSUMSJON_CONSUMER_GROUP") ?: "consumer-$appNavn-v2",
-                 System.getenv("KAFKA_TRUSTSTORE_PATH"),
-                 System.getenv("KAFKA_KEYSTORE_PATH"),
-                 System.getenv("KAFKA_CREDSTORE_PASSWORD")
-             )
-         }
+    companion object {
+        fun fromEnv(): Konfig {
+            val appNavn = System.getenv("NAIS_APP_NAME")
+            return Konfig(
+                appNavn,
+                System.getenv("KAFKA_BROKERS").split(";"),
+                System.getenv("SUBSUMSJON_TOPIC"),
+                System.getenv("SUBSUMSJON_CONSUMER_GROUP") ?: "consumer-$appNavn-v2",
+
+                System.getenv("DATABASE_JDBC_URL") ?: String.format(
+                    "jdbc:postgresql://%s:%s/%s",
+                    System.getenv("DATABASE_HOST"),
+                    System.getenv("DATABASE_PORT"),
+                    System.getenv("DATABASE_DATABASE")
+                ),
+                System.getenv("DATABASE_USERNAME"),
+                System.getenv("DATABASE_PASSWORD"),
+                1,
+                Duration.ofSeconds(30).toMillis(),
+                Duration.ofMinutes(30).toMillis(),
+                Duration.ofMinutes(1).toMillis(),
+                System.getenv("KAFKA_TRUSTSTORE_PATH"),
+                System.getenv("KAFKA_KEYSTORE_PATH"),
+                System.getenv("KAFKA_CREDSTORE_PASSWORD")
+            )
+        }
     }
 
 
