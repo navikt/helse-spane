@@ -45,8 +45,10 @@ class PseudoVedtaksperiodeTest {
 
     @Test
     fun `subsumsjon med vedtaksperiodeid finner rett eier`() {
-        val sporingEier = lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"), vedtaksperiodeId = listOf("v1"))
-        val sporingIkkeEier = lagSporing(sykmeldingId = listOf("s2"), søknadId = listOf("sø2"),  vedtaksperiodeId = listOf("v2"))
+        val sporingEier =
+            lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"), vedtaksperiodeId = listOf("v1"))
+        val sporingIkkeEier =
+            lagSporing(sykmeldingId = listOf("s2"), søknadId = listOf("sø2"), vedtaksperiodeId = listOf("v2"))
 
         val pvpEier = lagVedtaksPeriode(2, sporing = sporingEier)
         val pvpIkkeEier = lagVedtaksPeriode(5, sporing = sporingIkkeEier)
@@ -96,8 +98,10 @@ class PseudoVedtaksperiodeTest {
 
     @Test
     fun `subsumsjon med vedtaksperiodeid blir lagt til i vedtaksperiode med samme sporing`() {
-        val sporingEier = lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"), vedtaksperiodeId = listOf("v1"))
-        val sporingIkkeEier = lagSporing(sykmeldingId = listOf("s2"), søknadId = listOf("sø2"),  vedtaksperiodeId = listOf("v2"))
+        val sporingEier =
+            lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"), vedtaksperiodeId = listOf("v1"))
+        val sporingIkkeEier =
+            lagSporing(sykmeldingId = listOf("s2"), søknadId = listOf("sø2"), vedtaksperiodeId = listOf("v2"))
 
         val pvpEier = lagVedtaksPeriode(2, sporing = sporingEier)
         val pvpIkkeEier = lagVedtaksPeriode(5, sporing = sporingIkkeEier)
@@ -132,7 +136,8 @@ class PseudoVedtaksperiodeTest {
     @Test
     fun `subsumsjon med vid uten eier oppretter ny vedtaksperiode `() {
         val sporingPvp1 = lagSporing(sykmeldingId = listOf("s1"))
-        val sporingSubsumsjon1 = lagSporing(sykmeldingId = listOf("s2"), søknadId = listOf("sø2"), vedtaksperiodeId = listOf("v1"))
+        val sporingSubsumsjon1 =
+            lagSporing(sykmeldingId = listOf("s2"), søknadId = listOf("sø2"), vedtaksperiodeId = listOf("v1"))
 
         val pvp1 = lagVedtaksPeriode(2, sporing = sporingPvp1)
         val nySubsumsjon1 = lagSubsumsjon(sporing = sporingSubsumsjon1)
@@ -146,7 +151,7 @@ class PseudoVedtaksperiodeTest {
 
     //Steg 2
     @Test
-    fun `ny vedtaksperiode lages og eksisterende subsumsjoner dupliseres inn`(){
+    fun `ny vedtaksperiode lages og eksisterende subsumsjoner dupliseres inn`() {
         val sporingPVP1 = lagSporing(sykmeldingId = listOf("s1"))
         val sporingNySubsumsjon1 = lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"))
         val sporingNySubsumsjon2 = lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø2"))
@@ -156,9 +161,9 @@ class PseudoVedtaksperiodeTest {
         pvps.håndter(lagSubsumsjon(sporing = sporingNySubsumsjon1))
         pvps.håndter(lagSubsumsjon(sporing = sporingNySubsumsjon2))
 
-        assertEquals(3, pvps.size) //Skal være 2, men det skjer ikke før clean up (steg 3) kommer på plass
+        assertEquals(2, pvps.size)
+        assertEquals(3, pvps[0].antallSubsumsjoner())
         assertEquals(3, pvps[1].antallSubsumsjoner())
-        assertEquals(3, pvps[2].antallSubsumsjoner())
     }
 
 
@@ -183,39 +188,19 @@ class PseudoVedtaksperiodeTest {
         assertEquals(3, pvps[2].antallSubsumsjoner())
     }
 
-
     @Test
-    fun `subsumsjoner med samme søid blir fjernet fra andre pvper `() {
-        val sporingPvp1 = lagSporing(sykmeldingId = listOf("s1"))
-        val sporingSubsumsjon1 = lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"))
-        val sporingSubsumsjon2 = lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"), vedtaksperiodeId = listOf("v1"))
-
-        val pvp1 = lagVedtaksPeriode(2, sporing = sporingPvp1)
-        val nySubsumsjon1 = lagSubsumsjon(sporing = sporingSubsumsjon1)
-        val nySubsumsjon2 = lagSubsumsjon(sporing = sporingSubsumsjon2)
-
-        val pvps = mutableListOf(pvp1)
-
-        pvps.håndter(nySubsumsjon1)
-        pvps.håndter(nySubsumsjon2)
-
-        assertEquals(3, pvps.size) //todo: skal egentlig være 2 npr cleanup blir implementert
-        assertEquals(2, pvps[1].antallSubsumsjoner())
-        assertEquals(4, pvps[2].antallSubsumsjoner())
-    }
-
-    @Test
-    //@Disabled("se på asserten på linje 248  - søid2 burde bli fjernet fra subsumsjon på indeks 1")
-    fun `korrigerende søknad merger to pvper til en`(){
+    fun `korrigerende søknad merger to pvper til en`() {
         val sporingSykId1 = lagSporing(sykmeldingId = listOf("s1"))
         val sporingSykId2 = lagSporing(sykmeldingId = listOf("s2"))
 
-        val sporingSøkId1 = lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1") )
-        val sporingSøkId2 = lagSporing(sykmeldingId = listOf("s2"), søknadId = listOf("sø2") )
+        val sporingSøkId1 = lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"))
+        val sporingSøkId2 = lagSporing(sykmeldingId = listOf("s2"), søknadId = listOf("sø2"))
 
-        val sporingVId1 = lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"), vedtaksperiodeId = listOf("v1"))
+        val sporingVId1 =
+            lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"), vedtaksperiodeId = listOf("v1"))
 
-        val korrigerendeSporing = lagSporing(sykmeldingId = listOf("s2"), søknadId =  listOf("sø2"), vedtaksperiodeId = listOf("v1"))
+        val korrigerendeSporing =
+            lagSporing(sykmeldingId = listOf("s2"), søknadId = listOf("sø2"), vedtaksperiodeId = listOf("v1"))
 
         val subsumsjon = lagSubsumsjon(sporing = korrigerendeSporing)
 
@@ -242,7 +227,6 @@ class PseudoVedtaksperiodeTest {
     }
 
     @Test
-//    @Disabled("Ikke lagt til ennå etter punkt 4 er implementert")
     fun `relevante subsumsjone dubliseres inn i ny pvp og gammel pvp slettes`() {
         val sporingPVP1 = lagSporing(sykmeldingId = listOf("s1"))
         val sporingPVP2 = lagSporing(sykmeldingId = listOf("s2"))
