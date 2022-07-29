@@ -2,6 +2,7 @@ package no.nav.helse
 
 import no.nav.helse.Subsumsjon.Companion.finnAlle
 import no.nav.helse.Subsumsjon.Companion.eier
+import no.nav.helse.TestHjelper.Companion.lagSporing
 import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -19,7 +20,7 @@ internal class SubsumsjonTest {
 
     @Test
     fun `avgjør om subsumsjon er relevant`() {
-        val sporing = mapOf("sykmelding" to listOf("1"))
+        val sporing = lagSporing(sykmeldingId = listOf("1"))
         val subsumsjon = lagSubsumsjon(sporing = sporing)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing),
@@ -31,8 +32,8 @@ internal class SubsumsjonTest {
 
     @Test
     fun `avgjør om subsumsjon er relevant etter søknadsid`() {
-        val sporing = mapOf("sykmelding" to listOf("1"))
-        val sporing2 = mapOf("sykmelding" to listOf("1"), "søknad" to listOf("1"))
+        val sporing = lagSporing(sykmeldingId = listOf("1"))
+        val sporing2 = lagSporing(sykmeldingId = listOf("1"), søknadId =  listOf("1"))
         val subsumsjon = lagSubsumsjon(sporing = sporing2)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing),
@@ -45,8 +46,8 @@ internal class SubsumsjonTest {
 
     @Test
     fun `avgjør at subsumsjon ikke er relevant`() {
-        val sporing = mapOf("sykmelding" to listOf("1"))
-        val sporing2 = mapOf("sykmelding" to listOf("2"))
+        val sporing = lagSporing(sykmeldingId = listOf("1"))
+        val sporing2 = lagSporing(sykmeldingId = listOf("2"))
         val subsumsjon = lagSubsumsjon(sporing = sporing2)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing),
@@ -58,9 +59,9 @@ internal class SubsumsjonTest {
 
     @Test
     fun `avgjør om subsumsjon med vedtaksperiode ikke er relevant`() {
-        val sporing = mapOf("sykmelding" to listOf("1"), "soknad" to listOf("2"))
-        val sporing1 = mapOf("sykmelding" to listOf("1"), "soknad" to listOf("2"))
-        val sporing2 = mapOf("sykmelding" to listOf("1"), "vedtaksperiode" to listOf("3"))
+        val sporing = lagSporing(sykmeldingId = listOf("1"), søknadId =  listOf("2"))
+        val sporing1 = lagSporing(sykmeldingId = listOf("1"), søknadId =  listOf("2"))
+        val sporing2 = lagSporing(sykmeldingId = listOf("1"), søknadId =  listOf("2"), vedtaksperiodeId =  listOf("3"))
         val subsumsjon = lagSubsumsjon(sporing = sporing)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing1),
