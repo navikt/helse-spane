@@ -4,11 +4,12 @@ import DatePicker from "./DatePicker";
 import "./sidepanel.css";
 
 interface Props {
-    orgnumre: string[]
+    orgnumre: string[];
+    setValgte: React.Dispatch<React.SetStateAction<string[]>>
 }
 
 function SidePanel(props: Props) {
-    const {orgnumre} = props;
+    const {orgnumre, setValgte} = props;
 
     return (
         <div className="sidepanel-container">
@@ -19,9 +20,14 @@ function SidePanel(props: Props) {
                 <DatePicker label="Til"/>
             </div>
             <div className="checkbox-group-container">
-                <CheckboxGroup legend="Arbeidsgiver">
-                    {orgnumre.map(orgnummer => {
-                        return <Checkbox value={orgnummer}>{orgnummer}</Checkbox>
+                <CheckboxGroup
+                    legend="Arbeidsgiver"
+                    onChange={(v) => {
+                        setValgte(v)
+                    }}
+                >
+                    {orgnumre.map((orgnummer, key) => {
+                        return <Checkbox key={key} value={orgnummer}>{orgnummer}</Checkbox>
                     })}
                 </CheckboxGroup>
             </div>

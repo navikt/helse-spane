@@ -8,12 +8,13 @@ import {PersonDto} from "../types";
 import "./personSøk.css";
 
 interface Props {
+    valgte: string[]
     setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>
 }
 
 function PersonSøkSide(props: Props) {
 
-    const {} = props;
+    const {valgte} = props;
     const backend: Backend = Environment.isDevelopment
         ? testBackend()
         : restBackend();
@@ -24,10 +25,13 @@ function PersonSøkSide(props: Props) {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         backend.person(fødselsnummer)
-            .then((r) => setPerson(r))
-            .then(()=>{
+            .then((r) => {
+                setPerson(r)
+                return r
+            })
+            .then((r)=>{
                 let orgnumre : string[] = []
-                person!.vedtaksperioder.forEach(
+                r!.vedtaksperioder.forEach(
                     (vedtaksperiode) => {
                         if(!orgnumre.includes(vedtaksperiode.orgnummer)) {
                             orgnumre.push(vedtaksperiode.orgnummer)
@@ -51,7 +55,7 @@ function PersonSøkSide(props: Props) {
                 </form>
             </div>
             <Table size="medium">
-                {person && <VedtaksperiodeTableBody person={person}/>}
+                {person && <VedtaksperiodeTableBody valgte={valgte} person={person}/>}
             </Table>
         </main>
     );

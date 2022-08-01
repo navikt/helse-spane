@@ -9,6 +9,8 @@ import {Header} from "@navikt/ds-react-internal";
 
 function App() {
     const [orgnumre, setOrgnumre] = useState<string[]>([]);
+    const [valgte, setValgte] = useState<string[]>([]);
+
 
     return (
         <div>
@@ -16,8 +18,8 @@ function App() {
                 <Header.Title as="h1">NAV | Spane</Header.Title>
             </Header>
             <div className="ytre-container">
-                <Sidepanel orgnumre={orgnumre}/>
-                <PersonSøkSide setOrgnumre={setOrgnumre}/>
+                <Sidepanel orgnumre={orgnumre} setValgte={setValgte}/>
+                <PersonSøkSide valgte={valgte} setOrgnumre={setOrgnumre}/>
             </div>
         </div>
     );
