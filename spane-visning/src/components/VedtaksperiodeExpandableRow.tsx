@@ -18,7 +18,7 @@ function VedtaksperiodeExpandableRow(props: Props) {
           onClick={() => setExpand(!expand)}
           style={{ cursor: "pointer", backgroundColor: "#E6F0FF" }}
       >
-          <Table.DataCell scope="row"> <b> Periode: </b> {vedtaksperiode.startDato} - {vedtaksperiode.sluttDato} </Table.DataCell>
+          <Table.DataCell scope="row"> <b> Skjæringstidspunkt: </b> {vedtaksperiode.skjæringstidspunkt}</Table.DataCell>
         <Table.DataCell scope="row"> <b> Organisasjonsnummer: </b> {vedtaksperiode.orgnummer} </Table.DataCell>
 
       </Table.ExpandableRow>

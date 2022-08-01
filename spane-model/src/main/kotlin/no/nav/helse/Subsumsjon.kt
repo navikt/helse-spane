@@ -31,7 +31,18 @@ class Subsumsjon(
         fun MutableList<Subsumsjon>.sporingIder() = this.flatMap { it.sporing.values.flatten() }
 
         fun MutableList<Subsumsjon>.subsumsjonerMedSøknadsIder() = this.filter { !it.sporing["soknad"].isNullOrEmpty() }
+
+        fun MutableList<Subsumsjon>.finnSkjæringstidspunkt(): String {
+            this.forEach {
+                val skjæringstidspunkt = it.input["skjæringstidspunkt"] as String?
+                if (skjæringstidspunkt != null) {
+                    return skjæringstidspunkt
+                }
+            }
+            return "ukjent"
+        }
     }
+
 
     private fun erRelevant(pvpIder: List<String>): Boolean {
         return if (!sporing["vedtaksperiode"].isNullOrEmpty()) {
