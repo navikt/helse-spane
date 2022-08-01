@@ -73,8 +73,8 @@
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-3",
-          "ledd": 1,
-          "punktum": 2,
+          "ledd": null,
+          "punktum": null,
           "bokstav": null,
           "input": {
             "hoveddiagnose": {
@@ -102,9 +102,9 @@
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-3",
-          "ledd": 1,
-          "punktum": 1,
-          "bokstav": null,
+          "ledd": null,
+          "punktum": null,
+          "bokstav": "a",
           "input": {
             "annenFraversArsak": null,
             "hoveddiagnose": {
@@ -1190,10 +1190,10 @@
           "tidsstempel": "2022-07-13T10:25:50.502588793+02:00",
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
-          "paragraf": "8-3",
-          "ledd": 1,
-          "punktum": 2,
-          "bokstav": null,
+          "paragraf": "8-17",
+          "ledd": null,
+          "punktum": null,
+          "bokstav": "a",
           "input": {
             "forsteFomDato": "2022-07-06",
             "pasientFodselsdato": "1977-07-10"

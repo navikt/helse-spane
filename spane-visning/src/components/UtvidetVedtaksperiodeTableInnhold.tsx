@@ -28,7 +28,6 @@ function UtvidetVedtaksperiodeTableInnhold(props: Props) {
     }
 
     function sorterPåParagraf(subsumsjonA: SubsumsjonDto, subsumsjonB: SubsumsjonDto): number {
-
         let kapittel1 = parseInt(subsumsjonA.paragraf.split("-")[0])
         let kapittel2 = parseInt(subsumsjonB.paragraf.split("-")[0])
 
@@ -41,18 +40,16 @@ function UtvidetVedtaksperiodeTableInnhold(props: Props) {
                 let ledd2 = subsumsjonB.ledd ?? 0
 
                 if (ledd1 == ledd2) {
-
                     let punktum1 = subsumsjonA.punktum ?? 0
                     let punktum2 = subsumsjonB.punktum ?? 0
 
                     if (punktum1 == punktum2) {
-
-                        let bokstav1 = subsumsjonA.bokstav ?? 'a'
-                        let bokstav2 = subsumsjonB.bokstav ?? 'a'
+                        let bokstav1 = subsumsjonA.bokstav ?? ''
+                        let bokstav2 = subsumsjonB.bokstav ?? ''
 
                         if (bokstav1 != null && bokstav2 != null) {
                             return (bokstav1 > bokstav2) ? 1 : -1
-                        } else return 0 // Hvis en av bokstavene er tilstede er den etter den uten
+                        } else return 0
                     } else return punktum1 - punktum2
                 } else return (ledd1 - ledd2)
             } else return (paragraf1 - paragraf2)
