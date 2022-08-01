@@ -1,9 +1,9 @@
 import java.nio.file.Paths
 
-val postgresqlVersion = "42.3.3"
 val jacksonVersion = "2.12.5"
 val hikariVersion = "5.0.1"
 val kotliqueryVersion = "1.7.0"
+val postgresqlVersion = "42.3.3"
 
 
 
