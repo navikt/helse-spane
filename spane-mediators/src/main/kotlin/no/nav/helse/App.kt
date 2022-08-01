@@ -16,6 +16,8 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import no.nav.helse.spane.db.PersonPostgresRepository
+import no.nav.helse.spane.db.PersonRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.time.ZonedDateTime
@@ -23,45 +25,31 @@ import java.time.ZonedDateTime
 var logger: Logger = LoggerFactory.getLogger("Spane")
 var sikkerlogger: Logger = LoggerFactory.getLogger("tjenestekall")
 
-val fødselsnr = "24068715888"
-val person = Person(fødselsnr)
-
 fun main() {
     val config = Konfig.fromEnv()
-    ApplicationBuilder(config, ::ktorServer, ::håndterSubsumsjon).startBlocking()
+    val dataSourceBuilder = DataSourceBuilder(config)
+    val dataSource = dataSourceBuilder.getDataSource()
+    val personRepository = PersonPostgresRepository(dataSource)
+    Application(config, ::ktorServer, ::håndterSubsumsjon, personRepository).startBlocking()
 }
 
-private val objectMapper = jacksonObjectMapper()
+val objectMapper = jacksonObjectMapper()
     .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
     .registerModule(JavaTimeModule())
 
-fun håndterSubsumsjon(value: String) {
+fun håndterSubsumsjon(value: String, database: PersonRepository) {
     val melding = objectMapper.readTree(value)
+    val fnr = melding["fodselsnummer"].asText()
 
-    /*
-    Ny melding kommer inn:
-    - hent fnr fra melding: melding["fodselsnummer"].asText()
-    - hent JSON person fra db hentPerson(fnr)
-    - person = lagPersonFraJSON(JSONperson)
-    - subsumsjon = lagSubsumsjonFraJSON(melding)
-    - person.håndter(subsumsjon)
-    - lagre person til JSON
+    val person = database.hentPerson(fnr)?.deserialiser() ?: Person(fnr)
+    val nySubsumsjon = lagSubsumsjonFraJson(melding)
+    person.håndter(nySubsumsjon)
+    sikkerlogger.info("Mottok melding som hadde forventet fødselsnummer {}", person.toString())
 
-
-    Nytt søk kommer inn:
-    - hent JSON person fra db hentPerson(fnr)
-    - person.accept(visitor) ?
-    
-    Nytt søk på paragraf
-    - hent JSON personer basert på paragraf index?
-     */
-
-
-    if (melding["fodselsnummer"].asText() == fødselsnr) {
-        val nySubsumsjon = lagSubsumsjonFraJson(melding)
-        person.håndter(nySubsumsjon)
-        sikkerlogger.info("Mottok melding som hadde forventet fødselsnummer {}", person.toString())
-    }
+    val apiVisitor = APIVisitor()
+    person.accept(apiVisitor)
+    val personJson = objectMapper.writeValueAsString(apiVisitor.personMap)
+    database.lagre(personJson, fnr)
 }
 
 
@@ -89,7 +77,7 @@ fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
     return subsumsjon
 }
 
-fun ktorServer(appName: String): ApplicationEngine =
+fun ktorServer(database: PersonRepository): ApplicationEngine =
     embeddedServer(CIO, applicationEngineEnvironment {
         /**
          * Konfigurasjon av Webserver (Ktor https://ktor.io/)
@@ -132,14 +120,14 @@ fun ktorServer(appName: String): ApplicationEngine =
                         "Missing id",
                         status = HttpStatusCode.BadRequest
                     )
-                    if (id == fødselsnr) {
-                        val apiVisitor = APIVisitor()
-                        person.accept(apiVisitor)
-                        call.respondText(
-                            contentType = ContentType.Application.Json,
-                            text = objectMapper.writeValueAsString(apiVisitor.personMap)
-                        )
-                    }
+                    val person = database.hentPerson(id)?.deserialiser() ?: throw RuntimeException("fant ikke person i databasen")
+                    val apiVisitor = APIVisitor()
+                    person.accept(apiVisitor)
+                    call.respondText(
+                        contentType = ContentType.Application.Json,
+                        text = objectMapper.writeValueAsString(apiVisitor.personMap)
+                    )
+
                 }
             }
         }
