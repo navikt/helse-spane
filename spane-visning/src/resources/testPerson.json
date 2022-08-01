@@ -495,9 +495,8 @@
           "utfall": "VILKAR_OPPFYLT"
         }
       ],
-      "orgnummer": "12345",
-      "startDato": "06.04.22",
-      "sluttDato": "18.04.22"
+      "orgnummer": "ukjent",
+      "skjæringstidspunkt": "18.04.22"
     },
     {
       "subsumsjoner": [
@@ -1172,8 +1171,7 @@
         }
       ],
       "orgnummer": "12345",
-      "startDato": "06.04.22",
-      "sluttDato": "18.04.22"
+      "skjæringstidspunkt": "18.04.22"
     },
     {
       "subsumsjoner": [
@@ -1671,8 +1669,7 @@
         }
       ],
       "orgnummer": "12345",
-      "startDato": "06.04.22",
-      "sluttDato": "18.04.22"
+      "skjæringstidspunkt": "18.04.22"
     }
   ],
   "fnr": "10877799145"

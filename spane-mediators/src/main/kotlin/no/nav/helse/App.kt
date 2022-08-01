@@ -23,7 +23,7 @@ import java.time.ZonedDateTime
 var logger: Logger = LoggerFactory.getLogger("Spane")
 var sikkerlogger: Logger = LoggerFactory.getLogger("tjenestekall")
 
-val fødselsnr = "10877799145"
+val fødselsnr = "24068715888"
 val person = Person(fødselsnr)
 
 fun main() {
@@ -157,7 +157,7 @@ class APIVisitor : PersonVisitor {
 
     override fun preVisitSubsumsjoner(skjæringstidspunkt: String) {
         (personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>)
-            .add(mutableMapOf("subsumsjoner" to mutableListOf<Any>(), "orgnummer" to "123456", "skjæringstidspunkt" to skjæringstidspunkt))
+            .add(mutableMapOf("subsumsjoner" to mutableListOf<Any>(), "orgnummer" to "ukjent", "skjæringstidspunkt" to skjæringstidspunkt))
 
     }
 
