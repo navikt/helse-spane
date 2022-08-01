@@ -37,8 +37,8 @@ class Konfig(
                     System.getenv("DATABASE_PORT"),
                     System.getenv("DATABASE_DATABASE")
                 ),
-                System.getenv("DATABASE_USERNAME"),
-                System.getenv("DATABASE_PASSWORD"),
+                System.getenv("DATABASE_USERNAME") ?: "",
+                System.getenv("DATABASE_PASSWORD") ?: "",
                 1,
                 Duration.ofSeconds(30).toMillis(),
                 Duration.ofMinutes(30).toMillis(),
