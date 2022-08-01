@@ -31,7 +31,7 @@ class Konfig(
                 System.getenv("SUBSUMSJON_TOPIC"),
                 System.getenv("SUBSUMSJON_CONSUMER_GROUP") ?: "consumer-$appNavn-v2",
 
-                System.getenv("NAIS_DATABASE_SPANE_SPANE_PERSONDATABASE_URL") ?: String.format(
+                String.format(
                     "jdbc:postgresql://%s:%s/%s",
                     System.getenv("NAIS_DATABASE_SPANE_SPANE_PERSONDATABASE_HOST"),
                     System.getenv("NAIS_DATABASE_SPANE_SPANE_PERSONDATABASE_PORT"),
