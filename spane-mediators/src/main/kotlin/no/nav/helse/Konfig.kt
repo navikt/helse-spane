@@ -31,14 +31,14 @@ class Konfig(
                 System.getenv("SUBSUMSJON_TOPIC"),
                 System.getenv("SUBSUMSJON_CONSUMER_GROUP") ?: "consumer-$appNavn-v2",
 
-                System.getenv("DATABASE_URL") ?: String.format(
+                System.getenv("NAIS_DATABASE_SPANE_SPANE_PERSONDATABASE_URL") ?: String.format(
                     "jdbc:postgresql://%s:%s/%s",
-                    System.getenv("DATABASE_HOST"),
-                    System.getenv("DATABASE_PORT"),
-                    System.getenv("DATABASE_DATABASE")
+                    System.getenv("NAIS_DATABASE_SPANE_SPANE_PERSONDATABASE_HOST"),
+                    System.getenv("NAIS_DATABASE_SPANE_SPANE_PERSONDATABASE_PORT"),
+                    System.getenv("NAIS_DATABASE_SPANE_SPANE_PERSONDATABASE_DATABASE")
                 ),
-                System.getenv("DATABASE_USERNAME") ?: "",
-                System.getenv("DATABASE_PASSWORD") ?: "",
+                System.getenv("NAIS_DATABASE_SPANE_SPANE_PERSONDATABASE_USERNAME") ?: "",
+                System.getenv("NAIS_DATABASE_SPANE_SPANE_PERSONDATABASE_PASSWORD") ?: "",
                 1,
                 Duration.ofSeconds(30).toMillis(),
                 Duration.ofMinutes(30).toMillis(),
