@@ -50,7 +50,6 @@ class Konfig(
         }
     }
 
-
     internal fun konsumentKonfig(clientId: String, consumerGroup: String) = Properties().apply {
         put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, kafkaBrokers)
         put(ConsumerConfig.GROUP_ID_CONFIG, consumerGroup)
