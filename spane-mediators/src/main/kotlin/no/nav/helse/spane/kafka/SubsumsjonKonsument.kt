@@ -2,6 +2,7 @@ package no.nav.helse.spane.kafka
 
 import no.nav.helse.Konfig
 import no.nav.helse.logger
+import no.nav.helse.spane.db.PersonRepository
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.errors.WakeupException
 import org.apache.kafka.common.serialization.StringDeserializer
@@ -12,7 +13,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 class SubsumsjonKonsument (
     private val konfig: Konfig,
     clientId: String = UUID.randomUUID().toString().slice(1..5),
-    private val håndterSubsumsjon: (input: String) -> Any?
+    private val håndterSubsumsjon: (input: String, database: PersonRepository) -> Any?,
+    private val personRepository: PersonRepository
     ) {
 
     private val konsument = KafkaConsumer(konfig.konsumentKonfig(clientId, konfig.consumerGroup), StringDeserializer(), StringDeserializer())
@@ -24,7 +26,7 @@ class SubsumsjonKonsument (
             konsument.subscribe(listOf(konfig.topic))
             while (running.get()) {
                 konsument.poll(Duration.ofSeconds(1)).onEach {
-                    håndterSubsumsjon(it.value())
+                    håndterSubsumsjon(it.value(), personRepository)
                 }
                 // TODO commit offset
             }

@@ -1,6 +1,8 @@
 package no.nav.helse.spane.db
 
 
-internal interface PersonRepository {
+interface PersonRepository {
     fun hentPerson(fødselsnummer: String): SerialisertPerson?
+
+    fun lagre(json: String, fnr: String)
 }

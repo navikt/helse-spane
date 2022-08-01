@@ -5,6 +5,8 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import no.nav.common.KafkaEnvironment
 import no.nav.helse.TestHjelper.Companion.melding
+import no.nav.helse.spane.db.PersonPostgresRepository
+import no.nav.helse.spane.db.PersonRepository
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.Consumer
 import org.apache.kafka.clients.consumer.ConsumerConfig
@@ -20,8 +22,6 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.*
 import java.util.*
@@ -30,7 +30,7 @@ import kotlin.collections.HashMap
 
 
 @TestInstance(Lifecycle.PER_CLASS)
-internal class E2ETest {
+internal class E2ETest : AbstraktDatabaseTest() {
 
     private val testTopic = "testTopic"
     private lateinit var kafkaProducer: Producer<String, String>
@@ -47,31 +47,35 @@ internal class E2ETest {
     private var teller = 0
 
 
-    fun håndterSubsumsjon(input: String) {
+    fun testHåndterSubsumsjon(input: String, postgresRepository: PersonRepository) {
+        logger.info("fikk melding")
         if (input == melding) {
             teller++
         }
     }
 
     fun startApp() {
+        val konfig = Konfig(
+            "Spane",
+            listOf(embeddedKafkaEnvironment.brokersURL),
+            testTopic,
+            "kaSomHelst",
+            PostgresContainer.instance.jdbcUrl,
+            PostgresContainer.instance.username,
+            PostgresContainer.instance.password,
+            1,
+            250,
+            100,
+            100,
+            null,
+            null,
+            null
+        )
+        val dataSourceBuilder = DataSourceBuilder(konfig)
+        val dataSource = dataSourceBuilder.getDataSource()
+        val personRepository = PersonPostgresRepository(dataSource)
         jobb = GlobalScope.launch {
-            val konfig = Konfig(
-                "Spane",
-                listOf(embeddedKafkaEnvironment.brokersURL),
-                testTopic,
-                "kaSomHelst",
-                "url",
-                "username",
-                "password",
-                1,
-                100,
-                100,
-                100,
-                null,
-                null,
-                null
-            )
-            ApplicationBuilder(konfig, ::ktorServer, ::håndterSubsumsjon).startBlocking()
+            Application(konfig, ::ktorServer, ::testHåndterSubsumsjon, personRepository).startBlocking()
         }
     }
 
@@ -130,16 +134,5 @@ internal class E2ETest {
             teller >= 1
         }
     }
-
-    @Test
-    fun `håndter subsumsjon`() {
-        /*
-         * lag person vha subsumsjonsmelding
-         * test at felter i person stemmer med innhold i subsumsjonsmelding
-         */
-
-        assertEquals(0, 0)
-    }
-
 
 }
