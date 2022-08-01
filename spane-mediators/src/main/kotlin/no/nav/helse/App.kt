@@ -155,9 +155,9 @@ class APIVisitor : PersonVisitor {
         personMap["fnr"] = fødselsnummer
     }
 
-    override fun preVisitSubsumsjoner() {
+    override fun preVisitSubsumsjoner(skjæringstidspunkt: String) {
         (personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>)
-            .add(mutableMapOf("subsumsjoner" to mutableListOf<Any>(), "orgnummer" to "123456", "startDato" to "06.04.22", "sluttDato" to "18.04.22"))
+            .add(mutableMapOf("subsumsjoner" to mutableListOf<Any>(), "orgnummer" to "123456", "skjæringstidspunkt" to skjæringstidspunkt))
 
     }
 
