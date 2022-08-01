@@ -10,9 +10,9 @@ internal class PersonPostgresRepository(private val dataSource: DataSource) : Pe
     override fun hentPerson(fnr: String): SerialisertPerson? {
         //TODO Hent noe data fra db
 
-        val statement = "SELECT data FROM person WHERE fnr = ? ORDER BY id DESC LIMIT 1"
+        val statement = "SELECT data FROM person WHERE fnr = ?"
 
-        return hentPerson(queryOf(statement))
+        return hentPerson(queryOf(statement, fnr))
     }
 
     private fun hentPerson(query: Query) :SerialisertPerson? = sessionOf(dataSource).use { session ->
