@@ -30,6 +30,7 @@ spec:
       - type: POSTGRES_14
         databases:
           - name: spane-persondatabase
+            envVarPrefix: DATABASE
   env:
     - name: SUBSUMSJON_TOPIC
       value: "flex.omrade-helse-etterlevelse"
