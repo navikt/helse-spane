@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 internal class DatabaseTest: AbstraktDatabaseTest() {
 
     @Test
-    @Disabled
+    //@Disabled
     fun vilkårsgrunnlag() {
         hentPerson()
     }

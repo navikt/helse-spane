@@ -31,7 +31,7 @@ object SpaneDataSource {
     val migratedDb = instance.also { migrate(it) }
 }
 
-private val tabeller = listOf("person", "melding", "unike_person")
+private val tabeller = listOf("person")
 fun resetDatabase() {
     sessionOf(migratedDb).use { session -> tabeller.forEach { table -> session.run(queryOf("truncate $table cascade").asExecute) } }
 }

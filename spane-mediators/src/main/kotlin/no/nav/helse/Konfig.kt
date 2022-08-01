@@ -31,7 +31,7 @@ class Konfig(
                 System.getenv("SUBSUMSJON_TOPIC"),
                 System.getenv("SUBSUMSJON_CONSUMER_GROUP") ?: "consumer-$appNavn-v2",
 
-                System.getenv("DATABASE_JDBC_URL") ?: String.format(
+                System.getenv("DATABASE_URL") ?: String.format(
                     "jdbc:postgresql://%s:%s/%s",
                     System.getenv("DATABASE_HOST"),
                     System.getenv("DATABASE_PORT"),
