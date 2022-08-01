@@ -43,8 +43,8 @@
           "tidsstempel": "2022-07-04T12:53:07.204135086+02:00",
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
-          "paragraf": "8-4",
-          "ledd": 1,
+          "paragraf": "8-3",
+          "ledd": 2,
           "punktum": 1,
           "bokstav": "null",
           "input": {
@@ -72,7 +72,7 @@
           "tidsstempel": "2022-07-04T12:53:07.206475638+02:00",
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
-          "paragraf": "8-4",
+          "paragraf": "8-3",
           "ledd": 1,
           "punktum": 2,
           "bokstav": "null",
@@ -101,7 +101,7 @@
           "tidsstempel": "2022-07-04T12:53:07.208830276+02:00",
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
-          "paragraf": "8-4",
+          "paragraf": "8-3",
           "ledd": 1,
           "punktum": 1,
           "bokstav": "null",
@@ -131,9 +131,9 @@
           "tidsstempel": "2022-07-04T12:53:07.210554302+02:00",
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
-          "paragraf": "8-4",
+          "paragraf": "8-3",
           "ledd": 1,
-          "punktum": 1,
+          "punktum": 4,
           "bokstav": "null",
           "input": {
             "hoveddiagnose": {
@@ -161,8 +161,8 @@
           "tidsstempel": "2022-07-04T12:53:07.212326025+02:00",
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
-          "paragraf": "8-4",
-          "ledd": 1,
+          "paragraf": "8-3",
+          "ledd": 4,
           "punktum": 1,
           "bokstav": "null",
           "input": {
@@ -192,8 +192,8 @@
           "tidsstempel": "2022-07-04T12:53:07.214204578+02:00",
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
-          "paragraf": "8-13",
-          "ledd": 1,
+          "paragraf": "8-3",
+          "ledd": 0,
           "punktum": 0,
           "bokstav": "null",
           "input": {
@@ -241,7 +241,7 @@
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
-          "ledd": 2,
+          "ledd": 1,
           "punktum": 0,
           "bokstav": "null",
           "input": {
@@ -270,7 +270,7 @@
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
-          "ledd": 2,
+          "ledd": 4,
           "punktum": 0,
           "bokstav": "null",
           "input": {
@@ -302,7 +302,7 @@
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
-          "ledd": 2,
+          "ledd": 3,
           "punktum": 0,
           "bokstav": "null",
           "input": {
@@ -1575,7 +1575,7 @@
             }
           },
           "output": {},
-          "utfall": "VILKAR_OPPFYLT"
+          "utfall": "VILKAR_BEREGNET"
         },
         {
           "id": "65d81890-21c9-46d1-8400-e67e22c0bb18",
@@ -1635,7 +1635,7 @@
             }
           },
           "output": {},
-          "utfall": "VILKAR_OPPFYLT"
+          "utfall": "VILKAR_IKKE_OPPFYLT"
         },
         {
           "id": "41bf2543-7412-4ff2-88d8-e3ce525be4ea",
@@ -1665,7 +1665,7 @@
             "erCoronaRelatert": false
           },
           "output": {},
-          "utfall": "VILKAR_OPPFYLT"
+          "utfall": "VILKAR_UAVKLART"
         }
       ],
       "orgnummer": "180992",

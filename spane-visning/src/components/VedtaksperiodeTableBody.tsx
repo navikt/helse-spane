@@ -11,6 +11,7 @@ interface Props {
 export default function VedtaksperiodeTableBody(props: Props) {
     const {person, valgte} = props;
 
+
     return (
         <Table.Body>
             {valgte.length > 0
