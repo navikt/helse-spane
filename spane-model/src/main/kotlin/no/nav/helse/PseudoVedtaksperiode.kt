@@ -1,6 +1,7 @@
 package no.nav.helse
 
 import no.nav.helse.Subsumsjon.Companion.eier
+import no.nav.helse.Subsumsjon.Companion.finnOrgnummer
 import no.nav.helse.Subsumsjon.Companion.finnSkjæringstidspunkt
 import no.nav.helse.Subsumsjon.Companion.relevante
 import no.nav.helse.Subsumsjon.Companion.sporingIder
@@ -72,7 +73,7 @@ class PseudoVedtaksperiode(
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
-        visitor.preVisitSubsumsjoner(this.subsumsjoner.finnSkjæringstidspunkt())
+        visitor.preVisitSubsumsjoner(this.subsumsjoner.finnSkjæringstidspunkt(), this.subsumsjoner.finnOrgnummer())
         subsumsjoner.forEach { it.accept(visitor) }
         visitor.postVisitSubsumsjoner()
     }

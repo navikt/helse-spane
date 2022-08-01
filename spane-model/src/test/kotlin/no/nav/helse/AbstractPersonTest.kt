@@ -117,7 +117,7 @@ class TestVisitor : PersonVisitor {
         this.fødselsnummer = fødselsnummer
     }
 
-    override fun preVisitSubsumsjoner(skjæringstidspunkt: String) {
+    override fun preVisitSubsumsjoner(skjæringstidspunkt: String, orgnummer: String) {
         vedtaksperioder.add(TestVedtaksperiode(mutableListOf()))
 
     }
