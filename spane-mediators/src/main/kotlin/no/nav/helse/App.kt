@@ -11,9 +11,10 @@ var sikkerlogger: Logger = LoggerFactory.getLogger("tjenestekall")
 
 fun main() {
     val config = Konfig.fromEnv()
+
     val dataSourceBuilder = DataSourceBuilder(config)
-    val dataSource = dataSourceBuilder.getDataSource()
-    val personRepository = PersonPostgresRepository(dataSource)
+    val personRepository = PersonPostgresRepository(dataSourceBuilder.getDataSource())
+
     Application(config, ::ktorServer, ::håndterSubsumsjon, personRepository).startBlocking()
 }
 
