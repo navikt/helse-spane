@@ -30,8 +30,9 @@ spec:
       name: helse-spane
       - type: POSTGRES_14
         databases:
+          - envVarPrefix: DATABASE
           - name: spane
-            envVarPrefix: DATABASE
+      diskAutoresize: true
   env:
     - name: SUBSUMSJON_TOPIC
       value: "flex.omrade-helse-etterlevelse"
