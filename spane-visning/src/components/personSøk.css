@@ -19,3 +19,7 @@
 .table-row-expanded-content-column {
   width: 500px;
 }
+
+.navds-table__expanded-row-content {
+  padding: 0!important;
+}

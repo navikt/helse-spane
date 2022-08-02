@@ -68,6 +68,11 @@ function UtvidetVedtaksperiodeTableInnhold(props: Props) {
                     return utfallStringVerdi(v1.utfall) > utfallStringVerdi(v2.utfall) ? 1 : -1
                 }
             ))
+        } else if (sortKey === "behandlet") {
+            setSorterteSubsumsjoner([...sorterteSubsumsjoner].sort((v1, v2) => {
+                    return new Date(v1.tidsstempel) > new Date(v2.tidsstempel) ? 1 : -1
+                }
+            ))
         }
     }
 
@@ -79,15 +84,16 @@ function UtvidetVedtaksperiodeTableInnhold(props: Props) {
 
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell/>
                     <Table.ColumnHeader scope="col" sortKey={"paragraf"} sortable>
                         Paragraf
                     </Table.ColumnHeader>
                     <Table.ColumnHeader scope="col" sortKey={"utfall"} sortable>
                         Utfall
                     </Table.ColumnHeader>
+                    <Table.ColumnHeader scope="col" sortKey={"behandlet"} sortable>
+                        Behandlet
+                    </Table.ColumnHeader>
                     <Table.ColumnHeader scope="col">
-                        Opprettet
                     </Table.ColumnHeader>
                 </Table.Row>
             </Table.Header>
