@@ -10,11 +10,13 @@ import "./personSøk.css";
 interface Props {
     valgte: string[]
     setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>
+    fraDato: string
+    tilDato: string
 }
 
 function PersonSøkSide(props: Props) {
 
-    const {valgte} = props;
+    const {valgte, setOrgnumre, fraDato, tilDato} = props;
     const backend: Backend = Environment.isDevelopment
         ? testBackend()
         : restBackend();
@@ -38,7 +40,7 @@ function PersonSøkSide(props: Props) {
                         }
                     }
                 )
-                props.setOrgnumre(orgnumre)
+                setOrgnumre(orgnumre)
             });
     };
 
@@ -55,7 +57,7 @@ function PersonSøkSide(props: Props) {
                 </form>
             </div>
             <Table size="medium">
-                {person && <VedtaksperiodeTableBody valgte={valgte} person={person}/>}
+                {person && <VedtaksperiodeTableBody valgte={valgte} person={person} fraDato={fraDato} tilDato={tilDato}/>}
             </Table>
         </main>
     );
