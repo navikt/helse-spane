@@ -27,12 +27,12 @@ spec:
     enabled: true
   gcp:
     sqlInstances:
-      name: helse-spane
+        name: helse-spane
       - type: POSTGRES_14
         databases:
           - envVarPrefix: DATABASE
           - name: spane
-      diskAutoresize: true
+        diskAutoresize: true
   env:
     - name: SUBSUMSJON_TOPIC
       value: "flex.omrade-helse-etterlevelse"
