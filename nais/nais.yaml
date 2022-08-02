@@ -29,10 +29,10 @@ spec:
     sqlInstances:
       - name: helse-spane
       - type: POSTGRES_14
+        diskAutoresize: true
         databases:
-          - envVarPrefix: DATABASE
+            envVarPrefix: DATABASE
           - name: spane
-      - diskAutoresize: true
   env:
     - name: SUBSUMSJON_TOPIC
       value: "flex.omrade-helse-etterlevelse"
