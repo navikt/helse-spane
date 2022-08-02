@@ -21,9 +21,9 @@ export type SubsumsjonDto = {
     lovverk: string;
     lovverksversjon: string;
     paragraf: string;
-    ledd: number;
-    punktum: number;
-    bokstav: string;
+    ledd: number | null;
+    punktum: number | null;
+    bokstav: string | null;
     input: Map<string, any>;
     output: Map<string, any>;
     utfall: string;

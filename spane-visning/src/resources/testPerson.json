@@ -20,7 +20,7 @@
           "paragraf": "8-3",
           "ledd": 1,
           "punktum": 2,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "forsteFomDato": "2022-05-02",
             "pasientFodselsdato": "1977-07-10"
@@ -46,7 +46,7 @@
           "paragraf": "8-3",
           "ledd": 2,
           "punktum": 1,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "hoveddiagnose": {
               "system": "2.16.578.1.12.4.1.1.7110",
@@ -73,9 +73,9 @@
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-3",
-          "ledd": 1,
-          "punktum": 2,
-          "bokstav": "null",
+          "ledd": null,
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "hoveddiagnose": {
               "system": "2.16.578.1.12.4.1.1.7110",
@@ -102,9 +102,9 @@
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-3",
-          "ledd": 1,
-          "punktum": 1,
-          "bokstav": "null",
+          "ledd": null,
+          "punktum": null,
+          "bokstav": "a",
           "input": {
             "annenFraversArsak": null,
             "hoveddiagnose": {
@@ -134,7 +134,7 @@
           "paragraf": "8-3",
           "ledd": 1,
           "punktum": 4,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "hoveddiagnose": {
               "system": "2.16.578.1.12.4.1.1.7110",
@@ -164,7 +164,7 @@
           "paragraf": "8-3",
           "ledd": 4,
           "punktum": 1,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "biDiagnoser": [
               {
@@ -193,9 +193,9 @@
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-3",
-          "ledd": 0,
-          "punktum": 0,
-          "bokstav": "null",
+          "ledd": null,
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "perioder": [
               {
@@ -242,8 +242,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 1,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-06-27T00:00:00",
@@ -271,8 +271,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 4,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "erEttersendingAvTidligereSykmelding": null,
@@ -303,8 +303,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 3,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-06-27T00:00:00",
@@ -334,8 +334,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-06-27T00:00:00",
@@ -363,8 +363,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-06-27T00:00:00",
@@ -421,8 +421,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "erEttersendingAvTidligereSykmelding": null,
@@ -481,8 +481,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletDato": "2022-06-27",
@@ -518,7 +518,7 @@
           "paragraf": "8-3",
           "ledd": 1,
           "punktum": 2,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "forsteFomDato": "2022-05-02",
             "pasientFodselsdato": "1977-07-10"
@@ -544,7 +544,7 @@
           "paragraf": "8-4",
           "ledd": 1,
           "punktum": 1,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "hoveddiagnose": {
               "system": "2.16.578.1.12.4.1.1.7110",
@@ -573,7 +573,7 @@
           "paragraf": "8-4",
           "ledd": 1,
           "punktum": 2,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "hoveddiagnose": {
               "system": "2.16.578.1.12.4.1.1.7110",
@@ -602,7 +602,7 @@
           "paragraf": "8-4",
           "ledd": 1,
           "punktum": 1,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "annenFraversArsak": null,
             "hoveddiagnose": {
@@ -632,7 +632,7 @@
           "paragraf": "8-4",
           "ledd": 1,
           "punktum": 1,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "hoveddiagnose": {
               "system": "2.16.578.1.12.4.1.1.7110",
@@ -662,7 +662,7 @@
           "paragraf": "8-4",
           "ledd": 1,
           "punktum": 1,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "biDiagnoser": [
               {
@@ -692,8 +692,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-13",
           "ledd": 1,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "perioder": [
               {
@@ -740,8 +740,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-06-27T00:00:00",
@@ -769,8 +769,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "erEttersendingAvTidligereSykmelding": false,
@@ -801,8 +801,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-06-27T00:00:00",
@@ -832,8 +832,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-06-27T00:00:00",
@@ -861,8 +861,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-06-27T00:00:00",
@@ -919,8 +919,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "erEttersendingAvTidligereSykmelding": false,
@@ -979,8 +979,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletDato": "2022-06-27",
@@ -1054,7 +1054,7 @@
           "lovverksversjon": "2018-01-01",
           "paragraf": "8-17",
           "ledd": 1,
-          "punktum": 0,
+          "punktum": null,
           "bokstav": "a",
           "input": {
             "oppbruktArbeidsgiverperiode": true,
@@ -1098,8 +1098,8 @@
           "lovverksversjon": "2018-01-01",
           "paragraf": "8-17",
           "ledd": 1,
-          "punktum": 0,
-          "bokstav": "a",
+          "punktum": null,
+          "bokstav": "b",
           "input": {
             "oppbruktArbeidsgiverperiode": true,
             "versjon": "2022-02-01",
@@ -1140,10 +1140,10 @@
           "tidsstempel": "2022-07-04T11:06:23.936030478Z",
           "lovverk": "folketrygdloven",
           "lovverksversjon": "1997-05-01",
-          "paragraf": "8-13",
-          "ledd": 0,
-          "punktum": 0,
-          "bokstav": "null",
+          "paragraf": "8-17",
+          "ledd": null,
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "fravar": [],
             "versjon": "2022-02-01",
@@ -1190,10 +1190,10 @@
           "tidsstempel": "2022-07-13T10:25:50.502588793+02:00",
           "lovverk": "folketrygdloven",
           "lovverksversjon": "2022-01-01",
-          "paragraf": "8-3",
-          "ledd": 1,
-          "punktum": 2,
-          "bokstav": "null",
+          "paragraf": "8-17",
+          "ledd": null,
+          "punktum": null,
+          "bokstav": "a",
           "input": {
             "forsteFomDato": "2022-07-06",
             "pasientFodselsdato": "1977-07-10"
@@ -1219,7 +1219,7 @@
           "paragraf": "8-4",
           "ledd": 1,
           "punktum": 1,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "hoveddiagnose": {
               "system": "2.16.578.1.12.4.1.1.7110",
@@ -1248,7 +1248,7 @@
           "paragraf": "8-4",
           "ledd": 1,
           "punktum": 2,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "hoveddiagnose": {
               "system": "2.16.578.1.12.4.1.1.7110",
@@ -1277,7 +1277,7 @@
           "paragraf": "8-4",
           "ledd": 1,
           "punktum": 1,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "annenFraversArsak": null,
             "hoveddiagnose": {
@@ -1307,7 +1307,7 @@
           "paragraf": "8-4",
           "ledd": 1,
           "punktum": 1,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "hoveddiagnose": {
               "system": "2.16.578.1.12.4.1.1.7110",
@@ -1337,7 +1337,7 @@
           "paragraf": "8-4",
           "ledd": 1,
           "punktum": 1,
-          "bokstav": "null",
+          "bokstav": null,
           "input": {
             "biDiagnoser": [
               {
@@ -1367,8 +1367,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-13",
           "ledd": 1,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "perioder": [
               {
@@ -1415,8 +1415,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-07-06T00:00:00",
@@ -1444,8 +1444,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "erEttersendingAvTidligereSykmelding": null,
@@ -1476,8 +1476,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-07-06T00:00:00",
@@ -1507,8 +1507,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-07-06T00:00:00",
@@ -1536,8 +1536,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletTidspunkt": "2022-07-06T00:00:00",
@@ -1594,8 +1594,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "erEttersendingAvTidligereSykmelding": null,
@@ -1654,8 +1654,8 @@
           "lovverksversjon": "2022-01-01",
           "paragraf": "8-7",
           "ledd": 2,
-          "punktum": 0,
-          "bokstav": "null",
+          "punktum": null,
+          "bokstav": null,
           "input": {
             "erNyttSyketilfelle": true,
             "behandletDato": "2022-07-06",
