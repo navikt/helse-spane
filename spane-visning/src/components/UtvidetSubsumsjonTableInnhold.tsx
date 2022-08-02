@@ -1,4 +1,5 @@
 import { SubsumsjonDto } from "../types";
+import { FileContent } from "@navikt/ds-icons";
 import React, { useEffect, useState } from "react";
 import byggStringRekursivt from "./utlis";
 
@@ -35,28 +36,21 @@ export default function UtvidetSubsumsjonTableInnhold(props: Props) {
           ))}
         </div>
         <div>
-          <b>Lovverk: </b>
-          {subsumsjon.lovverk}
-        </div>
-        <div>
           <b>Kilde: </b>
           {subsumsjon.kilde}
         </div>
       </div>
       <div className="table-row-expanded-content-column">
         <div>
-          <b>Versjon av kode:</b>
-          <div style={{ overflowWrap: "break-word" }}>
-            {subsumsjon.versjonAvKode}
-          </div>
+          <b>Lovverk: </b> {subsumsjon.lovverk}
         </div>
         <div>
-          <b>Meldingsid: </b> {subsumsjon.id}
+          <b>Versjon av lovverk: </b> {subsumsjon.lovverksversjon}
         </div>
         <div>
-          <b>Sporing: </b>{" "}
-          {sporingString.split("\n").map((s, key) => (
-            <div key={key}>{s}</div>
+          <p></p>
+          {sporingString.split("\n").filter((s) => (s === "sykmelding:" || s === "soknad:")).map((s, key) => (
+            <div key={key} >{s}<FileContent/></div>
           ))}
         </div>
       </div>
