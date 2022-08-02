@@ -25,6 +25,4 @@ internal class DataSourceBuilder(konfig: Konfig) {
             .initSql(initSql)
             .load()
             .migrate()
-
-
 }
