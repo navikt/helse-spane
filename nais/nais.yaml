@@ -29,7 +29,7 @@ spec:
     sqlInstances:
       - name: helse-spane
       - type: POSTGRES_14
-        diskAutoresize: true
+      - diskAutoresize: true
         databases:
             envVarPrefix: DATABASE
           - name: spane
