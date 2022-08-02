@@ -27,9 +27,10 @@ spec:
     enabled: true
   gcp:
     sqlInstances:
+      name: helse-spane
       - type: POSTGRES_14
         databases:
-          - name: spane-persondatabase
+          - name: spane
             envVarPrefix: DATABASE
   env:
     - name: SUBSUMSJON_TOPIC
