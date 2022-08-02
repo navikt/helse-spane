@@ -9,7 +9,7 @@ import java.util.*
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal abstract class AbstraktDatabaseTest {
+internal abstract class AbstractDatabaseTest {
     private lateinit var personRepository: PersonPostgresRepository
 
     private val testTopic = "testTopic"

@@ -5,7 +5,7 @@ import no.nav.helse.spane.objectMapper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class DatabaseTest : AbstraktDatabaseTest() {
+internal class DatabaseTest : AbstractDatabaseTest() {
     @Test
     fun `person blir lagret i database`() {
 

@@ -31,7 +31,7 @@ import kotlin.collections.HashMap
 
 
 @TestInstance(Lifecycle.PER_CLASS)
-internal class E2ETest : AbstraktDatabaseTest() {
+internal class E2ETest : AbstractDatabaseTest() {
 
     private val testTopic = "testTopic"
     private lateinit var kafkaProducer: Producer<String, String>
