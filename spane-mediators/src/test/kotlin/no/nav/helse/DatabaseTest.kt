@@ -1,18 +1,27 @@
 package no.nav.helse
 
-import org.junit.jupiter.api.Disabled
+import no.nav.helse.spane.APIVisitor
+import no.nav.helse.spane.objectMapper
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import java.io.File
 
-internal class DatabaseTest: AbstraktDatabaseTest() {
-
+internal class DatabaseTest : AbstraktDatabaseTest() {
     @Test
-    @Disabled("ikke ferdig skrevet, skal sikkert droppes")
-    fun `lagre person i database`() {
+    fun `person blir lagret i database`() {
 
-        val json = File("/test/kotlin/resources/testPerson.json").inputStream().bufferedReader().use { it.readText() }
-        assertPersonLagret(json)
+        val person = Person(FØDSELSNUMMER)
+        person.håndter(lagSubsumsjon())
 
+        val besøkende = APIVisitor()
+
+        person.accept(besøkende)
+
+        val utputt = objectMapper.writeValueAsString(besøkende.personMap)
+
+        lagrePerson(utputt)
+
+        assertEquals(utputt, hentPersonJson())
     }
+
 
 }

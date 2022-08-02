@@ -13,7 +13,7 @@ internal class PersonPostgresRepository(private val dataSource: DataSource) : Pe
     }
 
     override fun lagre(json: String, fnr: String) {
-        val statement = "INSERT INTO person (fnr, data) VALUES (?, ?)"
+        val statement = "INSERT INTO person (fnr, data) VALUES (?, ?::JSON)"
         sessionOf(dataSource).use { session ->
             session.run(queryOf(statement, fnr, json).asUpdate)
         }

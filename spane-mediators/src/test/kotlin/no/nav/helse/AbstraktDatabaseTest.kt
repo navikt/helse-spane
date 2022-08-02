@@ -4,12 +4,16 @@ import no.nav.common.KafkaEnvironment
 import no.nav.helse.spane.db.PersonPostgresRepository
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
+import java.time.ZonedDateTime
+import java.util.*
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal abstract class AbstraktDatabaseTest {
     private lateinit var personRepository: PersonPostgresRepository
 
     private val testTopic = "testTopic"
+    protected val FØDSELSNUMMER = "1234567890"
 
     private val embeddedKafkaEnvironment = KafkaEnvironment(
         autoStart = false,
@@ -43,17 +47,25 @@ internal abstract class AbstraktDatabaseTest {
 
     }
 
-    protected fun hentPerson(){
-        val person = personRepository.hentPerson("10877799145")
-        if (person != null) {
-            println(person.json)
-        }
-    }
+    protected fun hentPersonJson() = personRepository.hentPerson(FØDSELSNUMMER)?.json
 
-    fun assertPersonLagret(json: String){
-        personRepository.lagre(json, "180992 gammel")
-    }
+    fun lagrePerson(json: String) = personRepository.lagre(json, FØDSELSNUMMER)
 
+    fun lagSubsumsjon(
+        paragraf: String = "8-11",
+        tidsstempel: ZonedDateTime = ZonedDateTime.now(),
+        sporing: Map<String, List<String>> = emptyMap(),
+        input: Map<String, Any> = emptyMap(),
+        output: Map<String, Any> = emptyMap(),
+        id: String = UUID.randomUUID().toString()
+
+    ): Subsumsjon {
+        return Subsumsjon(
+            id, "3", "sub", "kildee", "3",
+            FØDSELSNUMMER, sporing, tidsstempel, "loven", "3",
+            paragraf, null, null, null, input, output, "GODKJENT"
+        )
+    }
 
 
 }
