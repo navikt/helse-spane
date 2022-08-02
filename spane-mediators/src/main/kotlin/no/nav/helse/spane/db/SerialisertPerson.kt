@@ -1,8 +1,8 @@
 package no.nav.helse.spane.db
 
 import no.nav.helse.Person
-import no.nav.helse.lagSubsumsjonFraJson
-import no.nav.helse.objectMapper
+import no.nav.helse.spane.lagSubsumsjonFraJson
+import no.nav.helse.spane.objectMapper
 
 class SerialisertPerson(val json: String) {
     internal fun deserialiser(): Person {

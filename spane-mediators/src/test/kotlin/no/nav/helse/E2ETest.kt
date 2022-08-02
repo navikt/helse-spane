@@ -7,6 +7,7 @@ import no.nav.common.KafkaEnvironment
 import no.nav.helse.TestHjelper.Companion.melding
 import no.nav.helse.spane.db.PersonPostgresRepository
 import no.nav.helse.spane.db.PersonRepository
+import no.nav.helse.spane.ktorServer
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.Consumer
 import org.apache.kafka.clients.consumer.ConsumerConfig
