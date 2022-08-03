@@ -2,6 +2,7 @@ import { Search } from "@navikt/ds-react";
 import React, {FormEvent} from "react";
 import { Backend } from "../../service";
 import { PersonDto } from "../../types";
+import "./søkefelt.css"
 
 interface Props {
   fødselsnummer: string
@@ -37,9 +38,9 @@ function Søkefelt(props: Props){
         });
 };
   return (
-    <div>
+    <div className="search-container">
         <h2>Personsøk</h2>
-            <div className="search-container">
+            <div>
                 <form onSubmit={handleSubmit}>
                     <Search
                         label="Søk etter fødselsnummer"
