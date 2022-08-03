@@ -7,8 +7,9 @@ import no.nav.helse.TestHjelper.Companion.lagSporing
 import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
 import no.nav.helse.TestHjelper.Companion.lagVedtaksPeriode
 import no.nav.helse.TestHjelper.Companion.vedtakFattet
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import java.time.LocalDate
 
 class PseudoVedtaksperiodeTest {
 
@@ -260,6 +261,13 @@ class PseudoVedtaksperiodeTest {
         val pvp = lagVedtaksPeriode(1)
         pvp.håndter(vedtakFattet(pvp))
         assertEquals("VEDTAK_FATTET", pvp.inspektør().tilstand)
+    }
+    @Test
+    fun `pseudoVedtaksperiode har ikke skjæringstidspunkt før vedtakFattet er mottatt`() {
+        val pvp = lagVedtaksPeriode(1, input =  mapOf("skjæringstidspunkt" to LocalDate.now().toString()))
+        assertNull(pvp.inspektør().skjæringstidspunkt)
+        pvp.håndter(vedtakFattet(pvp))
+        assertNotNull(pvp.inspektør().skjæringstidspunkt)
     }
 }
 

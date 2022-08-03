@@ -1,6 +1,7 @@
 package no.nav.helse
 
 import org.junit.jupiter.api.fail
+import java.time.LocalDate
 import java.time.ZonedDateTime
 import java.util.*
 
@@ -108,7 +109,7 @@ private val Person.inspektør: TestVisitor
     }
 
 class TestVisitor : PersonVisitor {
-    data class TestPseudoVedtaksperiode(val tilstand: String, val vedtaksperiodeId: String?, val skjæringstidspunkt: String, val subsumsjoner: MutableList<Map<String, Any?>>)
+    data class TestPseudoVedtaksperiode(val tilstand: String, val vedtaksperiodeId: String?, val skjæringstidspunkt: LocalDate?, val subsumsjoner: MutableList<Map<String, Any?>>)
 
     private lateinit var fødselsnummer: String
     val vedtaksperioder: MutableList<TestPseudoVedtaksperiode> = mutableListOf()
@@ -120,7 +121,7 @@ class TestVisitor : PersonVisitor {
 
     override fun visitVedtaksperiode(
         tilstand: String,
-        skjæringstidspunkt: String,
+        skjæringstidspunkt: LocalDate?,
         orgnummer: String,
         vedtaksperiodeId: String?
     ) {

@@ -1,5 +1,6 @@
 package no.nav.helse
 
+import java.time.LocalDate
 import java.time.ZonedDateTime
 
 interface PersonVisitor : VedtaksperiodeVisitor {
@@ -20,7 +21,7 @@ interface VedtaksperiodeVisitor : SubsumsjonVisitor {
 
     fun visitVedtaksperiode(
         tilstand: String,
-        skjæringstidspunkt: String,
+        skjæringstidspunkt: LocalDate?,
         orgnummer: String,
         vedtaksperiodeId: String?
     ){}

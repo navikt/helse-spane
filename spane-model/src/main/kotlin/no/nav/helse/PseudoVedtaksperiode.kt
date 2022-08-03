@@ -2,11 +2,12 @@ package no.nav.helse
 
 import no.nav.helse.Subsumsjon.Companion.eier
 import no.nav.helse.Subsumsjon.Companion.finnOrgnummer
-import no.nav.helse.Subsumsjon.Companion.finnSkjæringstidspunkt
 import no.nav.helse.Subsumsjon.Companion.finnVedtaksperiodeId
 import no.nav.helse.Subsumsjon.Companion.relevante
 import no.nav.helse.Subsumsjon.Companion.sporingIder
 import no.nav.helse.Subsumsjon.Companion.subsumsjonerMedSøknadsIder
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 internal class PseudoVedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>,
@@ -77,13 +78,34 @@ internal class PseudoVedtaksperiode(
 
     private fun subsumsjonerMedSøknadsider() = subsumsjoner.subsumsjonerMedSøknadsIder()
 
+    private fun skjæringstidspunkt(): LocalDate? {
+        var result: LocalDate? = null
+        vedtak.lastOrNull()?.accept( object : VedtakFattetVisitor {
+            override fun visitVedtakFattet(
+                id: String,
+                tidsstempel: LocalDateTime,
+                hendelser: List<String>,
+                fødselsnummer: String,
+                vedtaksperiodeId: String,
+                skjeringstidspunkt: LocalDate,
+                fom: LocalDate,
+                tom: LocalDate,
+                organisasjonsnummer: String,
+                utbetalingsId: String
+            ) {
+                result =  skjeringstidspunkt
+            }
+        })
+        return result
+    }
+
     fun antallSubsumsjoner(): Int {
         return subsumsjoner.size
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
-        visitor.visitVedtaksperiode(tilstand.toString(), subsumsjoner.finnSkjæringstidspunkt(), subsumsjoner.finnOrgnummer(), subsumsjoner.finnVedtaksperiodeId())
-        visitor.preVisitSubsumsjoner(this.subsumsjoner.finnSkjæringstidspunkt(), this.subsumsjoner.finnOrgnummer())
+        visitor.visitVedtaksperiode(tilstand.toString(), skjæringstidspunkt(), subsumsjoner.finnOrgnummer(), subsumsjoner.finnVedtaksperiodeId())
+        visitor.preVisitSubsumsjoner(skjæringstidspunkt().toString(), this.subsumsjoner.finnOrgnummer())
         subsumsjoner.forEach { it.accept(visitor) }
         visitor.postVisitSubsumsjoner()
     }

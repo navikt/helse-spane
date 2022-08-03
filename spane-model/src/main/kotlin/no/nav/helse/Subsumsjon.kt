@@ -32,15 +32,6 @@ class Subsumsjon(
 
         internal fun MutableList<Subsumsjon>.subsumsjonerMedSøknadsIder() = this.filter { !it.sporing["soknad"].isNullOrEmpty() }
 
-        internal fun MutableList<Subsumsjon>.finnSkjæringstidspunkt(): String {
-            this.forEach {
-                val skjæringstidspunkt = it.input["skjæringstidspunkt"] as String?
-                if (skjæringstidspunkt != null) {
-                    return skjæringstidspunkt
-                }
-            }
-            return "ukjent"
-        }
         internal fun MutableList<Subsumsjon>.finnOrgnummer(): String {
             this.forEach {
                 val organisasjonsnummer = it.sporing["organisasjonsnummer"]?.get(0)
