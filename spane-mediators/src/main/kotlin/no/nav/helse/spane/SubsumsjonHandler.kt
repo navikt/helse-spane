@@ -7,6 +7,7 @@ import com.fasterxml.jackson.module.kotlin.convertValue
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import no.nav.helse.Person
 import no.nav.helse.Subsumsjon
+import no.nav.helse.logger
 import no.nav.helse.sikkerlogger
 import no.nav.helse.spane.db.PersonRepository
 import java.time.ZonedDateTime
@@ -17,6 +18,11 @@ val objectMapper = jacksonObjectMapper()
 
 fun håndterSubsumsjon(value: String, database: PersonRepository) {
     val melding = objectMapper.readTree(value)
+
+    if(melding["eventName"].isNull || melding["eventName"].asText() != "subsumsjon") {
+        sikkerlogger.info("melding id: {}, eventName: {} blir ikke håndtert {}", melding["id"], melding["eventName"], melding)
+        return
+    }
     sikkerlogger.info("[DEBUG]: leser melding: {}",melding)
     val fnr = melding.get("fodselsnummer").asText()
     sikkerlogger.info("[DEBUG]: fikk inn fnr: $fnr")
