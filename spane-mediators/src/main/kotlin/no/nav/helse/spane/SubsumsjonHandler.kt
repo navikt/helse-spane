@@ -29,7 +29,7 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
 
 
     if(melding["fodselsnummer"] == null) {
-        sikkerlogger.info("Fant subsumsjon med null i fnr")
+        sikkerlogger.info("Fant subsumsjon med null i fnr {}", melding)
         return
     }
     val fnr = melding.get("fodselsnummer").asText()
