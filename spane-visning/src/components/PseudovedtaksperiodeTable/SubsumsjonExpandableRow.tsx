@@ -62,8 +62,8 @@ export default function SubsumsjonExpandableRow(props: Props) {
                         ? ", bokstav " + subsumsjon.bokstav
                         : "")}
             </Table.DataCell>
-            <Table.DataCell>{utfallTag(subsumsjon.utfall)}</Table.DataCell>
             <Table.DataCell>{formatDateTimeString(subsumsjon.tidsstempel)}</Table.DataCell>
+            <Table.DataCell>{utfallTag(subsumsjon.utfall)}</Table.DataCell>
         </Table.ExpandableRow>
     );
 }

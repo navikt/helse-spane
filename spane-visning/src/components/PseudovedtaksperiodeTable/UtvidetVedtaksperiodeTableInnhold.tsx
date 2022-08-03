@@ -93,11 +93,11 @@ function UtvidetVedtaksperiodeTableInnhold(props: Props) {
                     <Table.ColumnHeader scope="col" sortKey={"paragraf"} sortable>
                         Paragraf
                     </Table.ColumnHeader>
-                    <Table.ColumnHeader scope="col" sortKey={"utfall"} sortable>
-                        Utfall
-                    </Table.ColumnHeader>
                     <Table.ColumnHeader scope="col" sortKey={"behandlet"} sortable>
                         Behandlet
+                    </Table.ColumnHeader>
+                    <Table.ColumnHeader scope="col" sortKey={"utfall"} sortable>
+                        Utfall
                     </Table.ColumnHeader>
                     <Table.ColumnHeader scope="col">
                     </Table.ColumnHeader>
