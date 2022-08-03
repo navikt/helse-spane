@@ -17,9 +17,9 @@ val objectMapper = jacksonObjectMapper()
 
 fun håndterSubsumsjon(value: String, database: PersonRepository) {
     val melding = objectMapper.readTree(value)
-    sikkerlogger.info("[DEBUG]: leser melding")
+    sikkerlogger.info("[DEBUG]: leser melding: {}",melding)
     val fnr = melding.get("fodselsnummer").asText()
-    sikkerlogger.info(fnr)
+    sikkerlogger.info("[DEBUG]: fikk inn fnr: $fnr")
 
 
     val person = database.hentPerson(fnr)?.deserialiser() ?: Person(fnr)
