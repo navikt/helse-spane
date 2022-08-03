@@ -28,7 +28,7 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
         return
     }
 
-    if(melding["fodselsnummer"] == null || melding["fodselsnummer"].isEmpty  ) {
+    if(melding["fodselsnummer"] == null || melding["fodselsnummer"].isNull ||  melding["fodselsnummer"].isEmpty ) {
         sikkerlogger.info("Fant subsumsjon med null i fnr {}", melding)
         return
     }
