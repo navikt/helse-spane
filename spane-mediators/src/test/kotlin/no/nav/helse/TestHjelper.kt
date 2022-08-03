@@ -9,7 +9,6 @@ class TestHjelper {
           "versjon": "1.0.0",
           "kilde": "syfosmregler",
           "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:2b455f3007b5ec4338525dc313c9ff28b8dbbc9b",
-          "fodselsnummer": "10877799145",
           "sporing": {
             "sykmelding": [
               "3c01a382-a80d-462f-8125-591b07f30574"
