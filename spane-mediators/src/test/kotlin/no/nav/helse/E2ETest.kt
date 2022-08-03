@@ -8,7 +8,8 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import no.nav.common.KafkaEnvironment
-import no.nav.helse.TestHjelper.Companion.melding
+import no.nav.helse.TestHjelper.Companion.testSubsumsjon
+import no.nav.helse.TestHjelper.Companion.testVedtakFattet
 import no.nav.helse.spane.db.PersonPostgresRepository
 import no.nav.helse.spane.håndterSubsumsjon
 import no.nav.helse.spane.ktorServer
@@ -115,15 +116,14 @@ internal class E2ETest : AbstractDatabaseTest() {
     }
 
     @Test
-    //@Disabled("endret konfig, vet ikke hvorfor det feiler")
     fun `blir en melding lest`() {
         startApp()
-        produceToTopic(listOf(melding))
+        produceToTopic(listOf(testSubsumsjon, testVedtakFattet))
         val client = HttpClient()
 
-        await("wait until recods are sent").atMost(20, TimeUnit.SECONDS).until {
+        await("wait until recods are sent").atMost(30, TimeUnit.SECONDS).until {
             val response = runBlocking { client.get("http://localhost:8080/fnr/22018219453").bodyAsText()}
-            (response.isNotEmpty())
+            (response.isNotEmpty()).also { println(response) }
         }
     }
 

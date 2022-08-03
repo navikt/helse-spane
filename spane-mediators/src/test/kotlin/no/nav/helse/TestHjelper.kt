@@ -2,7 +2,7 @@ package no.nav.helse
 
 class TestHjelper {
     companion object {
-        val melding = """{
+        val testSubsumsjon = """{
   "id": "c1d728cc-8320-44c9-a9f0-fe7e68d14b3f",
   "eventName": "subsumsjon",
   "tidsstempel": "2022-08-03T15:29:57.156659595+02:00",
@@ -97,6 +97,29 @@ class TestHjelper {
   "punktum": 1,
   "bokstav": null
 }""".trimIndent()
+
+        val testVedtakFattet = """
+            {
+              "id": "aea7c208-e536-47c2-abeb-48eb09f41f22",
+              "eventName": "vedtakFattet",
+              "tidsstempel": "2022-08-03T11:36:27.932683096",
+              "hendelser": [
+                "6eb9e618-eed5-462e-9d2c-54f2a807e6e5",
+                "be911189-01e6-463a-aa5c-a99fda13229a",
+                "3e191166-74be-48b5-a083-fd2e9afed01e",
+                "55f0551b-e7d2-47ff-a81e-6275ea94f8cd",
+                "7b999f7d-a6e4-4519-8f00-9d7292c0758b",
+                "1fa57d83-c1f6-487f-bc88-4a612e8d2ae7"
+              ],
+              "fodselsnummer": "22018219453",
+              "vedtaksperiodeId": "a0c1d087-0746-4c79-8c87-5e3dcfc0fdcd",
+              "skjeringstidspunkt": "2022-05-01",
+              "fom": "2022-05-01",
+              "tom": "2022-05-31",
+              "organisasjonsnummer": "947064649",
+              "utbetalingId": "1d79c48a-6ec0-4807-8daa-08ef09171078"
+            }
+        """.trimIndent()
 
     }
 

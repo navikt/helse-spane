@@ -2,6 +2,7 @@ package no.nav.helse.spane
 
 import no.nav.helse.PersonVisitor
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.ZonedDateTime
 
 typealias APIVedtaksperiode = Map<String, Any?>
@@ -23,12 +24,41 @@ class APIVisitor : PersonVisitor {
             .add(
                 mutableMapOf(
                     "subsumsjoner" to mutableListOf<Any>(),
+                    "vedtakFattet" to mutableListOf<Any>(),
                     "orgnummer" to orgnummer,
                     "skjæringstidspunkt" to skjæringstidspunkt,
                     "vedtaksperiodeId" to vedtaksperiodeId,
                     "tilstand" to tilstand
                 )
             )
+    }
+
+    override fun visitVedtakFattet(
+        id: String,
+        tidsstempel: LocalDateTime,
+        hendelser: List<String>,
+        fødselsnummer: String,
+        vedtaksperiodeId: String,
+        skjeringstidspunkt: LocalDate,
+        fom: LocalDate,
+        tom: LocalDate,
+        organisasjonsnummer: String,
+        utbetalingsId: String
+    ) {
+        ((personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>).last()["vedtakFattet"] as MutableList<Any>).add(
+            mapOf(
+                "id" to id,
+                "tidsstempel" to tidsstempel,
+                "hendelser" to hendelser,
+                "fodselsnummer" to fødselsnummer,
+                "vedtaksperiodeId" to vedtaksperiodeId,
+                "skjeringstidspunkt" to skjeringstidspunkt,
+                "fom" to fom,
+                "tom" to tom,
+                "organisasjonsnummer" to organisasjonsnummer,
+                "utbetalingId" to utbetalingsId,
+            )
+        )
     }
 
 

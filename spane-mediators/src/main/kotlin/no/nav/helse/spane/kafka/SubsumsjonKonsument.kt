@@ -2,7 +2,9 @@ package no.nav.helse.spane.kafka
 
 import no.nav.helse.Konfig
 import no.nav.helse.logger
+import no.nav.helse.spane.VedtakFattetMediator
 import no.nav.helse.spane.db.PersonRepository
+import no.nav.helse.spane.objectMapper
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.errors.WakeupException
 import org.apache.kafka.common.serialization.StringDeserializer
@@ -14,7 +16,8 @@ class SubsumsjonKonsument (
     private val konfig: Konfig,
     clientId: String = UUID.randomUUID().toString().slice(1..5),
     private val håndterSubsumsjon: (input: String, database: PersonRepository) -> Any?,
-    private val personRepository: PersonRepository
+    private val personRepository: PersonRepository,
+    private val vedtakFattetMediator: VedtakFattetMediator = VedtakFattetMediator(personRepository)
     ) {
 
     private val konsument = KafkaConsumer(konfig.konsumentKonfig(clientId, konfig.consumerGroup), StringDeserializer(), StringDeserializer())
@@ -26,7 +29,9 @@ class SubsumsjonKonsument (
             konsument.subscribe(listOf(konfig.topic))
             while (running.get()) {
                 konsument.poll(Duration.ofSeconds(1)).onEach {
+                    val melding = objectMapper.readTree(it.value())
                     håndterSubsumsjon(it.value(), personRepository)
+                    if (vedtakFattetMediator.håndterer(melding)) vedtakFattetMediator.håndterVedtakFattet(melding)
                 }
                 // TODO commit offset
             }
