@@ -43,10 +43,8 @@ class Subsumsjon(
         }
         fun MutableList<Subsumsjon>.finnOrgnummer(): String {
             this.forEach {
-                val organisasjonsnummer = it.sporing["organisasjonsnummer"] as String?
-                if (organisasjonsnummer != null) {
-                    return organisasjonsnummer
-                }
+                val organisasjonsnummer = it.sporing["organisasjonsnummer"]?.get(0)
+                if (organisasjonsnummer != null) return organisasjonsnummer
             }
             return "ukjent"
         }
