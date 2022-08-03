@@ -1,4 +1,5 @@
 .sidepanel-container {
+  min-width: 367px;
   padding: 20px;
   border-right: solid black;
 }

@@ -34,7 +34,7 @@ function MainContainer() {
                                setFødselsnummer={setFødselsnummer} setPerson={setPerson} />
                 <div className="indre-main-container">
                     <Sidepanel orgnumre={orgnumre} setValgte={setValgte} setFraDato={setFraDato} setTilDato={setTilDato}
-                               fødselsnummer={fødselsnummer}/>
+                               fødselsnummer={fødselsnummer} person={person}/>
                     <PseudovedtaksperiodeTable valgte={valgte} setOrgnumre={setOrgnumre} fraDato={fraDato} tilDato={tilDato} setPerson={setPerson} person={person}  />
                 </div>
             </div>

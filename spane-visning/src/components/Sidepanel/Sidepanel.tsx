@@ -3,6 +3,7 @@ import React, {FormEvent} from "react";
 import DatePicker from "./DatePicker";
 import "./sidepanel.css";
 import { PeopleFilled } from "@navikt/ds-icons";
+import { PersonDto } from "../../types";
 
 
 
@@ -12,10 +13,12 @@ interface Props {
     setFraDato: React.Dispatch<React.SetStateAction<string>>
     setTilDato: React.Dispatch<React.SetStateAction<string>>
     fødselsnummer: string
+    person: PersonDto | undefined
+
 }
 
 function Sidepanel(props: Props) {
-    const {orgnumre, setValgte, setFraDato, setTilDato, fødselsnummer} = props;
+    const {orgnumre, setValgte, setFraDato, setTilDato, fødselsnummer, person} = props;
     return (
         <div className="sidepanel-container">   
             <div className="personnummer-container">
@@ -23,7 +26,9 @@ function Sidepanel(props: Props) {
                 <h3 style={{display: "inline"}} >Personnummer: </h3>
             </div>
             {fødselsnummer}
-            <div className="date-picker-container">
+            { person && 
+            <div>
+                <div className="date-picker-container">
                 <DatePicker label="Fra" setDato={setFraDato}/>
                 <DatePicker label="Til" setDato={setTilDato}/>
             </div>
@@ -39,6 +44,8 @@ function Sidepanel(props: Props) {
                     })}
                 </CheckboxGroup>
             </div>
+            </div>
+            }
         </div>
     );
 }

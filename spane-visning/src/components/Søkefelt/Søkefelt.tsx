@@ -38,6 +38,7 @@ function Søkefelt(props: Props){
             )
             setOrgnumre(orgnumre)
         });
+
 };
 
 
