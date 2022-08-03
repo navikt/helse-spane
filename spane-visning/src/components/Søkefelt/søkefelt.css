@@ -1,4 +1,15 @@
 .search-container{
-  width: 300px;
+  width: 500px;
   padding: 20px;
 }
+
+.actions-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checbox-group{
+  margin-left: 40px;
+}
+

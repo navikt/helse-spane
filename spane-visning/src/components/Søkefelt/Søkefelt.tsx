@@ -1,9 +1,9 @@
-import { Search } from "@navikt/ds-react";
-import React, {FormEvent} from "react";
+import { Checkbox, CheckboxGroup, Search } from "@navikt/ds-react";
+import React, {FormEvent, useState} from "react";
 import { Backend } from "../../service";
 import { PersonDto } from "../../types";
 import "./søkefelt.css"
-    
+
 
 interface Props {
   fødselsnummer: string
@@ -18,6 +18,7 @@ interface Props {
 function Søkefelt(props: Props){
   
   const { fødselsnummer, backend, setFødselsnummer, setPerson, setOrgnumre } = props;
+  const [anonymiser, setAnonymiser] = useState<Boolean>(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -38,10 +39,12 @@ function Søkefelt(props: Props){
             setOrgnumre(orgnumre)
         });
 };
+
+
   return (
     <div className="search-container">
         <h2>Personsøk</h2>
-            <div>
+            <div className="actions-container">
                 <form onSubmit={handleSubmit}>
                     <Search
                         label="Søk etter fødselsnummer"
@@ -50,6 +53,14 @@ function Søkefelt(props: Props){
                         onChange={(e) => setFødselsnummer(e)}
                     />
                 </form>
+                <CheckboxGroup
+                    className="checbox-group"
+                    legend="Anonymiser data gruppe"
+                    onChange={() => setAnonymiser(!anonymiser)}
+                    hideLegend
+                >
+                    <Checkbox value="Anonymiser data" >Anonymiser data</Checkbox>
+                </CheckboxGroup>
             </div>
     </div>
   )     
