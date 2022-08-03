@@ -20,7 +20,6 @@ val objectMapper = jacksonObjectMapper()
     .registerModule(JavaTimeModule())
 
 fun håndterSubsumsjon(value: String, database: PersonRepository) {
-
     val melding = objectMapper.readTree(value)
 
     if(melding["eventName"] == null || melding["eventName"].asText() != "subsumsjon") {
@@ -28,10 +27,11 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
         return
     }
 
-    if(melding["fodselsnummer"] == null || melding["fodselsnummer"].isNull ||  melding["fodselsnummer"].isEmpty ) {
+    if(melding["fodselsnummer"] == null || melding["fodselsnummer"].isNull ||  melding["fodselsnummer"].asText() == "" ) {
         sikkerlogger.info("Fant subsumsjon med null i fnr {}", melding)
         return
     }
+
     val fnr = melding.get("fodselsnummer").asText()
 
     val person = database.hentPerson(fnr)?.deserialiser() ?: Person(fnr)
