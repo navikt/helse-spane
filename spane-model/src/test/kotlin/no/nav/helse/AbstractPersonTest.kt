@@ -2,11 +2,14 @@ package no.nav.helse
 
 import org.junit.jupiter.api.fail
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.ZonedDateTime
 import java.util.*
 
+private const val FØDSELSNUMMER = "1234567890"
+
 abstract class AbstractPersonTest {
-    private val person = Person("1234567890")
+    private val person = Person(FØDSELSNUMMER)
     lateinit var sykmeldingUUID: String
     lateinit var søknadUUID: String
     lateinit var vedtaksperiodeUUID: String
@@ -54,6 +57,19 @@ abstract class AbstractPersonTest {
         }
     }
 
+    internal fun assertTilstand(forventet: String) {
+        val tilstand = person.inspektør.vedtaksperioder[0].tilstand
+        if (tilstand != forventet) {
+            fail("PVP tilstnad har ikke forventet verdi. Expected: $forventet Actual: $tilstand ")
+        }
+    }
+    internal fun assertSkjæringstidspunkt(forventet: LocalDate) {
+        val tilstand = person.inspektør.vedtaksperioder[0].skjæringstidspunkt
+        if (tilstand != forventet) {
+            fail("PVP skjæringstidspunkt har ikke forventet verdi. Expected: $forventet Actual: $tilstand ")
+        }
+    }
+
     internal fun sendSubsumsjon(id: String = UUID.randomUUID().toString()) {
         val søknadUUID = UUID.randomUUID().toString()
         val input = mapOf("skjæringtidspunkt" to "2018-01-01")
@@ -97,6 +113,23 @@ abstract class AbstractPersonTest {
             )
         )
         person.håndter(subsumsjon)
+    }
+
+    internal fun sendVedtakFattet() {
+        val skjæringstidspunkt = LocalDate.now()
+        val vedtakFattet = VedtakFattet(
+            UUID.randomUUID().toString(),
+            LocalDateTime.now(),
+            emptyList(),
+            FØDSELSNUMMER,
+            vedtaksperiodeUUID,
+            skjæringstidspunkt,
+            skjæringstidspunkt,
+            skjæringstidspunkt.plusDays(30),
+            "123456789",
+            "12345"
+        )
+        person.håndter(vedtakFattet)
     }
 
 }

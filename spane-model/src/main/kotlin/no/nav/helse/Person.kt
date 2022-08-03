@@ -14,6 +14,9 @@ class Person(
     fun håndter(subsumsjon: Subsumsjon) {
         vedtaksperioder.håndter(subsumsjon)
     }
+    fun håndter(vedtakFattet: VedtakFattet) {
+        vedtaksperioder.håndter(vedtakFattet)
+    }
 
     override fun toString(): String {
         return "Person (antall vedtaksperioder: ${antallVedtaksperioder()})"
@@ -26,6 +29,7 @@ class Person(
         visitor.postVisitVedtaksperioder()
         visitor.postVisitPerson()
     }
+
 
 
 }

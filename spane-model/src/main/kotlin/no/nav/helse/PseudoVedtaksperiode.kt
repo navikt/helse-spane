@@ -62,6 +62,10 @@ internal class PseudoVedtaksperiode(
                 }
             }
         }
+
+        fun List<PseudoVedtaksperiode>.håndter(vedtakFattet: VedtakFattet) {
+            forEach { it.håndter(vedtakFattet) }
+        }
     }
 
     private fun fjernSubsumsjoner(subsumsjoner: List<Subsumsjon>) {
@@ -108,6 +112,9 @@ internal class PseudoVedtaksperiode(
         visitor.preVisitSubsumsjoner()
         subsumsjoner.forEach { it.accept(visitor) }
         visitor.postVisitSubsumsjoner()
+        visitor.preVisitVedtak()
+        vedtak.forEach { it.accept(visitor) }
+        visitor.postVisitVedtak()
     }
 
     fun håndter(vedtakFattet: VedtakFattet) {

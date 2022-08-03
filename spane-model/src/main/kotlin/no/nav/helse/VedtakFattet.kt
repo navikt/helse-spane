@@ -34,21 +34,6 @@ class VedtakFattet(
     }
 }
 
-interface VedtakFattetVisitor {
-    fun visitVedtakFattet(
-        id: String,
-        tidsstempel: LocalDateTime,
-        hendelser: List<String>,
-        fødselsnummer: String,
-        vedtaksperiodeId: String,
-        skjeringstidspunkt: LocalDate,
-        fom: LocalDate,
-        tom: LocalDate,
-        organisasjonsnummer: String,
-        utbetalingsId: String
-    )
-}
-
 
 /*
 {

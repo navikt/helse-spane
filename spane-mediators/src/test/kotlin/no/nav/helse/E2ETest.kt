@@ -1,12 +1,16 @@
 package no.nav.helse
 
+import io.ktor.client.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import no.nav.common.KafkaEnvironment
 import no.nav.helse.TestHjelper.Companion.melding
 import no.nav.helse.spane.db.PersonPostgresRepository
-import no.nav.helse.spane.db.PersonRepository
+import no.nav.helse.spane.håndterSubsumsjon
 import no.nav.helse.spane.ktorServer
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.Consumer
@@ -19,15 +23,10 @@ import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.kafka.common.serialization.StringSerializer
 import org.awaitility.Awaitility.await
-import org.junit.jupiter.api.AfterAll
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.TestInstance.*
+import org.junit.jupiter.api.*
+import org.junit.jupiter.api.TestInstance.Lifecycle
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.collections.HashMap
 
 
 @TestInstance(Lifecycle.PER_CLASS)
@@ -44,16 +43,6 @@ internal class E2ETest : AbstractDatabaseTest() {
         withSchemaRegistry = false,
         withSecurity = false
     )
-
-    private var teller = 0
-
-
-    fun testHåndterSubsumsjon(input: String, postgresRepository: PersonRepository) {
-        logger.info("fikk melding")
-        if (input == melding) {
-            teller++
-        }
-    }
 
     fun startApp() {
         val konfig = Konfig(
@@ -76,7 +65,7 @@ internal class E2ETest : AbstractDatabaseTest() {
         val dataSource = dataSourceBuilder.getDataSource()
         val personRepository = PersonPostgresRepository(dataSource)
         jobb = GlobalScope.launch {
-            Application(konfig, ::ktorServer, ::testHåndterSubsumsjon, personRepository).startBlocking()
+            Application(konfig, ::ktorServer, ::håndterSubsumsjon, personRepository).startBlocking()
         }
     }
 
@@ -130,9 +119,11 @@ internal class E2ETest : AbstractDatabaseTest() {
     fun `blir en melding lest`() {
         startApp()
         produceToTopic(listOf(melding))
+        val client = HttpClient()
 
         await("wait until recods are sent").atMost(20, TimeUnit.SECONDS).until {
-            teller >= 1
+            val response = runBlocking { client.get("http://localhost:8080/fnr/22018219453").bodyAsText()}
+            (response.isNotEmpty())
         }
     }
 

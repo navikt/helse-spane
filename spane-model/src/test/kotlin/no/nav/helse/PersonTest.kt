@@ -2,6 +2,7 @@ package no.nav.helse
 
 import no.nav.helse.TestHjelper.Companion.januar
 import org.junit.jupiter.api.Test
+import java.time.LocalDate
 import java.util.UUID
 
 
@@ -45,6 +46,17 @@ internal class PersonTest : AbstractPersonTest() {
         assertAntallVedtaksPerioder(2)
         assertPseudoVedtaksperiodeLengde(0, 4)
         assertPseudoVedtaksperiodeLengde(1, 4)
+    }
+
+    @Test
+    fun `håndter vedtak_fattet`() {
+        sendSykmeldingSubsumsjon()
+        sendSøknadSubsumsjon()
+        sendVedtakSubsumsjon()
+        sendVedtakFattet()
+        assertAntallVedtaksPerioder(1)
+        assertTilstand("VEDTAK_FATTET")
+        assertSkjæringstidspunkt(LocalDate.now())
     }
 
     @Test

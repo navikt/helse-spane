@@ -1,6 +1,7 @@
 package no.nav.helse
 
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.ZonedDateTime
 
 interface PersonVisitor : VedtaksperiodeVisitor {
@@ -17,7 +18,7 @@ interface PersonVisitor : VedtaksperiodeVisitor {
 }
 
 
-interface VedtaksperiodeVisitor : SubsumsjonVisitor {
+interface VedtaksperiodeVisitor : SubsumsjonVisitor, VedtakFattetVisitor {
 
     fun visitVedtaksperiode(
         tilstand: String,
@@ -29,6 +30,10 @@ interface VedtaksperiodeVisitor : SubsumsjonVisitor {
     fun preVisitSubsumsjoner() {}
 
     fun postVisitSubsumsjoner(){}
+
+    fun preVisitVedtak(){}
+
+    fun postVisitVedtak(){}
 
 }
 
@@ -54,6 +59,21 @@ interface SubsumsjonVisitor {
         utfall : String
     ){}
 
+}
+
+interface VedtakFattetVisitor {
+    fun visitVedtakFattet(
+        id: String,
+        tidsstempel: LocalDateTime,
+        hendelser: List<String>,
+        fødselsnummer: String,
+        vedtaksperiodeId: String,
+        skjeringstidspunkt: LocalDate,
+        fom: LocalDate,
+        tom: LocalDate,
+        organisasjonsnummer: String,
+        utbetalingsId: String
+    ){}
 }
 
 
