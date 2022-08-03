@@ -7,6 +7,7 @@ import com.fasterxml.jackson.module.kotlin.convertValue
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import no.nav.helse.Person
 import no.nav.helse.Subsumsjon
+import no.nav.helse.logger
 import no.nav.helse.sikkerlogger
 import no.nav.helse.spane.db.PersonRepository
 import java.time.LocalDateTime
@@ -23,12 +24,11 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
     val melding = objectMapper.readTree(value)
 
     if(melding["eventName"] == null || melding["eventName"].asText() != "subsumsjon") {
-        sikkerlogger.info("melding id: {}, eventName: {} blir ikke håndtert {}", melding["id"], melding["eventName"], melding)
+        logger.info("melding id: {}, eventName: {} blir ikke håndtert", melding["id"], melding["eventName"])
         return
     }
 
-
-    if(melding["fodselsnummer"] == null) {
+    if(melding["fodselsnummer"] == null || melding["fodselsnummer"].isEmpty  ) {
         sikkerlogger.info("Fant subsumsjon med null i fnr {}", melding)
         return
     }
@@ -37,7 +37,6 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
     val person = database.hentPerson(fnr)?.deserialiser() ?: Person(fnr)
     val nySubsumsjon = lagSubsumsjonFraJson(melding)
     person.håndter(nySubsumsjon)
-    sikkerlogger.info("Mottok melding som hadde forventet fødselsnummer {}", person.toString())
 
     val apiVisitor = APIVisitor()
     person.accept(apiVisitor)
