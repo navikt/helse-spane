@@ -1,9 +1,10 @@
 package no.nav.helse.spane
 
 import no.nav.helse.PersonVisitor
+import java.time.LocalDate
 import java.time.ZonedDateTime
 
-typealias APIVedtaksperiode = Map<String, Any>
+typealias APIVedtaksperiode = Map<String, Any?>
 
 class APIVisitor : PersonVisitor {
     val personMap = mutableMapOf<String, Any>("vedtaksperioder" to mutableListOf<APIVedtaksperiode>())
@@ -11,11 +12,25 @@ class APIVisitor : PersonVisitor {
         personMap["fnr"] = fødselsnummer
     }
 
-    override fun preVisitSubsumsjoner(skjæringstidspunkt: String, orgnummer: String) {
-        (personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>)
-            .add(mutableMapOf("subsumsjoner" to mutableListOf<Any>(), "orgnummer" to orgnummer, "skjæringstidspunkt" to skjæringstidspunkt))
 
+    override fun visitVedtaksperiode(
+        tilstand: String,
+        skjæringstidspunkt: LocalDate?,
+        orgnummer: String,
+        vedtaksperiodeId: String?
+    ) {
+        (personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>)
+            .add(
+                mutableMapOf(
+                    "subsumsjoner" to mutableListOf<Any>(),
+                    "orgnummer" to orgnummer,
+                    "skjæringstidspunkt" to skjæringstidspunkt,
+                    "vedtaksperiodeId" to vedtaksperiodeId,
+                    "tilstand" to tilstand
+                )
+            )
     }
+
 
     override fun visitSubsumsjon(
         id: String,

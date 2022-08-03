@@ -26,7 +26,7 @@ interface VedtaksperiodeVisitor : SubsumsjonVisitor {
         vedtaksperiodeId: String?
     ){}
 
-    fun preVisitSubsumsjoner(finnSkjæringstidspunkt: String, finnOrgnummer: String) {}
+    fun preVisitSubsumsjoner() {}
 
     fun postVisitSubsumsjoner(){}
 

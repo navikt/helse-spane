@@ -105,7 +105,7 @@ internal class PseudoVedtaksperiode(
 
     fun accept(visitor: VedtaksperiodeVisitor) {
         visitor.visitVedtaksperiode(tilstand.toString(), skjæringstidspunkt(), subsumsjoner.finnOrgnummer(), subsumsjoner.finnVedtaksperiodeId())
-        visitor.preVisitSubsumsjoner(skjæringstidspunkt().toString(), this.subsumsjoner.finnOrgnummer())
+        visitor.preVisitSubsumsjoner()
         subsumsjoner.forEach { it.accept(visitor) }
         visitor.postVisitSubsumsjoner()
     }
