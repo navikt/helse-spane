@@ -16,8 +16,22 @@ val objectMapper = jacksonObjectMapper()
     .registerModule(JavaTimeModule())
 
 fun håndterSubsumsjon(value: String, database: PersonRepository) {
+
     val melding = objectMapper.readTree(value)
-    val fnr = melding["fodselsnummer"].asText()
+
+    if(melding["eventName"] == null || melding["eventName"].asText() != "subsumsjon") {
+        sikkerlogger.info("melding id: {}, eventName: {} blir ikke håndtert {}", melding["id"], melding["eventName"], melding)
+        return
+    }
+
+
+    if(melding["fodselsnummer"] == null) {
+        sikkerlogger.info("Fant subsumsjon med null i fnr")
+        return
+    }
+    val fnr = melding.get("fodselsnummer").asText()
+
+
 
     val person = database.hentPerson(fnr)?.deserialiser() ?: Person(fnr)
     val nySubsumsjon = lagSubsumsjonFraJson(melding)
