@@ -1,6 +1,6 @@
 import {Table, Tag} from "@navikt/ds-react";
 import React, {useState} from "react";
-import {SubsumsjonDto} from "../types";
+import {SubsumsjonDto} from "../../types";
 import UtvidetSubsumsjonTableInnhold from "./UtvidetSubsumsjonTableInnhold";
 
 interface Props {

@@ -1,7 +1,7 @@
 import {Table} from "@navikt/ds-react";
 import React, {useState} from "react";
 import UtvidetVedtaksperiodeTableInnhold from "./UtvidetVedtaksperiodeTableInnhold";
-import {VedtaksperiodeDto} from "../types";
+import {VedtaksperiodeDto} from "../../types";
 
 interface Props {
   vedtaksperiode: VedtaksperiodeDto;

@@ -1,5 +1,5 @@
 import {Table} from "@navikt/ds-react";
-import {SubsumsjonDto} from "../types";
+import {SubsumsjonDto} from "../../types";
 import SubsumsjonExpandableRow from "./SubsumsjonExpandableRow";
 import {useState} from "react";
 
