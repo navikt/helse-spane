@@ -6,7 +6,8 @@ export type PersonDto = {
 export type VedtaksperiodeDto = {
     subsumsjoner: SubsumsjonDto[];
     orgnummer: string;
-    skjæringstidspunkt: string;
+    skjæringstidspunkt: string | null;
+    tilstand: string;
 };
 
 export type SubsumsjonDto = {
