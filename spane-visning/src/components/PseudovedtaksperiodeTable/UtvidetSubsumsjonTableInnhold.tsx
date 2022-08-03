@@ -1,7 +1,7 @@
-import { SubsumsjonDto } from "../types";
+import { SubsumsjonDto } from "../../types";
 import { FileContent } from "@navikt/ds-icons";
 import React, { useEffect, useState } from "react";
-import byggStringRekursivt from "./utlis";
+import { byggStringRekursivt } from "../../utlis";
 
 interface Props {
   subsumsjon: SubsumsjonDto;

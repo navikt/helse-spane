@@ -1,5 +1,5 @@
 import React from 'react'
-import byggStringRekursivt from "./components/utlis";
+import byggStringRekursivt from "./utlis";
 
 test('input blir parset rett av byggStringRekursivt', async () => {
     const json = require('./resources/testInput.json');

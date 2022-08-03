@@ -1,6 +1,5 @@
 .sidepanel-container {
-  margin-top: 20px;
-  margin-left: 20px;
+  padding: 20px;
   border-right: solid black;
 }
 
