@@ -9,7 +9,10 @@ import no.nav.helse.Person
 import no.nav.helse.Subsumsjon
 import no.nav.helse.sikkerlogger
 import no.nav.helse.spane.db.PersonRepository
+import java.time.LocalDateTime
+import java.time.ZoneId
 import java.time.ZonedDateTime
+import java.time.format.DateTimeParseException
 
 val objectMapper = jacksonObjectMapper()
     .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
@@ -30,8 +33,6 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
         return
     }
     val fnr = melding.get("fodselsnummer").asText()
-
-
 
     val person = database.hentPerson(fnr)?.deserialiser() ?: Person(fnr)
     val nySubsumsjon = lagSubsumsjonFraJson(melding)
@@ -54,7 +55,7 @@ fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
         melding.get("versjonAvKode").asText(),
         melding.get("fodselsnummer").asText(),
         objectMapper.convertValue(melding.get("sporing")),
-        ZonedDateTime.parse(melding.get("tidsstempel").asText()),
+        lesTidsstempel(melding),
         melding.get("lovverk").asText(),
         melding.get("lovverksversjon").asText(),
         melding.get("paragraf").asText(),
@@ -66,6 +67,15 @@ fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
         melding.get("utfall").asText(),
     )
     return subsumsjon
+}
+
+
+fun lesTidsstempel(melding: JsonNode): ZonedDateTime{
+    return try {
+        ZonedDateTime.parse(melding.get("tidsstempel").asText())
+    }catch (e: DateTimeParseException){
+        ZonedDateTime.of(LocalDateTime.parse(melding.get("tidsstempel").asText()), ZoneId.systemDefault())
+    }
 }
 
 
