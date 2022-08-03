@@ -18,10 +18,16 @@ interface PersonVisitor : VedtaksperiodeVisitor {
 
 interface VedtaksperiodeVisitor : SubsumsjonVisitor {
 
-    fun preVisitSubsumsjoner(skjæringstidspunkt: String, orgnummer: String){}
+    fun visitVedtaksperiode(
+        tilstand: String,
+        skjæringstidspunkt: String,
+        orgnummer: String,
+        vedtaksperiodeId: String?
+    ){}
+
+    fun preVisitSubsumsjoner(finnSkjæringstidspunkt: String, finnOrgnummer: String) {}
 
     fun postVisitSubsumsjoner(){}
-
 
 }
 

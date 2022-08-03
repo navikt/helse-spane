@@ -1,12 +1,13 @@
 package no.nav.helse
 
-import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
-import no.nav.helse.TestHjelper.Companion.lagVedtaksPeriode
 import no.nav.helse.PseudoVedtaksperiode.Companion.finnEiere
 import no.nav.helse.PseudoVedtaksperiode.Companion.håndter
+import no.nav.helse.TestHjelper.Companion.inspektør
 import no.nav.helse.TestHjelper.Companion.lagSporing
+import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
+import no.nav.helse.TestHjelper.Companion.lagVedtaksPeriode
+import no.nav.helse.TestHjelper.Companion.vedtakFattet
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class PseudoVedtaksperiodeTest {
@@ -248,4 +249,18 @@ class PseudoVedtaksperiodeTest {
         assertEquals(3, pvps[1].antallSubsumsjoner())
     }
 
+    @Test
+    fun `pseudoVedtaksperiode uten mottatt vedtakFattet har status uavklart`() {
+        val pvp = lagVedtaksPeriode(1)
+        assertEquals("UAVKLART", pvp.inspektør().tilstand)
+    }
+
+    @Test
+    fun `pseudoVedtaksperiode mottatt vedtakFattet har status vedtak_fattet`() {
+        val pvp = lagVedtaksPeriode(1)
+        pvp.håndter(vedtakFattet(pvp))
+        assertEquals("VEDTAK_FATTET", pvp.inspektør().tilstand)
+    }
 }
+
+

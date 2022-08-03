@@ -22,17 +22,17 @@ class Subsumsjon(
     private val utfall: String,
 ) {
     internal companion object {
-        fun List<Subsumsjon>.finnAlle(paragraf: String) = this.filter { it.paragraf == paragraf }
+        internal fun List<Subsumsjon>.finnAlle(paragraf: String) = this.filter { it.paragraf == paragraf }
 
-        fun MutableList<Subsumsjon>.eier(subsumsjon: Subsumsjon) = subsumsjon.eiesAv(this.sporingIder())
+        internal fun MutableList<Subsumsjon>.eier(subsumsjon: Subsumsjon) = subsumsjon.eiesAv(this.sporingIder())
 
-        fun List<Subsumsjon>.relevante(pvpIder: List<String>) = filter { it.erRelevant(pvpIder) }
+        internal fun List<Subsumsjon>.relevante(pvpIder: List<String>) = filter { it.erRelevant(pvpIder) }
 
-        fun MutableList<Subsumsjon>.sporingIder() = this.flatMap { it.sporing.values.flatten() }
+        internal fun MutableList<Subsumsjon>.sporingIder() = this.flatMap { it.sporing.values.flatten() }
 
-        fun MutableList<Subsumsjon>.subsumsjonerMedSøknadsIder() = this.filter { !it.sporing["soknad"].isNullOrEmpty() }
+        internal fun MutableList<Subsumsjon>.subsumsjonerMedSøknadsIder() = this.filter { !it.sporing["soknad"].isNullOrEmpty() }
 
-        fun MutableList<Subsumsjon>.finnSkjæringstidspunkt(): String {
+        internal fun MutableList<Subsumsjon>.finnSkjæringstidspunkt(): String {
             this.forEach {
                 val skjæringstidspunkt = it.input["skjæringstidspunkt"] as String?
                 if (skjæringstidspunkt != null) {
@@ -41,13 +41,20 @@ class Subsumsjon(
             }
             return "ukjent"
         }
-        fun MutableList<Subsumsjon>.finnOrgnummer(): String {
+        internal fun MutableList<Subsumsjon>.finnOrgnummer(): String {
             this.forEach {
                 val organisasjonsnummer = it.sporing["organisasjonsnummer"]?.get(0)
                 if (organisasjonsnummer != null) return organisasjonsnummer
             }
             return "ukjent"
         }
+
+        internal fun List<Subsumsjon>.finnVedtaksperiodeId() =
+            mapNotNull { it.sporing["vedtaksperiode"] }
+                .flatten()
+                .distinct()
+                .apply { require(this.size <= 1) }
+                .toList().getOrNull(0)
     }
 
 

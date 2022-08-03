@@ -1,9 +1,12 @@
 package no.nav.helse
 
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.util.UUID
+
+private const val FØDSELSNUMMER = "1234567890"
 
 internal class TestHjelper {
 
@@ -67,7 +70,7 @@ internal class TestHjelper {
             ): Subsumsjon {
             return Subsumsjon(
                 id, "3", "sub", "kildee", "3",
-                "1234567890", sporing, tidsstempel, "loven", "3",
+                FØDSELSNUMMER, sporing, tidsstempel, "loven", "3",
                 paragraf, null, null, null, input, output, "GODKJENT"
             )
         }
@@ -76,7 +79,7 @@ internal class TestHjelper {
             antallSubsumSjoner: Int,
             paragraf: String = "8-11",
             tidsstempel: ZonedDateTime = 1.januar(2022),
-            sporing: Map<String, List<String>> = emptyMap(),
+            sporing: Map<String, List<String>> = mapOf("vedtaksperiode" to listOf(UUID.randomUUID().toString())),
             input: Map<String, Any> = emptyMap(),
             output: Map<String, Any> = emptyMap()
         ): PseudoVedtaksperiode {
@@ -95,5 +98,27 @@ internal class TestHjelper {
             }
             return PseudoVedtaksperiode(subsumsjoner)
         }
+        fun PseudoVedtaksperiode.inspektør(): TestVisitor.TestPseudoVedtaksperiode {
+            val visitor = TestVisitor()
+            this.accept(visitor)
+            return visitor.vedtaksperioder[0]
+        }
+
+        fun vedtakFattet(pvp: PseudoVedtaksperiode): VedtakFattet {
+            val skjæringstidspunkt = LocalDate.now()
+            return VedtakFattet(
+                UUID.randomUUID().toString(),
+                LocalDateTime.now(),
+                emptyList(),
+                FØDSELSNUMMER,
+                pvp.inspektør().vedtaksperiodeId ?: throw IllegalArgumentException("Kan ikke fatte vedtak på pvp uten en subsumsjon med vedtaksperiodeId"),
+                skjæringstidspunkt,
+                skjæringstidspunkt,
+                skjæringstidspunkt.plusDays(30),
+                "123456789",
+                "12345"
+            )
+        }
     }
+
 }

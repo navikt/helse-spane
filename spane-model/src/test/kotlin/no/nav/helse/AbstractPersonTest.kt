@@ -108,18 +108,23 @@ private val Person.inspektør: TestVisitor
     }
 
 class TestVisitor : PersonVisitor {
-    data class TestVedtaksperiode(val subsumsjoner: MutableList<Map<String, Any?>>)
+    data class TestPseudoVedtaksperiode(val tilstand: String, val vedtaksperiodeId: String?, val skjæringstidspunkt: String, val subsumsjoner: MutableList<Map<String, Any?>>)
 
     private lateinit var fødselsnummer: String
-    val vedtaksperioder: MutableList<TestVedtaksperiode> = mutableListOf()
+    val vedtaksperioder: MutableList<TestPseudoVedtaksperiode> = mutableListOf()
 
     override fun preVisitPerson(fødselsnummer: String) {
         this.fødselsnummer = fødselsnummer
     }
 
-    override fun preVisitSubsumsjoner(skjæringstidspunkt: String, orgnummer: String) {
-        vedtaksperioder.add(TestVedtaksperiode(mutableListOf()))
 
+    override fun visitVedtaksperiode(
+        tilstand: String,
+        skjæringstidspunkt: String,
+        orgnummer: String,
+        vedtaksperiodeId: String?
+    ) {
+        vedtaksperioder.add(TestPseudoVedtaksperiode(tilstand, vedtaksperiodeId, skjæringstidspunkt, mutableListOf()))
     }
 
 
