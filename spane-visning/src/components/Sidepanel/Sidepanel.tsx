@@ -2,8 +2,9 @@ import {Checkbox, CheckboxGroup, Search} from "@navikt/ds-react";
 import React, {FormEvent} from "react";
 import DatePicker from "./DatePicker";
 import "./sidepanel.css";
-import {Backend} from "../../service";
-import {PersonDto} from "../../types";
+import { PeopleFilled } from "@navikt/ds-icons";
+
+
 
 interface Props {
     orgnumre: string[];
@@ -16,8 +17,11 @@ interface Props {
 function Sidepanel(props: Props) {
     const {orgnumre, setValgte, setFraDato, setTilDato, fødselsnummer} = props;
     return (
-        <div className="sidepanel-container">            
-            <h3>Personnummer: </h3>
+        <div className="sidepanel-container">   
+            <div className="personnummer-container">
+                <PeopleFilled height={"2em"} width={"2em"}/>
+                <h3 style={{display: "inline"}} >Personnummer: </h3>
+            </div>
             {fødselsnummer}
             <div className="date-picker-container">
                 <DatePicker label="Fra" setDato={setFraDato}/>

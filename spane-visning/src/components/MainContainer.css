@@ -6,6 +6,7 @@
 .indre-main-container {
     display: flex;
     flex-direction: row;
+    min-height: 600px;
 }
 
 .table-container {
@@ -13,6 +14,7 @@
     flex-direction: column;
     align-items: center;
     flex-grow: 100;
+    margin: 20px;
 }
 
 .search-container {

@@ -6,5 +6,4 @@ test('input blir parset rett av byggStringRekursivt', async () => {
 
     console.log(byggStringRekursivt(json))
 
-
 })

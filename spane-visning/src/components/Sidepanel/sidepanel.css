@@ -18,3 +18,13 @@
 .checkbox-group-container {
   margin-top: 30px;
 }
+
+.personnummer-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+h3{
+  margin-left: 10px;
+}

@@ -3,6 +3,7 @@ import React, {FormEvent} from "react";
 import { Backend } from "../../service";
 import { PersonDto } from "../../types";
 import "./søkefelt.css"
+    
 
 interface Props {
   fødselsnummer: string
