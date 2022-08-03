@@ -43,7 +43,7 @@ class APIVisitor : PersonVisitor {
                 "eventName" to eventName,
                 "kilde" to kilde,
                 "versjonAvKode" to versjonAvKode,
-                "fødselsnummer" to fødselsnummer,
+                "fodselsnummer" to fødselsnummer,
                 "sporing" to sporing,
                 "tidsstempel" to tidsstempel,
                 "lovverk" to lovverk,
