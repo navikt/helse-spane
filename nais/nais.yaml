@@ -27,7 +27,6 @@ spec:
     enabled: true
   gcp:
     sqlInstances:
-      - name: helse-spane
       - type: POSTGRES_14
       - diskAutoresize: true
         databases:
