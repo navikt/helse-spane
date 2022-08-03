@@ -21,18 +21,18 @@ export default function UtvidetSubsumsjonTableInnhold(props: Props) {
   return (
     <div className="table-row-expanded-content-container">
       <div className="table-row-expanded-content-column">
-        <div>
-          <b>Output: </b>
-          {outputString.split("\n").map((s, key) => (
-            <div key={key}>{s}</div>
-          ))}
-        </div>
-        <div>
-          <b>Input: </b>
+      <div>
+          <b>Faktum: </b>
           {inputString.split("\n").map((s, key) => (
             <div style={{ overflowWrap: "break-word" }} key={key}>
               {s}
             </div>
+          ))}
+        </div>
+        <div>
+          <b>Resultat: </b>
+          {outputString.split("\n").map((s, key) => (
+            <div key={key}>{s}</div>
           ))}
         </div>
         <div>
