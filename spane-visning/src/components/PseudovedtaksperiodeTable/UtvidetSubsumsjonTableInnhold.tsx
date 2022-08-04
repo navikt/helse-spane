@@ -35,12 +35,12 @@ export default function UtvidetSubsumsjonTableInnhold(props: Props) {
             <div key={key}>{s}</div>
           ))}
         </div>
+      </div>
+      <div className="table-row-expanded-content-column">
         <div>
           <b>Kilde: </b>
           {subsumsjon.kilde}
         </div>
-      </div>
-      <div className="table-row-expanded-content-column">
         <div>
           <b>Lovverk: </b> {subsumsjon.lovverk}
         </div>
@@ -50,7 +50,7 @@ export default function UtvidetSubsumsjonTableInnhold(props: Props) {
         <div>
           <p></p>
           {sporingString.split("\n").filter((s) => (s === "sykmelding:" || s === "soknad:")).map((s, key) => (
-            <div key={key} >{s}<FileContent/></div>
+            <div key={key} > {s === "soknad:" ? "søknad:": s}<FileContent/></div>
           ))}
         </div>
       </div>

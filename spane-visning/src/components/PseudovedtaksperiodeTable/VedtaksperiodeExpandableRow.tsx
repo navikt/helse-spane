@@ -19,7 +19,7 @@ function VedtaksperiodeExpandableRow(props: Props) {
           style={{ cursor: "pointer", backgroundColor: "#E6F0FF" }}
       >
           <Table.DataCell scope="row"> <b> Skjæringstidspunkt: </b> {vedtaksperiode.skjæringstidspunkt ?? 'ukjent'}</Table.DataCell>
-        <Table.DataCell scope="row"> <b> Organisasjonsnummer: </b> {vedtaksperiode.orgnummer} </Table.DataCell>
+        <Table.DataCell scope="row"> <b> Arbeidsgiver: </b> {vedtaksperiode.orgnummer} </Table.DataCell>
         <Table.DataCell scope="row"> <b> Tilstand: </b> {vedtaksperiode.tilstand} </Table.DataCell>
 
       </Table.ExpandableRow>
