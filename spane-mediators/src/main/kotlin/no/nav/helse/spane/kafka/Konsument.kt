@@ -2,6 +2,7 @@ package no.nav.helse.spane.kafka
 
 import no.nav.helse.Konfig
 import no.nav.helse.logger
+import no.nav.helse.spane.ForkastetMediator
 import no.nav.helse.spane.VedtakFattetMediator
 import no.nav.helse.spane.db.PersonRepository
 import no.nav.helse.spane.objectMapper
@@ -12,12 +13,13 @@ import java.time.Duration
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
-class SubsumsjonKonsument (
+class Konsument (
     private val konfig: Konfig,
     clientId: String = UUID.randomUUID().toString().slice(1..5),
     private val håndterSubsumsjon: (input: String, database: PersonRepository) -> Any?,
     private val personRepository: PersonRepository,
-    private val vedtakFattetMediator: VedtakFattetMediator = VedtakFattetMediator(personRepository)
+    private val vedtakFattetMediator: VedtakFattetMediator = VedtakFattetMediator(personRepository),
+    private val forkastetMediator: ForkastetMediator= ForkastetMediator(personRepository),
     ) {
 
     private val konsument = KafkaConsumer(konfig.konsumentKonfig(clientId, konfig.consumerGroup), StringDeserializer(), StringDeserializer())
@@ -32,6 +34,7 @@ class SubsumsjonKonsument (
                     val melding = objectMapper.readTree(it.value())
                     håndterSubsumsjon(it.value(), personRepository)
                     if (vedtakFattetMediator.håndterer(melding)) vedtakFattetMediator.håndterVedtakFattet(melding)
+                    else if (forkastetMediator.håndtererForkastetVedtak(melding)) forkastetMediator.håndterForkastet(melding)
                 }
                 // TODO commit offset
             }

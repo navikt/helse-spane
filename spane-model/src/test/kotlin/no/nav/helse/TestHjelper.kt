@@ -119,6 +119,16 @@ internal class TestHjelper {
                 "12345"
             )
         }
+
+        fun vedtaksperiodeForkastet(pvp: PseudoVedtaksperiode): VedtaksperiodeForkastet {
+            return VedtaksperiodeForkastet(
+                UUID.randomUUID().toString(),
+                LocalDateTime.now(),
+                FØDSELSNUMMER,
+                pvp.inspektør().vedtaksperiodeId ?: throw IllegalArgumentException("Kan ikke forkaste vedtaksperiode på pvp uten en subsumsjon med vedtaksperiodeId"),
+                "123456789",
+            )
+        }
     }
 
 }

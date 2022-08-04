@@ -1,5 +1,6 @@
 package no.nav.helse
 
+import io.ktor.http.content.*
 import no.nav.helse.Subsumsjon.Companion.eier
 import no.nav.helse.Subsumsjon.Companion.finnOrgnummer
 import no.nav.helse.Subsumsjon.Companion.finnVedtaksperiodeId
@@ -11,7 +12,7 @@ import java.time.LocalDateTime
 
 internal class PseudoVedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>,
-    private val vedtak: MutableList<VedtakFattet> = mutableListOf(),
+    private val vedtak: MutableList<TilstandVedtaksperiode> = mutableListOf(),
     private var tilstand: Tilstand = Tilstand.UAVKLART
 ) {
     enum class Tilstand() {
@@ -64,6 +65,10 @@ internal class PseudoVedtaksperiode(
         }
 
         fun List<PseudoVedtaksperiode>.håndter(vedtakFattet: VedtakFattet) {
+            forEach { it.håndter(vedtakFattet) }
+        }
+
+        fun List<PseudoVedtaksperiode>.håndter(vedtakFattet: VedtaksperiodeForkastet) {
             forEach { it.håndter(vedtakFattet) }
         }
     }
@@ -121,6 +126,13 @@ internal class PseudoVedtaksperiode(
         if (vedtakFattet.hørerTil(subsumsjoner.finnVedtaksperiodeId())) {
             vedtak += vedtakFattet
             tilstand = Tilstand.VEDTAK_FATTET
+        }
+    }
+
+    fun håndter(vedtaksperiodeForkastet: VedtaksperiodeForkastet) {
+        if(vedtaksperiodeForkastet.hørerTil(subsumsjoner.finnVedtaksperiodeId())){
+            vedtak += vedtaksperiodeForkastet
+            tilstand = Tilstand.TIL_INFOTRYGD
         }
     }
 }

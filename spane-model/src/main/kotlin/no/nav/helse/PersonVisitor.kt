@@ -76,4 +76,15 @@ interface VedtakFattetVisitor {
     ){}
 }
 
+interface VedtaksperiodeForkastetVisitor {
+    fun visitVedtaksperiodeForkastet(
+        id: String,
+        tidsstempel: LocalDateTime,
+        fødselsnummer: String,
+        vedtaksperiodeId: String,
+        organisasjonsnummer: String,
+    ){}
+}
+
+
 

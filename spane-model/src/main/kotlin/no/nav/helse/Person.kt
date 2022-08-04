@@ -18,6 +18,10 @@ class Person(
         vedtaksperioder.håndter(vedtakFattet)
     }
 
+    fun håndter(vedtaksperiodeForkastet: VedtaksperiodeForkastet) {
+        vedtaksperioder.håndter(vedtaksperiodeForkastet)
+    }
+
     override fun toString(): String {
         return "Person (antall vedtaksperioder: ${antallVedtaksperioder()})"
     }
