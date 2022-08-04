@@ -28,7 +28,7 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
     }
 
     if(melding["fodselsnummer"] == null || melding["fodselsnummer"].isNull ||  melding["fodselsnummer"].asText() == "" ) {
-        sikkerlogger.info("Fant subsumsjon med null i fnr {}", melding)
+        sikkerlogger.info("Fant subsumsjon med manglende fødselsnummer {}", melding)
         return
     }
 
@@ -38,9 +38,9 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
     val nySubsumsjon = lagSubsumsjonFraJson(melding)
     person.håndter(nySubsumsjon)
 
-    val apiVisitor = APIVisitor()
-    person.accept(apiVisitor)
-    val personJson = objectMapper.writeValueAsString(apiVisitor.personMap)
+    val DBVisitor = DBVisitor()
+    person.accept(DBVisitor)
+    val personJson = objectMapper.writeValueAsString(DBVisitor.personMap)
     database.lagre(personJson, fnr)
 }
 
