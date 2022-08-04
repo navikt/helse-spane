@@ -9,13 +9,14 @@ import java.time.LocalDateTime
 class VedtakFattetMediator(private val database: PersonRepository) {
 
     fun håndterer(melding: JsonNode): Boolean {
-        return (melding["eventName"] != null  && melding["eventName"].asText() == "vedtakFattet")
+        return (melding["eventName"] != null && melding["eventName"].asText() == "vedtakFattet")
     }
 
     fun håndterVedtakFattet(melding: JsonNode) {
         val fnr = melding.get("fodselsnummer").asText()
 
-        val person = database.hentPerson(fnr)?.deserialiser() ?: throw IllegalArgumentException("Motatt vedtakFattet for person = $fnr som ikke har mottatt subsumsjoner")
+        val person = database.hentPerson(fnr)?.deserialiser()
+            ?: throw IllegalArgumentException("Motatt vedtakFattet for person = $fnr som ikke har mottatt subsumsjoner")
         val nyVedtakFattet = lagVedtakFattet(melding)
         person.håndter(nyVedtakFattet)
 

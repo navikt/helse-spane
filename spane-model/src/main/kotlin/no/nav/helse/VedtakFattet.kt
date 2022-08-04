@@ -14,11 +14,11 @@ class VedtakFattet(
     private val tom: LocalDate,
     private val organisasjonsnummer: String,
     private val utbetalingsId: String
-) {
+) : TilstandVedtaksperiode {
 
-    fun hørerTil(vedtaksperiodeId: String?) = this.vedtaksperiodeId == vedtaksperiodeId
+    override fun hørerTil(vedtaksperiodeId: String?) = this.vedtaksperiodeId == vedtaksperiodeId
 
-    fun accept(visitor: VedtakFattetVisitor) {
+    override fun accept(visitor: VedtakFattetVisitor) {
         visitor.visitVedtakFattet(
             id,
             tidsstempel,
