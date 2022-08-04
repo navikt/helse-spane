@@ -4,7 +4,6 @@ import {Backend} from "../../service";
 import {PersonDto} from "../../types";
 import "./søkefelt.css"
 
-
 interface Props {
     fødselsnummer: string
     backend: Backend
@@ -22,8 +21,14 @@ function Søkefelt(props: Props) {
 
 
     const [tempFnr, setTempFnr] = useState<string>("");
+    const [feilmelding, setFeilmelding] = useState<string>("");
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+
+        if (!(/^\d+$/.test(tempFnr))) {
+            setFeilmelding("Personnummer kan kun være tall")
+            return
+        }
 
         setFødselsnummer(tempFnr)
 
@@ -47,7 +52,6 @@ function Søkefelt(props: Props) {
 
     };
 
-
     return (
         <div className="search-container">
             <h2>Personsøk</h2>
@@ -59,6 +63,8 @@ function Søkefelt(props: Props) {
                         variant="secondary"
                         onChange={(e) => setTempFnr(e)}
                         maxLength={11}
+                        type={"numeric"}
+                        error={feilmelding}
                     />
                 </form>
                 <CheckboxGroup
