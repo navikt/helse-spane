@@ -2,7 +2,7 @@ package no.nav.helse.spane.kafka
 
 import no.nav.helse.Konfig
 import no.nav.helse.logger
-import no.nav.helse.spane.ForkastetMediator
+import no.nav.helse.spane.VedtaksperiodeForkastetMediator
 import no.nav.helse.spane.VedtakFattetMediator
 import no.nav.helse.spane.db.PersonRepository
 import no.nav.helse.spane.objectMapper
@@ -19,7 +19,7 @@ class Konsument (
     private val håndterSubsumsjon: (input: String, database: PersonRepository) -> Any?,
     private val personRepository: PersonRepository,
     private val vedtakFattetMediator: VedtakFattetMediator = VedtakFattetMediator(personRepository),
-    private val forkastetMediator: ForkastetMediator= ForkastetMediator(personRepository),
+    private val vedtaksperiodeForkastetMediator: VedtaksperiodeForkastetMediator= VedtaksperiodeForkastetMediator(personRepository),
     ) {
 
     private val konsument = KafkaConsumer(konfig.konsumentKonfig(clientId, konfig.consumerGroup), StringDeserializer(), StringDeserializer())
@@ -34,7 +34,7 @@ class Konsument (
                     val melding = objectMapper.readTree(it.value())
                     håndterSubsumsjon(it.value(), personRepository)
                     if (vedtakFattetMediator.håndterer(melding)) vedtakFattetMediator.håndterVedtakFattet(melding)
-                    else if (forkastetMediator.håndtererForkastetVedtak(melding)) forkastetMediator.håndterForkastetVedtaksperiode(melding)
+                    else if (vedtaksperiodeForkastetMediator.håndtererForkastetVedtak(melding)) vedtaksperiodeForkastetMediator.håndterForkastetVedtaksperiode(melding)
                 }
                 // TODO commit offset
             }

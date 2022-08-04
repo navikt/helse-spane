@@ -5,7 +5,7 @@ import no.nav.helse.VedtaksperiodeForkastet
 import no.nav.helse.spane.db.PersonRepository
 import java.time.LocalDateTime
 
-class ForkastetMediator(private val database: PersonRepository) {
+class VedtaksperiodeForkastetMediator(private val database: PersonRepository) {
 
     fun håndtererForkastetVedtak(melding: JsonNode): Boolean {
         return (melding["eventName"] != null  && melding["eventName"].asText() == "vedtaksperiodeForkastet")
