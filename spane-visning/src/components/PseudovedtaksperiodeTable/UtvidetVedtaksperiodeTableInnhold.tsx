@@ -5,11 +5,12 @@ import {useState} from "react";
 
 interface Props {
     subsumsjoner: SubsumsjonDto[];
+    anonymisert: Boolean;
 }
 
 
 function UtvidetVedtaksperiodeTableInnhold(props: Props) {
-    const {subsumsjoner} = props
+    const {subsumsjoner, anonymisert} = props
 
     const [sorterteSubsumsjoner, setSorterteSubsumsjoner] = useState(subsumsjoner)
     const [sortertPå, setSortertPå] = useState<string>("")
@@ -109,7 +110,7 @@ function UtvidetVedtaksperiodeTableInnhold(props: Props) {
             <Table.Body>
                 {
                     sorterteSubsumsjoner.map((subsumsjon, subsumsjonIdx) => {
-                        return <SubsumsjonExpandableRow key={subsumsjonIdx} subsumsjon={subsumsjon}/>
+                        return <SubsumsjonExpandableRow key={subsumsjonIdx} subsumsjon={subsumsjon} anonymisert={anonymisert}/>
                     })
                 }
 

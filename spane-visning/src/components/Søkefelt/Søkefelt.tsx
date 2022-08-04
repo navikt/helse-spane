@@ -10,15 +10,15 @@ interface Props {
     setFødselsnummer: React.Dispatch<React.SetStateAction<string>>
     setPerson: React.Dispatch<React.SetStateAction<PersonDto | undefined>>
     setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>
+    setAnonymisert: React.Dispatch<React.SetStateAction<Boolean>>
+    anonymisert: Boolean
 
 }
 
 
 function Søkefelt(props: Props) {
 
-    const {fødselsnummer, backend, setFødselsnummer, setPerson, setOrgnumre} = props;
-    const [anonymiser, setAnonymiser] = useState<Boolean>(false);
-
+    const {fødselsnummer, backend, setFødselsnummer, setPerson, setOrgnumre, setAnonymisert, anonymisert} = props;
 
     const [tempFnr, setTempFnr] = useState<string>("");
     const [feilmelding, setFeilmelding] = useState<string>("");
@@ -70,7 +70,7 @@ function Søkefelt(props: Props) {
                 <CheckboxGroup
                     className="checbox-group"
                     legend="Anonymiser data gruppe"
-                    onChange={() => setAnonymiser(!anonymiser)}
+                    onChange={() => fødselsnummer ? setAnonymisert(!anonymisert) : anonymisert}
                     hideLegend
                 >
                     <Checkbox value="Anonymiser data">Anonymiser data</Checkbox>
