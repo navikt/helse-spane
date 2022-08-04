@@ -270,9 +270,10 @@ class PseudoVedtaksperiodeTest {
         pvp.håndter(vedtaksperiodeForkastet(pvp))
         assertEquals("TIL_INFOTRYGD", pvp.inspektør().tilstand)
     }
+
     @Test
     fun `pseudoVedtaksperiode har ikke skjæringstidspunkt før vedtakFattet er mottatt`() {
-        val pvp = lagVedtaksPeriode(1, input =  mapOf("skjæringstidspunkt" to LocalDate.now().toString()))
+        val pvp = lagVedtaksPeriode(1, input = mapOf("skjæringstidspunkt" to LocalDate.now().toString()))
         assertNull(pvp.inspektør().skjæringstidspunkt)
         pvp.håndter(vedtakFattet(pvp))
         assertNotNull(pvp.inspektør().skjæringstidspunkt)

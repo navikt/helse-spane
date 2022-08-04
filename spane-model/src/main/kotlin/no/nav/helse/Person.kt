@@ -14,6 +14,7 @@ class Person(
     fun håndter(subsumsjon: Subsumsjon) {
         vedtaksperioder.håndter(subsumsjon)
     }
+
     fun håndter(vedtakFattet: VedtakFattet) {
         vedtaksperioder.håndter(vedtakFattet)
     }
@@ -29,11 +30,10 @@ class Person(
     fun accept(visitor: PersonVisitor) {
         visitor.preVisitPerson(fødselsnummer)
         visitor.preVisitVedtaksperioder()
-        vedtaksperioder.forEach {it.accept(visitor)}
+        vedtaksperioder.forEach { it.accept(visitor) }
         visitor.postVisitVedtaksperioder()
         visitor.postVisitPerson()
     }
-
 
 
 }

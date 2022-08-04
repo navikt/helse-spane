@@ -1,9 +1,6 @@
 package no.nav.helse
 
-import org.apache.kafka.common.protocol.types.Schema.Visitor
-
-
-interface TilstandVedtaksperiode{
+interface TilstandVedtaksperiode {
 
     fun hørerTil(vedtaksperiodeId: String?): Boolean
 

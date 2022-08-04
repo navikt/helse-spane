@@ -30,7 +30,8 @@ class Subsumsjon(
 
         internal fun MutableList<Subsumsjon>.sporingIder() = this.flatMap { it.sporing.values.flatten() }
 
-        internal fun MutableList<Subsumsjon>.subsumsjonerMedSøknadsIder() = this.filter { !it.sporing["soknad"].isNullOrEmpty() }
+        internal fun MutableList<Subsumsjon>.subsumsjonerMedSøknadsIder() =
+            this.filter { !it.sporing["soknad"].isNullOrEmpty() }
 
         internal fun MutableList<Subsumsjon>.finnOrgnummer(): String {
             this.forEach {
