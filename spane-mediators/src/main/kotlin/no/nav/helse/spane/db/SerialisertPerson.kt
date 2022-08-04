@@ -16,11 +16,14 @@ class SerialisertPerson(val json: String) {
             val subsumsjon = lagSubsumsjonFraJson(it)
             person.håndter(subsumsjon)
         }
-        personJson["vedtaksperioder"].flatMap {
-            it["vedtakFattet"]
-        }.forEach {
-            val vedtakFattet = lagVedtakFattet(it)
-            person.håndter(vedtakFattet)
+
+        if(!personJson["vedtaksperioder"]["vedtakFattet"].isNull) {
+            personJson["vedtaksperioder"].flatMap {
+                it["vedtakFattet"]
+            }.forEach {
+                val vedtakFattet = lagVedtakFattet(it)
+                person.håndter(vedtakFattet)
+            }
         }
         return person
     }
