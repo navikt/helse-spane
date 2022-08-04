@@ -39,7 +39,7 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
         lagSubsumsjonFraJson(melding)
     }catch (e: Exception) {
         logger.error("Kan ikke håndtere melding")
-        sikkerlogger.error("Kan ikke håndtere melding: $melding")
+        sikkerlogger.error("Kan ikke håndtere melding: $melding", e)
         return
     }
 
