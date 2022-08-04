@@ -1,57 +1,64 @@
-import { Checkbox, CheckboxGroup, Search } from "@navikt/ds-react";
+import {Checkbox, CheckboxGroup, Search} from "@navikt/ds-react";
 import React, {FormEvent, useState} from "react";
-import { Backend } from "../../service";
-import { PersonDto } from "../../types";
+import {Backend} from "../../service";
+import {PersonDto} from "../../types";
 import "./søkefelt.css"
 
 
 interface Props {
-  fødselsnummer: string
-  backend: Backend
-  setFødselsnummer: React.Dispatch<React.SetStateAction<string>>
-  setPerson: React.Dispatch<React.SetStateAction<PersonDto | undefined>>
-  setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>
+    fødselsnummer: string
+    backend: Backend
+    setFødselsnummer: React.Dispatch<React.SetStateAction<string>>
+    setPerson: React.Dispatch<React.SetStateAction<PersonDto | undefined>>
+    setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>
 
 }
 
 
-function Søkefelt(props: Props){
-  
-  const { fødselsnummer, backend, setFødselsnummer, setPerson, setOrgnumre } = props;
-  const [anonymiser, setAnonymiser] = useState<Boolean>(false);
+function Søkefelt(props: Props) {
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    backend.person(fødselsnummer)
-        .then((r) => {
-            setPerson(r)
-            return r
-        })
-        .then((r)=>{
-            let orgnumre : string[] = []
-            r!.vedtaksperioder.forEach(
-                (vedtaksperiode) => {
-                    if(!orgnumre.includes(vedtaksperiode.orgnummer)) {
-                        orgnumre.push(vedtaksperiode.orgnummer)
+    const {fødselsnummer, backend, setFødselsnummer, setPerson, setOrgnumre} = props;
+    const [anonymiser, setAnonymiser] = useState<Boolean>(false);
+
+
+    const [tempFnr, setTempFnr] = useState<string>("");
+
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+
+        setFødselsnummer(tempFnr)
+
+        event.preventDefault();
+        backend.person(fødselsnummer)
+            .then((r) => {
+                setPerson(r)
+                return r
+            })
+            .then((r) => {
+                let orgnumre: string[] = []
+                r!.vedtaksperioder.forEach(
+                    (vedtaksperiode) => {
+                        if (!orgnumre.includes(vedtaksperiode.orgnummer)) {
+                            orgnumre.push(vedtaksperiode.orgnummer)
+                        }
                     }
-                }
-            )
-            setOrgnumre(orgnumre)
-        });
+                )
+                setOrgnumre(orgnumre)
+            });
 
-};
+    };
 
 
-  return (
-    <div className="search-container">
-        <h2>Personsøk</h2>
+    return (
+        <div className="search-container">
+            <h2>Personsøk</h2>
             <div className="actions-container">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit }>
                     <Search
                         label="Søk etter fødselsnummer"
                         size="small"
                         variant="secondary"
-                        onChange={(e) => setFødselsnummer(e)}
+                        onSubmit={(e) => e}
+                        onChange={(e) => setTempFnr(e)}
                     />
                 </form>
                 <CheckboxGroup
@@ -60,11 +67,11 @@ function Søkefelt(props: Props){
                     onChange={() => setAnonymiser(!anonymiser)}
                     hideLegend
                 >
-                    <Checkbox value="Anonymiser data" >Anonymiser data</Checkbox>
+                    <Checkbox value="Anonymiser data">Anonymiser data</Checkbox>
                 </CheckboxGroup>
             </div>
-    </div>
-  )     
+        </div>
+    )
 }
 
 export default Søkefelt;
