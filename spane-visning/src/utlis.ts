@@ -44,11 +44,23 @@ export function filtrerPseudovedtaksperioder(person: PersonDto, valgte: string[]
     if (fraDato !== "" || tilDato !== "") pseudovedtaksperioder = pseudovedtaksperioder.filter(vedtaksperiode => vedtaksperiode.skjæringstidspunkt !== "ukjent")
     if (fraDato !== "") {
         let dato = new Date(fraDato)
-        pseudovedtaksperioder = pseudovedtaksperioder.filter(vedtaksperiode => new Date(vedtaksperiode.skjæringstidspunkt) >= dato)
+        pseudovedtaksperioder = pseudovedtaksperioder.filter(vedtaksperiode => {
+            let skjæringstidspunkt = vedtaksperiode.skjæringstidspunkt
+            if (skjæringstidspunkt != null){
+                return new Date(skjæringstidspunkt) >= dato
+            }
+            return false
+        })
     }
     if (tilDato !== "") {
         let dato = new Date(tilDato)
-        pseudovedtaksperioder = pseudovedtaksperioder.filter(vedtaksperiode => new Date(vedtaksperiode.skjæringstidspunkt) <= dato)
+        pseudovedtaksperioder = pseudovedtaksperioder.filter(vedtaksperiode => {
+            let skjæringstidspunkt = vedtaksperiode.skjæringstidspunkt
+            if (skjæringstidspunkt != null){
+                return new Date(skjæringstidspunkt) <= dato
+            }
+            return false
+        })
     }
     return pseudovedtaksperioder
 }
