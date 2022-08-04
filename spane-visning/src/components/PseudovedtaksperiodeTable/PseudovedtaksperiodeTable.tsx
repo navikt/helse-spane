@@ -6,15 +6,14 @@ import {filtrerPseudovedtaksperioder} from "../../utlis"
 
 interface Props {
     valgte: string[]
-    setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>
     fraDato: string
     tilDato: string
-    setPerson: React.Dispatch<React.SetStateAction<PersonDto | undefined>>
     person: PersonDto | undefined
+    anonymisert: Boolean
 }
 
 function PseudovedtaksperiodeTable(props: Props) {
-    const {valgte, setOrgnumre, fraDato, tilDato, person, setPerson} = props;
+    const {valgte, fraDato, tilDato, person, anonymisert} = props;
 
     return (
         <main className="table-container">
@@ -22,7 +21,7 @@ function PseudovedtaksperiodeTable(props: Props) {
                 { person && <Table.Body>
                     {filtrerPseudovedtaksperioder(person, valgte, fraDato, tilDato).map((vedtaksperiode: VedtaksperiodeDto, vedtaksperiodeIdx) =>
                         (
-                            <VedtaksperiodeExpandableRow key={vedtaksperiodeIdx} vedtaksperiode={vedtaksperiode}/>
+                            <VedtaksperiodeExpandableRow key={vedtaksperiodeIdx} vedtaksperiode={vedtaksperiode} anonymisert={anonymisert}/>
                         ))}
                 </Table.Body>}
             </Table>

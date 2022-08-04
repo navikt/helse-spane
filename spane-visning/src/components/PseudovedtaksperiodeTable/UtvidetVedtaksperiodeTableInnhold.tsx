@@ -5,10 +5,12 @@ import {useState} from "react";
 
 interface Props {
     subsumsjoner: SubsumsjonDto[];
+    anonymisert: Boolean;
 }
 
+
 function UtvidetVedtaksperiodeTableInnhold(props: Props) {
-    const {subsumsjoner} = props
+    const {subsumsjoner, anonymisert} = props
 
     const [sorterteSubsumsjoner, setSorterteSubsumsjoner] = useState(subsumsjoner)
     const [sortertPå, setSortertPå] = useState<string>("")
@@ -55,25 +57,30 @@ function UtvidetVedtaksperiodeTableInnhold(props: Props) {
                 } else return (ledd1 - ledd2)
             } else return (paragraf1 - paragraf2)
         } else return (kapittel1 - kapittel2)
-
     }
 
     function handleSort(sortKey: string | undefined) {
         if (!sortKey) return;
+
         if (sortKey === "paragraf") {
             setSorterteSubsumsjoner([...sorterteSubsumsjoner].sort((v1, v2) => {
-                return sortertPå === "paragraf" ? sorterPåParagraf(v2, v1) : sorterPåParagraf(v1, v2)
+                return sortertPå === "paragraf" ? sorterPåParagraf(v2, v1) : sorterPåParagraf(v1, v2);
             }))
+
             setSortertPå(sortertPå === "paragraf" ? "" : "paragraf")
+
         } else if (sortKey === "utfall") {
-            let flip = sortertPå === "utfall" ? -1 : 1
+            let flip = sortertPå === "utfall" ? -1 : 1;
+
             setSorterteSubsumsjoner([...sorterteSubsumsjoner].sort((v1, v2) => {
                     return (utfallStringVerdi(v1.utfall) > utfallStringVerdi(v2.utfall) ? flip : -flip)
                 }
             ))
+
             setSortertPå(sortertPå === "utfall" ? "" : "utfall")
+
         } else if (sortKey === "behandlet") {
-            let flip = sortertPå === "behandlet" ? -1 : 1
+            let flip = sortertPå === "behandlet" ? -1 : 1;
             setSorterteSubsumsjoner([...sorterteSubsumsjoner].sort((v1, v2) => {
                     return new Date(v1.tidsstempel) > new Date(v2.tidsstempel) ? flip : -flip
                 }
@@ -84,10 +91,7 @@ function UtvidetVedtaksperiodeTableInnhold(props: Props) {
 
 
     return <>
-        <Table size="medium"
-               onSortChange={(sortKey => handleSort(sortKey))}
-        >
-
+        <Table size="medium" onSortChange={(sortKey => handleSort(sortKey))}>
             <Table.Header>
                 <Table.Row>
                     <Table.ColumnHeader scope="col" sortKey={"paragraf"} sortable>
@@ -106,7 +110,7 @@ function UtvidetVedtaksperiodeTableInnhold(props: Props) {
             <Table.Body>
                 {
                     sorterteSubsumsjoner.map((subsumsjon, subsumsjonIdx) => {
-                        return <SubsumsjonExpandableRow key={subsumsjonIdx} subsumsjon={subsumsjon}/>
+                        return <SubsumsjonExpandableRow key={subsumsjonIdx} subsumsjon={subsumsjon} anonymisert={anonymisert}/>
                     })
                 }
 

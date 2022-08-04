@@ -18,6 +18,7 @@ function MainContainer() {
     const [fraDato, setFraDato] = useState<string>("");
     const [tilDato, setTilDato] = useState<string>("");
     const [person, setPerson] = useState<PersonDto>()
+    const [anonymisert, setAnonymisert] = useState<Boolean>(false);
     const [fødselsnummer, setFødselsnummer] = useState<string>("");
 
     const backend: Backend = Environment.isDevelopment
@@ -31,11 +32,11 @@ function MainContainer() {
             </Header>
             <div className="ytre-main-container">
                 <Søkefelt fødselsnummer={fødselsnummer} backend={backend} setOrgnumre={setOrgnumre} 
-                               setFødselsnummer={setFødselsnummer} setPerson={setPerson} />
+                               setFødselsnummer={setFødselsnummer} setPerson={setPerson} setAnonymisert={setAnonymisert} anonymisert={anonymisert}/>
                 <div className="indre-main-container">
                     <Sidepanel orgnumre={orgnumre} setValgte={setValgte} setFraDato={setFraDato} setTilDato={setTilDato}
-                               fødselsnummer={fødselsnummer} person={person}/>
-                    <PseudovedtaksperiodeTable valgte={valgte} setOrgnumre={setOrgnumre} fraDato={fraDato} tilDato={tilDato} setPerson={setPerson} person={person}  />
+                               fødselsnummer={fødselsnummer} person={person} anonymisert={anonymisert}  />
+                    <PseudovedtaksperiodeTable valgte={valgte} fraDato={fraDato} tilDato={tilDato} person={person} anonymisert={anonymisert}   />
                 </div>
             </div>
         </div>

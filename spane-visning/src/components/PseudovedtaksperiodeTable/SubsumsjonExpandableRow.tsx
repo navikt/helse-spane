@@ -5,6 +5,7 @@ import UtvidetSubsumsjonTableInnhold from "./UtvidetSubsumsjonTableInnhold";
 
 interface Props {
     subsumsjon: SubsumsjonDto;
+    anonymisert: Boolean;
 }
 
 function formatDateTimeString(dateTimeString: string) {
@@ -43,11 +44,11 @@ function utfallTag(str: string) {
 }
 
 export default function SubsumsjonExpandableRow(props: Props) {
-    const {subsumsjon} = props;
+    const {subsumsjon, anonymisert} = props;
     const [expand, setExpand] = useState<boolean>(false);
     return (
         <Table.ExpandableRow
-            content={<UtvidetSubsumsjonTableInnhold subsumsjon={subsumsjon}/>}
+            content={<UtvidetSubsumsjonTableInnhold subsumsjon={subsumsjon} anonymisert={anonymisert}/>}
             togglePlacement="right"
             open={expand}
             onClick={() => setExpand(!expand)}

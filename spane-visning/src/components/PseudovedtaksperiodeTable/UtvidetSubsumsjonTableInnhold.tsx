@@ -5,10 +5,11 @@ import { byggStringRekursivt } from "../../utlis";
 
 interface Props {
   subsumsjon: SubsumsjonDto;
+  anonymisert: Boolean
 }
 
 export default function UtvidetSubsumsjonTableInnhold(props: Props) {
-  const { subsumsjon } = props;
+  const { subsumsjon, anonymisert } = props;
   const [outputString, setOutputString] = useState<string>("");
   const [inputString, setInputString] = useState<string>("");
   const [sporingString, setSporingString] = useState<string>("");
@@ -23,17 +24,17 @@ export default function UtvidetSubsumsjonTableInnhold(props: Props) {
       <div className="table-row-expanded-content-column">
       <div>
           <b>Faktum: </b>
-          {inputString.split("\n").map((s, key) => (
+          {!anonymisert ? inputString.split("\n").map((s, key) => (
             <div style={{ overflowWrap: "break-word" }} key={key}>
               {s}
             </div>
-          ))}
+          )) : '********'}
         </div>
         <div>
           <b>Resultat: </b>
-          {outputString.split("\n").map((s, key) => (
+          {!anonymisert ? outputString.split("\n").map((s, key) => (
             <div key={key}>{s}</div>
-          ))}
+          )) : '********'}
         </div>
       </div>
       <div className="table-row-expanded-content-column">

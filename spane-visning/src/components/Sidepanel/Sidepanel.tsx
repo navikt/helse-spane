@@ -1,10 +1,9 @@
-import {Checkbox, CheckboxGroup, Search} from "@navikt/ds-react";
-import React, {FormEvent} from "react";
+import {Checkbox, CheckboxGroup} from "@navikt/ds-react";
+import React from "react";
 import DatePicker from "./DatePicker";
 import "./sidepanel.css";
 import { PeopleFilled } from "@navikt/ds-icons";
 import { PersonDto } from "../../types";
-
 
 
 interface Props {
@@ -14,24 +13,28 @@ interface Props {
     setTilDato: React.Dispatch<React.SetStateAction<string>>
     fødselsnummer: string
     person: PersonDto | undefined
+    anonymisert: Boolean
 
 }
 
 function Sidepanel(props: Props) {
-    const {orgnumre, setValgte, setFraDato, setTilDato, fødselsnummer, person} = props;
+    const {orgnumre, setValgte, setFraDato, setTilDato, fødselsnummer, person, anonymisert} = props;
+
     return (
-        <div className="sidepanel-container">   
+        <div className="sidepanel-container">
             <div className="personnummer-container">
                 <PeopleFilled height={"2em"} width={"2em"}/>
                 <h3 style={{display: "inline"}} >Personnummer: </h3>
             </div>
-            {fødselsnummer}
-            { person && 
+
+            {!anonymisert ? fødselsnummer : '***********'}
+            { person &&
             <div>
+                <h4 className="velg-tid-overskrift-container" >Velg tidsrom: </h4>
                 <div className="date-picker-container">
-                <DatePicker label="Fra" setDato={setFraDato}/>
-                <DatePicker label="Til" setDato={setTilDato}/>
-            </div>
+                    <DatePicker label="Fra" setDato={setFraDato}/>
+                    <DatePicker label="Til" setDato={setTilDato}/>
+                </div>
             <div className="checkbox-group-container">
                 <CheckboxGroup
                     legend="Arbeidsgiver"
@@ -40,7 +43,7 @@ function Sidepanel(props: Props) {
                     }}
                 >
                     {orgnumre.map((orgnummer, key) => {
-                        return <Checkbox key={key} value={orgnummer}>{orgnummer}</Checkbox>
+                        return <Checkbox key={key} value={orgnummer}> {!anonymisert ? orgnummer : '***********'}</Checkbox>
                     })}
                 </CheckboxGroup>
             </div>
