@@ -4,6 +4,8 @@ import no.nav.common.KafkaEnvironment
 import no.nav.helse.spane.db.PersonPostgresRepository
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.ZonedDateTime
 import java.util.*
 
@@ -14,6 +16,7 @@ internal abstract class AbstractDatabaseTest {
 
     private val testTopic = "testTopic"
     protected val FØDSELSNUMMER = "1234567890"
+    protected val VEDTAKSPERIODE_ID = UUID.randomUUID().toString()
 
     private val embeddedKafkaEnvironment = KafkaEnvironment(
         autoStart = false,
@@ -54,7 +57,7 @@ internal abstract class AbstractDatabaseTest {
     fun lagSubsumsjon(
         paragraf: String = "8-11",
         tidsstempel: ZonedDateTime = ZonedDateTime.now(),
-        sporing: Map<String, List<String>> = emptyMap(),
+        sporing: Map<String, List<String>> = mapOf("vedtaksperiode" to listOf(VEDTAKSPERIODE_ID)),
         input: Map<String, Any> = emptyMap(),
         output: Map<String, Any> = emptyMap(),
         id: String = UUID.randomUUID().toString()
@@ -64,6 +67,22 @@ internal abstract class AbstractDatabaseTest {
             id, "3", "sub", "kildee", "3",
             FØDSELSNUMMER, sporing, tidsstempel, "loven", "3",
             paragraf, null, null, null, input, output, "GODKJENT"
+        )
+    }
+
+    fun vedtakFattet(): VedtakFattet {
+        val skjæringstidspunkt = LocalDate.now()
+        return VedtakFattet(
+            UUID.randomUUID().toString(),
+            LocalDateTime.now(),
+            emptyList(),
+            FØDSELSNUMMER,
+            VEDTAKSPERIODE_ID,
+            skjæringstidspunkt,
+            skjæringstidspunkt,
+            skjæringstidspunkt.plusDays(30),
+            "123456789",
+            "12345"
         )
     }
 
