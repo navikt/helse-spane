@@ -52,13 +52,13 @@ function Søkefelt(props: Props) {
         <div className="search-container">
             <h2>Personsøk</h2>
             <div className="actions-container">
-                <form onSubmit={handleSubmit }>
+                <form onSubmit={handleSubmit}>
                     <Search
                         label="Søk etter fødselsnummer"
                         size="small"
                         variant="secondary"
-                        onSubmit={(e) => e}
                         onChange={(e) => setTempFnr(e)}
+                        maxLength={11}
                     />
                 </form>
                 <CheckboxGroup
