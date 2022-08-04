@@ -7,5 +7,4 @@ interface TilstandVedtaksperiode {
     fun accept(visitor: VedtakFattetVisitor) {}
 
     fun accept(visitor: VedtaksperiodeForkastetVisitor) {}
-
 }

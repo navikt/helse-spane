@@ -34,7 +34,7 @@ class Konsument (
                     val melding = objectMapper.readTree(it.value())
                     håndterSubsumsjon(it.value(), personRepository)
                     if (vedtakFattetMediator.håndterer(melding)) vedtakFattetMediator.håndterVedtakFattet(melding)
-                    else if (forkastetMediator.håndtererForkastetVedtak(melding)) forkastetMediator.håndterForkastet(melding)
+                    else if (forkastetMediator.håndtererForkastetVedtak(melding)) forkastetMediator.håndterForkastetVedtaksperiode(melding)
                 }
                 // TODO commit offset
             }

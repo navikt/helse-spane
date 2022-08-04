@@ -1,7 +1,7 @@
 package no.nav.helse.spane.db
 
 import no.nav.helse.Person
-import no.nav.helse.spane.lagForkastet
+import no.nav.helse.spane.lagForkastetVedtaksperiode
 import no.nav.helse.spane.lagSubsumsjonFraJson
 import no.nav.helse.spane.lagVedtakFattet
 import no.nav.helse.spane.objectMapper
@@ -30,7 +30,7 @@ class SerialisertPerson(val json: String) {
             personJson["vedtaksperioder"].flatMap {
                 it["forkastet"]
             }.forEach {
-                val forkastet = lagForkastet(it)
+                val forkastet = lagForkastetVedtaksperiode(it)
                 person.håndter(forkastet)
             }
         }
