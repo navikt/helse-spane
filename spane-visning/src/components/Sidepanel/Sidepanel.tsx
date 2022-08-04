@@ -1,5 +1,5 @@
 import {Checkbox, CheckboxGroup, Search} from "@navikt/ds-react";
-import React, {FormEvent} from "react";
+import React from "react";
 import DatePicker from "./DatePicker";
 import "./sidepanel.css";
 import { PeopleFilled } from "@navikt/ds-icons";
@@ -19,6 +19,7 @@ interface Props {
 
 function Sidepanel(props: Props) {
     const {orgnumre, setValgte, setFraDato, setTilDato, fødselsnummer, person} = props;
+
     return (
         <div className="sidepanel-container">   
             <div className="personnummer-container">
@@ -26,12 +27,13 @@ function Sidepanel(props: Props) {
                 <h3 style={{display: "inline"}} >Personnummer: </h3>
             </div>
             {fødselsnummer}
-            { person && 
+            { person &&
             <div>
+                <h4 className="velg-tid-overskrift-container" >Velg tidsrom: </h4>
                 <div className="date-picker-container">
-                <DatePicker label="Fra" setDato={setFraDato}/>
-                <DatePicker label="Til" setDato={setTilDato}/>
-            </div>
+                    <DatePicker label="Fra" setDato={setFraDato}/>
+                    <DatePicker label="Til" setDato={setTilDato}/>
+                </div>
             <div className="checkbox-group-container">
                 <CheckboxGroup
                     legend="Arbeidsgiver"
