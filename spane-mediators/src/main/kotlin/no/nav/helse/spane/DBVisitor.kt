@@ -1,9 +1,11 @@
 package no.nav.helse.spane
 
 import no.nav.helse.PersonVisitor
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.ZonedDateTime
 
-typealias DBVedtaksperiode = Map<String, Any>
+typealias DBVedtaksperiode = Map<String, Any?>
 
 class DBVisitor : PersonVisitor {
     val personMap = mutableMapOf<String, Any>("vedtaksperioder" to mutableListOf<DBVedtaksperiode>())
@@ -11,11 +13,54 @@ class DBVisitor : PersonVisitor {
         personMap["fnr"] = fødselsnummer
     }
 
-    override fun preVisitSubsumsjoner(skjæringstidspunkt: String, orgnummer: String) {
-        (personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>)
-            .add(mutableMapOf("subsumsjoner" to mutableListOf<Any>(), "orgnummer" to orgnummer, "skjæringstidspunkt" to skjæringstidspunkt))
 
+    override fun visitVedtaksperiode(
+        tilstand: String,
+        skjæringstidspunkt: LocalDate?,
+        orgnummer: String,
+        vedtaksperiodeId: String?
+    ) {
+        (personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>)
+            .add(
+                mutableMapOf(
+                    "subsumsjoner" to mutableListOf<Any>(),
+                    "vedtakFattet" to mutableListOf<Any>(),
+                    "orgnummer" to orgnummer,
+                    "skjæringstidspunkt" to skjæringstidspunkt,
+                    "vedtaksperiodeId" to vedtaksperiodeId,
+                    "tilstand" to tilstand
+                )
+            )
     }
+
+    override fun visitVedtakFattet(
+        id: String,
+        tidsstempel: LocalDateTime,
+        hendelser: List<String>,
+        fødselsnummer: String,
+        vedtaksperiodeId: String,
+        skjeringstidspunkt: LocalDate,
+        fom: LocalDate,
+        tom: LocalDate,
+        organisasjonsnummer: String,
+        utbetalingsId: String
+    ) {
+        ((personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtakFattet"] as MutableList<Any>).add(
+            mapOf(
+                "id" to id,
+                "tidsstempel" to tidsstempel,
+                "hendelser" to hendelser,
+                "fodselsnummer" to fødselsnummer,
+                "vedtaksperiodeId" to vedtaksperiodeId,
+                "skjeringstidspunkt" to skjeringstidspunkt,
+                "fom" to fom,
+                "tom" to tom,
+                "organisasjonsnummer" to organisasjonsnummer,
+                "utbetalingId" to utbetalingsId,
+            )
+        )
+    }
+
 
     override fun visitSubsumsjon(
         id: String,
@@ -58,5 +103,4 @@ class DBVisitor : PersonVisitor {
             )
         )
     }
-
 }
