@@ -70,7 +70,7 @@ fun ktorServer(database: PersonRepository): ApplicationEngine =
                         "Missing id",
                         status = HttpStatusCode.BadRequest
                     )
-                    val person = database.hentPerson(id)?.deserialiser() ?: throw RuntimeException("fant ikke person i databasen")
+                    val person = database.hentPerson(id)?.deserialiser() ?:  return@get call.respond(HttpStatusCode.NotFound, "not found")
                     val apiVisitor = APIVisitor()
                     person.accept(apiVisitor)
                     call.respondText(

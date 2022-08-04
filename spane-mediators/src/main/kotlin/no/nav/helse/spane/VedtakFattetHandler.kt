@@ -19,9 +19,9 @@ class VedtakFattetMediator(private val database: PersonRepository) {
         val nyVedtakFattet = lagVedtakFattet(melding)
         person.håndter(nyVedtakFattet)
 
-        val apiVisitor = APIVisitor()
-        person.accept(apiVisitor)
-        val personJson = objectMapper.writeValueAsString(apiVisitor.personMap)
+        val visitor = DBVisitor()
+        person.accept(visitor)
+        val personJson = objectMapper.writeValueAsString(visitor.personMap)
         database.lagre(personJson, fnr)
     }
 
