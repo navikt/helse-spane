@@ -22,7 +22,7 @@ function formatDateTimeString(dateTimeString: string) {
     str += ":"
     str += dato.getSeconds().toString().length === 1 ? "0" + dato.getSeconds() : dato.getSeconds()
     str += "."
-    str += dato.getMilliseconds().toString().length === 3 ? dato.getMilliseconds() : (dato.getMilliseconds().toString().length === 2 ? "0" + dato.getMilliseconds() : "00" + dato.getMilliseconds())
+    str += dateTimeString.split("+")[0].slice(-9)
     return str
 
 }
