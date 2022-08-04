@@ -35,7 +35,14 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
     val fnr = melding.get("fodselsnummer").asText()
 
     val person = database.hentPerson(fnr)?.deserialiser() ?: Person(fnr)
-    val nySubsumsjon = lagSubsumsjonFraJson(melding)
+    val nySubsumsjon = try {
+        lagSubsumsjonFraJson(melding)
+    }catch (e: Exception) {
+        logger.error("Kan ikke håndtere melding")
+        sikkerlogger.error("Kan ikke håndtere melding: $melding")
+        return
+    }
+
     person.håndter(nySubsumsjon)
 
     val DBVisitor = DBVisitor()
