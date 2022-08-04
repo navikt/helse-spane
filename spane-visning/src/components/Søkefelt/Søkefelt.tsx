@@ -29,6 +29,10 @@ function Søkefelt(props: Props) {
             setFeilmelding("Personnummer kan kun være tall")
             return
         }
+        if (tempFnr.length != 11) {
+            setFeilmelding("Personnummer må være 11 siffer")
+            return
+        }
 
         setFødselsnummer(tempFnr)
 
