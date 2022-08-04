@@ -2,16 +2,30 @@ import {Table} from "@navikt/ds-react";
 import {SubsumsjonDto} from "../../types";
 import SubsumsjonExpandableRow from "./SubsumsjonExpandableRow";
 import {useState} from "react";
+import {SortState} from "@navikt/ds-react/esm/table/Table";
+
 
 interface Props {
     subsumsjoner: SubsumsjonDto[];
 }
+
 
 function UtvidetVedtaksperiodeTableInnhold(props: Props) {
     const {subsumsjoner} = props
 
     const [sorterteSubsumsjoner, setSorterteSubsumsjoner] = useState(subsumsjoner)
     const [sortertPå, setSortertPå] = useState<string>("")
+
+    let sort: SortState = {
+        orderBy: sortertPå,
+        direction: "descending"
+    }
+
+    const [sorterState, setSorterState] = useState<SortState>({
+        orderBy: sortertPå,
+        direction: "descending"
+    })
+
 
     function utfallStringVerdi(str: string) {
         switch (str) {
@@ -55,25 +69,57 @@ function UtvidetVedtaksperiodeTableInnhold(props: Props) {
                 } else return (ledd1 - ledd2)
             } else return (paragraf1 - paragraf2)
         } else return (kapittel1 - kapittel2)
-
     }
 
     function handleSort(sortKey: string | undefined) {
         if (!sortKey) return;
+        setSorterState({...sorterState, orderBy: sortertPå})
+
         if (sortKey === "paragraf") {
+            console.log("Hei")
             setSorterteSubsumsjoner([...sorterteSubsumsjoner].sort((v1, v2) => {
-                return sortertPå === "paragraf" ? sorterPåParagraf(v2, v1) : sorterPåParagraf(v1, v2)
+                console.log("Hade")
+
+                if (sortertPå === "paragraf") {
+                    console.log(sorterState.direction)
+
+                    setSorterState({...sorterState, direction: "ascending"})
+                    return sorterPåParagraf(v2, v1)
+                } else {
+                    console.log(sorterState.direction)
+                    setSorterState({...sorterState, direction: "descending"})
+                    console.log(sorterState.direction)
+
+                    return sorterPåParagraf(v1, v2)
+                }
+
+
             }))
             setSortertPå(sortertPå === "paragraf" ? "" : "paragraf")
         } else if (sortKey === "utfall") {
-            let flip = sortertPå === "utfall" ? -1 : 1
+            let flip = 0
+            if (sortertPå === "utfall") {
+                setSorterState({...sorterState, direction: "ascending"})
+                flip = -1
+            } else {
+                setSorterState({...sorterState, direction: "descending"})
+                flip = 1
+            }
+
             setSorterteSubsumsjoner([...sorterteSubsumsjoner].sort((v1, v2) => {
                     return (utfallStringVerdi(v1.utfall) > utfallStringVerdi(v2.utfall) ? flip : -flip)
                 }
             ))
             setSortertPå(sortertPå === "utfall" ? "" : "utfall")
         } else if (sortKey === "behandlet") {
-            let flip = sortertPå === "behandlet" ? -1 : 1
+            let flip = 0
+            if (sortertPå === "behandlet") {
+                setSorterState({...sorterState, direction: "ascending"})
+                flip = -1
+            } else {
+                setSorterState({...sorterState, direction: "descending"})
+                flip = 1
+            }
             setSorterteSubsumsjoner([...sorterteSubsumsjoner].sort((v1, v2) => {
                     return new Date(v1.tidsstempel) > new Date(v2.tidsstempel) ? flip : -flip
                 }
@@ -85,6 +131,7 @@ function UtvidetVedtaksperiodeTableInnhold(props: Props) {
 
     return <>
         <Table size="medium"
+               sort={sorterState}
                onSortChange={(sortKey => handleSort(sortKey))}
         >
 
