@@ -111,7 +111,7 @@ class TestHjelper {
                 "7b999f7d-a6e4-4519-8f00-9d7292c0758b",
                 "1fa57d83-c1f6-487f-bc88-4a612e8d2ae7"
               ],
-              "fodselsnummer": "22018219453",
+              "fodselsnummer": "22018219453", 
               "vedtaksperiodeId": "a0c1d087-0746-4c79-8c87-5e3dcfc0fdcd",
               "skjeringstidspunkt": "2022-05-01",
               "fom": "2022-05-01",
