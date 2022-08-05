@@ -291,7 +291,8 @@
       "orgnummer": "947064649",
       "skjæringstidspunkt": null,
       "vedtaksperiodeId": "a0c1d087-0746-4c79-8c87-5e3dcfc0fdcd",
-      "tilstand": "UAVKLART"
+      "tilstand": "UAVKLART",
+      "ikkeSikkertSkjæringstidspunkt": false
     }
   ],
   "fnr": "22018219453"

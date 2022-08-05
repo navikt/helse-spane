@@ -20,7 +20,7 @@ function VedtaksperiodeExpandableRow(props: Props) {
             onClick={() => setExpand(!expand)}
             style={{cursor: "pointer", backgroundColor: "#E6F0FF"}}
         >
-            <Table.DataCell scope="row"> <b> Skjæringstidspunkt: </b> {vedtaksperiode.skjæringstidspunkt ?? 'ukjent'}
+            <Table.DataCell scope="row"> <b> {vedtaksperiode.ikkeSikkertSkjæringstidspunkt ? "Skjæringstidspunkt*: " :"Skjæringstidspunkt: "} </b> {vedtaksperiode.skjæringstidspunkt ?? 'ukjent'}
             </Table.DataCell>
             <Table.DataCell scope="row">
                 <HelpText title="Hva betyr dette tallet?" placement="top-start">

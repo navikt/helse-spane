@@ -8,6 +8,7 @@ export type VedtaksperiodeDto = {
     orgnummer: string;
     skjæringstidspunkt: string | null;
     tilstand: string;
+    ikkeSikkertSkjæringstidspunkt: Boolean;
 };
 
 export type SubsumsjonDto = {
