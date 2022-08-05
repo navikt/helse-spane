@@ -9,21 +9,24 @@ import java.time.LocalDateTime
 class VedtaksperiodeForkastetMediator(private val database: PersonRepository) {
 
     fun håndtererForkastetVedtak(melding: JsonNode): Boolean {
-        return (melding["eventName"] != null  && melding["eventName"].asText() == "vedtaksperiodeForkastet")
+        return (melding["eventName"] != null && melding["eventName"].asText() == "vedtaksperiodeForkastet")
     }
 
     fun håndterForkastetVedtaksperiode(melding: JsonNode) {
         val fnr = melding.get("fodselsnummer").asText()
-        sikkerlogger.info("leser melding event {}: {}", melding.get("eventName"), melding)
-        val person = database.hentPerson(fnr)?.deserialiser() ?: throw IllegalArgumentException("Motatt vedtakForkastet for person = $fnr som ikke har mottatt subsumsjoner")
+        val person = database.hentPerson(fnr)?.deserialiser()
+            ?: throw IllegalArgumentException("Motatt vedtakForkastet for person = $fnr som ikke har mottatt subsumsjoner")
 
         val nyForkastet = lagForkastetVedtaksperiode(melding)
-        person.håndter(nyForkastet)
-
+        val bleHåndtert = !person.håndter(nyForkastet)
         val visitor = DBVisitor()
         person.accept(visitor)
         val personJson = objectMapper.writeValueAsString(visitor.personMap)
-        sikkerlogger.info("lagrer person {}", personJson)
+
+        if (bleHåndtert) {
+            sikkerlogger.info("Vedtaksperiode Forkastet melding ikke håndtert: {}", melding)
+            sikkerlogger.info("lagrer person {}", personJson)
+        }
 
         database.lagre(personJson, fnr)
     }

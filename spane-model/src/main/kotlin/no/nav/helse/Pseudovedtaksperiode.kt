@@ -63,13 +63,11 @@ internal class Pseudovedtaksperiode(
             }
         }
 
-        fun List<Pseudovedtaksperiode>.håndter(vedtakFattet: VedtakFattet) {
-            forEach { it.håndter(vedtakFattet) }
-        }
+        fun List<Pseudovedtaksperiode>.håndter(vedtakFattet: VedtakFattet) =
+            none { it.håndter(vedtakFattet) }
 
-        fun List<Pseudovedtaksperiode>.håndter(vedtakFattet: VedtaksperiodeForkastet) {
-            forEach { it.håndter(vedtakFattet) }
-        }
+        fun List<Pseudovedtaksperiode>.håndter(vedtakFattet: VedtaksperiodeForkastet) =
+            none { it.håndter(vedtakFattet) }
     }
 
     private fun fjernSubsumsjoner(subsumsjoner: List<Subsumsjon>) {
@@ -138,18 +136,21 @@ internal class Pseudovedtaksperiode(
 
     }
 
-    fun håndter(vedtakFattet: VedtakFattet) {
+    fun håndter(vedtakFattet: VedtakFattet): Boolean {
         if (vedtakFattet.hørerTil(subsumsjoner.finnVedtaksperiodeId())) {
             tilstandsmelding += vedtakFattet
             tilstand = Tilstand.VEDTAK_FATTET
+            return true
         }
+        return false
     }
 
-    fun håndter(vedtaksperiodeForkastet: VedtaksperiodeForkastet) {
+    fun håndter(vedtaksperiodeForkastet: VedtaksperiodeForkastet): Boolean {
         if (vedtaksperiodeForkastet.hørerTil(subsumsjoner.finnVedtaksperiodeId())) {
             tilstandsmelding += vedtaksperiodeForkastet
             tilstand = Tilstand.TIL_INFOTRYGD
-
+            return true
         }
+        return false
     }
 }

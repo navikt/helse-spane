@@ -2,6 +2,7 @@ package no.nav.helse.spane
 
 import com.fasterxml.jackson.databind.JsonNode
 import no.nav.helse.VedtakFattet
+import no.nav.helse.sikkerlogger
 import no.nav.helse.spane.db.PersonRepository
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -18,11 +19,16 @@ class VedtakFattetMediator(private val database: PersonRepository) {
         val person = database.hentPerson(fnr)?.deserialiser()
             ?: throw IllegalArgumentException("Motatt vedtakFattet for person = $fnr som ikke har mottatt subsumsjoner")
         val nyVedtakFattet = lagVedtakFattet(melding)
-        person.håndter(nyVedtakFattet)
+        val bleHåndtert = !person.håndter(nyVedtakFattet)
 
         val visitor = DBVisitor()
         person.accept(visitor)
         val personJson = objectMapper.writeValueAsString(visitor.personMap)
+
+        if (!bleHåndtert) {
+            sikkerlogger.info("Vedtak Fattet melding ikke håndtert: {}", melding)
+            sikkerlogger.info("lagrer person {}", personJson)
+        }
         database.lagre(personJson, fnr)
     }
 
