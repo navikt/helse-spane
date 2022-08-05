@@ -16,18 +16,19 @@ class SerialisertPerson(val json: String) {
             person.håndter(subsumsjon)
         }
 
-        personJson["vedtaksperioder"].flatMap { it["vedtakStatus"] //TODO where it["eventName"] == vedtakFattet
-             }.forEach {
+        personJson["vedtaksperioder"].filter { it["eventName"].asText() == "vedtakFattet" }.flatMap {
+            it["vedtakStatus"]
+        }.forEach {
             val vedtakFattet = lagVedtakFattet(it)
             person.håndter(vedtakFattet)
         }
         val vedtaksStatus = personJson["vedtaksperioder"]["vedtakStatus"]
         if (vedtaksStatus != null && !vedtaksStatus.isNull && vedtaksStatus.asText() != "") {
-            personJson["vedtaksperioder"].flatMap { it["vedtakStatus"]  //TODO where it["eventName"] == vedtaksperiodeForkastet
-            }.forEach {
-                val forkastet = lagForkastetVedtaksperiode(it)
-                person.håndter(forkastet)
-            }
+            personJson["vedtaksperioder"].filter { it["eventName"].asText() == "vedtaksperiodeForkastet" }
+                .flatMap { it["vedtakStatus"] }.forEach {
+                    val forkastet = lagForkastetVedtaksperiode(it)
+                    person.håndter(forkastet)
+                }
         }
         return person
     }
