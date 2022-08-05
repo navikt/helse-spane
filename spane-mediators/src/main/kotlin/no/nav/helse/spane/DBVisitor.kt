@@ -13,7 +13,6 @@ class DBVisitor : PersonVisitor {
         personMap["fnr"] = fødselsnummer
     }
 
-
     override fun visitVedtaksperiode(
         tilstand: String,
         skjæringstidspunkt: LocalDate?,
@@ -61,6 +60,23 @@ class DBVisitor : PersonVisitor {
         )
     }
 
+    override fun visitVedtaksperiodeForkastet(
+        id: String,
+        tidsstempel: LocalDateTime,
+        fødselsnummer: String,
+        vedtaksperiodeId: String,
+        organisasjonsnummer: String
+    ) {
+        ((personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtaksperiodeForkastet"] as MutableList<Any>).add(
+            mapOf(
+                "id" to id,
+                "tidsstempel" to tidsstempel,
+                "fodselsnummer" to fødselsnummer,
+                "vedtaksperiodeId" to vedtaksperiodeId,
+                "organisasjonsnummer" to organisasjonsnummer,
+            )
+        )
+    }
 
     override fun visitSubsumsjon(
         id: String,

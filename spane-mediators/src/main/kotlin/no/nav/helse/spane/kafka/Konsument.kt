@@ -13,16 +13,22 @@ import java.time.Duration
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
-class Konsument (
+class Konsument(
     private val konfig: Konfig,
     clientId: String = UUID.randomUUID().toString().slice(1..5),
     private val håndterSubsumsjon: (input: String, database: PersonRepository) -> Any?,
     private val personRepository: PersonRepository,
     private val vedtakFattetMediator: VedtakFattetMediator = VedtakFattetMediator(personRepository),
-    private val vedtaksperiodeForkastetMediator: VedtaksperiodeForkastetMediator= VedtaksperiodeForkastetMediator(personRepository),
-    ) {
+    private val vedtaksperiodeForkastetMediator: VedtaksperiodeForkastetMediator = VedtaksperiodeForkastetMediator(
+        personRepository
+    ),
+) {
 
-    private val konsument = KafkaConsumer(konfig.konsumentKonfig(clientId, konfig.consumerGroup), StringDeserializer(), StringDeserializer())
+    private val konsument = KafkaConsumer(
+        konfig.konsumentKonfig(clientId, konfig.consumerGroup),
+        StringDeserializer(),
+        StringDeserializer()
+    )
     private val running = AtomicBoolean(false)
 
     private fun consumeMessages() {
@@ -32,14 +38,17 @@ class Konsument (
             while (running.get()) {
                 konsument.poll(Duration.ofSeconds(1)).onEach {
                     val melding = objectMapper.readTree(it.value())
-                    håndterSubsumsjon(it.value(), personRepository)
+                    håndterSubsumsjon(
+                        it.value(),
+                        personRepository
+                    ) // TODO: hvorfor ha if inne i funksjonen her også ikke i de andre to?
                     if (vedtakFattetMediator.håndterer(melding)) vedtakFattetMediator.håndterVedtakFattet(melding)
-                    else if (vedtaksperiodeForkastetMediator.håndtererForkastetVedtak(melding)) vedtaksperiodeForkastetMediator.håndterForkastetVedtaksperiode(melding)
+                    else if (vedtaksperiodeForkastetMediator.håndtererForkastetVedtak(melding)) vedtaksperiodeForkastetMediator.håndterForkastetVedtaksperiode(
+                        melding
+                    )
                 }
-                // TODO commit offset
             }
         } catch (err: WakeupException) {
-            // throw exception if we have not been told to stop
             if (running.get()) throw err
         } catch (err: Exception) {
             lastException = err

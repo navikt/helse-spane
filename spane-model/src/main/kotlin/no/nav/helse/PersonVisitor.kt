@@ -35,11 +35,6 @@ interface VedtaksperiodeVisitor : SubsumsjonVisitor, VedtakVisitor {
     fun preVisitVedtakFattet() {}
 
     fun postVisitVedtakFattet() {}
-
-    fun preVisitVedtaksperiodeForkastet() {}
-
-    fun postVisitVedtaksperiodeForkastet() {}
-
 }
 
 interface SubsumsjonVisitor {
@@ -64,7 +59,6 @@ interface SubsumsjonVisitor {
         utfall: String
     ) {
     }
-
 }
 
 interface VedtakVisitor {
@@ -79,8 +73,7 @@ interface VedtakVisitor {
         tom: LocalDate,
         organisasjonsnummer: String,
         utbetalingsId: String
-    ) {
-    }
+    ) {}
 
     fun visitVedtaksperiodeForkastet(
         id: String,
@@ -88,8 +81,7 @@ interface VedtakVisitor {
         fødselsnummer: String,
         vedtaksperiodeId: String,
         organisasjonsnummer: String,
-    ) {
-    }
+    ) {}
 }
 
 

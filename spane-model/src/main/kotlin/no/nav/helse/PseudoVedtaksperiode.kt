@@ -123,6 +123,7 @@ internal class PseudoVedtaksperiode(
         visitor.preVisitVedtakFattet()
         tilstandsmelding.forEach { it.accept(visitor) }
         visitor.postVisitVedtakFattet()
+
     }
 
     fun håndter(vedtakFattet: VedtakFattet) {
@@ -136,6 +137,7 @@ internal class PseudoVedtaksperiode(
         if (vedtaksperiodeForkastet.hørerTil(subsumsjoner.finnVedtaksperiodeId())) {
             tilstandsmelding += vedtaksperiodeForkastet
             tilstand = Tilstand.TIL_INFOTRYGD
+
         }
     }
 }

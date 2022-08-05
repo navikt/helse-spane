@@ -18,7 +18,6 @@ class VedtaksperiodeForkastet(
             fødselsnummer,
             vedtaksperiodeId,
             organisasjonsnummer,
-
             )
     }
 
