@@ -47,7 +47,7 @@ class APIVisitor : PersonVisitor {
         organisasjonsnummer: String,
         utbetalingsId: String
     ) {
-        ((personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>).last()["vedtakFattet"] as MutableList<Any>).add(
+        ((personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>).last()["vedtakStatus"] as MutableList<Any>).add(
             mapOf(
                 "id" to id,
                 "tidsstempel" to tidsstempel,
@@ -59,6 +59,23 @@ class APIVisitor : PersonVisitor {
                 "tom" to tom,
                 "organisasjonsnummer" to organisasjonsnummer,
                 "utbetalingId" to utbetalingsId,
+            )
+        )
+    }
+    override fun visitVedtaksperiodeForkastet(
+        id: String,
+        tidsstempel: LocalDateTime,
+        fødselsnummer: String,
+        vedtaksperiodeId: String,
+        organisasjonsnummer: String
+    ) {
+        ((personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>).last()["vedtakStatus"] as MutableList<Any>).add(
+            mapOf(
+                "id" to id,
+                "tidsstempel" to tidsstempel,
+                "fodselsnummer" to fødselsnummer,
+                "vedtaksperiodeId" to vedtaksperiodeId,
+                "organisasjonsnummer" to organisasjonsnummer,
             )
         )
     }
