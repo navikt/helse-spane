@@ -148,7 +148,8 @@ class TestVisitor : PersonVisitor {
         val tilstand: String,
         val vedtaksperiodeId: String?,
         val skjæringstidspunkt: LocalDate?,
-        val subsumsjoner: MutableList<Map<String, Any?>>
+        val subsumsjoner: MutableList<Map<String, Any?>>,
+        val ikkeSikkertSkjæringstidspunkt: Boolean
     )
 
     private lateinit var fødselsnummer: String
@@ -166,7 +167,15 @@ class TestVisitor : PersonVisitor {
         vedtaksperiodeId: String?,
         ikkeSikkertSkjæringstidspunkt: Boolean
     ) {
-        vedtaksperioder.add(TestPseudoVedtaksperiode(tilstand, vedtaksperiodeId, skjæringstidspunkt, mutableListOf()))
+        vedtaksperioder.add(
+            TestPseudoVedtaksperiode(
+                tilstand,
+                vedtaksperiodeId,
+                skjæringstidspunkt,
+                mutableListOf(),
+                ikkeSikkertSkjæringstidspunkt
+            )
+        )
     }
 
 
