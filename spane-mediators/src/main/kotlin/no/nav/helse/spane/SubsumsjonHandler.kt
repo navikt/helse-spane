@@ -33,6 +33,7 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
     }
 
     val fnr = melding.get("fodselsnummer").asText()
+    sikkerlogger.info("logger fødselsnummer {}", fnr)
 
 
     val person = database.hentPerson(fnr)?.deserialiser() ?: Person(fnr)
