@@ -12,10 +12,14 @@ class VedtaksperiodeForkastetMediator(private val database: PersonRepository) {
         return (melding["eventName"] != null && melding["eventName"].asText() == "vedtaksperiodeForkastet")
     }
 
+
     fun håndterForkastetVedtaksperiode(melding: JsonNode) {
         val fnr = melding.get("fodselsnummer").asText()
         val person = database.hentPerson(fnr)?.deserialiser()
-            ?: throw IllegalArgumentException("Motatt vedtakForkastet for person = $fnr som ikke har mottatt subsumsjoner")
+        if (person == null) {
+            sikkerlogger.info("Motatt vedtaksperiodeForkastet for person = $fnr som ikke har mottatt subsumsjoner")
+            return
+        }
 
         val nyForkastet = lagForkastetVedtaksperiode(melding)
         val bleHåndtert = !person.håndter(nyForkastet)
