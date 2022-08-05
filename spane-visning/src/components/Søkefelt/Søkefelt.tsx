@@ -1,5 +1,5 @@
 import {Checkbox, CheckboxGroup, Search} from "@navikt/ds-react";
-import React, {FormEvent, useState} from "react";
+import React, {FormEvent, FormEventHandler, useState} from "react";
 import {Backend} from "../../service";
 import {PersonDto} from "../../types";
 import "./søkefelt.css"
@@ -12,7 +12,6 @@ interface Props {
     setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>
     setAnonymisert: React.Dispatch<React.SetStateAction<Boolean>>
     anonymisert: Boolean
-
 }
 
 
@@ -23,20 +22,17 @@ function Søkefelt(props: Props) {
     const [tempFnr, setTempFnr] = useState<string>("");
     const [feilmelding, setFeilmelding] = useState<string>("");
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-
+    const handleChangeFnr = (fnr: string) => {
         if (!(/^\d+$/.test(tempFnr))) {
             setFeilmelding("Personnummer kan kun være tall")
             return
         }
-        if (tempFnr.length != 11) {
-            setFeilmelding("Personnummer må være 11 siffer")
-            return
-        }
+        setFeilmelding("")
+        setFødselsnummer(fnr)
+    }
 
-        setFødselsnummer(tempFnr)
+    const handleSubmit = () => {
 
-        event.preventDefault();
         backend.person(fødselsnummer)
             .then((r) => {
                 setPerson(r)
@@ -60,17 +56,17 @@ function Søkefelt(props: Props) {
         <div className="search-container">
             <h2>Personsøk</h2>
             <div className="actions-container">
-                <form onSubmit={handleSubmit}>
-                    <Search
-                        label="Søk etter fødselsnummer"
-                        size="small"
-                        variant="secondary"
-                        onChange={(e) => setTempFnr(e)}
-                        maxLength={11}
-                        type={"numeric"}
-                        error={feilmelding}
-                    />
-                </form>
+                <Search
+                    label="Søk etter fødselsnummer"
+                    size="small"
+                    variant="secondary"
+                    onChange={(e) => handleChangeFnr(e)}
+                    maxLength={11}
+                    type={"numeric"}
+                    error={feilmelding}
+                >
+                    <Search.Button onClick={handleSubmit}></Search.Button>
+                </Search>
                 <CheckboxGroup
                     className="checbox-group"
                     legend="Anonymiser data gruppe"

@@ -24,6 +24,7 @@
 
 .table-row-expanded-content-container {
     display: flex;
+    white-space: pre-wrap;
 }
 
 .table-row-expanded-content-column {
