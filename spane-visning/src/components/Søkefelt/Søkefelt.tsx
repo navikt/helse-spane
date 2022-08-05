@@ -19,11 +19,10 @@ function Søkefelt(props: Props) {
 
     const {fødselsnummer, backend, setFødselsnummer, setPerson, setOrgnumre, setAnonymisert, anonymisert} = props;
 
-    const [tempFnr, setTempFnr] = useState<string>("");
     const [feilmelding, setFeilmelding] = useState<string>("");
 
     const handleChangeFnr = (fnr: string) => {
-        if (!(/^\d+$/.test(tempFnr))) {
+        if (!(/^\d+$/.test(fnr))) {
             setFeilmelding("Personnummer kan kun være tall")
             return
         }
