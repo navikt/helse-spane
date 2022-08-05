@@ -18,7 +18,7 @@ class VedtakFattet(
 
     override fun hørerTil(vedtaksperiodeId: String?) = this.vedtaksperiodeId == vedtaksperiodeId
 
-    override fun accept(visitor: VedtakFattetVisitor) {
+    override fun accept(visitor: VedtakVisitor) {
         visitor.visitVedtakFattet(
             id,
             tidsstempel,
