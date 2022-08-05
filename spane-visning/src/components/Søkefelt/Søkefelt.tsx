@@ -37,9 +37,10 @@ function Søkefelt(props: Props) {
             setFeilmelding("Personnummer må være 11 siffer lang")
             return
         }
+        setFeilmelding("")
         setFødselsnummer(fnrInput)
 
-        backend.person(fødselsnummer)
+        backend.person(fnrInput)
             .then((r) => {
                 setPerson(r)
                 return r
