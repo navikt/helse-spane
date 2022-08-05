@@ -33,7 +33,7 @@ internal class SubsumsjonTest {
     @Test
     fun `avgjør om subsumsjon er relevant etter søknadsid`() {
         val sporing = lagSporing(sykmeldingId = listOf("1"))
-        val sporing2 = lagSporing(sykmeldingId = listOf("1"), søknadId =  listOf("1"))
+        val sporing2 = lagSporing(sykmeldingId = listOf("1"), søknadId = listOf("1"))
         val subsumsjon = lagSubsumsjon(sporing = sporing2)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing),
@@ -59,9 +59,9 @@ internal class SubsumsjonTest {
 
     @Test
     fun `avgjør om subsumsjon med vedtaksperiode ikke er relevant`() {
-        val sporing = lagSporing(sykmeldingId = listOf("1"), søknadId =  listOf("2"))
-        val sporing1 = lagSporing(sykmeldingId = listOf("1"), søknadId =  listOf("2"))
-        val sporing2 = lagSporing(sykmeldingId = listOf("1"), søknadId =  listOf("2"), vedtaksperiodeId =  listOf("3"))
+        val sporing = lagSporing(sykmeldingId = listOf("1"), søknadId = listOf("2"))
+        val sporing1 = lagSporing(sykmeldingId = listOf("1"), søknadId = listOf("2"))
+        val sporing2 = lagSporing(sykmeldingId = listOf("1"), søknadId = listOf("2"), vedtaksperiodeId = listOf("3"))
         val subsumsjon = lagSubsumsjon(sporing = sporing)
         val subsumsjoner = mutableListOf(
             lagSubsumsjon(sporing = sporing1),

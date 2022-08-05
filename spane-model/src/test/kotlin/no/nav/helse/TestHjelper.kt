@@ -53,12 +53,15 @@ internal class TestHjelper {
             sykmeldingId: List<String>,
             søknadId: List<String> = emptyList(),
             vedtaksperiodeId: List<String> = emptyList(),
-        ): Map<String, List<String>>{
+        ): Map<String, List<String>> {
 
-            return mapOf("sykmelding" to sykmeldingId,
+            return mapOf(
+                "sykmelding" to sykmeldingId,
                 "soknad" to søknadId,
-                "vedtaksperiode" to vedtaksperiodeId)
+                "vedtaksperiode" to vedtaksperiodeId
+            )
         }
+
         fun lagSubsumsjon(
             paragraf: String = "8-11",
             tidsstempel: ZonedDateTime = 1.januar(2022),
@@ -67,7 +70,7 @@ internal class TestHjelper {
             output: Map<String, Any> = emptyMap(),
             id: String = UUID.randomUUID().toString()
 
-            ): Subsumsjon {
+        ): Subsumsjon {
             return Subsumsjon(
                 id, "3", "sub", "kildee", "3",
                 FØDSELSNUMMER, sporing, tidsstempel, "loven", "3",
@@ -98,6 +101,7 @@ internal class TestHjelper {
             }
             return PseudoVedtaksperiode(subsumsjoner)
         }
+
         fun PseudoVedtaksperiode.inspektør(): TestVisitor.TestPseudoVedtaksperiode {
             val visitor = TestVisitor()
             this.accept(visitor)
@@ -111,12 +115,24 @@ internal class TestHjelper {
                 LocalDateTime.now(),
                 emptyList(),
                 FØDSELSNUMMER,
-                pvp.inspektør().vedtaksperiodeId ?: throw IllegalArgumentException("Kan ikke fatte vedtak på pvp uten en subsumsjon med vedtaksperiodeId"),
+                pvp.inspektør().vedtaksperiodeId
+                    ?: throw IllegalArgumentException("Kan ikke fatte vedtak på pvp uten en subsumsjon med vedtaksperiodeId"),
                 skjæringstidspunkt,
                 skjæringstidspunkt,
                 skjæringstidspunkt.plusDays(30),
                 "123456789",
                 "12345"
+            )
+        }
+
+        fun vedtaksperiodeForkastet(pvp: PseudoVedtaksperiode): VedtaksperiodeForkastet {
+            return VedtaksperiodeForkastet(
+                UUID.randomUUID().toString(),
+                LocalDateTime.now(),
+                FØDSELSNUMMER,
+                pvp.inspektør().vedtaksperiodeId
+                    ?: throw IllegalArgumentException("Kan ikke forkaste vedtaksperiode på pvp uten en subsumsjon med vedtaksperiodeId"),
+                "123456789",
             )
         }
     }

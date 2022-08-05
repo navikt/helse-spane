@@ -14,8 +14,13 @@ class Person(
     fun håndter(subsumsjon: Subsumsjon) {
         vedtaksperioder.håndter(subsumsjon)
     }
+
     fun håndter(vedtakFattet: VedtakFattet) {
         vedtaksperioder.håndter(vedtakFattet)
+    }
+
+    fun håndter(vedtaksperiodeForkastet: VedtaksperiodeForkastet) {
+        vedtaksperioder.håndter(vedtaksperiodeForkastet)
     }
 
     override fun toString(): String {
@@ -25,11 +30,10 @@ class Person(
     fun accept(visitor: PersonVisitor) {
         visitor.preVisitPerson(fødselsnummer)
         visitor.preVisitVedtaksperioder()
-        vedtaksperioder.forEach {it.accept(visitor)}
+        vedtaksperioder.forEach { it.accept(visitor) }
         visitor.postVisitVedtaksperioder()
         visitor.postVisitPerson()
     }
-
 
 
 }

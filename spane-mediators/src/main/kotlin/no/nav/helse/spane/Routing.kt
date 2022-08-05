@@ -28,7 +28,6 @@ fun ktorServer(database: PersonRepository): ApplicationEngine =
          */
 
 
-
         /**
          * Konfigurasjon av Webserver (Ktor https://ktor.io/)
          */
@@ -70,7 +69,10 @@ fun ktorServer(database: PersonRepository): ApplicationEngine =
                         "Missing id",
                         status = HttpStatusCode.BadRequest
                     )
-                    val person = database.hentPerson(id)?.deserialiser() ?:  return@get call.respond(HttpStatusCode.NotFound, "not found")
+                    val person = database.hentPerson(id)?.deserialiser() ?: return@get call.respond(
+                        HttpStatusCode.NotFound,
+                        "not found"
+                    )
                     val apiVisitor = APIVisitor()
                     person.accept(apiVisitor)
                     call.respondText(

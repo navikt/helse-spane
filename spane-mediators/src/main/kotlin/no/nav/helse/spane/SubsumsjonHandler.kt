@@ -55,18 +55,18 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
 
 fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
     val subsumsjon = Subsumsjon(
-        melding.get("id").asText(),
-        melding.get("versjon").asText(),
-        melding.get("eventName").asText(),
-        melding.get("kilde").asText(),
-        melding.get("versjonAvKode").asText(),
-        melding.get("fodselsnummer").asText(),
-        objectMapper.convertValue(melding.get("sporing")),
+        melding.get("id")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke id felt"),
+        melding.get("versjon")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke versjon felt"),
+        melding.get("eventName")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke eventName felt"),
+        melding.get("kilde")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke kilde felt"),
+        melding.get("versjonAvKode")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke versjonAvKode felt"),
+        melding.get("fodselsnummer")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke fodselsnummer felt"),
+        objectMapper.convertValue(melding.get("sporing") ?: throw IllegalArgumentException("subsumsjon har ikke sporing felt")),
         lesTidsstempel(melding),
-        melding.get("lovverk").asText(),
-        melding.get("lovverksversjon").asText(),
-        melding.get("paragraf").asText(),
-        melding.get("ledd")?.asInt(),
+        melding.get("lovverk")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke lovverk felt"),
+        melding.get("lovverksversjon")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke lovverksversjon felt"),
+        melding.get("paragraf")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke paragraf felt"),
+        melding.get("ledd")?.asInt() ,
         melding.get("punktum")?.asInt(),
         melding.get("bokstav")?.asText(),
         objectMapper.convertValue(melding.get("input")),
@@ -78,10 +78,11 @@ fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
 
 
 fun lesTidsstempel(melding: JsonNode): ZonedDateTime{
+    val tidsstempel = melding.get("tidsstempel")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke sporing felt")
     return try {
-        ZonedDateTime.parse(melding.get("tidsstempel").asText())
+        ZonedDateTime.parse(tidsstempel)
     }catch (e: DateTimeParseException){
-        ZonedDateTime.of(LocalDateTime.parse(melding.get("tidsstempel").asText()), ZoneId.systemDefault())
+        ZonedDateTime.of(LocalDateTime.parse(tidsstempel), ZoneId.systemDefault())
     }
 }
 

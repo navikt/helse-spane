@@ -1,5 +1,6 @@
 package no.nav.helse
 
+import io.ktor.http.content.*
 import no.nav.helse.Subsumsjon.Companion.eier
 import no.nav.helse.Subsumsjon.Companion.finnOrgnummer
 import no.nav.helse.Subsumsjon.Companion.finnVedtaksperiodeId
@@ -11,7 +12,7 @@ import java.time.LocalDateTime
 
 internal class PseudoVedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>,
-    private val vedtak: MutableList<VedtakFattet> = mutableListOf(),
+    private val vedtak: MutableList<TilstandVedtaksperiode> = mutableListOf(),
     private var tilstand: Tilstand = Tilstand.UAVKLART
 ) {
     enum class Tilstand() {
@@ -40,7 +41,6 @@ internal class PseudoVedtaksperiode(
         }
 
 
-
         fun MutableList<PseudoVedtaksperiode>.håndter(subsumsjon: Subsumsjon) {
 
             val pvpEiere = finnEiere(subsumsjon)
@@ -57,13 +57,17 @@ internal class PseudoVedtaksperiode(
             }
 
             this.filterNot { it in pvpEiere }.forEach {
-                pvpEiere.forEach{pvpEier ->
+                pvpEiere.forEach { pvpEier ->
                     if (pvpEier.subsumsjoner.containsAll(it.subsumsjoner)) this.remove(it)
                 }
             }
         }
 
         fun List<PseudoVedtaksperiode>.håndter(vedtakFattet: VedtakFattet) {
+            forEach { it.håndter(vedtakFattet) }
+        }
+
+        fun List<PseudoVedtaksperiode>.håndter(vedtakFattet: VedtaksperiodeForkastet) {
             forEach { it.håndter(vedtakFattet) }
         }
     }
@@ -84,7 +88,7 @@ internal class PseudoVedtaksperiode(
 
     private fun skjæringstidspunkt(): LocalDate? {
         var result: LocalDate? = null
-        vedtak.lastOrNull()?.accept( object : VedtakFattetVisitor {
+        vedtak.lastOrNull()?.accept(object : VedtakFattetVisitor {
             override fun visitVedtakFattet(
                 id: String,
                 tidsstempel: LocalDateTime,
@@ -97,7 +101,7 @@ internal class PseudoVedtaksperiode(
                 organisasjonsnummer: String,
                 utbetalingsId: String
             ) {
-                result =  skjeringstidspunkt
+                result = skjeringstidspunkt
             }
         })
         return result
@@ -108,7 +112,12 @@ internal class PseudoVedtaksperiode(
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
-        visitor.visitVedtaksperiode(tilstand.toString(), skjæringstidspunkt(), subsumsjoner.finnOrgnummer(), subsumsjoner.finnVedtaksperiodeId())
+        visitor.visitVedtaksperiode(
+            tilstand.toString(),
+            skjæringstidspunkt(),
+            subsumsjoner.finnOrgnummer(),
+            subsumsjoner.finnVedtaksperiodeId()
+        )
         visitor.preVisitSubsumsjoner()
         subsumsjoner.forEach { it.accept(visitor) }
         visitor.postVisitSubsumsjoner()
@@ -121,6 +130,13 @@ internal class PseudoVedtaksperiode(
         if (vedtakFattet.hørerTil(subsumsjoner.finnVedtaksperiodeId())) {
             vedtak += vedtakFattet
             tilstand = Tilstand.VEDTAK_FATTET
+        }
+    }
+
+    fun håndter(vedtaksperiodeForkastet: VedtaksperiodeForkastet) {
+        if (vedtaksperiodeForkastet.hørerTil(subsumsjoner.finnVedtaksperiodeId())) {
+            vedtak += vedtaksperiodeForkastet
+            tilstand = Tilstand.TIL_INFOTRYGD
         }
     }
 }
