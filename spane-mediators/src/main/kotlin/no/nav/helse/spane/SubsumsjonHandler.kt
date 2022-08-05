@@ -34,6 +34,7 @@ fun håndterSubsumsjon(value: String, database: PersonRepository) {
 
     val fnr = melding.get("fodselsnummer").asText()
 
+
     val person = database.hentPerson(fnr)?.deserialiser() ?: Person(fnr)
     val nySubsumsjon = try {
         lagSubsumsjonFraJson(melding)

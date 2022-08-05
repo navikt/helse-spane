@@ -24,7 +24,8 @@ class SerialisertPerson(val json: String) {
             val vedtakFattet = lagVedtakFattet(it)
             person.håndter(vedtakFattet)
         }
-        if(!personJson["vedtaksperioder"]["vedtakFattet"].isNull) {
+        if(personJson["vedtaksperioder"]["vedtakFattet"] != null && !personJson["vedtaksperioder"]["vedtakFattet"].isNull &&
+            personJson["vedtaksperioder"]["vedtakFattet"].asText() != "" ) {
             personJson["vedtaksperioder"].flatMap {
                 it["forkastet"]
             }.forEach {
