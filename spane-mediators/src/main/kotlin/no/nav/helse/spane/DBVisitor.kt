@@ -69,7 +69,8 @@ class DBVisitor : PersonVisitor {
         tidsstempel: LocalDateTime,
         fødselsnummer: String,
         vedtaksperiodeId: String,
-        organisasjonsnummer: String
+        organisasjonsnummer: String,
+        eventName: String
     ) {
         // virker som (personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtaksperiodeForkastet"] er null?
         ((personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtakStatus"] as MutableList<Any>).add(
@@ -79,6 +80,7 @@ class DBVisitor : PersonVisitor {
                 "fodselsnummer" to fødselsnummer,
                 "vedtaksperiodeId" to vedtaksperiodeId,
                 "organisasjonsnummer" to organisasjonsnummer,
+                "eventName" to eventName
             )
         )
     }

@@ -82,6 +82,7 @@ interface VedtakVisitor {
         fødselsnummer: String,
         vedtaksperiodeId: String,
         organisasjonsnummer: String,
+        eventName: String
     ) {
     }
 }

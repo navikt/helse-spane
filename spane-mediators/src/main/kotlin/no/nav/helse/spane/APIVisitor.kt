@@ -69,7 +69,8 @@ class APIVisitor : PersonVisitor {
         tidsstempel: LocalDateTime,
         fødselsnummer: String,
         vedtaksperiodeId: String,
-        organisasjonsnummer: String
+        organisasjonsnummer: String,
+        eventName: String
     ) {
         ((personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>).last()["vedtakStatus"] as MutableList<Any>).add(
             mapOf(
@@ -78,6 +79,7 @@ class APIVisitor : PersonVisitor {
                 "fodselsnummer" to fødselsnummer,
                 "vedtaksperiodeId" to vedtaksperiodeId,
                 "organisasjonsnummer" to organisasjonsnummer,
+                "eventName" to eventName
             )
         )
     }
