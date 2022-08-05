@@ -25,7 +25,7 @@ class APIVisitor : PersonVisitor {
             .add(
                 mutableMapOf(
                     "subsumsjoner" to mutableListOf<Any>(),
-                    "vedtakFattet" to mutableListOf<Any>(),
+                    "vedtakStatus" to mutableListOf<Any>(),
                     "orgnummer" to orgnummer,
                     "skjæringstidspunkt" to skjæringstidspunkt,
                     "vedtaksperiodeId" to vedtaksperiodeId,
