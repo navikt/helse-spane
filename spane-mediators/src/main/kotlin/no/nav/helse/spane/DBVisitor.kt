@@ -24,7 +24,7 @@ class DBVisitor : PersonVisitor {
             .add(
                 mutableMapOf(
                     "subsumsjoner" to mutableListOf<Any>(),
-                    "vedtakFattet" to mutableListOf<Any>(),
+                    "vedtakStatus" to mutableListOf<Any>(),
                     "orgnummer" to orgnummer,
                     "skjæringstidspunkt" to skjæringstidspunkt,
                     "vedtaksperiodeId" to vedtaksperiodeId,
@@ -46,7 +46,7 @@ class DBVisitor : PersonVisitor {
         organisasjonsnummer: String,
         utbetalingsId: String
     ) {
-        ((personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtakFattet"] as MutableList<Any>).add(
+        ((personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtakStatus"] as MutableList<Any>).add(
             mapOf(
                 "id" to id,
                 "tidsstempel" to tidsstempel,
@@ -69,7 +69,8 @@ class DBVisitor : PersonVisitor {
         vedtaksperiodeId: String,
         organisasjonsnummer: String
     ) {
-        ((personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtaksperiodeForkastet"] as MutableList<Any>).add(
+        // virker som (personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtaksperiodeForkastet"] er null?
+        ((personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtakStatus"] as MutableList<Any>).add(
             mapOf(
                 "id" to id,
                 "tidsstempel" to tidsstempel,

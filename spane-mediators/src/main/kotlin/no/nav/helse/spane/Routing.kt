@@ -16,21 +16,6 @@ import no.nav.helse.spane.db.PersonRepository
 
 fun ktorServer(database: PersonRepository): ApplicationEngine =
     embeddedServer(CIO, applicationEngineEnvironment {
-        /**
-         * Konfigurasjon av Webserver (Ktor https://ktor.io/)
-         */
-
-        /**
-         * Konfigurasjon av Webserver (Ktor https://ktor.io/)
-         */
-        /**
-         * Konfigurasjon av Webserver (Ktor https://ktor.io/)
-         */
-
-
-        /**
-         * Konfigurasjon av Webserver (Ktor https://ktor.io/)
-         */
 
         log = logger
         connector {
