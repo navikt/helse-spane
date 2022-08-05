@@ -1,0 +1,8 @@
+.arbeidsgiver-container {
+    display: flex;
+    white-space: pre-wrap;
+}
+
+#arbeidsgiver-helptext {
+    margin-right: 10px;
+}

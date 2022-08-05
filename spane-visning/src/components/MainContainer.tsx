@@ -31,12 +31,14 @@ function MainContainer() {
                 <Header.Title as="h1">Paragraf i kode</Header.Title>
             </Header>
             <div className="ytre-main-container">
-                <Søkefelt fødselsnummer={fødselsnummer} backend={backend} setOrgnumre={setOrgnumre} 
-                               setFødselsnummer={setFødselsnummer} setPerson={setPerson} setAnonymisert={setAnonymisert} anonymisert={anonymisert}/>
+                <Søkefelt fødselsnummer={fødselsnummer} backend={backend} setOrgnumre={setOrgnumre}
+                          setFødselsnummer={setFødselsnummer} setPerson={setPerson} setAnonymisert={setAnonymisert}
+                          anonymisert={anonymisert}/>
                 <div className="indre-main-container">
                     <Sidepanel orgnumre={orgnumre} setValgte={setValgte} setFraDato={setFraDato} setTilDato={setTilDato}
-                               fødselsnummer={fødselsnummer} person={person} anonymisert={anonymisert}  />
-                    <PseudovedtaksperiodeTable valgte={valgte} fraDato={fraDato} tilDato={tilDato} person={person} anonymisert={anonymisert}   />
+                               fødselsnummer={fødselsnummer} person={person} anonymisert={anonymisert}/>
+                    <PseudovedtaksperiodeTable valgte={valgte} fraDato={fraDato} tilDato={tilDato} person={person}
+                                               anonymisert={anonymisert}/>
                 </div>
             </div>
         </div>
