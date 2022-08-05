@@ -1,5 +1,5 @@
 import {Checkbox, CheckboxGroup, Search} from "@navikt/ds-react";
-import React, {FormEvent, FormEventHandler, useState} from "react";
+import React, { useState} from "react";
 import {Backend} from "../../service";
 import {PersonDto} from "../../types";
 import "./søkefelt.css"
@@ -21,16 +21,23 @@ function Søkefelt(props: Props) {
 
     const [feilmelding, setFeilmelding] = useState<string>("");
 
+    const [fnrInput, setFnrInput] = useState<string>("");
+
     const handleChangeFnr = (fnr: string) => {
         if (!(/^\d+$/.test(fnr))) {
             setFeilmelding("Personnummer kan kun være tall")
             return
         }
         setFeilmelding("")
-        setFødselsnummer(fnr)
+        setFnrInput(fnr)
     }
 
     const handleSubmit = () => {
+        if (fnrInput.length < 11) {
+            setFeilmelding("Personnummer må være 11 siffer lang")
+            return
+        }
+        setFødselsnummer(fnrInput)
 
         backend.person(fødselsnummer)
             .then((r) => {
