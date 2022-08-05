@@ -11,7 +11,7 @@ class VedtaksperiodeForkastet(
 ) : TilstandVedtaksperiode {
     override fun hørerTil(vedtaksperiodeId: String?) = this.vedtaksperiodeId == vedtaksperiodeId
 
-    override fun accept(visitor: VedtaksperiodeForkastetVisitor) {
+    override fun accept(visitor: VedtakVisitor) {
         visitor.visitVedtaksperiodeForkastet(
             id,
             tidsstempel,

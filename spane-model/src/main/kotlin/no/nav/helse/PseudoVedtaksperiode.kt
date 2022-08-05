@@ -1,6 +1,5 @@
 package no.nav.helse
 
-import io.ktor.http.content.*
 import no.nav.helse.Subsumsjon.Companion.eier
 import no.nav.helse.Subsumsjon.Companion.finnOrgnummer
 import no.nav.helse.Subsumsjon.Companion.finnVedtaksperiodeId
@@ -12,7 +11,7 @@ import java.time.LocalDateTime
 
 internal class PseudoVedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>,
-    private val vedtak: MutableList<TilstandVedtaksperiode> = mutableListOf(),
+    private val tilstandsmelding: MutableList<TilstandVedtaksperiode> = mutableListOf(),
     private var tilstand: Tilstand = Tilstand.UAVKLART
 ) {
     enum class Tilstand() {
@@ -88,7 +87,7 @@ internal class PseudoVedtaksperiode(
 
     private fun skjæringstidspunkt(): LocalDate? {
         var result: LocalDate? = null
-        vedtak.lastOrNull()?.accept(object : VedtakFattetVisitor {
+        tilstandsmelding.lastOrNull()?.accept(object : VedtakVisitor {
             override fun visitVedtakFattet(
                 id: String,
                 tidsstempel: LocalDateTime,
@@ -121,21 +120,21 @@ internal class PseudoVedtaksperiode(
         visitor.preVisitSubsumsjoner()
         subsumsjoner.forEach { it.accept(visitor) }
         visitor.postVisitSubsumsjoner()
-        visitor.preVisitVedtak()
-        vedtak.forEach { it.accept(visitor) }
-        visitor.postVisitVedtak()
+        visitor.preVisitVedtakFattet()
+        tilstandsmelding.forEach { it.accept(visitor) }
+        visitor.postVisitVedtakFattet()
     }
 
     fun håndter(vedtakFattet: VedtakFattet) {
         if (vedtakFattet.hørerTil(subsumsjoner.finnVedtaksperiodeId())) {
-            vedtak += vedtakFattet
+            tilstandsmelding += vedtakFattet
             tilstand = Tilstand.VEDTAK_FATTET
         }
     }
 
     fun håndter(vedtaksperiodeForkastet: VedtaksperiodeForkastet) {
         if (vedtaksperiodeForkastet.hørerTil(subsumsjoner.finnVedtaksperiodeId())) {
-            vedtak += vedtaksperiodeForkastet
+            tilstandsmelding += vedtaksperiodeForkastet
             tilstand = Tilstand.TIL_INFOTRYGD
         }
     }
