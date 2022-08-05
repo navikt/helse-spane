@@ -21,7 +21,7 @@ function Søkefelt(props: Props) {
 
     const [feilmelding, setFeilmelding] = useState<string>("");
 
-    const [fnrInput, setFnrInput] = useState<string>("");
+    const [fnrInput, setFnrInput] = useState<string>("0");
 
     const handleChangeFnr = (fnr: string) => {
         setFnrInput(fnr)
