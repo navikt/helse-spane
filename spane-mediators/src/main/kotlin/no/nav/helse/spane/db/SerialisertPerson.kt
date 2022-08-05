@@ -19,13 +19,13 @@ class SerialisertPerson(val json: String) {
         }
 
         personJson["vedtaksperioder"].flatMap {
-            it["vedtakFattet"]
+            it["vedtakStatus"]
         }.forEach {
             val vedtakFattet = lagVedtakFattet(it)
             person.håndter(vedtakFattet)
         }
-        if(personJson["vedtaksperioder"]["vedtakFattet"] != null && !personJson["vedtaksperioder"]["vedtakFattet"].isNull &&
-            personJson["vedtaksperioder"]["vedtakFattet"].asText() != "" ) {
+        if(personJson["vedtaksperioder"]["vedtakStatus"] != null && !personJson["vedtaksperioder"]["vedtakStatus"].isNull &&
+            personJson["vedtaksperioder"]["vedtakStatus"].asText() != "" ) {
             personJson["vedtaksperioder"].flatMap {
                 it["forkastet"]
             }.forEach {
