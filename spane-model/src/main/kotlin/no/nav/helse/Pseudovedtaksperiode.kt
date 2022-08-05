@@ -9,7 +9,7 @@ import no.nav.helse.Subsumsjon.Companion.subsumsjonerMedSøknadsIder
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-internal class PseudoVedtaksperiode(
+internal class Pseudovedtaksperiode(
     private val subsumsjoner: MutableList<Subsumsjon>,
     private val tilstandsmelding: MutableList<TilstandVedtaksperiode> = mutableListOf(),
     private var tilstand: Tilstand = Tilstand.UAVKLART
@@ -21,26 +21,26 @@ internal class PseudoVedtaksperiode(
     }
 
     internal companion object {
-        fun MutableList<PseudoVedtaksperiode>.finnEiere(subsumsjon: Subsumsjon): List<PseudoVedtaksperiode> {
+        fun MutableList<Pseudovedtaksperiode>.finnEiere(subsumsjon: Subsumsjon): List<Pseudovedtaksperiode> {
             return filter {
                 it.subsumsjoner.eier(subsumsjon)
             }.ifEmpty {
-                this.add(PseudoVedtaksperiode(mutableListOf()))
+                this.add(Pseudovedtaksperiode(mutableListOf()))
                 listOf(this[this.lastIndex])
             }
         }
 
-        fun List<PseudoVedtaksperiode>.relevanteSubsumsjoner(eier: PseudoVedtaksperiode) =
+        fun List<Pseudovedtaksperiode>.relevanteSubsumsjoner(eier: Pseudovedtaksperiode) =
             this.filterNot { it == eier }.map { it.subsumsjoner.relevante(eier.alleIder()) }.flatten()
 
-        fun List<PseudoVedtaksperiode>.fjernSubsumsjoner(subsumsjoner: List<Subsumsjon>) {
+        fun List<Pseudovedtaksperiode>.fjernSubsumsjoner(subsumsjoner: List<Subsumsjon>) {
             forEach {
                 it.fjernSubsumsjoner(subsumsjoner)
             }
         }
 
 
-        fun MutableList<PseudoVedtaksperiode>.håndter(subsumsjon: Subsumsjon) {
+        fun MutableList<Pseudovedtaksperiode>.håndter(subsumsjon: Subsumsjon) {
 
             val pvpEiere = finnEiere(subsumsjon)
             pvpEiere.forEach { it.leggTil(subsumsjon) }
@@ -62,11 +62,11 @@ internal class PseudoVedtaksperiode(
             }
         }
 
-        fun List<PseudoVedtaksperiode>.håndter(vedtakFattet: VedtakFattet) {
+        fun List<Pseudovedtaksperiode>.håndter(vedtakFattet: VedtakFattet) {
             forEach { it.håndter(vedtakFattet) }
         }
 
-        fun List<PseudoVedtaksperiode>.håndter(vedtakFattet: VedtaksperiodeForkastet) {
+        fun List<Pseudovedtaksperiode>.håndter(vedtakFattet: VedtaksperiodeForkastet) {
             forEach { it.håndter(vedtakFattet) }
         }
     }
@@ -120,9 +120,9 @@ internal class PseudoVedtaksperiode(
         visitor.preVisitSubsumsjoner()
         subsumsjoner.forEach { it.accept(visitor) }
         visitor.postVisitSubsumsjoner()
-        visitor.preVisitVedtakFattet()
+        visitor.preVisitVedtak()
         tilstandsmelding.forEach { it.accept(visitor) }
-        visitor.postVisitVedtakFattet()
+        visitor.postVisitVedtak()
 
     }
 

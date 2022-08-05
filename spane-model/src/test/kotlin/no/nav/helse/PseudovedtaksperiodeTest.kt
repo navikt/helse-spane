@@ -1,7 +1,7 @@
 package no.nav.helse
 
-import no.nav.helse.PseudoVedtaksperiode.Companion.finnEiere
-import no.nav.helse.PseudoVedtaksperiode.Companion.håndter
+import no.nav.helse.Pseudovedtaksperiode.Companion.finnEiere
+import no.nav.helse.Pseudovedtaksperiode.Companion.håndter
 import no.nav.helse.TestHjelper.Companion.inspektør
 import no.nav.helse.TestHjelper.Companion.lagSporing
 import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
-class PseudoVedtaksperiodeTest {
+class PseudovedtaksperiodeTest {
 
 
     @Test
@@ -213,14 +213,14 @@ class PseudoVedtaksperiodeTest {
             lagSubsumsjon(sporing = sporingSøkId1),
             lagSubsumsjon(sporing = sporingVId1)
         )
-        val pvp1 = PseudoVedtaksperiode(subsumsjoner1)
+        val pvp1 = Pseudovedtaksperiode(subsumsjoner1)
 
         val subsumsjoner2 = mutableListOf(
             lagSubsumsjon(sporing = sporingSykId2),
             lagSubsumsjon(sporing = sporingSykId2),
             lagSubsumsjon(sporing = sporingSøkId2)
         )
-        val pvp2 = PseudoVedtaksperiode(subsumsjoner2)
+        val pvp2 = Pseudovedtaksperiode(subsumsjoner2)
 
         val pvps = mutableListOf(pvp1, pvp2)
 

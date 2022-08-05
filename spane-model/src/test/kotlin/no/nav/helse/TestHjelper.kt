@@ -85,7 +85,7 @@ internal class TestHjelper {
             sporing: Map<String, List<String>> = mapOf("vedtaksperiode" to listOf(UUID.randomUUID().toString())),
             input: Map<String, Any> = emptyMap(),
             output: Map<String, Any> = emptyMap()
-        ): PseudoVedtaksperiode {
+        ): Pseudovedtaksperiode {
             val subsumsjoner = mutableListOf<Subsumsjon>()
             for (i in 1..antallSubsumSjoner) {
                 subsumsjoner.add(
@@ -99,16 +99,16 @@ internal class TestHjelper {
                     )
                 )
             }
-            return PseudoVedtaksperiode(subsumsjoner)
+            return Pseudovedtaksperiode(subsumsjoner)
         }
 
-        fun PseudoVedtaksperiode.inspektør(): TestVisitor.TestPseudoVedtaksperiode {
+        fun Pseudovedtaksperiode.inspektør(): TestVisitor.TestPseudoVedtaksperiode {
             val visitor = TestVisitor()
             this.accept(visitor)
             return visitor.vedtaksperioder[0]
         }
 
-        fun vedtakFattet(pvp: PseudoVedtaksperiode): VedtakFattet {
+        fun vedtakFattet(pvp: Pseudovedtaksperiode): VedtakFattet {
             val skjæringstidspunkt = LocalDate.now()
             return VedtakFattet(
                 UUID.randomUUID().toString(),
@@ -125,7 +125,7 @@ internal class TestHjelper {
             )
         }
 
-        fun vedtaksperiodeForkastet(pvp: PseudoVedtaksperiode): VedtaksperiodeForkastet {
+        fun vedtaksperiodeForkastet(pvp: Pseudovedtaksperiode): VedtaksperiodeForkastet {
             return VedtaksperiodeForkastet(
                 UUID.randomUUID().toString(),
                 LocalDateTime.now(),

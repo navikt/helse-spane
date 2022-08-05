@@ -32,9 +32,9 @@ interface VedtaksperiodeVisitor : SubsumsjonVisitor, VedtakVisitor {
 
     fun postVisitSubsumsjoner() {}
 
-    fun preVisitVedtakFattet() {}
+    fun preVisitVedtak() {}
 
-    fun postVisitVedtakFattet() {}
+    fun postVisitVedtak() {}
 }
 
 interface SubsumsjonVisitor {
