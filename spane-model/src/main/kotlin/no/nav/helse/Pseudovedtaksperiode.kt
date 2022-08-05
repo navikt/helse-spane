@@ -97,7 +97,8 @@ internal class Pseudovedtaksperiode(
                 fom: LocalDate,
                 tom: LocalDate,
                 organisasjonsnummer: String,
-                utbetalingsId: String
+                utbetalingsId: String,
+                eventName: String
             ) {
                 result = skjeringstidspunkt
             }

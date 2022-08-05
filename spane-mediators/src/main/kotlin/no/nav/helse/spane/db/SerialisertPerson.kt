@@ -11,23 +11,19 @@ class SerialisertPerson(val json: String) {
         val personJson = objectMapper.readTree(json)
         val person = Person(personJson["fnr"].asText())
 
-        personJson["vedtaksperioder"].flatMap {
-            it["subsumsjoner"]
-        }.forEach {
+        personJson["vedtaksperioder"].flatMap { it["subsumsjoner"] }.forEach {
             val subsumsjon = lagSubsumsjonFraJson(it)
             person.håndter(subsumsjon)
         }
 
-        personJson["vedtaksperioder"].flatMap {
-            it["vedtakStatus"]
-        }.forEach {
+        personJson["vedtaksperioder"].flatMap { it["vedtakStatus"] //TODO where it["eventName"] == vedtakFattet
+             }.forEach {
             val vedtakFattet = lagVedtakFattet(it)
             person.håndter(vedtakFattet)
         }
-        if(personJson["vedtaksperioder"]["vedtakStatus"] != null && !personJson["vedtaksperioder"]["vedtakStatus"].isNull &&
-            personJson["vedtaksperioder"]["vedtakStatus"].asText() != "" ) {
-            personJson["vedtaksperioder"].flatMap {
-                it["forkastet"]
+        val vedtaksStatus =personJson["vedtaksperioder"]["vedtakStatus"]
+        if (vedtaksStatus != null && !vedtaksStatus.isNull && vedtaksStatus.asText() != "") {
+            personJson["vedtaksperioder"].flatMap { it["vedtakStatus"]  //TODO where it["eventName"] == vedtakForkastetEllerNoe
             }.forEach {
                 val forkastet = lagForkastetVedtaksperiode(it)
                 person.håndter(forkastet)

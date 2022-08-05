@@ -71,7 +71,8 @@ interface VedtakVisitor {
         fom: LocalDate,
         tom: LocalDate,
         organisasjonsnummer: String,
-        utbetalingsId: String
+        utbetalingsId: String,
+        eventName: String
     ) {
     }
 

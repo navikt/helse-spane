@@ -39,7 +39,7 @@ fun lagVedtakFattet(melding: JsonNode): VedtakFattet {
     return VedtakFattet(
         melding.get("id").asText(),
         LocalDateTime.parse(melding.get("tidsstempel").asText()),
-        melding.get("hendelser")?.map { it.asText() } ?: listOf(),
+        melding.get("hendelser").map { it.asText() },
         melding.get("fodselsnummer").asText(),
         melding.get("vedtaksperiodeId").asText(),
         LocalDate.parse(melding.get("skjeringstidspunkt").asText()),

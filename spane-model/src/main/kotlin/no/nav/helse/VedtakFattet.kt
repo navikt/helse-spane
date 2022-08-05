@@ -13,7 +13,8 @@ class VedtakFattet(
     private val fom: LocalDate,
     private val tom: LocalDate,
     private val organisasjonsnummer: String,
-    private val utbetalingsId: String
+    private val utbetalingsId: String,
+    private val eventName: String = "vedtakFattet"
 ) : TilstandVedtaksperiode {
 
     override fun hørerTil(vedtaksperiodeId: String?) = this.vedtaksperiodeId == vedtaksperiodeId
@@ -29,7 +30,8 @@ class VedtakFattet(
             fom,
             tom,
             organisasjonsnummer,
-            utbetalingsId
+            utbetalingsId,
+            eventName
         )
     }
 }
