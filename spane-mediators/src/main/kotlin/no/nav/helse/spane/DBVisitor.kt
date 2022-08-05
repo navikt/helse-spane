@@ -46,7 +46,7 @@ class DBVisitor : PersonVisitor {
         organisasjonsnummer: String,
         utbetalingsId: String
     ) {
-        ((personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtakFattet"] as MutableList<Any>).add(
+        ((personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtakFattet"] as MutableList<Any?>).add(
             mapOf(
                 "id" to id,
                 "tidsstempel" to tidsstempel,
@@ -69,7 +69,7 @@ class DBVisitor : PersonVisitor {
         vedtaksperiodeId: String,
         organisasjonsnummer: String
     ) {
-        ((personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtaksperiodeForkastet"] as MutableList<Any>).add(
+        ((personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>).last()["vedtaksperiodeForkastet"] as MutableList<Any?>).add(
             mapOf(
                 "id" to id,
                 "tidsstempel" to tidsstempel,
