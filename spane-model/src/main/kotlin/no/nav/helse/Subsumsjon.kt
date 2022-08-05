@@ -47,6 +47,16 @@ class Subsumsjon(
                 .distinct()
                 .apply { require(this.size <= 1) }
                 .toList().getOrNull(0)
+
+        internal fun MutableList<Subsumsjon>.finnSkjæringstidspunkt(): String {
+            this.forEach {
+                val skjæringstidspunkt = it.input["skjæringstidspunkt"] as String?
+                if (skjæringstidspunkt != null) {
+                    return skjæringstidspunkt
+                }
+            }
+            return "ukjent"
+        }
     }
 
 
@@ -70,6 +80,7 @@ class Subsumsjon(
         if (sammeVedtaksperiode(pvpIder)) return true
         return this.sporing.values.flatten().all { it in pvpIder }
     }
+
 
     fun accept(visitor: VedtaksperiodeVisitor) {
         visitor.visitSubsumsjon(

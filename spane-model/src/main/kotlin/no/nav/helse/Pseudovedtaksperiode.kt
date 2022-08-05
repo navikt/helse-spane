@@ -2,6 +2,7 @@ package no.nav.helse
 
 import no.nav.helse.Subsumsjon.Companion.eier
 import no.nav.helse.Subsumsjon.Companion.finnOrgnummer
+import no.nav.helse.Subsumsjon.Companion.finnSkjæringstidspunkt
 import no.nav.helse.Subsumsjon.Companion.finnVedtaksperiodeId
 import no.nav.helse.Subsumsjon.Companion.relevante
 import no.nav.helse.Subsumsjon.Companion.sporingIder
@@ -85,7 +86,7 @@ internal class Pseudovedtaksperiode(
 
     private fun subsumsjonerMedSøknadsider() = subsumsjoner.subsumsjonerMedSøknadsIder()
 
-    private fun skjæringstidspunkt(): LocalDate? {
+    private fun skjæringstidspunkt(): Pair<LocalDate?, Boolean> {
         var result: LocalDate? = null
         tilstandsmelding.lastOrNull()?.accept(object : VedtakVisitor {
             override fun visitVedtakFattet(
@@ -103,19 +104,26 @@ internal class Pseudovedtaksperiode(
                 result = skjeringstidspunkt
             }
         })
-        return result
+        if (result == null) {
+            return Pair(LocalDate.parse(subsumsjoner.finnSkjæringstidspunkt()), true)
+        }
+        return Pair(result, false)
     }
+
 
     fun antallSubsumsjoner(): Int {
         return subsumsjoner.size
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
+        val (skjæringstidspunkt, flagg) = skjæringstidspunkt()
+
         visitor.visitVedtaksperiode(
             tilstand.toString(),
-            skjæringstidspunkt(),
+            skjæringstidspunkt,
             subsumsjoner.finnOrgnummer(),
-            subsumsjoner.finnVedtaksperiodeId()
+            subsumsjoner.finnVedtaksperiodeId(),
+            flagg
         )
         visitor.preVisitSubsumsjoner()
         subsumsjoner.forEach { it.accept(visitor) }

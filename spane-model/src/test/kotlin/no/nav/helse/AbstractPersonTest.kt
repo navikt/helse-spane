@@ -29,7 +29,8 @@ abstract class AbstractPersonTest {
     }
 
     internal fun assertSporing(vararg uuids: String, vedtaksperiodeIndeks: Int = 0) {
-        val sporing = (person.inspektør.vedtaksperioder[vedtaksperiodeIndeks].subsumsjoner[0]["sporing"] as Map<String, List<String>>)
+        val sporing =
+            (person.inspektør.vedtaksperioder[vedtaksperiodeIndeks].subsumsjoner[0]["sporing"] as Map<String, List<String>>)
 
         uuids.forEach {
             if (!sporing.values.flatten().contains(it)) {
@@ -63,6 +64,7 @@ abstract class AbstractPersonTest {
             fail("PVP tilstnad har ikke forventet verdi. Expected: $forventet Actual: $tilstand ")
         }
     }
+
     internal fun assertSkjæringstidspunkt(forventet: LocalDate) {
         val tilstand = person.inspektør.vedtaksperioder[0].skjæringstidspunkt
         if (tilstand != forventet) {
@@ -142,7 +144,12 @@ private val Person.inspektør: TestVisitor
     }
 
 class TestVisitor : PersonVisitor {
-    data class TestPseudoVedtaksperiode(val tilstand: String, val vedtaksperiodeId: String?, val skjæringstidspunkt: LocalDate?, val subsumsjoner: MutableList<Map<String, Any?>>)
+    data class TestPseudoVedtaksperiode(
+        val tilstand: String,
+        val vedtaksperiodeId: String?,
+        val skjæringstidspunkt: LocalDate?,
+        val subsumsjoner: MutableList<Map<String, Any?>>
+    )
 
     private lateinit var fødselsnummer: String
     val vedtaksperioder: MutableList<TestPseudoVedtaksperiode> = mutableListOf()
@@ -156,7 +163,8 @@ class TestVisitor : PersonVisitor {
         tilstand: String,
         skjæringstidspunkt: LocalDate?,
         orgnummer: String,
-        vedtaksperiodeId: String?
+        vedtaksperiodeId: String?,
+        ikkeSikkertSkjæringstidspunkt: Boolean
     ) {
         vedtaksperioder.add(TestPseudoVedtaksperiode(tilstand, vedtaksperiodeId, skjæringstidspunkt, mutableListOf()))
     }

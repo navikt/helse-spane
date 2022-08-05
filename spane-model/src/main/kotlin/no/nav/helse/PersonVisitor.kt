@@ -13,8 +13,6 @@ interface PersonVisitor : VedtaksperiodeVisitor {
     fun preVisitVedtaksperioder() {}
 
     fun postVisitVedtaksperioder() {}
-
-
 }
 
 
@@ -24,7 +22,8 @@ interface VedtaksperiodeVisitor : SubsumsjonVisitor, VedtakVisitor {
         tilstand: String,
         skjæringstidspunkt: LocalDate?,
         orgnummer: String,
-        vedtaksperiodeId: String?
+        vedtaksperiodeId: String?,
+        ikkeSikkertSkjæringstidspunkt: Boolean
     ) {
     }
 
@@ -73,7 +72,8 @@ interface VedtakVisitor {
         tom: LocalDate,
         organisasjonsnummer: String,
         utbetalingsId: String
-    ) {}
+    ) {
+    }
 
     fun visitVedtaksperiodeForkastet(
         id: String,
@@ -81,7 +81,8 @@ interface VedtakVisitor {
         fødselsnummer: String,
         vedtaksperiodeId: String,
         organisasjonsnummer: String,
-    ) {}
+    ) {
+    }
 }
 
 

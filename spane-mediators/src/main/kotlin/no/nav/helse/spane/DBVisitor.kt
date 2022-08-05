@@ -17,7 +17,8 @@ class DBVisitor : PersonVisitor {
         tilstand: String,
         skjæringstidspunkt: LocalDate?,
         orgnummer: String,
-        vedtaksperiodeId: String?
+        vedtaksperiodeId: String?,
+        ikkeSikkertSkjæringstidspunkt: Boolean
     ) {
         (personMap["vedtaksperioder"] as MutableList<DBVedtaksperiode>)
             .add(
@@ -27,7 +28,8 @@ class DBVisitor : PersonVisitor {
                     "orgnummer" to orgnummer,
                     "skjæringstidspunkt" to skjæringstidspunkt,
                     "vedtaksperiodeId" to vedtaksperiodeId,
-                    "tilstand" to tilstand
+                    "tilstand" to tilstand,
+                    "ikkeSikkertSkjæringstidspunkt" to ikkeSikkertSkjæringstidspunkt
                 )
             )
     }
