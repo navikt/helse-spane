@@ -24,21 +24,24 @@ function Søkefelt(props: Props) {
     const [fnrInput, setFnrInput] = useState<string>("");
 
     const handleChangeFnr = (fnr: string) => {
-        if (!(/^\d+$/.test(fnr))) {
+        setFnrInput(fnr)
+
+        if (!(/^\d+$/.test(fnrInput))) {
             setFeilmelding("Personnummer kan kun være tall")
             return
         }
-        setFeilmelding("")
-        setFnrInput(fnr)
-    }
-
-    const handleSubmit = () => {
         if (fnrInput.length < 11) {
             setFeilmelding("Personnummer må være 11 siffer lang")
             return
         }
+
         setFeilmelding("")
         setFødselsnummer(fnrInput)
+
+    }
+
+    const handleSubmit = () => {
+
 
         backend.person(fnrInput)
             .then((r) => {
