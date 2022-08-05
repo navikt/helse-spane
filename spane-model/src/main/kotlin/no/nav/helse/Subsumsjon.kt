@@ -48,14 +48,14 @@ class Subsumsjon(
                 .apply { require(this.size <= 1) }
                 .toList().getOrNull(0)
 
-        internal fun MutableList<Subsumsjon>.finnSkjæringstidspunkt(): String {
+        internal fun MutableList<Subsumsjon>.finnSkjæringstidspunkt(): String? {
             this.forEach {
                 val skjæringstidspunkt = it.input["skjæringstidspunkt"] as String?
                 if (skjæringstidspunkt != null) {
                     return skjæringstidspunkt
                 }
             }
-            return "ukjent"
+            return null
         }
     }
 

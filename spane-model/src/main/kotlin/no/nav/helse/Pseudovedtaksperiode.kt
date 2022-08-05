@@ -105,7 +105,11 @@ internal class Pseudovedtaksperiode(
             }
         })
         if (result == null) {
-            return Pair(LocalDate.parse(subsumsjoner.finnSkjæringstidspunkt()), true)
+            val usikkertSkjæringstidspunkt = subsumsjoner.finnSkjæringstidspunkt()
+            return if (usikkertSkjæringstidspunkt != null)
+                Pair(LocalDate.parse(usikkertSkjæringstidspunkt), true)
+            else
+                Pair(result, false)
         }
         return Pair(result, false)
     }
