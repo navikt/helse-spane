@@ -4,27 +4,10 @@
   border-right: solid black;
 }
 
-.date-picker-group {
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px;
-}
-
-.date-picker-container {
-  display: flex;
-  flex-direction: row;
-  margin-top: 10px;
-}
-
 .velg-tid-overskrift-container {
   display: flex;
   flex-direction: row;
   margin-top: 40px;
-}
-
-
-.checkbox-group-container {
-  margin-top: 30px;
 }
 
 .personnummer-container{
