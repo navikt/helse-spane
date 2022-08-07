@@ -1,0 +1,11 @@
+.tidsrom-group {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.tidsrom-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
