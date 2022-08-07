@@ -10,24 +10,27 @@ export default function TidsromVelger(props: Props) {
   const { setFraDato, setTilDato } = props;
 
   return (
-    <div className="tidsrom-container">
-      <div className="tidsrom-group">
-        <label htmlFor="start">{"Fra"}</label>
-        <input
-          type="date"
-          id="start"
-          name="trip-start"
-          onChange={(event) => setFraDato(event.target.value)}
-        ></input>
-      </div>
-      <div className="tidsrom-group">
-        <label htmlFor="start">{"Til"}</label>
-        <input
-          type="date"
-          id="start"
-          name="trip-start"
-          onChange={(event) => setTilDato(event.target.value)}
-        ></input>
+    <div>
+      <h4 className="tidsrom-overskrift">Velg tidsrom: </h4>
+      <div className="tidsrom-container">
+        <div className="tidsrom-velger">
+          <label htmlFor="start">{"Fra"}</label>
+          <input
+            type="date"
+            id="start"
+            name="trip-start"
+            onChange={(event) => setFraDato(event.target.value)}
+          ></input>
+        </div>
+        <div className="tidsrom-velger">
+          <label htmlFor="start">{"Til"}</label>
+          <input
+            type="date"
+            id="start"
+            name="trip-start"
+            onChange={(event) => setTilDato(event.target.value)}
+          ></input>
+        </div>
       </div>
     </div>
   );

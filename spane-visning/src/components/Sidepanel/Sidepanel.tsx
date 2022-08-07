@@ -47,7 +47,6 @@ export default function Sidepanel(props: Props) {
         <div>
           {fane === "Person" ? (
             <>
-              <h4 className="tidsrom-velger-overskrift">Velg tidsrom: </h4>
               <TidsromVelger setFraDato={setFraDato} setTilDato={setTilDato} />
               <ArbeidsgiverCheckbox
                 anonymisert={anonymisert}

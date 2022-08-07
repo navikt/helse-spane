@@ -1,5 +1,6 @@
 import { Checkbox, CheckboxGroup } from "@navikt/ds-react";
 import React from "react";
+import "./arbeidsgivercheckbox.css";
 
 interface Props {
   orgnumre: string[];

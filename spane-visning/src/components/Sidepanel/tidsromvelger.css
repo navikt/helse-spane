@@ -1,4 +1,4 @@
-.tidsrom-group {
+.tidsrom-velger {
     display: flex;
     flex-direction: column;
     margin-right: 20px;
@@ -9,3 +9,10 @@
     flex-direction: row;
     margin-top: 10px;
 }
+
+.tidsrom-overskrift {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+

@@ -1,21 +1,11 @@
 .sidepanel-container {
-  width: 367px;
-  padding: 20px;
-  border-right: solid black;
+    width: 367px;
+    padding: 20px;
+    border-right: solid black;
 }
 
-.tidsrom-velger-overskrift {
-  display: flex;
-  flex-direction: row;
-  margin-top: 40px;
-}
-
-.personnummer-container{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-h3{
-  margin-left: 10px;
+.personnummer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
