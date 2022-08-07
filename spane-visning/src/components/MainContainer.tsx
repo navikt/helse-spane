@@ -30,7 +30,7 @@ export default function MainContainer() {
   const [person, setPerson] = useState<PersonDto>();
   const [paragrafSøk, setParagrafSøk] = useState<ParagrafsøkDto>();
   const [anonymisert, setAnonymisert] = useState<Boolean>(false);
-  const [fødselsnummer, setFødselsnummer] = useState<string>("");
+  const [søk, setSøk] = useState<string>("");
   const [fane, setFane] = useState<string>("Person");
 
   const backendPerson: BackendPerson = Environment.isDevelopment
@@ -62,11 +62,11 @@ export default function MainContainer() {
       <div>
         <div className="ytre-main-container">
           <Søkefelt
-            fødselsnummer={fødselsnummer}
+            fødselsnummer={søk}
             backendPerson={backendPerson}
             backendParagraf={backendParagraf}
             setOrgnumre={setOrgnumre}
-            setFødselsnummer={setFødselsnummer}
+            setSøk={setSøk}
             setPerson={setPerson}
             setPersoner={setParagrafSøk}
             setAnonymisert={setAnonymisert}
@@ -79,7 +79,7 @@ export default function MainContainer() {
               setValgte={setValgte}
               setFraDato={setFraDato}
               setTilDato={setTilDato}
-              fødselsnummer={fødselsnummer}
+              søk={søk}
               person={person}
               anonymisert={anonymisert}
               fane={fane}

@@ -8,7 +8,7 @@ interface Props {
   fødselsnummer: string;
   backendPerson: BackendPerson;
   backendParagraf: BackendParagraf;
-  setFødselsnummer: React.Dispatch<React.SetStateAction<string>>;
+  setSøk: React.Dispatch<React.SetStateAction<string>>;
   setPerson: React.Dispatch<React.SetStateAction<PersonDto | undefined>>;
   setPersoner: React.Dispatch<React.SetStateAction<ParagrafsøkDto | undefined>>;
   setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>;
@@ -22,7 +22,7 @@ export default function Søkefelt(props: Props) {
     fødselsnummer,
     backendPerson,
     backendParagraf,
-    setFødselsnummer,
+    setSøk,
     setPerson,
     setPersoner,
     setOrgnumre,
@@ -35,20 +35,22 @@ export default function Søkefelt(props: Props) {
 
   const [søkefeltInput, setSøkefeltInput] = useState<string>("");
 
-  const handleChangeFnr = (fnr: string) => {
-    setSøkefeltInput(fnr);
-
-    if (!/^\d+$/.test(søkefeltInput)) {
-      setFeilmelding("Fødselsnummer kan kun være tall");
-      return;
-    }
-    if (søkefeltInput.length < 11) {
-      setFeilmelding("Fødselsnummer må være 11 siffer lang");
-      return;
-    }
-
-    setFeilmelding("");
-    setFødselsnummer(søkefeltInput);
+  const handleChangeFnr = (inputSøk: string) => {
+    setSøkefeltInput(inputSøk);
+    //   TODO saniter input og sett feilmelding?
+    // if (fane === "Person") {
+    //   if (!/^\d+$/.test(inputSøk)) {
+    //     setFeilmelding("Fødselsnummer kan kun være tall");
+    //     return;
+    //   }
+    //   if (inputSøk.length < 11) {
+    //     setFeilmelding("Fødselsnummer må være 11 siffer lang");
+    //     return;
+    //   }
+    //   setFeilmelding("");
+    //   setSøk(søkefeltInput);
+    // }
+    setSøk(søkefeltInput);
   };
 
   const handleSubmit = () => {
