@@ -4,7 +4,7 @@
   border-right: solid black;
 }
 
-.velg-tid-overskrift-container {
+.tidsrom-velger-overskrift {
   display: flex;
   flex-direction: row;
   margin-top: 40px;

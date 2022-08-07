@@ -45,7 +45,7 @@ export default function Sidepanel(props: Props) {
       {!anonymisert ? fødselsnummer : "***********"}
       {person && (
         <div>
-          <h4 className="velg-tid-overskrift-container">Velg tidsrom: </h4>
+          <h4 className="tidsrom-velger-overskrift">Velg tidsrom: </h4>
           <TidsromVelger setFraDato={setFraDato} setTilDato={setTilDato} />
           {fane === "Person" ? (
             <ArbeidsgiverCheckbox
