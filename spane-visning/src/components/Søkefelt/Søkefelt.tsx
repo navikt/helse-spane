@@ -1,25 +1,27 @@
 import { Checkbox, CheckboxGroup, Search } from "@navikt/ds-react";
 import React, { useState } from "react";
-import { Backend } from "../../service";
-import { PersonDto } from "../../types";
+import { BackendParagraf, BackendPerson } from "../../service";
+import { ParagrafsøkDto, PersonDto } from "../../types";
 import "./søkefelt.css";
 
 interface Props {
   fødselsnummer: string;
-  backend: Backend;
+  backendPerson: BackendPerson;
+  backendParagraf: BackendParagraf;
   setFødselsnummer: React.Dispatch<React.SetStateAction<string>>;
   setPerson: React.Dispatch<React.SetStateAction<PersonDto | undefined>>;
-  setPersoner: React.Dispatch<React.SetStateAction<PersonDto[] | undefined>>;
+  setPersoner: React.Dispatch<React.SetStateAction<ParagrafsøkDto | undefined>>;
   setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>;
   setAnonymisert: React.Dispatch<React.SetStateAction<Boolean>>;
   anonymisert: Boolean;
   fane: string;
 }
 
-function Søkefelt(props: Props) {
+export default function Søkefelt(props: Props) {
   const {
     fødselsnummer,
-    backend,
+    backendPerson,
+    backendParagraf,
     setFødselsnummer,
     setPerson,
     setPersoner,
@@ -31,47 +33,50 @@ function Søkefelt(props: Props) {
 
   const [feilmelding, setFeilmelding] = useState<string>("");
 
-  const [fnrInput, setFnrInput] = useState<string>("0");
+  const [søkefeltInput, setSøkefeltInput] = useState<string>("");
 
   const handleChangeFnr = (fnr: string) => {
-    setFnrInput(fnr);
+    setSøkefeltInput(fnr);
 
-    if (!/^\d+$/.test(fnrInput)) {
+    if (!/^\d+$/.test(søkefeltInput)) {
       setFeilmelding("Fødselsnummer kan kun være tall");
       return;
     }
-    if (fnrInput.length < 11) {
+    if (søkefeltInput.length < 11) {
       setFeilmelding("Fødselsnummer må være 11 siffer lang");
       return;
     }
 
     setFeilmelding("");
-    setFødselsnummer(fnrInput);
+    setFødselsnummer(søkefeltInput);
   };
 
   const handleSubmit = () => {
-    backend
-      .person(fnrInput)
-      .then((r) => {
-        setPerson(r);
-        setPersoner([r, r, r]);
-        return r;
-      })
-      .then((r) => {
-        let orgnumre: string[] = [];
-        r!.vedtaksperioder.forEach((vedtaksperiode) => {
-          if (!orgnumre.includes(vedtaksperiode.orgnummer)) {
-            orgnumre.push(vedtaksperiode.orgnummer);
-          }
+    fane === "Person"
+      ? backendPerson
+          .person(søkefeltInput)
+          .then((r) => {
+            setPerson(r);
+            return r;
+          })
+          .then((r) => {
+            let orgnumre: string[] = [];
+            r!.vedtaksperioder.forEach((vedtaksperiode) => {
+              if (!orgnumre.includes(vedtaksperiode.orgnummer)) {
+                orgnumre.push(vedtaksperiode.orgnummer);
+              }
+            });
+            setOrgnumre(orgnumre);
+          })
+      : backendParagraf.personer(søkefeltInput).then((r) => {
+          setPersoner(r);
         });
-        setOrgnumre(orgnumre);
-      });
   };
 
   return (
-    <div className="personsøk-container">
+    <div className="søkefelt-container">
       <h2>{fane === "Person" ? "Søk på person" : "Søk på paragraf"}</h2>
-      <div className="personsøk-actions-container">
+      <div className="søkefelt-actions">
         <Search
           label="Søk etter fødselsnummer"
           size="small"
@@ -97,5 +102,3 @@ function Søkefelt(props: Props) {
     </div>
   );
 }
-
-export default Søkefelt;

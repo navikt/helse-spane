@@ -6,13 +6,21 @@ import Sidepanel from "./Sidepanel/Sidepanel";
 import Søkefelt from "./Søkefelt/Søkefelt";
 
 import { Header } from "@navikt/ds-react-internal";
-import { PersonDto } from "../types";
-import { Backend, restBackend, testBackend } from "../service";
+import { ParagrafsøkDto, PersonDto } from "../types";
 import { Environment } from "../environment";
 import PseudovedtaksperiodeTabell from "./Tabell/PseudovedtaksperiodeTabell";
 import { ToggleGroup } from "@navikt/ds-react";
 import { Law, People } from "@navikt/ds-icons";
 import PersonTabell from "./Tabell/PersonTabell";
+
+import {
+  BackendParagraf,
+  BackendPerson,
+  restBackendParagraf,
+  restBackendPerson,
+  testBackendParagraf,
+  testBackendPerson,
+} from "../service";
 
 export default function MainContainer() {
   const [orgnumre, setOrgnumre] = useState<string[]>([]);
@@ -20,14 +28,17 @@ export default function MainContainer() {
   const [fraDato, setFraDato] = useState<string>("");
   const [tilDato, setTilDato] = useState<string>("");
   const [person, setPerson] = useState<PersonDto>();
-  const [personer, setPersoner] = useState<PersonDto[]>();
+  const [paragrafSøk, setParagrafSøk] = useState<ParagrafsøkDto>();
   const [anonymisert, setAnonymisert] = useState<Boolean>(false);
   const [fødselsnummer, setFødselsnummer] = useState<string>("");
   const [fane, setFane] = useState<string>("Person");
 
-  const backend: Backend = Environment.isDevelopment
-    ? testBackend()
-    : restBackend();
+  const backendPerson: BackendPerson = Environment.isDevelopment
+    ? testBackendPerson()
+    : restBackendPerson();
+  const backendParagraf: BackendParagraf = Environment.isDevelopment
+    ? testBackendParagraf()
+    : restBackendParagraf();
 
   return (
     <div>
@@ -52,11 +63,12 @@ export default function MainContainer() {
         <div className="ytre-main-container">
           <Søkefelt
             fødselsnummer={fødselsnummer}
-            backend={backend}
+            backendPerson={backendPerson}
+            backendParagraf={backendParagraf}
             setOrgnumre={setOrgnumre}
             setFødselsnummer={setFødselsnummer}
             setPerson={setPerson}
-            setPersoner={setPersoner}
+            setPersoner={setParagrafSøk}
             setAnonymisert={setAnonymisert}
             anonymisert={anonymisert}
             fane={fane}
@@ -82,7 +94,10 @@ export default function MainContainer() {
                   anonymisert={anonymisert}
                 />
               ) : (
-                <PersonTabell personer={personer} anonymisert={anonymisert} />
+                <PersonTabell
+                  paragrafSøk={paragrafSøk}
+                  anonymisert={anonymisert}
+                />
               )}
             </div>
           </div>

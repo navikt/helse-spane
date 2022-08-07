@@ -1,9 +1,9 @@
-.personsøk-container {
+.søkefelt-container {
     width: 500px;
     padding: 20px;
 }
 
-.personsøk-actions-container {
+.søkefelt-actions {
     display: flex;
     flex-direction: row;
     align-items: center;
