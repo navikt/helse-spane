@@ -12,13 +12,15 @@ import { Environment } from "../environment";
 import PseudovedtaksperiodeTabell from "./Tabell/PseudovedtaksperiodeTabell";
 import { ToggleGroup } from "@navikt/ds-react";
 import { Law, People } from "@navikt/ds-icons";
+import PersonTabell from "./Tabell/PersonTabell";
 
-function MainContainer() {
+export default function MainContainer() {
   const [orgnumre, setOrgnumre] = useState<string[]>([]);
   const [valgte, setValgte] = useState<string[]>([]);
   const [fraDato, setFraDato] = useState<string>("");
   const [tilDato, setTilDato] = useState<string>("");
   const [person, setPerson] = useState<PersonDto>();
+  const [personer, setPersoner] = useState<PersonDto[]>();
   const [anonymisert, setAnonymisert] = useState<Boolean>(false);
   const [fødselsnummer, setFødselsnummer] = useState<string>("");
   const [fane, setFane] = useState<string>("Person");
@@ -54,6 +56,7 @@ function MainContainer() {
             setOrgnumre={setOrgnumre}
             setFødselsnummer={setFødselsnummer}
             setPerson={setPerson}
+            setPersoner={setPersoner}
             setAnonymisert={setAnonymisert}
             anonymisert={anonymisert}
             fane={fane}
@@ -69,20 +72,22 @@ function MainContainer() {
               anonymisert={anonymisert}
               fane={fane}
             />
-            {fane === "Person" ? (
-              <PseudovedtaksperiodeTabell
-                valgte={valgte}
-                fraDato={fraDato}
-                tilDato={tilDato}
-                person={person}
-                anonymisert={anonymisert}
-              />
-            ) : null}
+            <div className={"tabell-container"}>
+              {fane === "Person" ? (
+                <PseudovedtaksperiodeTabell
+                  valgte={valgte}
+                  fraDato={fraDato}
+                  tilDato={tilDato}
+                  person={person}
+                  anonymisert={anonymisert}
+                />
+              ) : (
+                <PersonTabell personer={personer} anonymisert={anonymisert} />
+              )}
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default MainContainer;

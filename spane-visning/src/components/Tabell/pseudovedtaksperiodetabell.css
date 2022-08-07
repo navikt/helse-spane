@@ -1,7 +1,0 @@
-.pseudovedtaksperiodetabell-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 100;
-    margin: 20px;
-}

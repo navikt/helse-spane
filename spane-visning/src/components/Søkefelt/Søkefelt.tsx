@@ -9,6 +9,7 @@ interface Props {
   backend: Backend;
   setFødselsnummer: React.Dispatch<React.SetStateAction<string>>;
   setPerson: React.Dispatch<React.SetStateAction<PersonDto | undefined>>;
+  setPersoner: React.Dispatch<React.SetStateAction<PersonDto[] | undefined>>;
   setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>;
   setAnonymisert: React.Dispatch<React.SetStateAction<Boolean>>;
   anonymisert: Boolean;
@@ -21,6 +22,7 @@ function Søkefelt(props: Props) {
     backend,
     setFødselsnummer,
     setPerson,
+    setPersoner,
     setOrgnumre,
     setAnonymisert,
     anonymisert,
@@ -52,6 +54,7 @@ function Søkefelt(props: Props) {
       .person(fnrInput)
       .then((r) => {
         setPerson(r);
+        setPersoner([r, r, r]);
         return r;
       })
       .then((r) => {
