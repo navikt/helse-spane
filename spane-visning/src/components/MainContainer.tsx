@@ -39,7 +39,7 @@ export default function MainContainer() {
         <ToggleGroup onChange={(x) => setFane(x)} value={fane} size="medium">
           <ToggleGroup.Item value="Person">
             <People aria-hidden />
-            Søk på personnummer
+            Søk på person
           </ToggleGroup.Item>
           <ToggleGroup.Item value="Paragraf">
             <Law aria-hidden />

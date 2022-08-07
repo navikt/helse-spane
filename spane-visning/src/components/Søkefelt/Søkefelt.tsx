@@ -37,11 +37,11 @@ function Søkefelt(props: Props) {
     setFnrInput(fnr);
 
     if (!/^\d+$/.test(fnrInput)) {
-      setFeilmelding("Personnummer kan kun være tall");
+      setFeilmelding("Fødselsnummer kan kun være tall");
       return;
     }
     if (fnrInput.length < 11) {
-      setFeilmelding("Personnummer må være 11 siffer lang");
+      setFeilmelding("Fødselsnummer må være 11 siffer lang");
       return;
     }
 
@@ -70,7 +70,7 @@ function Søkefelt(props: Props) {
 
   return (
     <div className="personsøk-container">
-      <h2>{fane === "Person" ? "Personsøk" : "Paragrafsøk"}</h2>
+      <h2>{fane === "Person" ? "Søk på person" : "Søk på paragraf"}</h2>
       <div className="personsøk-actions-container">
         <Search
           label="Søk etter fødselsnummer"

@@ -28,7 +28,7 @@ export default function SubsumsjonEkspandertInnhold(props: Props) {
     resultatString += "Versjon:\n " + subsumsjon.versjon + "\n";
     return resultatString.split("\n").map((s, key) => (
       <div style={{ overflowWrap: "break-word" }} key={key}>
-        &nbsp;{s}
+        {s}
       </div>
     ));
   }
@@ -41,7 +41,7 @@ export default function SubsumsjonEkspandertInnhold(props: Props) {
           {!anonymisert
             ? inputString.split("\n").map((s, key) => (
                 <div style={{ overflowWrap: "break-word" }} key={key}>
-                  &nbsp;{s}
+                  {s}
                 </div>
               ))
             : "********"}

@@ -4,7 +4,7 @@
     border-right: solid black;
 }
 
-.personnummer-container {
+.fødselsnummer-container {
     display: flex;
     flex-direction: row;
     align-items: center;

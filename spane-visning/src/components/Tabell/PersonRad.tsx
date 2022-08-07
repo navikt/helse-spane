@@ -28,7 +28,7 @@ export default function PersonRad(props: Props) {
       style={{ cursor: "pointer", backgroundColor: "#E6F0FF" }}
     >
       <Table.DataCell scope="row">
-        {person.fnr ?? "ukjent fødselsnummer"}
+        <b> Fødselsnummer: </b> {person.fnr ?? "ukjent fødselsnummer"}
       </Table.DataCell>
     </Table.ExpandableRow>
   );
