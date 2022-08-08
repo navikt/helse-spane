@@ -39,15 +39,21 @@ export default function Søkefelt(props: Props) {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("verdi er: " + søketekst);
 
-    if (fane === "Person" && !/^\d+$/.test(søketekst)) {
-      setFeilmelding("Fødselsnummer kan kun være tall");
-      return;
-    }
-    if (fane === "Person" && søketekst.length < 11) {
-      setFeilmelding("Fødselsnummer må være 11 siffer lang");
-      return;
+    if (fane === "Person") {
+      if (!/^\d+$/.test(søketekst)) {
+        setFeilmelding("Fødselsnummer kan kun være tall");
+        return;
+      }
+      if (søketekst.length < 11) {
+        setFeilmelding("Fødselsnummer må være 11 siffer lang");
+        return;
+      }
+    } else {
+      if (/0-9/.test(søketekst)) {
+        setFeilmelding("Paragraf på feil form");
+        return;
+      }
     }
 
     setHarSøkt(true);
