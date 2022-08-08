@@ -275,7 +275,7 @@ class PseudovedtaksperiodeTest {
     fun `pseudoVedtaksperiode har usikkert skjæringstidspunkt til vedtakFattet er mottatt`() {
         val pvp = lagVedtaksPeriode(1, input = mapOf("skjæringstidspunkt" to LocalDate.now().toString()))
         assertTrue(pvp.inspektør().ikkeSikkertSkjæringstidspunkt)
-        assertEquals(pvp.inspektør().skjæringstidspunkt, LocalDate.parse("2022-08-05"))
+        assertEquals(pvp.inspektør().skjæringstidspunkt, LocalDate.now())
         pvp.håndter(vedtakFattet(pvp))
         assertNotNull(pvp.inspektør().skjæringstidspunkt)
     }

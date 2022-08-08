@@ -1,0 +1,8 @@
+.subsumsjon-ekspanderbar-rad-container {
+    display: flex;
+    white-space: pre-wrap;
+}
+
+.subsumsjon-ekspandert-innhold-kolonne {
+    width: 50%;
+}
