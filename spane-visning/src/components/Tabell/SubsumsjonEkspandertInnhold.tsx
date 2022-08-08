@@ -1,5 +1,4 @@
 import { SubsumsjonDto } from "../../types";
-import { FileContent } from "@navikt/ds-icons";
 import React, { useEffect, useState } from "react";
 import { byggStringRekursivt } from "../../utlis";
 import { ReadMore } from "@navikt/ds-react";
@@ -14,11 +13,9 @@ export default function SubsumsjonEkspandertInnhold(props: Props) {
   const { subsumsjon, anonymisert } = props;
   const [outputString, setOutputString] = useState<string>("");
   const [inputString, setInputString] = useState<string>("");
-  const [sporingString, setSporingString] = useState<string>("");
   useEffect(() => {
     setOutputString(byggStringRekursivt(subsumsjon.output));
     setInputString(byggStringRekursivt(subsumsjon.input));
-    setSporingString(byggStringRekursivt(subsumsjon.sporing));
   }, []);
 
   function tekniskInfo() {
@@ -26,6 +23,8 @@ export default function SubsumsjonEkspandertInnhold(props: Props) {
     resultatString += "Subsumsjons ID:\n " + subsumsjon.id + "\n";
     resultatString += "Versjon av kode:\n " + subsumsjon.versjonAvKode + "\n";
     resultatString += "Versjon:\n " + subsumsjon.versjon + "\n";
+    resultatString +=
+      "Sporing:\n " + byggStringRekursivt(subsumsjon.sporing) + "\n";
     return resultatString.split("\n").map((s, key) => (
       <div style={{ overflowWrap: "break-word" }} key={key}>
         {s}
@@ -66,19 +65,7 @@ export default function SubsumsjonEkspandertInnhold(props: Props) {
         <div>
           <b>Versjon av lovverk: </b> {subsumsjon.lovverksversjon}
         </div>
-        <div>
-          <p></p>
-          {sporingString
-            .split("\n")
-            .filter((s) => s === "sykmelding:" || s === "soknad:")
-            .map((s, key) => (
-              <div key={key}>
-                {" "}
-                &nbsp;{s === "soknad:" ? "søknad:" : s}
-                <FileContent />
-              </div>
-            ))}
-        </div>
+        <p></p>
         <ReadMore size="small" header="Teknisk info">
           {tekniskInfo()}
         </ReadMore>

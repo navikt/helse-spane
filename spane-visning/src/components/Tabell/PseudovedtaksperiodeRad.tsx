@@ -39,9 +39,6 @@ export default function PseudovedtaksperiodeRad(props: Props) {
       </Table.DataCell>
       <Table.DataCell scope="row">
         <div className="arbeidsgiver-container">
-          <HelpText title="Hva betyr dette tallet?" id="arbeidsgiver-helptext">
-            Organisasjonsnummer til arbeidsgiver
-          </HelpText>
           <b>Arbeidsgiver: </b>
           {!anonymisert ? vedtaksperiode.orgnummer : "***********"}
         </div>

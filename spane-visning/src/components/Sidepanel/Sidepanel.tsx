@@ -12,6 +12,7 @@ interface Props {
   setFraDato: React.Dispatch<React.SetStateAction<string>>;
   setTilDato: React.Dispatch<React.SetStateAction<string>>;
   søk: string;
+  harSøkt: Boolean;
   person: PersonDto | undefined;
   anonymisert: Boolean;
   fane: string;
@@ -24,6 +25,7 @@ export default function Sidepanel(props: Props) {
     setFraDato,
     setTilDato,
     søk,
+    harSøkt,
     person,
     anonymisert,
     fane,
@@ -41,8 +43,7 @@ export default function Sidepanel(props: Props) {
           {fane === "Person" ? "Fødselsnummer:" : "Paragraf:"}
         </h3>
       </div>
-
-      {!anonymisert ? søk : "***********"}
+      {harSøkt ? (!anonymisert ? søk : "***********") : null}
       {person && (
         <div>
           {fane === "Person" ? (
