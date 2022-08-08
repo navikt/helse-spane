@@ -50,8 +50,8 @@ export default function Søkefelt(props: Props) {
         return;
       }
     } else {
-      if (/0-9/.test(søketekst)) {
-        setFeilmelding("Paragraf på feil form");
+      if (!/\d-\d/.test(søketekst)) {
+        setFeilmelding("Paragraf på feil form, prøv f.eks. 8-2");
         return;
       }
     }
