@@ -64,10 +64,14 @@ class Subsumsjon(
         return if (!sporing["vedtaksperiode"].isNullOrEmpty()) {
             sporing["vedtaksperiode"]!!.first() in pvpIder
         } else if (!sporing["soknad"].isNullOrEmpty()) {
-            pvpIder.containsAll(sporing["soknad"]!!) && pvpIder.containsAll(sporing["sykmelding"]!!)
+            (pvpIder.containsAll(sporing["soknad"]!!) && pvpIder.containsAll(sporing["sykmelding"]!!))
+                    || (pvpIder.containsAll(sporing["soknad"]!!) && pvpIder.containsAll(sporing["sykmeldingsid"]!!))
         } else if (!sporing["sykmelding"].isNullOrEmpty()) {
             pvpIder.containsAll(sporing["sykmelding"]!!)
-        } else {
+        } else if (!sporing["sykmeldingsid"].isNullOrEmpty()) {
+            pvpIder.containsAll(sporing["sykmeldingsid"]!!)
+        }
+        else {
             false
         }
     }
