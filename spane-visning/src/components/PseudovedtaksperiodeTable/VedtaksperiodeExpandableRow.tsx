@@ -22,7 +22,7 @@ function VedtaksperiodeExpandableRow(props: Props) {
             style={{cursor: "pointer", backgroundColor: "#E6F0FF"}}
         >
             <Table.DataCell scope="row">
-                <b> {/*vedtaksperiode.ikkeSikkertSkjæringstidspunkt ? "Skjæringstidspunkt*: " : "Skjæringstidspunkt: "*/} </b> {/*vedtaksperiode.skjæringstidspunkt ?? 'ukjent'*/}
+                <b> {vedtaksperiode.tilstand == 'VEDTAK_FATTET' ? vedtaksperiode.vedtaksperiodeFraDato : 'TEST'/*vedtaksperiode.ikkeSikkertSkjæringstidspunkt ? "Skjæringstidspunkt*: " : "Skjæringstidspunkt: "*/} </b> {/*vedtaksperiode.skjæringstidspunkt ?? 'ukjent'*/}
             </Table.DataCell>
             <Table.DataCell scope="row">
                 <div className="arbeidsgiver-container" >
