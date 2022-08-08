@@ -27,21 +27,21 @@
 }
 
 .uavklart{
-    border-color: #e6b987;
+    background-color: #dde3eb;
+    border-color: #4f5459;
     height: fit-content;
-    background-color: #ffe7cb;
 }
 
 .vedtak-fattet{
-    border-color: #c1e6b1;
-    height: fit-content;
     background-color: #e6ffdc;
+    border-color: #5b6c53;
+    height: fit-content;
 }
 
 .til-infotrygd{
-    border-color: #ea9b83;
+    background-color: #ffe7cb;
+    border-color: #8d7254;
     height: fit-content;
-    background-color: #ffe6e6;
 }
 
 .lable{
