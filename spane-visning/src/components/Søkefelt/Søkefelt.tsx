@@ -8,6 +8,7 @@ interface Props {
   fødselsnummer: string;
   backendPerson: BackendPerson;
   backendParagraf: BackendParagraf;
+  søk: string;
   setSøk: React.Dispatch<React.SetStateAction<string>>;
   setHarSøkt: React.Dispatch<React.SetStateAction<Boolean>>;
   setPerson: React.Dispatch<React.SetStateAction<PersonDto | undefined>>;
@@ -23,6 +24,7 @@ export default function Søkefelt(props: Props) {
     fødselsnummer,
     backendPerson,
     backendParagraf,
+    søk,
     setSøk,
     setHarSøkt,
     setPerson,
@@ -35,31 +37,21 @@ export default function Søkefelt(props: Props) {
 
   const [feilmelding, setFeilmelding] = useState<string>("");
 
-  const [søkefeltInput, setSøkefeltInput] = useState<string>("");
-
-  const handleChangeFnr = (inputSøk: string) => {
-    setSøkefeltInput(inputSøk);
-    //   TODO saniter input og sett feilmelding?
-    // if (fane === "Person") {
-    //   if (!/^\d+$/.test(inputSøk)) {
-    //     setFeilmelding("Fødselsnummer kan kun være tall");
-    //     return;
-    //   }
-    //   if (inputSøk.length < 11) {
-    //     setFeilmelding("Fødselsnummer må være 11 siffer lang");
-    //     return;
-    //   }
-    //   setFeilmelding("");
-    //   setSøk(søkefeltInput);
-    // }
-    setSøk(søkefeltInput);
-  };
-
   const handleSubmit = () => {
     setHarSøkt(true);
+    if (fane === "Person" && !/^\d+$/.test(søk)) {
+      setFeilmelding("Fødselsnummer kan kun være tall");
+      console.log(søk);
+      return;
+    }
+    if (fane === "Person" && søk.length < 11) {
+      setFeilmelding("Fødselsnummer må være 11 siffer lang");
+      console.log(søk);
+      return;
+    }
     fane === "Person"
       ? backendPerson
-          .person(søkefeltInput)
+          .person(søk)
           .then((r) => {
             setPerson(r);
             return r;
@@ -73,7 +65,7 @@ export default function Søkefelt(props: Props) {
             });
             setOrgnumre(orgnumre);
           })
-      : backendParagraf.personer(søkefeltInput).then((r) => {
+      : backendParagraf.personer(søk).then((r) => {
           setPersoner(r);
         });
   };
@@ -86,7 +78,7 @@ export default function Søkefelt(props: Props) {
           label="Søk etter fødselsnummer"
           size="small"
           variant="secondary"
-          onChange={(e) => handleChangeFnr(e)}
+          onChange={(e) => setSøk(e)}
           maxLength={11}
           type={"numeric"}
           error={feilmelding}

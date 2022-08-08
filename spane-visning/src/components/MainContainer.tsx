@@ -68,6 +68,7 @@ export default function MainContainer() {
                 backendPerson={backendPerson}
                 backendParagraf={backendParagraf}
                 setOrgnumre={setOrgnumre}
+                søk={søk}
                 setSøk={setSøk}
                 setHarSøkt={setHarSøkt}
                 setPerson={setPerson}
@@ -107,6 +108,7 @@ export default function MainContainer() {
                 backendPerson={backendPerson}
                 backendParagraf={backendParagraf}
                 setOrgnumre={setOrgnumre}
+                søk={søk}
                 setSøk={setSøk}
                 setHarSøkt={setHarSøkt}
                 setPerson={setPerson}
