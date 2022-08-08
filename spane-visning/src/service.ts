@@ -1,6 +1,6 @@
 import testPerson from "./resources/testPerson.json";
 import testPersoner from "./resources/testPersoner.json";
-import { ParagrafsøkDto, PersonDto } from "./types";
+import { PersonDto } from "./types";
 
 export const restBackendPerson = (): BackendPerson => {
   return {
@@ -23,9 +23,13 @@ export const testBackendPerson = (): BackendPerson => {
   };
 };
 
+export type BackendPerson = {
+  person: (fnr: string) => Promise<PersonDto>;
+};
+
 export const restBackendParagraf = (): BackendParagraf => {
   return {
-    personer(paragraf: string): Promise<ParagrafsøkDto> {
+    personer(paragraf: string): Promise<PersonDto[]> {
       return fetch(`/paragraf/` + paragraf, {
         method: "get",
         headers: {
@@ -38,16 +42,12 @@ export const restBackendParagraf = (): BackendParagraf => {
 
 export const testBackendParagraf = (): BackendParagraf => {
   return {
-    personer(): Promise<ParagrafsøkDto> {
-      return Promise.resolve(testPersoner as unknown as ParagrafsøkDto);
+    personer(): Promise<PersonDto[]> {
+      return Promise.resolve(testPersoner as unknown as PersonDto[]);
     },
   };
 };
 
-export type BackendPerson = {
-  person: (fnr: string) => Promise<PersonDto>;
-};
-
 export type BackendParagraf = {
-  personer: (paragraf: string) => Promise<ParagrafsøkDto>;
+  personer: (paragraf: string) => Promise<PersonDto[]>;
 };

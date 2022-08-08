@@ -1,7 +1,7 @@
 import { Checkbox, CheckboxGroup, Search } from "@navikt/ds-react";
 import React, { useState } from "react";
 import { BackendParagraf, BackendPerson } from "../../service";
-import { ParagrafsøkDto, PersonDto } from "../../types";
+import { PersonDto } from "../../types";
 import "./søkefelt.css";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   backendParagraf: BackendParagraf;
   setSøk: React.Dispatch<React.SetStateAction<string>>;
   setPerson: React.Dispatch<React.SetStateAction<PersonDto | undefined>>;
-  setPersoner: React.Dispatch<React.SetStateAction<ParagrafsøkDto | undefined>>;
+  setPersoner: React.Dispatch<React.SetStateAction<PersonDto[] | undefined>>;
   setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>;
   setAnonymisert: React.Dispatch<React.SetStateAction<Boolean>>;
   anonymisert: Boolean;

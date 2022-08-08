@@ -1,22 +1,22 @@
 import React from "react";
-import { ParagrafsøkDto } from "../../types";
+import { PersonDto } from "../../types";
 import { Table } from "@navikt/ds-react";
 import PersonRad from "./PersonRad";
 
 interface Props {
-  paragrafSøk: ParagrafsøkDto | undefined;
+  personer: PersonDto[] | undefined;
   anonymisert: Boolean;
 }
 
 export default function PersonTabell(props: Props) {
-  const { paragrafSøk, anonymisert } = props;
+  const { personer, anonymisert } = props;
 
   return (
     <Table size="medium">
-      {paragrafSøk?.personer && (
+      {personer && (
         <Table.Body>
           <b>Personer:</b>
-          {paragrafSøk.personer.map((person, personIdx) => {
+          {personer.map((person, personIdx) => {
             return (
               <PersonRad
                 key={personIdx}

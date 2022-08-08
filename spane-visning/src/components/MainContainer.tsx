@@ -6,7 +6,7 @@ import Sidepanel from "./Sidepanel/Sidepanel";
 import Søkefelt from "./Søkefelt/Søkefelt";
 
 import { Header } from "@navikt/ds-react-internal";
-import { ParagrafsøkDto, PersonDto } from "../types";
+import { PersonDto } from "../types";
 import { Environment } from "../environment";
 import PseudovedtaksperiodeTabell from "./Tabell/PseudovedtaksperiodeTabell";
 import { Tabs } from "@navikt/ds-react";
@@ -28,7 +28,7 @@ export default function MainContainer() {
   const [fraDato, setFraDato] = useState<string>("");
   const [tilDato, setTilDato] = useState<string>("");
   const [person, setPerson] = useState<PersonDto>();
-  const [paragrafSøk, setParagrafSøk] = useState<ParagrafsøkDto>();
+  const [paragrafSøk, setParagrafSøk] = useState<PersonDto[]>();
   const [anonymisert, setAnonymisert] = useState<Boolean>(false);
   const [søk, setSøk] = useState<string>("");
 
@@ -124,7 +124,7 @@ export default function MainContainer() {
                 />
                 <div className={"tabell-container"}>
                   <PersonTabell
-                    paragrafSøk={paragrafSøk}
+                    personer={paragrafSøk}
                     anonymisert={anonymisert}
                   />
                 </div>

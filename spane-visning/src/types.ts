@@ -3,10 +3,6 @@ export type PersonDto = {
   fnr: string;
 };
 
-export type ParagrafsøkDto = {
-  personer: PersonDto[];
-};
-
 export type VedtaksperiodeDto = {
   subsumsjoner: SubsumsjonDto[];
   orgnummer: string;
