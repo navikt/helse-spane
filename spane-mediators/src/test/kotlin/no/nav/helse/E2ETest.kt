@@ -11,7 +11,6 @@ import no.nav.common.KafkaEnvironment
 import no.nav.helse.TestHjelper.Companion.testSubsumsjon
 import no.nav.helse.TestHjelper.Companion.testVedtakFattet
 import no.nav.helse.spane.db.PersonPostgresRepository
-import no.nav.helse.spane.håndterSubsumsjon
 import no.nav.helse.spane.ktorServer
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.Consumer
@@ -66,7 +65,7 @@ internal class E2ETest : AbstractDatabaseTest() {
         val dataSource = dataSourceBuilder.getDataSource()
         val personRepository = PersonPostgresRepository(dataSource)
         jobb = GlobalScope.launch {
-            Application(konfig, ::ktorServer, ::håndterSubsumsjon, personRepository).startBlocking()
+            Application(konfig, ::ktorServer, personRepository).startBlocking()
         }
     }
 

@@ -2,6 +2,7 @@ package no.nav.helse.spane.kafka
 
 import no.nav.helse.Konfig
 import no.nav.helse.logger
+import no.nav.helse.spane.SubsumsjonMediator
 import no.nav.helse.spane.VedtakFattetMediator
 import no.nav.helse.spane.VedtaksperiodeForkastetMediator
 import no.nav.helse.spane.db.PersonRepository
@@ -16,8 +17,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 class Konsument(
     private val konfig: Konfig,
     clientId: String = UUID.randomUUID().toString().slice(1..5),
-    private val håndterSubsumsjon: (input: String, database: PersonRepository) -> Any?,
     private val personRepository: PersonRepository,
+    private val subsumsjonMediator: SubsumsjonMediator = SubsumsjonMediator(personRepository),
     private val vedtakFattetMediator: VedtakFattetMediator = VedtakFattetMediator(personRepository),
     private val vedtaksperiodeForkastetMediator: VedtaksperiodeForkastetMediator = VedtaksperiodeForkastetMediator(
         personRepository
@@ -37,15 +38,17 @@ class Konsument(
             konsument.subscribe(listOf(konfig.topic))
             while (running.get()) {
                 konsument.poll(Duration.ofSeconds(5)).onEach {
+
+
                     val melding = objectMapper.readTree(it.value())
-                    håndterSubsumsjon(
-                        it.value(),
-                        personRepository
-                    ) // TODO: Refaktor håndterSubsumsjon til å virke som vedtakFattetMediator.håndterer() samme på vedtaksperiodeForkastetMediator
-                    if (vedtakFattetMediator.håndterer(melding)) vedtakFattetMediator.håndterVedtakFattet(melding)
-                    else if (vedtaksperiodeForkastetMediator.håndtererForkastetVedtak(melding)) vedtaksperiodeForkastetMediator.håndterForkastetVedtaksperiode(
-                        melding
-                    )
+                    if (subsumsjonMediator.håndterer(melding))
+                        subsumsjonMediator.håndterSubsumsjon(melding)
+                    else if (vedtakFattetMediator.håndterer(melding))
+                        vedtakFattetMediator.håndterVedtakFattet(melding)
+                    else if (vedtaksperiodeForkastetMediator.håndtererForkastetVedtak(melding))
+                        vedtaksperiodeForkastetMediator.håndterForkastetVedtaksperiode(melding)
+
+
                 }
                 konsument.commitSync()
 

@@ -10,11 +10,10 @@ import no.nav.helse.spane.kafka.Konsument
 class Application (
     konfig: Konfig,
     builder: (PersonRepository) -> ApplicationEngine,
-    håndterSubsumsjon: (input: String, database: PersonRepository) -> Any?,
     personRepository: PersonRepository
 ) {
 
-    private val konsument = Konsument(konfig, konfig.topic, håndterSubsumsjon, personRepository)
+    private val konsument = Konsument(konfig, konfig.topic, personRepository)
     private val ktor = builder(personRepository)
 
     fun startBlocking() {

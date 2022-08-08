@@ -1,7 +1,6 @@
 package no.nav.helse
 
 import no.nav.helse.spane.db.PersonPostgresRepository
-import no.nav.helse.spane.håndterSubsumsjon
 import no.nav.helse.spane.ktorServer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -15,6 +14,6 @@ fun main() {
     val dataSourceBuilder = DataSourceBuilder(config)
     val personRepository = PersonPostgresRepository(dataSourceBuilder.getDataSource())
 
-    Application(config, ::ktorServer, ::håndterSubsumsjon, personRepository).startBlocking()
+    Application(config, ::ktorServer, personRepository).startBlocking()
 }
 
