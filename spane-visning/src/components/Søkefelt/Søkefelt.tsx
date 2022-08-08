@@ -9,6 +9,7 @@ interface Props {
   backendPerson: BackendPerson;
   backendParagraf: BackendParagraf;
   setSøk: React.Dispatch<React.SetStateAction<string>>;
+  setHarSøkt: React.Dispatch<React.SetStateAction<Boolean>>;
   setPerson: React.Dispatch<React.SetStateAction<PersonDto | undefined>>;
   setPersoner: React.Dispatch<React.SetStateAction<PersonDto[] | undefined>>;
   setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>;
@@ -23,6 +24,7 @@ export default function Søkefelt(props: Props) {
     backendPerson,
     backendParagraf,
     setSøk,
+    setHarSøkt,
     setPerson,
     setPersoner,
     setOrgnumre,
@@ -54,6 +56,7 @@ export default function Søkefelt(props: Props) {
   };
 
   const handleSubmit = () => {
+    setHarSøkt(true);
     fane === "Person"
       ? backendPerson
           .person(søkefeltInput)

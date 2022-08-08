@@ -31,6 +31,7 @@ export default function MainContainer() {
   const [paragrafSøk, setParagrafSøk] = useState<PersonDto[]>();
   const [anonymisert, setAnonymisert] = useState<Boolean>(false);
   const [søk, setSøk] = useState<string>("");
+  const [harSøkt, setHarSøkt] = useState<Boolean>(false);
 
   const backendPerson: BackendPerson = Environment.isDevelopment
     ? testBackendPerson()
@@ -68,6 +69,7 @@ export default function MainContainer() {
                 backendParagraf={backendParagraf}
                 setOrgnumre={setOrgnumre}
                 setSøk={setSøk}
+                setHarSøkt={setHarSøkt}
                 setPerson={setPerson}
                 setPersoner={setParagrafSøk}
                 setAnonymisert={setAnonymisert}
@@ -81,6 +83,7 @@ export default function MainContainer() {
                   setFraDato={setFraDato}
                   setTilDato={setTilDato}
                   søk={søk}
+                  harSøkt={harSøkt}
                   person={person}
                   anonymisert={anonymisert}
                   fane={"Person"}
@@ -105,6 +108,7 @@ export default function MainContainer() {
                 backendParagraf={backendParagraf}
                 setOrgnumre={setOrgnumre}
                 setSøk={setSøk}
+                setHarSøkt={setHarSøkt}
                 setPerson={setPerson}
                 setPersoner={setParagrafSøk}
                 setAnonymisert={setAnonymisert}
@@ -118,6 +122,7 @@ export default function MainContainer() {
                   setFraDato={setFraDato}
                   setTilDato={setTilDato}
                   søk={søk}
+                  harSøkt={harSøkt}
                   person={person}
                   anonymisert={anonymisert}
                   fane={"Paragraf"}
