@@ -4,6 +4,7 @@ import no.nav.helse.Pseudovedtaksperiode.Companion.finnEiere
 import no.nav.helse.Pseudovedtaksperiode.Companion.håndter
 import no.nav.helse.TestHjelper.Companion.inspektør
 import no.nav.helse.TestHjelper.Companion.lagSporing
+import no.nav.helse.TestHjelper.Companion.lagSporingSyfosSykId
 import no.nav.helse.TestHjelper.Companion.lagSubsumsjon
 import no.nav.helse.TestHjelper.Companion.lagVedtaksPeriode
 import no.nav.helse.TestHjelper.Companion.vedtakFattet
@@ -32,6 +33,37 @@ class PseudovedtaksperiodeTest {
     }
 
     @Test
+    fun `subsumsjon med sykmelidngsid fra kilde syfosmregler finner rett eier (pvp)`() {
+        val sporingEier = lagSporingSyfosSykId(sykmeldingId = listOf("s1"))
+        val sporingIkkeEier = lagSporingSyfosSykId(sykmeldingId = listOf("s2"))
+
+        val pvpEier = lagVedtaksPeriode(2, sporing = sporingEier)
+        val pvpIkkeEier = lagVedtaksPeriode(5, sporing = sporingIkkeEier)
+        val nySubsumsjon = lagSubsumsjon(sporing = sporingEier)
+
+        val pvps = mutableListOf(pvpEier, pvpIkkeEier)
+
+
+        val resultat = pvps.finnEiere(nySubsumsjon)
+        assertEquals(pvpEier, resultat.first())
+    }
+
+    @Test
+    fun `subsumsjon med søknadsid og sykmeldingid fra team syfosmregler finner rett eier`() {
+        val sporingEier = lagSporingSyfosSykId(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"))
+        val sporingIkkeEier = lagSporing(sykmeldingId = listOf("s2"), søknadId = listOf("sø2"))
+
+        val pvpEier = lagVedtaksPeriode(2, sporing = sporingEier)
+        val pvpIkkeEier = lagVedtaksPeriode(5, sporing = sporingIkkeEier)
+        val nySubsumsjon = lagSubsumsjon(sporing = sporingEier)
+
+        val pvps = mutableListOf(pvpEier, pvpIkkeEier)
+
+        val resultat = pvps.finnEiere(nySubsumsjon)
+        assertEquals(pvpEier, resultat.first())
+    }
+
+    @Test
     fun `subsumsjon med søknadsid finner rett eier`() {
         val sporingEier = lagSporing(sykmeldingId = listOf("s1"), søknadId = listOf("sø1"))
         val sporingIkkeEier = lagSporing(sykmeldingId = listOf("s2"), søknadId = listOf("sø2"))
@@ -45,6 +77,8 @@ class PseudovedtaksperiodeTest {
         val resultat = pvps.finnEiere(nySubsumsjon)
         assertEquals(pvpEier, resultat.first())
     }
+
+
 
     @Test
     fun `subsumsjon med vedtaksperiodeid finner rett eier`() {

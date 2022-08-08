@@ -36,7 +36,7 @@ class Konsument(
         try {
             konsument.subscribe(listOf(konfig.topic))
             while (running.get()) {
-                konsument.poll(Duration.ofSeconds(1)).onEach {
+                konsument.poll(Duration.ofSeconds(5)).onEach {
                     val melding = objectMapper.readTree(it.value())
                     håndterSubsumsjon(
                         it.value(),
@@ -47,6 +47,8 @@ class Konsument(
                         melding
                     )
                 }
+                konsument.commitSync()
+
             }
         } catch (err: WakeupException) {
             if (running.get()) throw err
