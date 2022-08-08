@@ -85,6 +85,4 @@ internal abstract class AbstractDatabaseTest {
             "12345"
         )
     }
-
-
 }

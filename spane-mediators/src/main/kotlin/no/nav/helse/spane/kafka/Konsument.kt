@@ -34,8 +34,8 @@ class Konsument(
     private val running = AtomicBoolean(false)
 
     companion object {
-        private val meldingerLestCounter = Counter.build().labelNames("håndtert")
-            .name("spane_meldinger_lest").help("Totalt antall meldinger håndtert").register()
+        private val meldingerLestCounter = Counter.build().labelNames("handled")
+            .name("spane_meldinger_lest").help("Total messages handled").register()
     }
 
     private fun consumeMessages() {
