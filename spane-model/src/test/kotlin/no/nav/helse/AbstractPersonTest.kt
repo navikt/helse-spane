@@ -165,7 +165,9 @@ class TestVisitor : PersonVisitor {
         skjæringstidspunkt: LocalDate?,
         orgnummer: String,
         vedtaksperiodeId: String?,
-        ikkeSikkertSkjæringstidspunkt: Boolean
+        ikkeSikkertSkjæringstidspunkt: Boolean,
+        fom: LocalDate?,
+        tom: LocalDate?
     ) {
         vedtaksperioder.add(
             TestPseudoVedtaksperiode(
