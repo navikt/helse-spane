@@ -84,8 +84,10 @@ internal class Pseudovedtaksperiode(
 
     private fun subsumsjonerMedSøknadsider() = subsumsjoner.subsumsjonerMedSøknadsIder()
 
-    private fun skjæringstidspunkt(): Pair<LocalDate?, Boolean> {
+    private fun skjæringstidspunkt(): Multikomponent {
         var result: LocalDate? = null
+        var vedtaksperiodeFraDato: LocalDate? = null
+        var vedtaksperiodeTilDato: LocalDate? = null
         tilstandsmelding.lastOrNull()?.accept(object : VedtakVisitor {
             override fun visitVedtakFattet(
                 id: String,
@@ -101,16 +103,19 @@ internal class Pseudovedtaksperiode(
                 eventName: String
             ) {
                 result = skjeringstidspunkt
+                vedtaksperiodeFraDato = fom
+                vedtaksperiodeTilDato = tom
             }
         })
+        val returneres = Multikomponent(result, vedtaksperiodeFraDato, vedtaksperiodeTilDato, true)
         if (result == null) {
             val usikkertSkjæringstidspunkt = subsumsjoner.finnSkjæringstidspunkt()
-            return if (usikkertSkjæringstidspunkt != null)
-                Pair(LocalDate.parse(usikkertSkjæringstidspunkt), true)
+            if (usikkertSkjæringstidspunkt != null){
+                returneres.skjæringstidspunkt = LocalDate.parse(usikkertSkjæringstidspunkt)
+            }
             else
-                Pair(result, false)
-        }
-        return Pair(result, false)
+                returneres.skjæringstidspunkt = result}
+        return returneres
     }
 
 
@@ -119,14 +124,16 @@ internal class Pseudovedtaksperiode(
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
-        val (skjæringstidspunkt, flagg) = skjæringstidspunkt()
+        val (skjæringstidspunkt, vedtaksperiodeFraDato, vedtaksperiodeTilDato, flagg) = skjæringstidspunkt()
 
         visitor.visitVedtaksperiode(
             tilstand.toString(),
             skjæringstidspunkt,
             subsumsjoner.finnOrgnummer(),
             subsumsjoner.finnVedtaksperiodeId(),
-            flagg
+            flagg,
+            vedtaksperiodeFraDato,
+            vedtaksperiodeTilDato
         )
         visitor.preVisitSubsumsjoner()
         subsumsjoner.forEach { it.accept(visitor) }
@@ -155,3 +162,4 @@ internal class Pseudovedtaksperiode(
         return false
     }
 }
+data class Multikomponent(var skjæringstidspunkt: LocalDate?, val fraDato: LocalDate?, val tilDato: LocalDate?, val flagg: Boolean)
