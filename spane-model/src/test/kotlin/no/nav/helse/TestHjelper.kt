@@ -62,6 +62,19 @@ internal class TestHjelper {
             )
         }
 
+        fun lagSporingSyfosSykId(
+            sykmeldingId: List<String>,
+            søknadId: List<String> = emptyList(),
+            vedtaksperiodeId: List<String> = emptyList(),
+        ): Map<String, List<String>> {
+
+            return mapOf(
+                "sykmeldingid" to sykmeldingId,
+                "soknad" to søknadId,
+                "vedtaksperiode" to vedtaksperiodeId
+            )
+        }
+
         fun lagSubsumsjon(
             paragraf: String = "8-11",
             tidsstempel: ZonedDateTime = 1.januar(2022),
