@@ -13,7 +13,6 @@ export default function PersonTabell(props: Props) {
 
   return (
     <Table size="medium">
-      <b>Personer:</b>
       {personer && (
         <Table.Body>
           {personer.map((person, personIdx) => {
