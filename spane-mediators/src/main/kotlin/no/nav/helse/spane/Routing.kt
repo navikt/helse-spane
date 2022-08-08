@@ -64,7 +64,35 @@ fun ktorServer(database: PersonRepository): ApplicationEngine =
                         contentType = ContentType.Application.Json,
                         text = objectMapper.writeValueAsString(apiVisitor.personMap)
                     )
+                }
 
+                get("/paragraf/{id?}") {
+                    val id = call.parameters["id"] ?: return@get call.respondText(
+                        "Missing id",
+                        status = HttpStatusCode.BadRequest
+                    )
+
+                    // TODO: Slutt å hardcode dette endepunktet
+
+                    val person = database.hentPerson("02126721911")?.deserialiser() ?: return@get call.respond(
+                        HttpStatusCode.NotFound,
+                        "not found"
+                    )
+                    var apiVisitor = APIVisitor()
+                    person.accept(apiVisitor)
+
+                    val personer = mutableListOf(apiVisitor.personMap)
+                    val nyPerson = database.hentPerson("02028508940")?.deserialiser() ?: return@get call.respond(
+                        HttpStatusCode.NotFound,
+                        "not found"
+                    )
+                    apiVisitor = APIVisitor()
+                    nyPerson.accept(apiVisitor)
+                    personer.add(apiVisitor.personMap)
+                    call.respondText(
+                        contentType = ContentType.Application.Json,
+                        text = objectMapper.writeValueAsString(personer)
+                    )
                 }
             }
         }
