@@ -24,6 +24,7 @@ internal class DatabaseTest : AbstractDatabaseTest() {
 
         assertEquals(pvp, hentetPerson)
         assertEquals(1, objectMapper.readTree(hentetPerson)["vedtaksperioder"][0]["vedtakStatus"].size())
+
     }
 
 }

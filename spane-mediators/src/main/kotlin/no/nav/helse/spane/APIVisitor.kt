@@ -19,7 +19,9 @@ class APIVisitor : PersonVisitor {
         skjæringstidspunkt: LocalDate?,
         orgnummer: String,
         vedtaksperiodeId: String?,
-        ikkeSikkertSkjæringstidspunkt: Boolean
+        ikkeSikkertSkjæringstidspunkt: Boolean,
+        fom: LocalDate?,
+        tom: LocalDate?
     ) {
         (personMap["vedtaksperioder"] as MutableList<APIVedtaksperiode>)
             .add(
@@ -30,7 +32,9 @@ class APIVisitor : PersonVisitor {
                     "skjæringstidspunkt" to skjæringstidspunkt,
                     "vedtaksperiodeId" to vedtaksperiodeId,
                     "tilstand" to tilstand,
-                    "ikkeSikkertSkjæringstidspunkt" to ikkeSikkertSkjæringstidspunkt
+                    "ikkeSikkertSkjæringstidspunkt" to ikkeSikkertSkjæringstidspunkt,
+                    "fom" to fom,
+                    "tom" to tom
                 )
             )
     }
