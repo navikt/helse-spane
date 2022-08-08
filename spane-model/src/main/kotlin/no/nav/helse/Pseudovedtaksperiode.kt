@@ -84,10 +84,10 @@ internal class Pseudovedtaksperiode(
 
     private fun subsumsjonerMedSøknadsider() = subsumsjoner.subsumsjonerMedSøknadsIder()
 
-    private fun skjæringstidspunkt(): Multikomponent {
+    private fun skjæringstidspunkt(): Pair<List<LocalDate?>, Boolean> {
         var result: LocalDate? = null
-        var vedtaksperiodeFraDato: LocalDate? = null
-        var vedtaksperiodeTilDato: LocalDate? = null
+        var vFom: LocalDate? = null
+        var vTom: LocalDate? = null
         tilstandsmelding.lastOrNull()?.accept(object : VedtakVisitor {
             override fun visitVedtakFattet(
                 id: String,
@@ -103,19 +103,20 @@ internal class Pseudovedtaksperiode(
                 eventName: String
             ) {
                 result = skjeringstidspunkt
-                vedtaksperiodeFraDato = fom
-                vedtaksperiodeTilDato = tom
+                vFom = fom
+                vTom = tom
             }
         })
-        val returneres = Multikomponent(result, vedtaksperiodeFraDato, vedtaksperiodeTilDato, true)
+
         if (result == null) {
             val usikkertSkjæringstidspunkt = subsumsjoner.finnSkjæringstidspunkt()
-            if (usikkertSkjæringstidspunkt != null){
-                returneres.skjæringstidspunkt = LocalDate.parse(usikkertSkjæringstidspunkt)
-            }
+            return if (usikkertSkjæringstidspunkt != null)
+                Pair(listOf(LocalDate.parse(usikkertSkjæringstidspunkt), vFom, vTom), true)
             else
-                returneres.skjæringstidspunkt = result}
-        return returneres
+                Pair(listOf(result, vFom, vTom), false)
+        }
+        return Pair(listOf(result, vFom, vTom), false)
+
     }
 
 
@@ -124,7 +125,12 @@ internal class Pseudovedtaksperiode(
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
-        val (skjæringstidspunkt, vedtaksperiodeFraDato, vedtaksperiodeTilDato, flagg) = skjæringstidspunkt()
+        val (skjæringstidspunkter, flagg) = skjæringstidspunkt()
+        //val (skjæringstidspunkt, fom, tom) = skjæringstidspunkter
+        val skjæringstidspunkt = skjæringstidspunkter[0]
+        val fom = skjæringstidspunkter[1]
+        val tom = skjæringstidspunkter[2]
+
 
         visitor.visitVedtaksperiode(
             tilstand.toString(),
@@ -132,8 +138,8 @@ internal class Pseudovedtaksperiode(
             subsumsjoner.finnOrgnummer(),
             subsumsjoner.finnVedtaksperiodeId(),
             flagg,
-            vedtaksperiodeFraDato,
-            vedtaksperiodeTilDato
+            fom,
+            tom
         )
         visitor.preVisitSubsumsjoner()
         subsumsjoner.forEach { it.accept(visitor) }
@@ -162,4 +168,4 @@ internal class Pseudovedtaksperiode(
         return false
     }
 }
-data class Multikomponent(var skjæringstidspunkt: LocalDate?, val fraDato: LocalDate?, val tilDato: LocalDate?, val flagg: Boolean)
+

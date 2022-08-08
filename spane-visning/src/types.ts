@@ -9,6 +9,8 @@ export type VedtaksperiodeDto = {
   skjæringstidspunkt: string | null;
   tilstand: string;
   ikkeSikkertSkjæringstidspunkt: Boolean;
+  fom: string | null;
+  tom: string | null;
 };
 
 export type SubsumsjonDto = {

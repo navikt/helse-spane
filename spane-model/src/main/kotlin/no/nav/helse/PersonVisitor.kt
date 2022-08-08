@@ -24,8 +24,8 @@ interface VedtaksperiodeVisitor : SubsumsjonVisitor, VedtakVisitor {
         orgnummer: String,
         vedtaksperiodeId: String?,
         ikkeSikkertSkjæringstidspunkt: Boolean,
-        vedtaksperiodeFraDato: LocalDate?,
-        vedtaksperiodeTilDato: LocalDate?
+        fom: LocalDate?,
+        tom: LocalDate?
     ) {
     }
 
