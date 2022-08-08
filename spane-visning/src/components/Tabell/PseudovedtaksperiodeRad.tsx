@@ -3,7 +3,8 @@ import React, {useState} from "react";
 import SubsumsjonTabell from "./SubsumsjonTabell";
 import {VedtaksperiodeDto} from "../../types";
 import "./pseudovedtaksperioderad.css";
-import {ErrorColored, SuccessColored} from "@navikt/ds-icons";
+import {ErrorColored, SuccessColored, WarningColored} from "@navikt/ds-icons";
+
 
 interface Props {
     vedtaksperiode: VedtaksperiodeDto;
@@ -17,11 +18,13 @@ export default function PseudovedtaksperiodeRad(props: Props) {
     function vedtakTag(str: string) {
         switch (str) {
             case "VEDTAK_FATTET":
-                return <div className={"tilstands-lable-container vedtak-fattet"}><p className={"lable"}>Vedtak fattet</p></div>;
+                return <div className={"tilstands-lable-container vedtak-fattet"}><p className={"lable"}>Vedtak
+                    fattet</p></div>;
             case "UAVKLART":
                 return <div className={"tilstands-lable-container uavklart"}><p className={"lable"}>Uavklart</p></div>;
             case "TIL_INFOTRYGD":
-                return <div className={"tilstands-lable-container til-infotrygd"}><p className={"lable"}>Til infotrygd</p></div>;
+                return <div className={"tilstands-lable-container til-infotrygd"}><p className={"lable"}>Til
+                    infotrygd</p></div>;
             default:
                 return "white";
         }
@@ -41,11 +44,12 @@ export default function PseudovedtaksperiodeRad(props: Props) {
             style={{cursor: "pointer", backgroundColor: "#E6F0FF"}}
         >
             <Table.DataCell scope="row">
-                <b>
+                <b className={"ikke-sikkert-skjæringstidspunkt-container"}>
                     {" "}
                     {vedtaksperiode.tilstand === 'VEDTAK_FATTET' ? "Vedtaksperiode: " :
-                        (vedtaksperiode.ikkeSikkertSkjæringstidspunkt ? "Skjæringstidspunkt*: "
-                            : "Skjæringstidspunkt: ")} {" "}
+                        (vedtaksperiode.ikkeSikkertSkjæringstidspunkt ?
+                            <div className={"ikke-sikkert-skjæringstidspunkt"}><WarningColored
+                                className={"warning"}/> Skjæringstidspunkt: </div> : "Skjæringstidspunkt: ")} {" "}
                 </b>{" "}
                 {vedtaksperiode.tilstand === 'VEDTAK_FATTET' && vedtaksperiode.fom !== null && vedtaksperiode.tom !== null
                     ? (vedtaksperiode.fom + ' - ' + vedtaksperiode.tom) : (

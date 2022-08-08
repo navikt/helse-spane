@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./MainContainer.css";
 import "@navikt/ds-css";
 import "@navikt/ds-css-internal";
@@ -10,7 +10,7 @@ import { PersonDto } from "../types";
 import { Environment } from "../environment";
 import PseudovedtaksperiodeTabell from "./Tabell/PseudovedtaksperiodeTabell";
 import { Tabs } from "@navikt/ds-react";
-import { Law, People } from "@navikt/ds-icons";
+import {Law, People, WarningColored} from "@navikt/ds-icons";
 import PersonTabell from "./Tabell/PersonTabell";
 
 import {
@@ -130,6 +130,7 @@ export default function MainContainer() {
                   fane={"Paragraf"}
                 />
                 <div className={"tabell-container"}>
+                  <div> * Skjæringstidspunktet kan være feil</div>
                   <PersonTabell
                     personer={paragrafSøk}
                     anonymisert={anonymisert}

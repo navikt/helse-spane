@@ -48,3 +48,16 @@
     height: auto;
     margin: auto;
 }
+
+.ikke-sikkert-skjæringstidspunkt{
+    width: fit-content;
+    display: flex;
+}
+
+.warning{
+    margin-right: 5px;
+}
+
+.warning{
+    margin-right: 5px;
+}
