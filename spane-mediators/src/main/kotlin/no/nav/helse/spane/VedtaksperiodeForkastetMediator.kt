@@ -2,6 +2,7 @@ package no.nav.helse.spane
 
 import com.fasterxml.jackson.databind.JsonNode
 import no.nav.helse.VedtaksperiodeForkastet
+import no.nav.helse.logger
 import no.nav.helse.sikkerlogger
 import no.nav.helse.spane.db.PersonRepository
 import java.time.LocalDateTime
@@ -17,7 +18,8 @@ class VedtaksperiodeForkastetMediator(private val database: PersonRepository) {
         val fnr = melding.get("fodselsnummer").asText()
         val person = database.hentPerson(fnr)?.deserialiser()
         if (person == null) {
-            sikkerlogger.info("Motatt vedtaksperiodeForkastet for person = $fnr som ikke har mottatt subsumsjoner")
+            logger.warn("Motatt vedtaksperiodeForkastet for person som ikke har mottatt subsumsjoner")
+            sikkerlogger.warn("Motatt vedtaksperiodeForkastet for person = $fnr som ikke har mottatt subsumsjoner")
             return
         }
 
