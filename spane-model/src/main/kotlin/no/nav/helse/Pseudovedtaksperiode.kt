@@ -126,11 +126,7 @@ internal class Pseudovedtaksperiode(
 
     fun accept(visitor: VedtaksperiodeVisitor) {
         val (skjæringstidspunkter, flagg) = skjæringstidspunkt()
-        //val (skjæringstidspunkt, fom, tom) = skjæringstidspunkter
-        val skjæringstidspunkt = skjæringstidspunkter[0]
-        val fom = skjæringstidspunkter[1]
-        val tom = skjæringstidspunkter[2]
-
+        val (skjæringstidspunkt, fom, tom) = skjæringstidspunkter
 
         visitor.visitVedtaksperiode(
             tilstand.toString(),
