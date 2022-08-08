@@ -77,7 +77,10 @@ fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
 
 
 fun lesTidsstempel(melding: JsonNode): ZonedDateTime{
-    val tidsstempel = melding.get("tidsstempel")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke sporing felt")
+    val tidsstempel = melding.get("tidsstempel")?.asText() ?: ZonedDateTime.now().toString().also {
+        logger.error("subsumsjon inneholder ikke tidsstempel meldingsid: {}", melding["id"])
+        sikkerlogger.error("subsumsjon inneholder ikke tidsstempel melding: {}", melding)
+    }
     return try {
         ZonedDateTime.parse(tidsstempel)
     }catch (e: DateTimeParseException){
