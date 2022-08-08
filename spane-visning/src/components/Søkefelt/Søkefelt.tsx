@@ -100,7 +100,6 @@ export default function Søkefelt(props: Props) {
             if (event.key === 'Enter') {
                 event.preventDefault();
 
-                // 👇️ your logic here
                 handleSubmit();
             }
         };

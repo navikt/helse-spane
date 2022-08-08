@@ -25,7 +25,7 @@ export default function PersonRad(props: Props) {
       togglePlacement="right"
       open={expand}
       onClick={() => setExpand(!expand)}
-      style={{ cursor: "pointer", backgroundColor: "#E6F0FF" }}
+      style={{ cursor: "pointer", backgroundColor: "#cfd8e6" }}
     >
       <Table.DataCell scope="row">
         <b> Fødselsnummer: </b> {!anonymisert ? person.fnr : "***********"}
