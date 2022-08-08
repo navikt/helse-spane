@@ -1,38 +1,11 @@
 .sidepanel-container {
-  width: 367px;
-  padding: 20px;
-  border-right: solid black;
+    width: 367px;
+    padding: 20px;
+    border-right: solid black;
 }
 
-.date-picker-group {
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px;
-}
-
-.date-picker-container {
-  display: flex;
-  flex-direction: row;
-  margin-top: 10px;
-}
-
-.velg-tid-overskrift-container {
-  display: flex;
-  flex-direction: row;
-  margin-top: 40px;
-}
-
-
-.checkbox-group-container {
-  margin-top: 30px;
-}
-
-.personnummer-container{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-h3{
-  margin-left: 10px;
+.fødselsnummer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
