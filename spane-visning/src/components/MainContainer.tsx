@@ -30,7 +30,7 @@ export default function MainContainer() {
   const [person, setPerson] = useState<PersonDto>();
   const [paragrafSøk, setParagrafSøk] = useState<PersonDto[]>();
   const [anonymisert, setAnonymisert] = useState<Boolean>(false);
-  const [søk, setSøk] = useState<string>("");
+  const [søketekst, setSøketekst] = useState<string>("");
   const [harSøkt, setHarSøkt] = useState<Boolean>(false);
 
   const backendPerson: BackendPerson = Environment.isDevelopment
@@ -64,12 +64,12 @@ export default function MainContainer() {
           <Tabs.Panel value="Person" className="h-24 w-full bg-gray-50 p-8">
             <div className="ytre-main-container">
               <Søkefelt
-                fødselsnummer={søk}
+                fødselsnummer={søketekst}
                 backendPerson={backendPerson}
                 backendParagraf={backendParagraf}
                 setOrgnumre={setOrgnumre}
-                søk={søk}
-                setSøk={setSøk}
+                søketekst={søketekst}
+                setSøketekst={setSøketekst}
                 setHarSøkt={setHarSøkt}
                 setPerson={setPerson}
                 setPersoner={setParagrafSøk}
@@ -83,7 +83,7 @@ export default function MainContainer() {
                   setValgte={setValgte}
                   setFraDato={setFraDato}
                   setTilDato={setTilDato}
-                  søk={søk}
+                  søk={søketekst}
                   harSøkt={harSøkt}
                   person={person}
                   anonymisert={anonymisert}
@@ -104,12 +104,12 @@ export default function MainContainer() {
           <Tabs.Panel value="Paragraf" className="h-24 w-full bg-gray-50 p-8">
             <div className="ytre-main-container">
               <Søkefelt
-                fødselsnummer={søk}
+                fødselsnummer={søketekst}
                 backendPerson={backendPerson}
                 backendParagraf={backendParagraf}
                 setOrgnumre={setOrgnumre}
-                søk={søk}
-                setSøk={setSøk}
+                søketekst={søketekst}
+                setSøketekst={setSøketekst}
                 setHarSøkt={setHarSøkt}
                 setPerson={setPerson}
                 setPersoner={setParagrafSøk}
@@ -123,7 +123,7 @@ export default function MainContainer() {
                   setValgte={setValgte}
                   setFraDato={setFraDato}
                   setTilDato={setTilDato}
-                  søk={søk}
+                  søk={søketekst}
                   harSøkt={harSøkt}
                   person={person}
                   anonymisert={anonymisert}
