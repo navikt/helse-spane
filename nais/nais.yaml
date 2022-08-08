@@ -21,6 +21,9 @@ spec:
   {{/each}}
   kafka:
     pool: {{kafka-pool}}
+  prometheus:
+    enabled: true
+    path: /metrics
   secureLogs:
     enabled: true
   gcp:
