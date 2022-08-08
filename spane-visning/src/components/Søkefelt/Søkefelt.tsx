@@ -1,8 +1,9 @@
 import { Checkbox, CheckboxGroup, Search } from "@navikt/ds-react";
-import React, { useState } from "react";
+import React, {SyntheticEvent, useEffect, useState} from "react";
 import { BackendParagraf, BackendPerson } from "../../service";
 import { PersonDto } from "../../types";
 import "./søkefelt.css";
+import Any = jasmine.Any;
 
 interface Props {
   fødselsnummer: string;
@@ -37,6 +38,27 @@ export default function Søkefelt(props: Props) {
 
   const [feilmelding, setFeilmelding] = useState<string>("");
 
+
+  const [søkefeltInput, setSøkefeltInput] = useState<string>("");
+
+  const handleChangeFnr = (inputSøk: string) => {
+    setSøkefeltInput(inputSøk);
+    //   TODO saniter input og sett feilmelding?
+    // if (fane === "Person") {
+    //   if (!/^\d+$/.test(inputSøk)) {
+    //     setFeilmelding("Fødselsnummer kan kun være tall");
+    //     return;
+    //   }
+    //   if (inputSøk.length < 11) {
+    //     setFeilmelding("Fødselsnummer må være 11 siffer lang");
+    //     return;
+    //   }
+    //   setFeilmelding("");
+    //   setSøk(søkefeltInput);
+    // }
+    setSøk(søkefeltInput);
+  };
+
   const handleSubmit = () => {
     setHarSøkt(true);
     if (fane === "Person" && !/^\d+$/.test(søk)) {
@@ -69,6 +91,25 @@ export default function Søkefelt(props: Props) {
           setPersoner(r);
         });
   };
+
+  useEffect(() => {
+    const keyDownHandler = (event: { key: string; preventDefault: () => void; }) => {
+      console.log('User pressed: ', event.key);
+
+      if (event.key === 'Enter') {
+        event.preventDefault();
+
+        // 👇️ your logic here
+        handleSubmit();
+      }
+    };
+
+    document.addEventListener('keydown', keyDownHandler);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, []);
 
   return (
     <div className="søkefelt-container">
