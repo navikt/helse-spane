@@ -19,7 +19,6 @@ export default function PseudovedtaksperiodeTabell(props: Props) {
     <Table size="medium">
       {person && (
         <Table.Body>
-          <b>Vedtaksperioder:</b>{" "}
           {filtrerPseudovedtaksperioder(person, valgte, fraDato, tilDato).map(
             (vedtaksperiode: VedtaksperiodeDto, vedtaksperiodeIdx) => (
               <PseudovedtaksperiodeRad

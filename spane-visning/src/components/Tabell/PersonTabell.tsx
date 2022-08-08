@@ -13,9 +13,9 @@ export default function PersonTabell(props: Props) {
 
   return (
     <Table size="medium">
+      <b>Personer:</b>
       {personer && (
         <Table.Body>
-          <b>Personer:</b>
           {personer.map((person, personIdx) => {
             return (
               <PersonRad
