@@ -57,6 +57,7 @@ class Konfig(
         put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
         put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false)
         put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, 600000)
+        put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 50)
 
         if (kafkaKeyStorePath != null) {
             this += sslConfig()
