@@ -6,3 +6,45 @@
 #arbeidsgiver-helptext {
     margin-right: 10px;
 }
+
+.tilstands-container{
+    border-radius: 5px;
+    border-width: 4px;
+    padding: 5px;
+    align-items: center;
+    display: flex;
+}
+
+.tilstands-lable-container{
+    border-style: solid;
+    height: fit-content;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 1px 5px 1px 5px;
+    margin-left: 5px;
+    align-items: center;
+    display: flex;
+}
+
+.uavklart{
+    border-color: #e6b987;
+    height: fit-content;
+    background-color: #ffe7cb;
+}
+
+.vedtak-fattet{
+    border-color: #c1e6b1;
+    height: fit-content;
+    background-color: #e6ffdc;
+}
+
+.til-infotrygd{
+    border-color: #ea9b83;
+    height: fit-content;
+    background-color: #ffe6e6;
+}
+
+.lable{
+    height: auto;
+    margin: auto;
+}
