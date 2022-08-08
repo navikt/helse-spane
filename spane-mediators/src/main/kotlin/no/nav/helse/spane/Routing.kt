@@ -11,11 +11,15 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.prometheus.client.CollectorRegistry.defaultRegistry
+import io.prometheus.client.exporter.common.TextFormat
 import no.nav.helse.logger
 import no.nav.helse.spane.db.PersonRepository
 
 fun ktorServer(database: PersonRepository): ApplicationEngine =
     embeddedServer(CIO, applicationEngineEnvironment {
+
+        val appMicrometerRegistry = defaultRegistry
 
         log = logger
         connector {
@@ -39,6 +43,11 @@ fun ktorServer(database: PersonRepository): ApplicationEngine =
                 }
                 static("/") {
                     resources("static/")
+                }
+                get("/metrics") {
+                    call.respondTextWriter(ContentType.parse(TextFormat.CONTENT_TYPE_004)) {
+                        TextFormat.write004(this, appMicrometerRegistry.metricFamilySamples())
+                    }
                 }
                 get("/isalive") {
                     call.respondText("OK")
@@ -67,10 +76,10 @@ fun ktorServer(database: PersonRepository): ApplicationEngine =
                 }
 
                 get("/paragraf/{id?}") {
-                    val id = call.parameters["id"] ?: return@get call.respondText(
-                        "Missing id",
-                        status = HttpStatusCode.BadRequest
-                    )
+//                    val id = call.parameters["id"] ?: return@get call.respondText(
+//                        "Missing id",
+//                        status = HttpStatusCode.BadRequest
+//                    )
 
                     // TODO: Slutt å hardcode dette endepunktet
 
