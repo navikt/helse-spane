@@ -84,8 +84,10 @@ internal class Pseudovedtaksperiode(
 
     private fun subsumsjonerMedSøknadsider() = subsumsjoner.subsumsjonerMedSøknadsIder()
 
-    private fun skjæringstidspunkt(): Pair<LocalDate?, Boolean> {
+    private fun skjæringstidspunkt(): Pair<List<LocalDate?>, Boolean> {
         var result: LocalDate? = null
+        var vFom: LocalDate? = null
+        var vTom: LocalDate? = null
         tilstandsmelding.lastOrNull()?.accept(object : VedtakVisitor {
             override fun visitVedtakFattet(
                 id: String,
@@ -101,16 +103,20 @@ internal class Pseudovedtaksperiode(
                 eventName: String
             ) {
                 result = skjeringstidspunkt
+                vFom = fom
+                vTom = tom
             }
         })
+
         if (result == null) {
             val usikkertSkjæringstidspunkt = subsumsjoner.finnSkjæringstidspunkt()
             return if (usikkertSkjæringstidspunkt != null)
-                Pair(LocalDate.parse(usikkertSkjæringstidspunkt), true)
+                Pair(listOf(LocalDate.parse(usikkertSkjæringstidspunkt), vFom, vTom), true)
             else
-                Pair(result, false)
+                Pair(listOf(result, vFom, vTom), false)
         }
-        return Pair(result, false)
+        return Pair(listOf(result, vFom, vTom), false)
+
     }
 
 
@@ -119,14 +125,21 @@ internal class Pseudovedtaksperiode(
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
-        val (skjæringstidspunkt, flagg) = skjæringstidspunkt()
+        val (skjæringstidspunkter, flagg) = skjæringstidspunkt()
+        //val (skjæringstidspunkt, fom, tom) = skjæringstidspunkter
+        val skjæringstidspunkt = skjæringstidspunkter[0]
+        val fom = skjæringstidspunkter[1]
+        val tom = skjæringstidspunkter[2]
+
 
         visitor.visitVedtaksperiode(
             tilstand.toString(),
             skjæringstidspunkt,
             subsumsjoner.finnOrgnummer(),
             subsumsjoner.finnVedtaksperiodeId(),
-            flagg
+            flagg,
+            fom,
+            tom
         )
         visitor.preVisitSubsumsjoner()
         subsumsjoner.forEach { it.accept(visitor) }
@@ -155,3 +168,4 @@ internal class Pseudovedtaksperiode(
         return false
     }
 }
+

@@ -28,11 +28,14 @@ export default function PseudovedtaksperiodeRad(props: Props) {
       <Table.DataCell scope="row">
         <b>
           {" "}
-          {vedtaksperiode.ikkeSikkertSkjæringstidspunkt
-            ? "Skjæringstidspunkt*: "
-            : "Skjæringstidspunkt: "}{" "}
+          {vedtaksperiode.tilstand === 'VEDTAK_FATTET' ? "Vedtaksperiode: " :
+              (vedtaksperiode.ikkeSikkertSkjæringstidspunkt ? "Skjæringstidspunkt*: "
+              : "Skjæringstidspunkt: ") } {" "}
         </b>{" "}
-        {vedtaksperiode.skjæringstidspunkt ?? "ukjent"}
+        {vedtaksperiode.tilstand === 'VEDTAK_FATTET' && vedtaksperiode.fom !== null && vedtaksperiode.tom !== null
+            ? (vedtaksperiode.fom + ' -> ' + vedtaksperiode.tom) : (
+                vedtaksperiode.skjæringstidspunkt ?? "ukjent"
+            ) }
       </Table.DataCell>
       <Table.DataCell scope="row">
         <div className="arbeidsgiver-container">

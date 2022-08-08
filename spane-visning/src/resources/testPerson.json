@@ -587,6 +587,4263 @@
       "vedtaksperiodeId": "a1c1d187-1746-4c79-8c87-5e3dcfc1fdcd",
       "tilstand": "UAVKLART",
       "ikkeSikkertSkjæringstidspunkt": true
+    },
+    {
+      "subsumsjoner": [
+        {
+          "id": "a291d8e3-05ac-49cf-9dbc-98960527427f",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.835209364+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-3",
+          "ledd": 1,
+          "punktum": 2,
+          "bokstav": "null",
+          "input": {
+            "forsteFomDato": "2022-01-01",
+            "pasientFodselsdato": "1980-02-16"
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "14c89f58-acf5-4a00-87e7-f8314898838c",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.871124266+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7170",
+              "kode": "L87",
+              "tekst": "TENDINITT INA"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "04ea796a-4e29-43e6-9517-2ea048495dd5",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.87403231+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 2,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7170",
+              "kode": "L87",
+              "tekst": "TENDINITT INA"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "1fd62acc-f918-4690-8b90-76d8b839c839",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.876682596+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "annenFraversArsak": null,
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7170",
+              "kode": "L87",
+              "tekst": "TENDINITT INA"
+            }
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "fc08b973-5331-41c6-baa0-42c6babdf96b",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.880861805+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "hoveddiagnose": {
+              "system": "2.16.578.1.12.4.1.1.7170",
+              "kode": "L87",
+              "tekst": "TENDINITT INA"
+            },
+            "annenFravarsArsak": null
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "4ff1283e-5e59-4490-945a-db64544b9275",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.884429261+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-4",
+          "ledd": 1,
+          "punktum": 1,
+          "bokstav": "null",
+          "input": {
+            "biDiagnoser": [
+              {
+                "system": "2.16.578.1.12.4.1.1.7170",
+                "kode": "L87",
+                "tekst": "GANGLION SENE"
+              }
+            ]
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "362cd1bd-2139-4d0b-bde6-63e5ac2329d2",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.886750042+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-13",
+          "ledd": 1,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "perioder": [
+              {
+                "fom": "2022-01-01",
+                "tom": "2022-06-30",
+                "aktivitetIkkeMulig": {
+                  "medisinskArsak": {
+                    "beskrivelse": "andre årsaker til sykefravær",
+                    "arsak": [
+                      "AKTIVITET_FORHINDRER_BEDRING"
+                    ]
+                  },
+                  "arbeidsrelatertArsak": {
+                    "beskrivelse": "andre årsaker til sykefravær",
+                    "arsak": [
+                      "ANNET"
+                    ]
+                  }
+                },
+                "avventendeInnspillTilArbeidsgiver": null,
+                "behandlingsdager": null,
+                "gradert": null,
+                "reisetilskudd": false
+              }
+            ]
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "6fe2cb4f-fbc9-4123-ac0b-3f98900460b8",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.889107989+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-01-01T00:00:00",
+            "forsteFomDato": "2022-01-01",
+            "begrunnelseIkkeKontakt": null,
+            "erKoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "0c4be66e-bc82-42bc-be74-9926c1182d42",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.891412399+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "erEttersendingAvTidligereSykmelding": null,
+            "erFraSpesialisthelsetjenesten": false,
+            "behandletTidspunkt": "2022-01-01T00:00:00",
+            "forsteFomDato": "2022-01-01",
+            "sisteTomDato": "2022-06-30",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "910a08ab-aab5-4976-87f3-340590dac407",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.894834077+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-01-01T00:00:00",
+            "forsteFomDato": "2022-01-01",
+            "sisteTomDato": "2022-06-30",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false,
+            "kontaktMedPasientDato": null
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "e39ec400-17c5-4865-9686-1c784bc08a51",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.897428671+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-01-01T00:00:00",
+            "forsteFomDato": "2022-01-01",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "0527f7bf-c72e-45b3-a070-c9de0f712de3",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.900461348+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletTidspunkt": "2022-01-01T00:00:00",
+            "forsteFomDato": "2022-01-01",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false,
+            "utdypendeOpplysninger": {
+              "6.2": {
+                "6.2.1": {
+                  "sporsmal": "Beskriv kort sykehistorie, symptomer og funn i dagens situasjon.",
+                  "svar": "Langvarig korsryggsmerter. Ømhet og smerte",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.2.4": {
+                  "sporsmal": "Beskriv Pågående og planlagt henvisning, utredning og/eller behandling",
+                  "svar": "Henvist til fysio",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.2.2": {
+                  "sporsmal": "Hvordan påvirker sykdommen arbeidsevnen",
+                  "svar": "Kan ikke utføre arbeidsoppgaver 100% som kreves fra yrket. Duplikatbuster: 46bf6eb8-3dd7-4c7f-9886-8b3552e04417",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.2.3": {
+                  "sporsmal": "Har behandlingen frem til nå bedret arbeidsevnen?",
+                  "svar": "Nei",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                }
+              }
+            },
+            "meldingTilNav": null
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "9ad6ca9f-7017-48a5-96df-3a3b0fc02d89",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.906158167+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "erEttersendingAvTidligereSykmelding": null,
+            "erFraSpesialisthelsetjenesten": false,
+            "behandletTidspunkt": "2022-01-01T00:00:00",
+            "forsteFomDato": "2022-01-01",
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false,
+            "utdypendeOpplysninger": {
+              "6.2": {
+                "6.2.1": {
+                  "sporsmal": "Beskriv kort sykehistorie, symptomer og funn i dagens situasjon.",
+                  "svar": "Langvarig korsryggsmerter. Ømhet og smerte",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.2.4": {
+                  "sporsmal": "Beskriv Pågående og planlagt henvisning, utredning og/eller behandling",
+                  "svar": "Henvist til fysio",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.2.2": {
+                  "sporsmal": "Hvordan påvirker sykdommen arbeidsevnen",
+                  "svar": "Kan ikke utføre arbeidsoppgaver 100% som kreves fra yrket. Duplikatbuster: 46bf6eb8-3dd7-4c7f-9886-8b3552e04417",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                },
+                "6.2.3": {
+                  "sporsmal": "Har behandlingen frem til nå bedret arbeidsevnen?",
+                  "svar": "Nei",
+                  "restriksjoner": [
+                    "SKJERMET_FOR_ARBEIDSGIVER"
+                  ]
+                }
+              }
+            },
+            "meldingTilNav": null
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        },
+        {
+          "id": "f674b63e-11a9-46be-a0fc-fbf96fbe7cf8",
+          "versjon": "1.0.0",
+          "eventName": "subsumsjon",
+          "kilde": "syfosmregler",
+          "versjonAvKode": "docker.pkg.github.com/navikt/syfosmregler/syfosmregler:81bc922bd3c8b888c71b65ca0e4aebad19d6947b",
+          "fodselsnummer": "16028024049",
+          "sporing": {
+            "sykmelding": [
+              "58137666-19d3-43e2-81f7-5c8ef20a57ad"
+            ]
+          },
+          "tidsstempel": "2022-03-09T10:12:35.908616013+01:00",
+          "lovverk": "folketrygdloven",
+          "lovverksversjon": "2022-01-01",
+          "paragraf": "8-7",
+          "ledd": 2,
+          "punktum": 0,
+          "bokstav": "null",
+          "input": {
+            "erNyttSyketilfelle": true,
+            "behandletDato": "2022-01-01",
+            "forsteFomDato": "2022-01-01",
+            "kontaktDato": null,
+            "begrunnelseIkkeKontakt": null,
+            "erCoronaRelatert": false
+          },
+          "output": {},
+          "utfall": "VILKAR_OPPFYLT"
+        }
+      ],
+      "vedtakStatus": [
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        },
+        {
+          "id": "f64e061f-3924-4362-8fb8-e96373154bd8",
+          "fom": "2021-10-21",
+          "tom": "2021-10-27",
+          "eventName": "vedtakFattet",
+          "hendelser": [
+            "12e11bb9-ea57-4911-8a16-193ff66896b3",
+            "dc649522-f6c6-4894-8603-d845eb99773c"
+          ],
+          "tidsstempel": "2022-02-15T15:54:57.287877856",
+          "utbetalingId": "null",
+          "fodselsnummer": "19116920428",
+          "vedtaksperiodeId": "a0663885-3fa8-4f15-a52b-15d9e4ded5f0",
+          "skjeringstidspunkt": "2021-10-21",
+          "organisasjonsnummer": "896929119"
+        }
+      ],
+      "orgnummer": "ukjent",
+      "skjæringstidspunkt": "2021-10-21",
+      "vedtaksperiodeId": null,
+      "tilstand": "VEDTAK_FATTET",
+      "ikkeSikkertSkjæringstidspunkt": false,
+      "fom": "2021-10-21",
+      "tom": "2021-10-27"
     }
   ],
   "fnr": "22018219453"
