@@ -115,7 +115,6 @@ internal class E2ETest : AbstractDatabaseTest() {
     }
 
     @Test
-    @Disabled("Vet ikke hva som er galt, hva er vel det verste som kan skje om jeg skrur den av")
     fun `blir en melding lest`() {
         startApp()
         produceToTopic(listOf(testSubsumsjon, testVedtakFattet))
