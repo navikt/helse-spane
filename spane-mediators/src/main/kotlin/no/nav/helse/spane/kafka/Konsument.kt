@@ -1,5 +1,6 @@
 package no.nav.helse.spane.kafka
 
+import io.prometheus.client.Counter
 import no.nav.helse.Konfig
 import no.nav.helse.logger
 import no.nav.helse.spane.SubsumsjonMediator
@@ -32,23 +33,30 @@ class Konsument(
     )
     private val running = AtomicBoolean(false)
 
+    companion object {
+        private val meldingerLestCounter = Counter.build().labelNames("håndtert")
+            .name("spane_meldinger_lest").help("Totalt antall meldinger håndtert").register()
+    }
+
     private fun consumeMessages() {
         var lastException: Exception? = null
         try {
             konsument.subscribe(listOf(konfig.topic))
             while (running.get()) {
                 konsument.poll(Duration.ofSeconds(5)).onEach {
-
-
                     val melding = objectMapper.readTree(it.value())
-                    if (subsumsjonMediator.håndterer(melding))
+                    if (subsumsjonMediator.håndterer(melding)) {
                         subsumsjonMediator.håndterSubsumsjon(melding)
-                    else if (vedtakFattetMediator.håndterer(melding))
+                        meldingerLestCounter.labels("subsumsjon").inc()
+                    } else if (vedtakFattetMediator.håndterer(melding)) {
                         vedtakFattetMediator.håndterVedtakFattet(melding)
-                    else if (vedtaksperiodeForkastetMediator.håndtererForkastetVedtak(melding))
+                        meldingerLestCounter.labels("vedtak_fattet").inc()
+
+                    } else if (vedtaksperiodeForkastetMediator.håndtererForkastetVedtak(melding)) {
                         vedtaksperiodeForkastetMediator.håndterForkastetVedtaksperiode(melding)
-
-
+                        meldingerLestCounter.labels("vedtaksperiode_forkastet").inc()
+                    } else
+                        meldingerLestCounter.labels("melding_ikke_lest").inc()
                 }
                 konsument.commitSync()
 
