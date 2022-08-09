@@ -9,11 +9,13 @@ import javax.sql.DataSource
 internal class PersonPostgresRepository(private val dataSource: DataSource) : PersonRepository {
 
     override fun hentPerson(fnr: String): SerialisertPerson? {
+        @Language("PostgreSQL")
         val statement = "SELECT data FROM person WHERE fnr = ?"
         return hentPerson(queryOf(statement, fnr))
     }
 
     override fun lagre(json: String, fnr: String) {
+        @Language("PostgreSQL")
         val statement = "INSERT INTO person (fnr, data) VALUES (?, ?::JSON)" +
                 " ON CONFLICT (fnr)" +
                 " DO" +
@@ -37,7 +39,7 @@ internal class PersonPostgresRepository(private val dataSource: DataSource) : Pe
                 " NOTHING "
 
         sessionOf(dataSource).use { session ->
-            val id = session.run(queryOf(statement, paragraf, ledd, bokstav, punktum).asUpdate)
+            val id = session.run(queryOf(statement, paragraf, ledd, bokstav, punktum).asUpdateAndReturnGeneratedKey)
             session.run(queryOf(statement2, fnr, id).asUpdate)
         }
     }
