@@ -33,7 +33,9 @@ export default function MainContainer() {
     const [søketekst, setSøketekst] = useState<string>("");
     const [harSøkt, setHarSøkt] = useState<Boolean>(false);
     const [laster, setLaster] = useState<boolean>(false);
-    const [responsSuksess, setResponsSuksess] = useState<boolean | null>(null);
+    const [responsSuksessPerson, setResponsSuksessPerson] = useState<boolean | null>(null);
+    const [responsSuksessParagraf, setResponsSuksessParagraf] = useState<boolean | null>(null);
+
 
 
     const backendPerson: BackendPerson = Environment.isDevelopment
@@ -79,7 +81,7 @@ export default function MainContainer() {
                                 setAnonymisert={setAnonymisert}
                                 anonymisert={anonymisert}
                                 fane={"Person"}
-                                setResponsSuksess={setResponsSuksess}
+                                setResponsSuksess={setResponsSuksessPerson}
                                 setLaster={setLaster}
                             />
                             <div className="indre-main-container">
@@ -94,7 +96,7 @@ export default function MainContainer() {
                                     anonymisert={anonymisert}
                                     fane={"Person"}
                                 />
-                                <div className={"tabell-container"}>
+                                <div className="tabell-container">
                                     {laster ? (
                                         <Loader
                                             variant="interaction"
@@ -102,13 +104,13 @@ export default function MainContainer() {
                                             title="venter..."
                                         />
                                     ) : (
-                                        <PseudovedtaksperiodeTabell
+                                        responsSuksessPerson === null ? "" : (responsSuksessPerson ? <PseudovedtaksperiodeTabell
                                             valgte={valgte}
                                             fraDato={fraDato}
                                             tilDato={tilDato}
                                             person={person}
                                             anonymisert={anonymisert}
-                                        />
+                                        /> : (<div> Ingen resultater, prøv et annet fnr </div>))
                                     )}
                                 </div>
                             </div>
@@ -129,7 +131,7 @@ export default function MainContainer() {
                                 setAnonymisert={setAnonymisert}
                                 anonymisert={anonymisert}
                                 fane={"Paragraf"}
-                                setResponsSuksess={setResponsSuksess}
+                                setResponsSuksess={setResponsSuksessParagraf}
                                 setLaster={setLaster}
                             />
                             <div className="indre-main-container">
@@ -153,10 +155,10 @@ export default function MainContainer() {
                                             title="venter..."
                                         />
                                     ) : (
-                                        responsSuksess ? <PersonTabell
+                                        responsSuksessParagraf === null ? "" : responsSuksessParagraf ? <PersonTabell
                                             personer={personer}
                                             anonymisert={anonymisert}
-                                        /> : (<div> Ingen resultater, prøv et annet fnr </div>)
+                                        /> : (<div> Ingen resultater, prøv en annen paragraf </div>)
                                     )}
                                 </div>
                             </div>
