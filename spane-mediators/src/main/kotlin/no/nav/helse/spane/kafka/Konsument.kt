@@ -1,9 +1,11 @@
 package no.nav.helse.spane.kafka
 
+import io.prometheus.client.Counter
 import no.nav.helse.Konfig
 import no.nav.helse.logger
-import no.nav.helse.spane.VedtaksperiodeForkastetMediator
+import no.nav.helse.spane.SubsumsjonMediator
 import no.nav.helse.spane.VedtakFattetMediator
+import no.nav.helse.spane.VedtaksperiodeForkastetMediator
 import no.nav.helse.spane.db.PersonRepository
 import no.nav.helse.spane.objectMapper
 import org.apache.kafka.clients.consumer.KafkaConsumer
@@ -16,8 +18,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 class Konsument(
     private val konfig: Konfig,
     clientId: String = UUID.randomUUID().toString().slice(1..5),
-    private val håndterSubsumsjon: (input: String, database: PersonRepository) -> Any?,
     private val personRepository: PersonRepository,
+    private val subsumsjonMediator: SubsumsjonMediator = SubsumsjonMediator(personRepository),
     private val vedtakFattetMediator: VedtakFattetMediator = VedtakFattetMediator(personRepository),
     private val vedtaksperiodeForkastetMediator: VedtaksperiodeForkastetMediator = VedtaksperiodeForkastetMediator(
         personRepository
@@ -31,22 +33,33 @@ class Konsument(
     )
     private val running = AtomicBoolean(false)
 
+    companion object {
+        private val meldingerLestCounter = Counter.build().labelNames("handled")
+            .name("spane_meldinger_lest").help("Total messages handled").register()
+    }
+
     private fun consumeMessages() {
         var lastException: Exception? = null
         try {
             konsument.subscribe(listOf(konfig.topic))
             while (running.get()) {
-                konsument.poll(Duration.ofSeconds(1)).onEach {
+                konsument.poll(Duration.ofSeconds(5)).onEach {
                     val melding = objectMapper.readTree(it.value())
-                    håndterSubsumsjon(
-                        it.value(),
-                        personRepository
-                    ) // TODO: hvorfor ha if inne i funksjonen her også ikke i de andre to?
-                    if (vedtakFattetMediator.håndterer(melding)) vedtakFattetMediator.håndterVedtakFattet(melding)
-                    else if (vedtaksperiodeForkastetMediator.håndtererForkastetVedtak(melding)) vedtaksperiodeForkastetMediator.håndterForkastetVedtaksperiode(
-                        melding
-                    )
+                    if (subsumsjonMediator.håndterer(melding)) {
+                        subsumsjonMediator.håndterSubsumsjon(melding)
+                        meldingerLestCounter.labels("subsumsjon").inc()
+                    } else if (vedtakFattetMediator.håndterer(melding)) {
+                        vedtakFattetMediator.håndterVedtakFattet(melding)
+                        meldingerLestCounter.labels("vedtak_fattet").inc()
+
+                    } else if (vedtaksperiodeForkastetMediator.håndtererForkastetVedtak(melding)) {
+                        vedtaksperiodeForkastetMediator.håndterForkastetVedtaksperiode(melding)
+                        meldingerLestCounter.labels("vedtaksperiode_forkastet").inc()
+                    } else
+                        meldingerLestCounter.labels("melding_ikke_lest").inc()
                 }
+                konsument.commitSync()
+
             }
         } catch (err: WakeupException) {
             if (running.get()) throw err

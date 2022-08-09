@@ -6,3 +6,58 @@
 #arbeidsgiver-helptext {
     margin-right: 10px;
 }
+
+.tilstands-container{
+    border-radius: 5px;
+    border-width: 4px;
+    padding: 5px;
+    align-items: center;
+    display: flex;
+}
+
+.tilstands-lable-container{
+    border-style: solid;
+    height: fit-content;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 1px 5px 1px 5px;
+    margin-left: 5px;
+    align-items: center;
+    display: flex;
+}
+
+.uavklart{
+    background-color: #dde3eb;
+    border-color: #4f5459;
+    height: fit-content;
+}
+
+.vedtak-fattet{
+    background-color: #e6ffdc;
+    border-color: #5b6c53;
+    height: fit-content;
+}
+
+.til-infotrygd{
+    background-color: #ffe7cb;
+    border-color: #8d7254;
+    height: fit-content;
+}
+
+.lable{
+    height: auto;
+    margin: auto;
+}
+
+.ikke-sikkert-skjæringstidspunkt{
+    width: fit-content;
+    display: flex;
+}
+
+.warning{
+    margin-right: 5px;
+}
+
+.warning{
+    margin-right: 5px;
+}
