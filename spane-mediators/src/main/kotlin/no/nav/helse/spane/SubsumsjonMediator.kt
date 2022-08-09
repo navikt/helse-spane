@@ -78,10 +78,16 @@ private fun lesTidsstempel(melding: JsonNode): ZonedDateTime {
 
 fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
     var bokstav = melding.get("bokstav")?.asText()
+    if (bokstav != null) {
+        if(bokstav.length>1){
+            sikkerlogger.info("Fant melding med for lang bokstav: {}", melding)
+        }
+    }
     if (bokstav == "null") {
         bokstav = null
         sikkerlogger.info("Fant melding hvor bokstav var \"null\" : {}", melding)
     }
+
     var punktum = melding.get("punktum")?.asInt()
     if (punktum == 0) {
         punktum = null
