@@ -22,7 +22,8 @@ internal class DatabaseTest : AbstractDatabaseTest() {
 
         val hentetPerson = hentPersonJson()
 
-        assertEquals(pvp, hentetPerson)
+
+        assertEquals(objectMapper.readTree(pvp), objectMapper.readTree(hentetPerson))
         assertEquals(1, objectMapper.readTree(hentetPerson)["vedtaksperioder"][0]["vedtakStatus"].size())
 
     }
