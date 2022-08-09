@@ -14,14 +14,6 @@ internal class PersonTest : AbstractPersonTest() {
         sendSøknadSubsumsjon()
         sendVedtakSubsumsjon()
 
-        /*
-        TODO, når steg 4 blir implementert vil denne gå i stykker
-         - vedtaksperiodeIndeks vil være 0 hver gang
-         - Nå endrer den seg siden vi lager nye pvper,
-           uten å rydde opp i pvper som bare har subsumsjoner som finnes i andre pvper (som er steg 4)
-         - løsning bør bare være å fjerne det ekstra parameteret
-         */
-
         assertSporing(sykmeldingUUID)
         assertSporing(sykmeldingUUID)
         assertSporing(sykmeldingUUID, søknadUUID, vedtaksperiodeUUID)

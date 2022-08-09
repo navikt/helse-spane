@@ -51,6 +51,7 @@ class SubsumsjonMediator(private val database: PersonRepository) {
         person.accept(DBVisitor)
         val personJson = objectMapper.writeValueAsString(DBVisitor.personMap)
         database.lagre(personJson, fnr)
+        database.lagreParagrafkobling(melding["paragraf"].asText(), melding["ledd"]?.asInt(), melding["bokstav"]?.asText(), melding["punktum"]?.asInt(), fnr)
     }
 
 
