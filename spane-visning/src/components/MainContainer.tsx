@@ -30,10 +30,13 @@ export default function MainContainer() {
     const [person, setPerson] = useState<PersonDto>();
     const [personer, setPersoner] = useState<PersonDto[]>();
     const [anonymisert, setAnonymisert] = useState<Boolean>(false);
-    const [søketekst, setSøketekst] = useState<string>("");
+    const [søkFødselsnummer, setSøkFødselsnummer] = useState<string>("");
+    const [søkParagraf, setSøkParagraf] = useState<string>("");
     const [harSøkt, setHarSøkt] = useState<Boolean>(false);
     const [laster, setLaster] = useState<boolean>(false);
-    const [responsSuksess, setResponsSuksess] = useState<boolean | null>(null);
+    const [responsSuksessPerson, setResponsSuksessPerson] = useState<boolean | null>(null);
+    const [responsSuksessParagraf, setResponsSuksessParagraf] = useState<boolean | null>(null);
+
 
 
     const backendPerson: BackendPerson = Environment.isDevelopment
@@ -67,19 +70,19 @@ export default function MainContainer() {
                     <Tabs.Panel value="Person" className="h-24 w-full bg-gray-50 p-8">
                         <div className="ytre-main-container">
                             <Søkefelt
-                                fødselsnummer={søketekst}
+                                fødselsnummer={søkParagraf}
                                 backendPerson={backendPerson}
                                 backendParagraf={backendParagraf}
                                 setOrgnumre={setOrgnumre}
-                                søketekst={søketekst}
-                                setSøketekst={setSøketekst}
+                                søketekst={søkFødselsnummer}
+                                setSøketekst={setSøkFødselsnummer}
                                 setHarSøkt={setHarSøkt}
                                 setPerson={setPerson}
                                 setPersoner={setPersoner}
                                 setAnonymisert={setAnonymisert}
                                 anonymisert={anonymisert}
                                 fane={"Person"}
-                                setResponsSuksess={setResponsSuksess}
+                                setResponsSuksess={setResponsSuksessPerson}
                                 setLaster={setLaster}
                             />
                             <div className="indre-main-container">
@@ -88,13 +91,13 @@ export default function MainContainer() {
                                     setValgte={setValgte}
                                     setFraDato={setFraDato}
                                     setTilDato={setTilDato}
-                                    søk={søketekst}
+                                    søk={søkFødselsnummer}
                                     harSøkt={harSøkt}
                                     person={person}
                                     anonymisert={anonymisert}
                                     fane={"Person"}
                                 />
-                                <div className={"tabell-container"}>
+                                <div className="tabell-container">
                                     {laster ? (
                                         <Loader
                                             variant="interaction"
@@ -102,13 +105,13 @@ export default function MainContainer() {
                                             title="venter..."
                                         />
                                     ) : (
-                                        <PseudovedtaksperiodeTabell
+                                        responsSuksessPerson === null ? "" : (responsSuksessPerson ? <PseudovedtaksperiodeTabell
                                             valgte={valgte}
                                             fraDato={fraDato}
                                             tilDato={tilDato}
                                             person={person}
                                             anonymisert={anonymisert}
-                                        />
+                                        /> : (<div> Ingen resultater, prøv et annet fnr </div>))
                                     )}
                                 </div>
                             </div>
@@ -117,19 +120,19 @@ export default function MainContainer() {
                     <Tabs.Panel value="Paragraf" className="h-24 w-full bg-gray-50 p-8">
                         <div className="ytre-main-container">
                             <Søkefelt
-                                fødselsnummer={søketekst}
+                                fødselsnummer={søkParagraf}
                                 backendPerson={backendPerson}
                                 backendParagraf={backendParagraf}
                                 setOrgnumre={setOrgnumre}
-                                søketekst={søketekst}
-                                setSøketekst={setSøketekst}
+                                søketekst={søkParagraf}
+                                setSøketekst={setSøkParagraf}
                                 setHarSøkt={setHarSøkt}
                                 setPerson={setPerson}
                                 setPersoner={setPersoner}
                                 setAnonymisert={setAnonymisert}
                                 anonymisert={anonymisert}
                                 fane={"Paragraf"}
-                                setResponsSuksess={setResponsSuksess}
+                                setResponsSuksess={setResponsSuksessParagraf}
                                 setLaster={setLaster}
                             />
                             <div className="indre-main-container">
@@ -138,7 +141,7 @@ export default function MainContainer() {
                                     setValgte={setValgte}
                                     setFraDato={setFraDato}
                                     setTilDato={setTilDato}
-                                    søk={søketekst}
+                                    søk={søkParagraf}
                                     harSøkt={harSøkt}
                                     person={person}
                                     anonymisert={anonymisert}
@@ -153,10 +156,10 @@ export default function MainContainer() {
                                             title="venter..."
                                         />
                                     ) : (
-                                        responsSuksess ? <PersonTabell
+                                        responsSuksessParagraf === null ? "" : responsSuksessParagraf ? <PersonTabell
                                             personer={personer}
                                             anonymisert={anonymisert}
-                                        /> : (<div> Ingen resultater, prøv et annet fnr </div>)
+                                        /> : (<div> Ingen resultater, prøv en annen paragraf </div>)
                                     )}
                                 </div>
                             </div>

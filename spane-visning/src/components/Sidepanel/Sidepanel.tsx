@@ -34,16 +34,20 @@ export default function Sidepanel(props: Props) {
   return (
     <div className="sidepanel-container">
       <div className="fødselsnummer-container">
-        {fane === "Person" ? (
-          <PeopleFilled height={"2em"} width={"2em"} />
-        ) : (
-          <LawFilled height={"2em"} width={"2em"} />
-        )}
-        <h3 style={{ display: "inline" }}>
-          {fane === "Person" ? "Fødselsnummer:" : "Paragraf:"}
-        </h3>
+        <div className="fødselsnummer-overskrift">
+          {fane === "Person" ? (
+              <PeopleFilled height={"2em"} width={"2em"} />
+          ) : (
+              <LawFilled height={"2em"} width={"2em"} />
+          )}
+          <h3 style={{ display: "inline" }}>
+            {fane === "Person" ? "Fødselsnummer:" : "Paragraf:"}
+          </h3>
+        </div>
+        <div>
+          {harSøkt ? (!anonymisert ? søk : "***********") : null}
+        </div>
       </div>
-      {harSøkt ? (!anonymisert ? søk : "***********") : null}
       {person && (
         <div>
           {fane === "Person" ? (

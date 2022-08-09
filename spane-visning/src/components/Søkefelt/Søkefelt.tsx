@@ -17,7 +17,7 @@ interface Props {
     setAnonymisert: React.Dispatch<React.SetStateAction<Boolean>>;
     anonymisert: Boolean;
     fane: string;
-    setResponsSuksess:  React.Dispatch<React.SetStateAction<boolean | null>>;
+    setResponsSuksess: React.Dispatch<React.SetStateAction<boolean | null>>;
     setLaster: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -59,13 +59,13 @@ export default function Søkefelt(props: Props) {
                 return;
             }
         }
-        setLaster(true)
 
         setHarSøkt(true);
         setFeilmelding("");
 
-        fane === "Person"
-            ? backendPerson
+        if (fane === "Person") {
+            setLaster(true)
+            return backendPerson
                 .person(søketekst)
                 .then((r) => {
                     if (r === null) {
@@ -90,9 +90,15 @@ export default function Søkefelt(props: Props) {
                     setResponsSuksess(false)
                     setLaster(false)
                 })
-            : backendParagraf.personer(søketekst).then((r) => {
+        } else {
+            console.log("paragraf fane")
+           return backendParagraf.personer(søketekst).then((r) => {
+               console.log(r)
                 setPersoner(r);
+                setLaster(false)
+                setResponsSuksess(true)
             });
+        }
     };
 
     return (
