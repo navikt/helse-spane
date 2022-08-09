@@ -30,7 +30,8 @@ export default function MainContainer() {
     const [person, setPerson] = useState<PersonDto>();
     const [personer, setPersoner] = useState<PersonDto[]>();
     const [anonymisert, setAnonymisert] = useState<Boolean>(false);
-    const [søketekst, setSøketekst] = useState<string>("");
+    const [søkFødselsnummer, setSøkFødselsnummer] = useState<string>("");
+    const [søkParagraf, setSøkParagraf] = useState<string>("");
     const [harSøkt, setHarSøkt] = useState<Boolean>(false);
     const [laster, setLaster] = useState<boolean>(false);
     const [responsSuksessPerson, setResponsSuksessPerson] = useState<boolean | null>(null);
@@ -69,12 +70,12 @@ export default function MainContainer() {
                     <Tabs.Panel value="Person" className="h-24 w-full bg-gray-50 p-8">
                         <div className="ytre-main-container">
                             <Søkefelt
-                                fødselsnummer={søketekst}
+                                fødselsnummer={søkParagraf}
                                 backendPerson={backendPerson}
                                 backendParagraf={backendParagraf}
                                 setOrgnumre={setOrgnumre}
-                                søketekst={søketekst}
-                                setSøketekst={setSøketekst}
+                                søketekst={søkFødselsnummer}
+                                setSøketekst={setSøkFødselsnummer}
                                 setHarSøkt={setHarSøkt}
                                 setPerson={setPerson}
                                 setPersoner={setPersoner}
@@ -90,7 +91,7 @@ export default function MainContainer() {
                                     setValgte={setValgte}
                                     setFraDato={setFraDato}
                                     setTilDato={setTilDato}
-                                    søk={søketekst}
+                                    søk={søkFødselsnummer}
                                     harSøkt={harSøkt}
                                     person={person}
                                     anonymisert={anonymisert}
@@ -119,12 +120,12 @@ export default function MainContainer() {
                     <Tabs.Panel value="Paragraf" className="h-24 w-full bg-gray-50 p-8">
                         <div className="ytre-main-container">
                             <Søkefelt
-                                fødselsnummer={søketekst}
+                                fødselsnummer={søkParagraf}
                                 backendPerson={backendPerson}
                                 backendParagraf={backendParagraf}
                                 setOrgnumre={setOrgnumre}
-                                søketekst={søketekst}
-                                setSøketekst={setSøketekst}
+                                søketekst={søkParagraf}
+                                setSøketekst={setSøkParagraf}
                                 setHarSøkt={setHarSøkt}
                                 setPerson={setPerson}
                                 setPersoner={setPersoner}
@@ -140,7 +141,7 @@ export default function MainContainer() {
                                     setValgte={setValgte}
                                     setFraDato={setFraDato}
                                     setTilDato={setTilDato}
-                                    søk={søketekst}
+                                    søk={søkParagraf}
                                     harSøkt={harSøkt}
                                     person={person}
                                     anonymisert={anonymisert}
