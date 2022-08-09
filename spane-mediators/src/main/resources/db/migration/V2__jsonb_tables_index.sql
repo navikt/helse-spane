@@ -1,0 +1,1 @@
+ALTER TABLE person ALTER COLUMN data TYPE jsonb USING data::text::jsonb;
