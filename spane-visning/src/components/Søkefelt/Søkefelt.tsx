@@ -15,7 +15,7 @@ interface Props {
     setPersoner: React.Dispatch<React.SetStateAction<PersonDto[] | undefined>>;
     setOrgnumre: React.Dispatch<React.SetStateAction<string[]>>;
     setAnonymisert: React.Dispatch<React.SetStateAction<Boolean>>;
-    anonymisert: Boolean;
+    anonymisert: boolean;
     fane: string;
     setResponsSuksess: React.Dispatch<React.SetStateAction<boolean | null>>;
     setLaster: React.Dispatch<React.SetStateAction<boolean>>
@@ -121,11 +121,11 @@ export default function Søkefelt(props: Props) {
                     className="anonymiser-checbox-group"
                     legend="Anonymiser data gruppe"
                     onChange={() =>
-                        fødselsnummer ? setAnonymisert(!anonymisert) : anonymisert
+                        setAnonymisert(!anonymisert)
                     }
                     hideLegend
                 >
-                    <Checkbox value="Anonymiser data">Anonymiser data</Checkbox>
+                    <Checkbox checked={anonymisert} value="Anonymiser data">Anonymiser data</Checkbox>
                 </CheckboxGroup>
             </div>
         </div>

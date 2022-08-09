@@ -37,8 +37,6 @@ export default function MainContainer() {
     const [responsSuksessPerson, setResponsSuksessPerson] = useState<boolean | null>(null);
     const [responsSuksessParagraf, setResponsSuksessParagraf] = useState<boolean | null>(null);
 
-
-
     const backendPerson: BackendPerson = Environment.isDevelopment
         ? testBackendPerson()
         : restBackendPerson();
