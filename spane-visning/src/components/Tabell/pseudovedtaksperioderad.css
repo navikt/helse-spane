@@ -61,3 +61,12 @@
 .warning{
     margin-right: 5px;
 }
+
+.skjæringstidspunkt-container{
+    display: inline-block;
+
+}
+
+.no-wrap{
+    white-space: nowrap;
+}

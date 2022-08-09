@@ -78,7 +78,6 @@ export default function Søkefelt(props: Props) {
                     return r;
                 })
                 .then((r) => {
-                    console.log("Fanga ikke exception")
                     let orgnumre: string[] = [];
                     r?.vedtaksperioder.forEach((vedtaksperiode) => {
                         if (!orgnumre.includes(vedtaksperiode.orgnummer)) {
@@ -87,7 +86,7 @@ export default function Søkefelt(props: Props) {
                     });
                     setOrgnumre(orgnumre);
                 }).catch(() => {
-                    console.log("Fanget exception")
+                    setPerson(undefined)
                     setResponsSuksess(false)
                     setLaster(false)
                 })

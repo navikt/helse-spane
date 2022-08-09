@@ -44,7 +44,7 @@ export default function PseudovedtaksperiodeRad(props: Props) {
             style={{cursor: "pointer", backgroundColor: "#E6F0FF"}}
         >
             <Table.DataCell scope="row">
-                <b className={"ikke-sikkert-skjæringstidspunkt-container"}>
+                <b className={"skjæringstidspunkt-container"}>
                     {" "}
                     {vedtaksperiode.tilstand === 'VEDTAK_FATTET' ? "Vedtaksperiode: " :
                         (vedtaksperiode.ikkeSikkertSkjæringstidspunkt ?
@@ -60,8 +60,8 @@ export default function PseudovedtaksperiodeRad(props: Props) {
                             </div> : "Skjæringstidspunkt: ")} {" "}
                 </b>{" "}
                 {vedtaksperiode.tilstand === 'VEDTAK_FATTET' && vedtaksperiode.fom !== null && vedtaksperiode.tom !== null
-                    ? (vedtaksperiode.fom + ' - ' + vedtaksperiode.tom) : (
-                        vedtaksperiode.skjæringstidspunkt ?? "ukjent"
+                    ? (<span className="no-wrap"> {vedtaksperiode.fom + ' - ' + vedtaksperiode.tom} </span>) : (
+                        <span className="no-wrap"> {vedtaksperiode.skjæringstidspunkt  ?? "ukjent"} </span>
                     )}
             </Table.DataCell>
             <Table.DataCell scope="row">
