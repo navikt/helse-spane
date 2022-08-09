@@ -32,6 +32,7 @@ internal class PersonPostgresRepository(private val dataSource: DataSource) : Pe
                 " DO" +
                 " NOTHING " +
                 " returning id"
+
         @Language("PostgreSQL")
         val statement2 = "INSERT INTO person_paragrafsøk (fnr, id) VALUES (?, ?)" +
                 " ON CONFLICT" +
@@ -39,12 +40,12 @@ internal class PersonPostgresRepository(private val dataSource: DataSource) : Pe
                 " NOTHING "
 
         sessionOf(dataSource).use { session ->
-            val id = session.run(queryOf(statement, paragraf, ledd, bokstav, punktum).asUpdateAndReturnGeneratedKey)
+            val id = session.run(queryOf(statement, paragraf, ledd, bokstav, punktum).asUpdate)
             session.run(queryOf(statement2, fnr, id).asUpdate)
         }
     }
 
-    private fun hentPerson(query: Query) :SerialisertPerson? = sessionOf(dataSource).use { session ->
+    private fun hentPerson(query: Query): SerialisertPerson? = sessionOf(dataSource).use { session ->
         session.run(query.map {
             SerialisertPerson(it.string("data"))
         }.asSingle)
