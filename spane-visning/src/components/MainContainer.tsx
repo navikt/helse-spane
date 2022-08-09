@@ -9,8 +9,8 @@ import { Header } from "@navikt/ds-react-internal";
 import { PersonDto } from "../types";
 import { Environment } from "../environment";
 import PseudovedtaksperiodeTabell from "./Tabell/PseudovedtaksperiodeTabell";
-import { Tabs } from "@navikt/ds-react";
-import {Law, People, WarningColored} from "@navikt/ds-icons";
+import { Loader, Tabs } from "@navikt/ds-react";
+import { Law, People } from "@navikt/ds-icons";
 import PersonTabell from "./Tabell/PersonTabell";
 
 import {
@@ -28,7 +28,7 @@ export default function MainContainer() {
   const [fraDato, setFraDato] = useState<string>("");
   const [tilDato, setTilDato] = useState<string>("");
   const [person, setPerson] = useState<PersonDto>();
-  const [paragrafSøk, setParagrafSøk] = useState<PersonDto[]>();
+  const [personer, setPersoner] = useState<PersonDto[]>();
   const [anonymisert, setAnonymisert] = useState<Boolean>(false);
   const [søketekst, setSøketekst] = useState<string>("");
   const [harSøkt, setHarSøkt] = useState<Boolean>(false);
@@ -72,7 +72,7 @@ export default function MainContainer() {
                 setSøketekst={setSøketekst}
                 setHarSøkt={setHarSøkt}
                 setPerson={setPerson}
-                setPersoner={setParagrafSøk}
+                setPersoner={setPersoner}
                 setAnonymisert={setAnonymisert}
                 anonymisert={anonymisert}
                 fane={"Person"}
@@ -90,13 +90,21 @@ export default function MainContainer() {
                   fane={"Person"}
                 />
                 <div className={"tabell-container"}>
-                  <PseudovedtaksperiodeTabell
-                    valgte={valgte}
-                    fraDato={fraDato}
-                    tilDato={tilDato}
-                    person={person}
-                    anonymisert={anonymisert}
-                  />
+                  {!person && harSøkt ? (
+                    <Loader
+                      variant="interaction"
+                      size="3xlarge"
+                      title="venter..."
+                    />
+                  ) : (
+                    <PseudovedtaksperiodeTabell
+                      valgte={valgte}
+                      fraDato={fraDato}
+                      tilDato={tilDato}
+                      person={person}
+                      anonymisert={anonymisert}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -112,7 +120,7 @@ export default function MainContainer() {
                 setSøketekst={setSøketekst}
                 setHarSøkt={setHarSøkt}
                 setPerson={setPerson}
-                setPersoner={setParagrafSøk}
+                setPersoner={setPersoner}
                 setAnonymisert={setAnonymisert}
                 anonymisert={anonymisert}
                 fane={"Paragraf"}
@@ -130,11 +138,18 @@ export default function MainContainer() {
                   fane={"Paragraf"}
                 />
                 <div className={"tabell-container"}>
-                  <div> * Skjæringstidspunktet kan være feil</div>
-                  <PersonTabell
-                    personer={paragrafSøk}
-                    anonymisert={anonymisert}
-                  />
+                  {!personer && harSøkt ? (
+                    <Loader
+                      variant="interaction"
+                      size="3xlarge"
+                      title="venter..."
+                    />
+                  ) : (
+                    <PersonTabell
+                      personer={personer}
+                      anonymisert={anonymisert}
+                    />
+                  )}
                 </div>
               </div>
             </div>

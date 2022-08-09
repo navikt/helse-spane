@@ -39,23 +39,23 @@ allprojects {
         implementation("io.ktor:ktor-server-call-logging:$ktorVersion")
         implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
         implementation("io.ktor:ktor-serialization-jackson:$ktorVersion")
+
+        implementation("org.flywaydb:flyway-core:$flywayVersion")
+
+
         testImplementation("org.awaitility:awaitility:$awaitilityVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
         testImplementation("no.nav:kafka-embedded-env:$kafkaEEVersion")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-
-
-
         testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
         testImplementation("org.testcontainers:testcontainers:1.17.3")
-        testImplementation ("org.testcontainers:junit-jupiter:1.17.3")
+        testImplementation("org.testcontainers:junit-jupiter:1.17.3")
 
         testImplementation("org.testcontainers:postgresql:$testcontainersPostgresqlVersion") {
             exclude("com.fasterxml.jackson.core")
         }
 
-        implementation("org.flywaydb:flyway-core:$flywayVersion")
 
         api("io.micrometer:micrometer-registry-prometheus:1.9.0")
 
