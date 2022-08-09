@@ -18,12 +18,12 @@ export default function PseudovedtaksperiodeRad(props: Props) {
     function vedtakTag(str: string) {
         switch (str) {
             case "VEDTAK_FATTET":
-                return <div className={"tilstands-lable-container vedtak-fattet"}><p className={"lable"}>Vedtak
+                return <div className={"vedtaksperiode-tag vedtak-fattet"}><p className={"tag"}>Vedtak
                     fattet</p></div>;
             case "UAVKLART":
-                return <div className={"tilstands-lable-container uavklart"}><p className={"lable"}>Uavklart</p></div>;
+                return <div className={"vedtaksperiode-tag uavklart"}><p className={"tag"}>Uavklart</p></div>;
             case "TIL_INFOTRYGD":
-                return <div className={"tilstands-lable-container til-infotrygd"}><p className={"lable"}>Til
+                return <div className={"vedtaksperiode-tag til-infotrygd"}><p className={"tag"}>Til
                     infotrygd</p></div>;
             default:
                 return "white";
