@@ -68,3 +68,43 @@ export function filtrerPseudovedtaksperioder(person: PersonDto, valgte: string[]
     }
     return pseudovedtaksperioder
 }
+
+export function formatDateString(dateString: string) {
+    let dato = new Date(dateString);
+    let str = "";
+    str +=
+        dato.getDate().toString().length === 1
+            ? "0" + dato.getDate()
+            : dato.getDate();
+    str += ".";
+    str +=
+        dato.getMonth().toString().length === 1
+            ? "0" + dato.getMonth()
+            : dato.getMonth();
+    str += ".";
+    str += dato.getFullYear();
+    return str;
+}
+
+export function formatDateTimeString(dateTimeString: string) {
+    let dato = new Date(dateTimeString);
+    let str = formatDateString(dateTimeString)
+    str += ", ";
+    str +=
+        dato.getHours().toString().length === 1
+            ? "0" + dato.getHours()
+            : dato.getHours();
+    str += ":";
+    str +=
+        dato.getMinutes().toString().length === 1
+            ? "0" + dato.getMinutes()
+            : dato.getMinutes();
+    str += ":";
+    str +=
+        dato.getSeconds().toString().length === 1
+            ? "0" + dato.getSeconds()
+            : dato.getSeconds();
+    str += ".";
+    str += dateTimeString.split("+")[0].slice(-9);
+    return str;
+}

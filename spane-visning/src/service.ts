@@ -23,7 +23,7 @@ export const restBackendPerson = (): BackendPerson => {
 export const testBackendPerson = (): BackendPerson => {
   return {
     person(): Promise<PersonDto> {
-      return Promise.resolve(testPerson as unknown as PersonDto);
+     return Promise.resolve(testPerson as unknown as PersonDto);
     },
   };
 };
