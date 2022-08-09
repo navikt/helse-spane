@@ -63,6 +63,9 @@ export default function Søkefelt(props: Props) {
       ? backendPerson
           .person(søketekst)
           .then((r) => {
+            if(r === null){
+              console.log("yoyoyoyoyoyo")
+            }
             setPerson(r);
             return r;
           })

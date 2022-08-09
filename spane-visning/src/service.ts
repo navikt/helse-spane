@@ -10,7 +10,12 @@ export const restBackendPerson = (): BackendPerson => {
         headers: {
           Accept: "application/json",
         },
-      }).then((response) => response.json());
+      }).then((response) => {
+        if(!response.ok){
+          return null
+        }
+        return response.json()
+      });
     },
   };
 };
