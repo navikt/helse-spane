@@ -85,12 +85,12 @@ fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
     var punktum = melding.get("punktum")?.asInt()
     if (punktum == 0) {
         punktum = null
-        sikkerlogger.info("Fant melding hvor punktum var \"null\" : {}", melding)
+        sikkerlogger.info("Fant melding hvor punktum var 0 : {}", melding)
     }
-    var ledd = melding.get("bokstav")?.asInt()
+    var ledd = melding.get("ledd")?.asInt()
     if (ledd == 0) {
         ledd = null
-        sikkerlogger.info("Fant melding hvor ledd var \"null\" : {}", melding)
+        sikkerlogger.info("Fant melding hvor ledd var 0 : {}", melding)
     }
 
     val subsumsjon = Subsumsjon(
