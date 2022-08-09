@@ -39,7 +39,7 @@ internal class PersonPostgresRepository(private val dataSource: DataSource) : Pe
                 " NOTHING "
 
         sessionOf(dataSource).use { session ->
-            val id = session.run(queryOf(statement, paragraf, ledd, bokstav, punktum).asUpdate)
+            val id = session.run(queryOf(statement, paragraf, ledd, bokstav, punktum).asUpdateAndReturnGeneratedKey)
             session.run(queryOf(statement2, fnr, id).asUpdate)
         }
     }
