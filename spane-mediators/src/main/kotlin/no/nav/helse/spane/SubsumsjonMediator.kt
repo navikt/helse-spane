@@ -51,11 +51,18 @@ class SubsumsjonMediator(private val database: PersonRepository) {
         person.accept(DBVisitor)
         val personJson = objectMapper.writeValueAsString(DBVisitor.personMap)
         database.lagre(personJson, fnr)
-        database.lagreParagrafkobling(melding["paragraf"].asText(), melding["ledd"]?.asInt(), melding["bokstav"]?.asText(), melding["punktum"]?.asInt(), fnr)
+        database.lagreParagrafkobling(
+            melding["paragraf"].asText(),
+            melding["ledd"]?.asInt(),
+            melding["bokstav"]?.asText(),
+            melding["punktum"]?.asInt(),
+            fnr
+        )
     }
 
 
 }
+
 private fun lesTidsstempel(melding: JsonNode): ZonedDateTime {
     val tidsstempel = melding.get("tidsstempel")?.asText() ?: ZonedDateTime.now().toString().also {
         logger.error("subsumsjon inneholder ikke tidsstempel meldingsid: {}", melding["id"])
@@ -70,6 +77,22 @@ private fun lesTidsstempel(melding: JsonNode): ZonedDateTime {
 
 
 fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
+    var bokstav = melding.get("bokstav")?.asText()
+    if (bokstav == "null") {
+        bokstav = null
+        sikkerlogger.info("Fant melding hvor bokstav var \"null\" : {}", melding)
+    }
+    var punktum = melding.get("punktum")?.asInt()
+    if (punktum == 0) {
+        punktum = null
+        sikkerlogger.info("Fant melding hvor punktum var \"null\" : {}", melding)
+    }
+    var ledd = melding.get("bokstav")?.asInt()
+    if (ledd == 0) {
+        ledd = null
+        sikkerlogger.info("Fant melding hvor ledd var \"null\" : {}", melding)
+    }
+
     val subsumsjon = Subsumsjon(
         melding.get("id")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke id felt"),
         melding.get("versjon")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke versjon felt"),
@@ -87,9 +110,9 @@ fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
         melding.get("lovverksversjon")?.asText()
             ?: throw IllegalArgumentException("subsumsjon har ikke lovverksversjon felt"),
         melding.get("paragraf")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke paragraf felt"),
-        melding.get("ledd")?.asInt(),
-        melding.get("punktum")?.asInt(),
-        melding.get("bokstav")?.asText(),
+        ledd,
+        punktum,
+        bokstav,
         objectMapper.convertValue(melding.get("input")),
         objectMapper.convertValue(melding.get("output")) ?: emptyMap(),
         melding.get("utfall").asText(),
