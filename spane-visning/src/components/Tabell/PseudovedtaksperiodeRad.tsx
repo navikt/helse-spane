@@ -1,4 +1,4 @@
-import {HelpText, Table, Tag} from "@navikt/ds-react";
+import {HelpText, Table, Tag, Tooltip} from "@navikt/ds-react";
 import React, {useState} from "react";
 import SubsumsjonTabell from "./SubsumsjonTabell";
 import {VedtaksperiodeDto} from "../../types";
@@ -48,8 +48,16 @@ export default function PseudovedtaksperiodeRad(props: Props) {
                     {" "}
                     {vedtaksperiode.tilstand === 'VEDTAK_FATTET' ? "Vedtaksperiode: " :
                         (vedtaksperiode.ikkeSikkertSkjæringstidspunkt ?
-                            <div className={"ikke-sikkert-skjæringstidspunkt"}><WarningColored
-                                className={"warning"}/> Skjæringstidspunkt: </div> : "Skjæringstidspunkt: ")} {" "}
+                            <div className={"ikke-sikkert-skjæringstidspunkt"}>
+                                <Tooltip
+                                    content="Usikkert skjæringstidspunkt"
+                                    placement="left"
+                                >
+                                <WarningColored className={"warning"}/>
+                                </Tooltip>
+
+                                    Skjæringstidspunkt:
+                            </div> : "Skjæringstidspunkt: ")} {" "}
                 </b>{" "}
                 {vedtaksperiode.tilstand === 'VEDTAK_FATTET' && vedtaksperiode.fom !== null && vedtaksperiode.tom !== null
                     ? (vedtaksperiode.fom + ' - ' + vedtaksperiode.tom) : (
