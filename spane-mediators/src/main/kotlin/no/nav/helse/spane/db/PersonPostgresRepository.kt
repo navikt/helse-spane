@@ -3,6 +3,7 @@ package no.nav.helse.spane.db
 import kotliquery.Query
 import kotliquery.queryOf
 import kotliquery.sessionOf
+import no.nav.helse.sikkerlogger
 import org.intellij.lang.annotations.Language
 import javax.sql.DataSource
 
@@ -26,6 +27,7 @@ internal class PersonPostgresRepository(private val dataSource: DataSource) : Pe
     }
 
     override fun lagreParagrafkobling(paragraf: String, ledd: Int?, bokstav: String?, punktum: Int?, fnr: String) {
+        sikkerlogger.info("tester i personpostgres {}", bokstav)
         @Language("PostgreSQL")
         val statement = "INSERT INTO paragrafsøk (paragraf, ledd, bokstav, punktum) VALUES (?, ?, ?, ?) " +
                 " ON CONFLICT" +

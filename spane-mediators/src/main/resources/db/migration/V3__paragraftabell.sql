@@ -12,8 +12,8 @@ CREATE TABLE paragrafsøk
 
 CREATE TABLE person_paragrafsøk
 (
-    fnr VARCHAR(32) references person (fnr),
-    id SERIAL references paragrafsøk (id),
+    fnr VARCHAR(32) references person (fnr) on update cascade on delete cascade not null ,
+    id SERIAL references paragrafsøk (id) on update cascade on delete cascade not null ,
     PRIMARY KEY (fnr, id)
 );
 
