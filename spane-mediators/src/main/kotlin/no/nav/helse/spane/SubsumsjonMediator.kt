@@ -22,10 +22,10 @@ val objectMapper = jacksonObjectMapper()
 
 class SubsumsjonMediator(private val database: PersonRepository) {
     fun håndterer(melding: JsonNode): Boolean {
-        if (melding["eventName"] == null || melding["eventName"].asText() != "subsumsjon") {
+        if (melding["eventName"] == null || melding["eventName"].textValue() != "subsumsjon") {
             logger.info("melding id: {}, eventName: {} blir ikke håndtert", melding["id"], melding["eventName"])
             return false
-        } else if (melding["fodselsnummer"] == null || melding["fodselsnummer"].isNull || melding["fodselsnummer"].asText() == "") {
+        } else if (melding["fodselsnummer"] == null || melding["fodselsnummer"].isNull || melding["fodselsnummer"].textValue() == "") {
             sikkerlogger.info("Fant subsumsjon med manglende fødselsnummer {}", melding)
             return false
         }
@@ -34,7 +34,7 @@ class SubsumsjonMediator(private val database: PersonRepository) {
 
     fun håndterSubsumsjon(melding: JsonNode) {
 
-        val fnr = melding.get("fodselsnummer").asText()
+        val fnr = melding["fodselsnummer"].textValue()
 
         val person = database.hentPerson(fnr)?.deserialiser() ?: Person(fnr)
         val nySubsumsjon = try {
@@ -52,9 +52,9 @@ class SubsumsjonMediator(private val database: PersonRepository) {
         val personJson = objectMapper.writeValueAsString(DBVisitor.personMap)
         database.lagre(personJson, fnr)
         database.lagreParagrafkobling(
-            melding["paragraf"].asText(),
+            melding["paragraf"].textValue(),
             melding["ledd"]?.asInt(),
-            melding["bokstav"]?.asText(),
+            melding["bokstav"]?.textValue(),
             melding["punktum"]?.asInt(),
             fnr
         )
@@ -64,7 +64,7 @@ class SubsumsjonMediator(private val database: PersonRepository) {
 }
 
 private fun lesTidsstempel(melding: JsonNode): ZonedDateTime {
-    val tidsstempel = melding.get("tidsstempel")?.asText() ?: ZonedDateTime.now().toString().also {
+    val tidsstempel = melding["tidsstempel"]?.textValue() ?: ZonedDateTime.now().toString().also {
         logger.error("subsumsjon inneholder ikke tidsstempel meldingsid: {}", melding["id"])
         sikkerlogger.error("subsumsjon inneholder ikke tidsstempel melding: {}", melding)
     }
@@ -77,51 +77,30 @@ private fun lesTidsstempel(melding: JsonNode): ZonedDateTime {
 
 
 fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
-    var bokstav = melding.get("bokstav")?.asText()
-    if (bokstav != null) {
-        if(bokstav.length>1){
-            sikkerlogger.info("Fant melding med for lang bokstav: {}", melding)
-        }
-    }
-    if (bokstav == "null") {
-        bokstav = null
-        sikkerlogger.info("Fant melding hvor bokstav var \"null\" : {}", melding)
-    }
-
-    var punktum = melding.get("punktum")?.asInt()
-    if (punktum == 0) {
-        punktum = null
-        sikkerlogger.info("Fant melding hvor punktum var 0 : {}", melding)
-    }
-    var ledd = melding.get("ledd")?.asInt()
-    if (ledd == 0) {
-        ledd = null
-        sikkerlogger.info("Fant melding hvor ledd var 0 : {}", melding)
-    }
 
     val subsumsjon = Subsumsjon(
-        melding.get("id")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke id felt"),
-        melding.get("versjon")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke versjon felt"),
-        melding.get("eventName")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke eventName felt"),
-        melding.get("kilde")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke kilde felt"),
-        melding.get("versjonAvKode")?.asText()
+        melding["id"]?.textValue() ?: throw IllegalArgumentException("subsumsjon har ikke id felt"),
+        melding["versjon"]?.textValue() ?: throw IllegalArgumentException("subsumsjon har ikke versjon felt"),
+        melding["eventName"]?.textValue() ?: throw IllegalArgumentException("subsumsjon har ikke eventName felt"),
+        melding["kilde"]?.textValue() ?: throw IllegalArgumentException("subsumsjon har ikke kilde felt"),
+        melding["versjonAvKode"]?.textValue()
             ?: throw IllegalArgumentException("subsumsjon har ikke versjonAvKode felt"),
-        melding.get("fodselsnummer")?.asText()
+        melding["fodselsnummer"]?.textValue()
             ?: throw IllegalArgumentException("subsumsjon har ikke fodselsnummer felt"),
         objectMapper.convertValue(
-            melding.get("sporing") ?: throw IllegalArgumentException("subsumsjon har ikke sporing felt")
+            melding["sporing"] ?: throw IllegalArgumentException("subsumsjon har ikke sporing felt")
         ),
         lesTidsstempel(melding),
-        melding.get("lovverk")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke lovverk felt"),
-        melding.get("lovverksversjon")?.asText()
+        melding["lovverk"]?.textValue() ?: throw IllegalArgumentException("subsumsjon har ikke lovverk felt"),
+        melding["lovverksversjon"]?.textValue()
             ?: throw IllegalArgumentException("subsumsjon har ikke lovverksversjon felt"),
-        melding.get("paragraf")?.asText() ?: throw IllegalArgumentException("subsumsjon har ikke paragraf felt"),
-        ledd,
-        punktum,
-        bokstav,
-        objectMapper.convertValue(melding.get("input")),
-        objectMapper.convertValue(melding.get("output")) ?: emptyMap(),
-        melding.get("utfall").asText(),
+        melding["paragraf"]?.textValue() ?: throw IllegalArgumentException("subsumsjon har ikke paragraf felt"),
+        melding["ledd"]?.asInt(),
+        melding["punktum"]?.asInt(),
+        melding["bokstav"]?.textValue(),
+        objectMapper.convertValue(melding["input"]),
+        objectMapper.convertValue(melding["output"]) ?: emptyMap(),
+        melding["utfall"].textValue(),
     )
     return subsumsjon
 }
