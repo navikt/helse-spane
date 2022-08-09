@@ -4,12 +4,16 @@ import SubsumsjonTabell from "./SubsumsjonTabell";
 import {VedtaksperiodeDto} from "../../types";
 import "./pseudovedtaksperioderad.css";
 import {ErrorColored, SuccessColored, WarningColored} from "@navikt/ds-icons";
+import {formatDateString} from "../../utlis";
 
 
 interface Props {
     vedtaksperiode: VedtaksperiodeDto;
     anonymisert: Boolean;
 }
+
+
+
 
 export default function PseudovedtaksperiodeRad(props: Props) {
     const {vedtaksperiode, anonymisert} = props;
@@ -60,8 +64,13 @@ export default function PseudovedtaksperiodeRad(props: Props) {
                             </div> : "Skjæringstidspunkt: ")} {" "}
                 </b>{" "}
                 {vedtaksperiode.tilstand === 'VEDTAK_FATTET' && vedtaksperiode.fom !== null && vedtaksperiode.tom !== null
-                    ? (<span className="no-wrap"> {vedtaksperiode.fom + ' - ' + vedtaksperiode.tom} </span>) : (
-                        <span className="no-wrap"> {vedtaksperiode.skjæringstidspunkt  ?? "ukjent"} </span>
+                    ? (<span className="no-wrap"> {
+                        formatDateString(vedtaksperiode.fom) + ' - ' + formatDateString(vedtaksperiode.tom)
+                    } </span>) : (
+                        <span className="no-wrap"> {
+                            vedtaksperiode.skjæringstidspunkt ?
+                            formatDateString(vedtaksperiode.skjæringstidspunkt)  : "ukjent"
+                        } </span>
                     )}
             </Table.DataCell>
             <Table.DataCell scope="row">
