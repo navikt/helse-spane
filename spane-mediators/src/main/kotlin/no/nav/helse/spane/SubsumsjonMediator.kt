@@ -95,8 +95,8 @@ fun lagSubsumsjonFraJson(melding: JsonNode): Subsumsjon {
         melding["lovverksversjon"]?.textValue()
             ?: throw IllegalArgumentException("subsumsjon har ikke lovverksversjon felt"),
         melding["paragraf"]?.textValue() ?: throw IllegalArgumentException("subsumsjon har ikke paragraf felt"),
-        melding["ledd"]?.asInt(),
-        melding["punktum"]?.asInt(),
+        melding["ledd"]?.intValue(),
+        melding["punktum"]?.intValue(),
         melding["bokstav"]?.textValue(),
         objectMapper.convertValue(melding["input"]),
         objectMapper.convertValue(melding["output"]) ?: emptyMap(),
