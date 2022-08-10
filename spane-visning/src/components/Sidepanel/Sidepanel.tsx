@@ -3,7 +3,7 @@ import "./sidepanel.css";
 import { LawFilled, PeopleFilled } from "@navikt/ds-icons";
 
 import { PersonDto } from "../../types";
-import TidsromVelger from "./TidsromVelger";
+import Tidsromvelger from "./Tidsromvelger";
 import ArbeidsgiverCheckbox from "./ArbeidsgiverCheckbox";
 
 interface Props {
@@ -12,9 +12,9 @@ interface Props {
   setFraDato: React.Dispatch<React.SetStateAction<string>>;
   setTilDato: React.Dispatch<React.SetStateAction<string>>;
   søk: string;
-  harSøkt: Boolean;
+  harSøkt: boolean;
   person: PersonDto | undefined;
-  anonymisert: Boolean;
+  anonymisert: boolean;
   fane: string;
 }
 
@@ -36,23 +36,21 @@ export default function Sidepanel(props: Props) {
       <div className="fødselsnummer-container">
         <div className="fødselsnummer-overskrift">
           {fane === "Person" ? (
-              <PeopleFilled height={"2em"} width={"2em"} />
+            <PeopleFilled height={"2em"} width={"2em"} />
           ) : (
-              <LawFilled height={"2em"} width={"2em"} />
+            <LawFilled height={"2em"} width={"2em"} />
           )}
           <h3 style={{ display: "inline" }}>
             {fane === "Person" ? "Fødselsnummer:" : "Paragraf:"}
           </h3>
         </div>
-        <div>
-          {harSøkt ? (!anonymisert ? søk : "***********") : null}
-        </div>
+        <div>{harSøkt ? (!anonymisert ? søk : "***********") : null}</div>
       </div>
       {person && (
         <div>
           {fane === "Person" ? (
             <>
-              <TidsromVelger setFraDato={setFraDato} setTilDato={setTilDato} />
+              <Tidsromvelger setFraDato={setFraDato} setTilDato={setTilDato} />
               <ArbeidsgiverCheckbox
                 anonymisert={anonymisert}
                 setValgte={setValgte}

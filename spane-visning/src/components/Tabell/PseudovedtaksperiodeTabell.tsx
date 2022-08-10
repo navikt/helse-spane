@@ -9,7 +9,7 @@ interface Props {
   fraDato: string;
   tilDato: string;
   person: PersonDto | undefined;
-  anonymisert: Boolean;
+  anonymisert: boolean;
 }
 
 export default function PseudovedtaksperiodeTabell(props: Props) {

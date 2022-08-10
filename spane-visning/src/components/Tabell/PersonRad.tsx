@@ -5,7 +5,7 @@ import PseudovedtaksperiodeTabell from "./PseudovedtaksperiodeTabell";
 
 interface Props {
   person: PersonDto;
-  anonymisert: Boolean;
+  anonymisert: boolean;
 }
 
 export default function PersonRad(props: Props) {

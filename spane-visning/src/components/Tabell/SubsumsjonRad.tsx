@@ -2,11 +2,11 @@ import { Table, Tag } from "@navikt/ds-react";
 import React, { useState } from "react";
 import { SubsumsjonDto } from "../../types";
 import SubsumsjonEkspandertInnhold from "./SubsumsjonEkspandertInnhold";
-import {formatDateTimeString} from "../../utlis";
+import { formatDateTimeString } from "../../utlis";
 
 interface Props {
   subsumsjon: SubsumsjonDto;
-  anonymisert: Boolean;
+  anonymisert: boolean;
 }
 
 function utfallTag(str: string) {

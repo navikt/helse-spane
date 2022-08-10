@@ -5,7 +5,7 @@ import { useState } from "react";
 
 interface Props {
   subsumsjoner: SubsumsjonDto[];
-  anonymisert: Boolean;
+  anonymisert: boolean;
 }
 
 export default function SubsumsjonTabell(props: Props) {
@@ -68,9 +68,9 @@ export default function SubsumsjonTabell(props: Props) {
     if (!sortKey) return;
 
     if (sort.direction === "ascending") {
-      setSort((s) => ({ orderBy: sortKey, direction: "descending" }));
+      setSort(() => ({ orderBy: sortKey, direction: "descending" }));
     } else {
-      setSort((s) => ({ orderBy: sortKey, direction: "ascending" }));
+      setSort(() => ({ orderBy: sortKey, direction: "ascending" }));
     }
 
     if (sortKey === "paragraf") {

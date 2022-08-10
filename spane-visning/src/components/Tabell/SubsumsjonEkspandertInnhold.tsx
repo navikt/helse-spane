@@ -6,7 +6,7 @@ import "./subsumsjonekspandertinnhold.css";
 
 interface Props {
   subsumsjon: SubsumsjonDto;
-  anonymisert: Boolean;
+  anonymisert: boolean;
 }
 
 export default function SubsumsjonEkspandertInnhold(props: Props) {

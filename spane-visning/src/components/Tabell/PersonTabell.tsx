@@ -5,7 +5,7 @@ import PersonRad from "./PersonRad";
 
 interface Props {
   personer: PersonDto[] | undefined;
-  anonymisert: Boolean;
+  anonymisert: boolean;
 }
 
 export default function PersonTabell(props: Props) {

@@ -5,7 +5,7 @@ import "./arbeidsgivercheckbox.css";
 interface Props {
   orgnumre: string[];
   setValgte: React.Dispatch<React.SetStateAction<string[]>>;
-  anonymisert: Boolean;
+  anonymisert: boolean;
 }
 
 export default function ArbeidsgiverCheckbox(props: Props) {

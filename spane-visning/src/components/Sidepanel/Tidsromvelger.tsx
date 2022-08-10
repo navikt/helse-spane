@@ -6,7 +6,7 @@ interface Props {
   setTilDato: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function TidsromVelger(props: Props) {
+export default function Tidsromvelger(props: Props) {
   const { setFraDato, setTilDato } = props;
 
   return (
