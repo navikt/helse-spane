@@ -29,7 +29,7 @@ class Konfig(
                 appNavn,
                 System.getenv("KAFKA_BROKERS").split(";"),
                 System.getenv("SUBSUMSJON_TOPIC"),
-                System.getenv("SUBSUMSJON_CONSUMER_GROUP") ?: "consumer-$appNavn-v4",
+                System.getenv("SUBSUMSJON_CONSUMER_GROUP") ?: "consumer-$appNavn-v5",
 
                 String.format(
                     "jdbc:postgresql://%s:%s/%s",
