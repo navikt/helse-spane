@@ -13,8 +13,8 @@ spec:
   readiness:
     path: isready
   replicas:
-    max: 10
-    min: 10
+    max: 1
+    min: 2
   resources:
     limits:
       cpu: 4000m
