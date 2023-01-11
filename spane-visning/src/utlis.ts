@@ -71,6 +71,7 @@ export function filtrerPseudovedtaksperioder(person: PersonDto, valgte: string[]
 
 export function formatDateString(dateString: string) {
     let dato = new Date(dateString);
+    const visningsmåned = dato.getMonth() + 1
     let str = "";
     str +=
         dato.getDate().toString().length === 1
@@ -78,9 +79,9 @@ export function formatDateString(dateString: string) {
             : dato.getDate();
     str += ".";
     str +=
-        dato.getMonth().toString().length === 1
-            ? "0" + dato.getMonth()
-            : dato.getMonth();
+        visningsmåned.toString().length === 1
+            ? "0" + visningsmåned
+            : visningsmåned;
     str += ".";
     str += dato.getFullYear();
     return str;
