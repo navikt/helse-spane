@@ -81,9 +81,8 @@ export default function SubsumsjonTabell(props: Props) {
             : sorterPåParagraf(v1, v2);
         })
       );
-    } else if (sort.orderBy === "utfall") {
+    } else if (sortKey === "utfall") {
       let flip = sort.direction === "ascending" ? -1 : 1;
-
       setSorterteSubsumsjoner(
         [...sorterteSubsumsjoner].sort((v1, v2) => {
           return utfallStringVerdi(v1.utfall) > utfallStringVerdi(v2.utfall)
@@ -91,16 +90,25 @@ export default function SubsumsjonTabell(props: Props) {
             : -flip;
         })
       );
-    } else if (sort.orderBy === "behandlet") {
+    } else if (sortKey === "behandlet") {
       let flip = sort.direction === "ascending" ? -1 : 1;
       setSorterteSubsumsjoner(
         [...sorterteSubsumsjoner].sort((v1, v2) => {
-          return new Date(v1.tidsstempel) > new Date(v2.tidsstempel)
-            ? flip
-            : -flip;
-        })
+          const date1 = new Date(v1.tidsstempel), date2 = new Date(v2.tidsstempel)
+          return date1.getTime() === date2.getTime()
+            ? compareNanoseconds(v1.tidsstempel, v2.tidsstempel, flip)
+            : date1 > date2
+              ? flip
+              : -flip;
+          })
       );
     }
+  }
+
+  function compareNanoseconds(timestamp1: string, timestamp2: string, flip: number) {
+    const nanos1 = timestamp1.match(/\.([^+Zz]*)/)![1].padEnd(9, "0")
+    const nanos2 = timestamp2.match(/\.([^+Zz]*)/)![1].padEnd(9, "0")
+    return Number(nanos1) > Number(nanos2) ? flip : -flip
   }
 
   return (
