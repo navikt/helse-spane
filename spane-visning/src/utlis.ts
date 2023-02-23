@@ -106,6 +106,7 @@ export function formatDateTimeString(dateTimeString: string) {
             ? "0" + dato.getSeconds()
             : dato.getSeconds();
     str += ".";
-    str += dateTimeString.match(/\.(\d[^+]*)/)![1];
+    const nanoSeconds = dateTimeString.match(/\.(\d[^+Z]*)/)![1]
+    str += nanoSeconds;
     return str;
 }
