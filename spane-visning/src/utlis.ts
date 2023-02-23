@@ -106,6 +106,6 @@ export function formatDateTimeString(dateTimeString: string) {
             ? "0" + dato.getSeconds()
             : dato.getSeconds();
     str += ".";
-    str += dateTimeString.split("+")[0].slice(-9);
+    str += dateTimeString.match(/\.(\d[^+]*)/)![1];
     return str;
 }
