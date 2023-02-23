@@ -64,9 +64,7 @@ export default function SubsumsjonTabell(props: Props) {
     } else return kapittel1 - kapittel2;
   }
 
-  function handleSort(sortKey: string | undefined) {
-    if (!sortKey) return;
-
+  function handleSort(sortKey: string) {
     if (sort.direction === "ascending") {
       setSort(() => ({ orderBy: sortKey, direction: "descending" }));
     } else {
@@ -115,7 +113,7 @@ export default function SubsumsjonTabell(props: Props) {
     <Table
       size="medium"
       sort={sort}
-      onSortChange={(sortKey) => handleSort(sortKey)}
+      onSortChange={(sortKey) => sortKey && handleSort(sortKey)}
     >
       <Table.Header>
         <Table.Row>
