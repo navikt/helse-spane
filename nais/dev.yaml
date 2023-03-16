@@ -1,4 +1,5 @@
 ingresses:
   - https://spane.dev.intern.nav.no
+  - https://spane.intern.dev.nav.no
 kafka-pool:
   - nav-dev
