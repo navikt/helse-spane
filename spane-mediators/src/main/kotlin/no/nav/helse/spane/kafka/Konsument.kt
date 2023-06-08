@@ -44,6 +44,7 @@ class Konsument(
             konsument.subscribe(listOf(konfig.topic))
             while (running.get()) {
                 konsument.poll(Duration.ofSeconds(5)).onEach {
+                    logger.info("Behandler melding")
                     val melding = objectMapper.readTree(it.value())
                     if (subsumsjonMediator.håndterer(melding)) {
                         subsumsjonMediator.håndterSubsumsjon(melding)
@@ -57,6 +58,7 @@ class Konsument(
                         meldingerLestCounter.labels("vedtaksperiode_forkastet").inc()
                     } else
                         meldingerLestCounter.labels("melding_ikke_lest").inc()
+                    logger.info("Melding behandlet")
                 }
                 konsument.commitSync()
 
