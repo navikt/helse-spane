@@ -48,7 +48,13 @@ class SubsumsjonMediator(private val database: PersonRepository) {
         person.håndter(nySubsumsjon)
 
         val DBVisitor = DBVisitor()
-        person.accept(DBVisitor)
+        try {
+            person.accept(DBVisitor)
+        } catch (e: Exception) {
+            logger.error("Kan ikke håndtere DBVisitor")
+            sikkerlogger.error("$person Kan ikke håndtere DBVisitor etter melding: $melding", e)
+            return
+        }
         val personJson = objectMapper.writeValueAsString(DBVisitor.personMap)
         database.lagre(personJson, fnr)
 //        database.lagreParagrafkobling(
