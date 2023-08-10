@@ -45,6 +45,7 @@ class Subsumsjon(
             mapNotNull { it.sporing["vedtaksperiode"] }
                 .flatten()
                 .distinct()
+                .filterNot { it == "null" }
                 .apply { require(this.size <= 1) }
                 .toList().getOrNull(0)
 
