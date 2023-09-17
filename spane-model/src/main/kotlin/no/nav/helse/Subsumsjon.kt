@@ -21,36 +21,46 @@ class Subsumsjon(
     private val output: Map<String, Any>,
     private val utfall: String,
 ) {
-    internal companion object {
-        internal fun List<Subsumsjon>.finnAlle(paragraf: String) = this.filter { it.paragraf == paragraf }
+    internal class Subsumsjoner(subsumsjoner: Collection<Subsumsjon>) {
+        private val subsumsjoner = subsumsjoner.toMutableSet()
+        val antall: Int
+            get() = subsumsjoner.size
 
-        internal fun MutableList<Subsumsjon>.eier(subsumsjon: Subsumsjon) = subsumsjon.eiesAv(this.sporingIder())
+        fun finnAlle(paragraf: String) = subsumsjoner.filter { it.paragraf == paragraf }
 
-        internal fun List<Subsumsjon>.relevante(pvpIder: List<String>) = filter { it.erRelevant(pvpIder) }
+        fun eier(subsumsjon: Subsumsjon) = subsumsjon.eiesAv(sporingIder())
 
-        internal fun MutableList<Subsumsjon>.sporingIder() = this.flatMap { it.sporing.values.flatten() }
+        private val relevanteSubsumsjoner = mutableMapOf<Set<String>, Set<Subsumsjon>>()
 
-        internal fun MutableList<Subsumsjon>.subsumsjonerMedSøknadsIder() =
-            this.filter { !it.sporing["soknad"].isNullOrEmpty() }
+        fun relevante(pvpIder: Set<String>): Collection<Subsumsjon> {
+            return relevanteSubsumsjoner.computeIfAbsent(pvpIder) { spvpIder ->
+                subsumsjoner.filter { it.erRelevant(spvpIder) }.toSet()
+            }
+        }
 
-        internal fun MutableList<Subsumsjon>.finnOrgnummer(): String {
-            this.forEach {
-                val organisasjonsnummer = it.sporing["organisasjonsnummer"]?.get(0)
+        fun sporingIder() = subsumsjoner.flatMap { it.sporing.values.flatten() }.toSet()
+
+        fun subsumsjonerMedSøknadsIder() =
+            subsumsjoner.filter { !it.sporing["soknad"].isNullOrEmpty() }
+
+        fun finnOrgnummer(): String {
+            subsumsjoner.forEach {
+                val organisasjonsnummer = it.sporing["organisasjonsnummer"]?.first()
                 if (organisasjonsnummer != null) return organisasjonsnummer
             }
             return "ukjent"
         }
 
-        internal fun List<Subsumsjon>.finnVedtaksperiodeId() =
-            mapNotNull { it.sporing["vedtaksperiode"] }
+        fun finnVedtaksperiodeId() =
+            subsumsjoner.mapNotNull { it.sporing["vedtaksperiode"] }
                 .flatten()
                 .distinct()
                 .filterNot { it == "null" }
                 .apply { require(this.size <= 1) }
                 .toList().getOrNull(0)
 
-        internal fun MutableList<Subsumsjon>.finnSkjæringstidspunkt(): String? {
-            this.forEach {
+        fun finnSkjæringstidspunkt(): String? {
+            subsumsjoner.forEach {
                 val skjæringstidspunkt = it.input["skjæringstidspunkt"] as String?
                 if (skjæringstidspunkt != null) {
                     return skjæringstidspunkt
@@ -58,10 +68,32 @@ class Subsumsjon(
             }
             return null
         }
+
+        fun harAlle(subsumsjoner: Subsumsjoner): Boolean {
+            return this.subsumsjoner.containsAll(subsumsjoner.subsumsjoner)
+        }
+
+        fun fjernAlle(subsumsjoner: Collection<Subsumsjon>) {
+            if (subsumsjoner.isEmpty()) return
+            val noenBleFjernet = this.subsumsjoner.removeAll(subsumsjoner.toSet())
+            if (noenBleFjernet)
+                relevanteSubsumsjoner.clear()
+        }
+
+        fun leggTil(vararg subsumsjoner: Subsumsjon) {
+            subsumsjoner.forEach {
+                if (it !in this.subsumsjoner) this.subsumsjoner.add(it).also {
+                    relevanteSubsumsjoner.clear()
+                }
+            }
+        }
+
+        fun visit(visitor: VedtaksperiodeVisitor) {
+            subsumsjoner.forEach { it.accept(visitor) }
+        }
     }
 
-
-    private fun erRelevant(pvpIder: List<String>): Boolean {
+    private fun erRelevant(pvpIder: Set<String>): Boolean {
         return if (!sporing["vedtaksperiode"].isNullOrEmpty()) {
             sporing["vedtaksperiode"]!!.first() in pvpIder
         } else if (!sporing["soknad"].isNullOrEmpty()) {
@@ -77,15 +109,14 @@ class Subsumsjon(
         }
     }
 
-    fun sammeVedtaksperiode(pvpIder: List<String>): Boolean {
+    private fun sammeVedtaksperiode(pvpIder: Set<String>): Boolean {
         return (this.sporing["vedtaksperiode"].takeUnless { it.isNullOrEmpty() }?.first() in pvpIder)
     }
 
-    fun eiesAv(pvpIder: List<String>): Boolean {
+    fun eiesAv(pvpIder: Set<String>): Boolean {
         if (sammeVedtaksperiode(pvpIder)) return true
         return this.sporing.values.flatten().all { it in pvpIder }
     }
-
 
     fun accept(visitor: VedtaksperiodeVisitor) {
         visitor.visitSubsumsjon(

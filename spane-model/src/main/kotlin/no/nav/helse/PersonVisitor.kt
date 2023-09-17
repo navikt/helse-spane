@@ -28,14 +28,6 @@ interface VedtaksperiodeVisitor : SubsumsjonVisitor, VedtakVisitor {
         tom: LocalDate?
     ) {
     }
-
-    fun preVisitSubsumsjoner() {}
-
-    fun postVisitSubsumsjoner() {}
-
-    fun preVisitVedtak() {}
-
-    fun postVisitVedtak() {}
 }
 
 interface SubsumsjonVisitor {

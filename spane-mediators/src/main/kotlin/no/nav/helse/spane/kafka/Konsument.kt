@@ -1,6 +1,7 @@
 package no.nav.helse.spane.kafka
 
 import io.prometheus.client.Counter
+import net.logstash.logback.argument.StructuredArguments.kv
 import no.nav.helse.Konfig
 import no.nav.helse.logger
 import no.nav.helse.spane.SubsumsjonMediator
@@ -44,8 +45,8 @@ class Konsument(
             konsument.subscribe(listOf(konfig.topic))
             while (running.get()) {
                 konsument.poll(Duration.ofSeconds(5)).onEach {
-                    logger.info("Behandler melding")
                     val melding = objectMapper.readTree(it.value())
+                    logger.info("Behandler melding, {} ", kv("id", melding.path("id").asText()))
                     if (subsumsjonMediator.håndterer(melding)) {
                         subsumsjonMediator.håndterSubsumsjon(melding)
                         meldingerLestCounter.labels("subsumsjon").inc()
@@ -58,7 +59,7 @@ class Konsument(
                         meldingerLestCounter.labels("vedtaksperiode_forkastet").inc()
                     } else
                         meldingerLestCounter.labels("melding_ikke_lest").inc()
-                    logger.info("Melding behandlet")
+                    logger.info("Melding {} behandlet", kv("id", melding.path("id").asText()))
                 }
                 konsument.commitSync()
 

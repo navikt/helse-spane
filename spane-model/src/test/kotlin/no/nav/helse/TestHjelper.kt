@@ -1,5 +1,6 @@
 package no.nav.helse
 
+import no.nav.helse.Subsumsjon.Subsumsjoner
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -112,7 +113,7 @@ internal class TestHjelper {
                     )
                 )
             }
-            return Pseudovedtaksperiode(subsumsjoner)
+            return Pseudovedtaksperiode(Subsumsjoner(subsumsjoner))
         }
 
         fun Pseudovedtaksperiode.inspektør(): TestVisitor.TestPseudoVedtaksperiode {

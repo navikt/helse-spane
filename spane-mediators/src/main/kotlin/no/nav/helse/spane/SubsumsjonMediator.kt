@@ -23,7 +23,11 @@ val objectMapper = jacksonObjectMapper()
 class SubsumsjonMediator(private val database: PersonRepository) {
     fun håndterer(melding: JsonNode): Boolean {
         if (melding["eventName"] == null || melding["eventName"].textValue() != "subsumsjon") {
-            logger.info("melding id: {}, eventName: {} blir ikke håndtert", melding["id"], melding["eventName"])
+            logger.info(
+                "melding id: {}, eventName: {} blir ikke håndtert",
+                melding["id"].asText(),
+                melding["eventName"].asText()
+            )
             return false
         } else if (melding["fodselsnummer"] == null || melding["fodselsnummer"].isNull || melding["fodselsnummer"].textValue() == "") {
             sikkerlogger.info("Fant subsumsjon med manglende fødselsnummer {}", melding)

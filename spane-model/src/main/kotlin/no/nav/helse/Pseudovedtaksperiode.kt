@@ -1,17 +1,11 @@
 package no.nav.helse
 
-import no.nav.helse.Subsumsjon.Companion.eier
-import no.nav.helse.Subsumsjon.Companion.finnOrgnummer
-import no.nav.helse.Subsumsjon.Companion.finnSkjæringstidspunkt
-import no.nav.helse.Subsumsjon.Companion.finnVedtaksperiodeId
-import no.nav.helse.Subsumsjon.Companion.relevante
-import no.nav.helse.Subsumsjon.Companion.sporingIder
-import no.nav.helse.Subsumsjon.Companion.subsumsjonerMedSøknadsIder
+import no.nav.helse.Subsumsjon.Subsumsjoner
 import java.time.LocalDate
 import java.time.LocalDateTime
 
 internal class Pseudovedtaksperiode(
-    private val subsumsjoner: MutableList<Subsumsjon>,
+    private val subsumsjoner: Subsumsjoner,
     private val tilstandsmelding: MutableList<TilstandVedtaksperiode> = mutableListOf(),
     private var tilstand: Tilstand = Tilstand.UAVKLART
 ) {
@@ -26,15 +20,15 @@ internal class Pseudovedtaksperiode(
             return filter {
                 it.subsumsjoner.eier(subsumsjon)
             }.ifEmpty {
-                this.add(Pseudovedtaksperiode(mutableListOf()))
+                this.add(Pseudovedtaksperiode(Subsumsjoner(mutableSetOf())))
                 listOf(this[this.lastIndex])
             }
         }
 
-        fun List<Pseudovedtaksperiode>.relevanteSubsumsjoner(eier: Pseudovedtaksperiode) =
-            this.filterNot { it == eier }.map { it.subsumsjoner.relevante(eier.alleIder()) }.flatten()
+        private fun List<Pseudovedtaksperiode>.relevanteSubsumsjoner(eier: Pseudovedtaksperiode): Set<Subsumsjon> =
+            this.filterNot { it == eier }.map { it.subsumsjoner.relevante(eier.alleIder()) }.flatten().toSet()
 
-        fun List<Pseudovedtaksperiode>.fjernSubsumsjoner(subsumsjoner: List<Subsumsjon>) {
+        private fun List<Pseudovedtaksperiode>.fjernSubsumsjoner(subsumsjoner: List<Subsumsjon>) {
             forEach {
                 it.fjernSubsumsjoner(subsumsjoner)
             }
@@ -58,7 +52,7 @@ internal class Pseudovedtaksperiode(
 
             this.filterNot { it in pvpEiere }.forEach {
                 pvpEiere.forEach { pvpEier ->
-                    if (pvpEier.subsumsjoner.containsAll(it.subsumsjoner)) this.remove(it)
+                    if (pvpEier.subsumsjoner.harAlle(it.subsumsjoner)) this.remove(it)
                 }
             }
         }
@@ -71,13 +65,11 @@ internal class Pseudovedtaksperiode(
     }
 
     private fun fjernSubsumsjoner(subsumsjoner: List<Subsumsjon>) {
-        this.subsumsjoner.removeAll(subsumsjoner)
+        this.subsumsjoner.fjernAlle(subsumsjoner)
     }
 
     private fun leggTil(vararg subsumsjoner: Subsumsjon) {
-        subsumsjoner.forEach {
-            if (it !in this.subsumsjoner) this.subsumsjoner.add(it)
-        }
+        this.subsumsjoner.leggTil(*subsumsjoner)
     }
 
     private fun alleIder() = subsumsjoner.sporingIder()
@@ -119,9 +111,8 @@ internal class Pseudovedtaksperiode(
 
     }
 
-
     fun antallSubsumsjoner(): Int {
-        return subsumsjoner.size
+        return subsumsjoner.antall
     }
 
     fun accept(visitor: VedtaksperiodeVisitor) {
@@ -137,13 +128,8 @@ internal class Pseudovedtaksperiode(
             fom,
             tom
         )
-        visitor.preVisitSubsumsjoner()
-        subsumsjoner.forEach { it.accept(visitor) }
-        visitor.postVisitSubsumsjoner()
-        visitor.preVisitVedtak()
+        subsumsjoner.visit(visitor)
         tilstandsmelding.forEach { it.accept(visitor) }
-        visitor.postVisitVedtak()
-
     }
 
     fun håndter(vedtakFattet: VedtakFattet): Boolean {
