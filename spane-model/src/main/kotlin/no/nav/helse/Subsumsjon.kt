@@ -1,6 +1,10 @@
 package no.nav.helse
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import java.time.ZonedDateTime
+
+var logger: Logger = LoggerFactory.getLogger("Spane")
 
 class Subsumsjon(
     private val id: String,
@@ -38,10 +42,10 @@ class Subsumsjon(
             }
         }
 
-        fun sporingIder() = subsumsjoner.flatMap { it.sporing.values.flatten() }.toSet()
+        fun sporingIder() = subsumsjoner.flatMapTo(HashSet()) { it.sporing.values.flatten() }
 
         fun subsumsjonerMedSøknadsIder() =
-            subsumsjoner.filter { !it.sporing["soknad"].isNullOrEmpty() }
+            subsumsjoner.filterTo(HashSet()) { !it.sporing["soknad"].isNullOrEmpty() }
 
         fun finnOrgnummer(): String {
             subsumsjoner.forEach {
@@ -73,11 +77,18 @@ class Subsumsjon(
             return this.subsumsjoner.containsAll(subsumsjoner.subsumsjoner)
         }
 
-        fun fjernAlle(subsumsjoner: Collection<Subsumsjon>) {
+        fun fjernAlle(subsumsjoner: Set<Subsumsjon>) {
             if (subsumsjoner.isEmpty()) return
-            val noenBleFjernet = this.subsumsjoner.removeAll(subsumsjoner.toSet())
-            if (noenBleFjernet)
-                relevanteSubsumsjoner.clear()
+            if (this.subsumsjoner.intersect(subsumsjoner).isEmpty()) {
+                return
+            }
+            logger.info("Skal fjerne subsumsjoner")
+            val antallSubsumsjonerFør = this.subsumsjoner.size
+            this.subsumsjoner.removeAll(subsumsjoner)
+            val antallSubsumsjonerEtterpå = this.subsumsjoner.size
+            val antallFjernet = antallSubsumsjonerFør - antallSubsumsjonerEtterpå
+            logger.info("Fjernet $antallFjernet subsumsjoner")
+            if (antallFjernet != 0) relevanteSubsumsjoner.clear()
         }
 
         fun leggTil(vararg subsumsjoner: Subsumsjon) {

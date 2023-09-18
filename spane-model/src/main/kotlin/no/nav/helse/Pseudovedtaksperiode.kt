@@ -26,9 +26,9 @@ internal class Pseudovedtaksperiode(
         }
 
         private fun List<Pseudovedtaksperiode>.relevanteSubsumsjoner(eier: Pseudovedtaksperiode): Set<Subsumsjon> =
-            this.filterNot { it == eier }.map { it.subsumsjoner.relevante(eier.alleIder()) }.flatten().toSet()
+            this.filterNot { it == eier }.flatMapTo(HashSet()) { it.subsumsjoner.relevante(eier.alleIder()) }
 
-        private fun List<Pseudovedtaksperiode>.fjernSubsumsjoner(subsumsjoner: List<Subsumsjon>) {
+        private fun List<Pseudovedtaksperiode>.fjernSubsumsjoner(subsumsjoner: Set<Subsumsjon>) {
             forEach {
                 it.fjernSubsumsjoner(subsumsjoner)
             }
@@ -64,7 +64,7 @@ internal class Pseudovedtaksperiode(
             none { it.håndter(vedtakFattet) }
     }
 
-    private fun fjernSubsumsjoner(subsumsjoner: List<Subsumsjon>) {
+    private fun fjernSubsumsjoner(subsumsjoner: Set<Subsumsjon>) {
         this.subsumsjoner.fjernAlle(subsumsjoner)
     }
 
