@@ -51,7 +51,7 @@ export default function MainContainer() {
   return (
     <div>
       <Header>
-        <Header.Title as="h1">Paragraf i kode</Header.Title>
+        <Header.Title as="h1">Visning av subsumsjonsmeldinger (og faktaavklaringer)</Header.Title>
       </Header>
       <div>
         <Tabs defaultValue="Person" size="medium">
