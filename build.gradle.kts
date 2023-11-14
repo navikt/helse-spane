@@ -1,15 +1,15 @@
 plugins {
-    kotlin("jvm") version "1.7.0"
+    kotlin("jvm") version "1.9.10"
 }
 
-val junitJupiterVersion = "5.8.2"
+val junitJupiterVersion = "5.10.1"
 val jvmTargetVersion = "17"
 val gsonVersion = "2.9.0"
-val kafkaVersion = "3.1.0"
-val ktorVersion = "2.0.2"
+val kafkaVersion = "3.6.0"
+val ktorVersion = "2.3.6"
 val awaitilityVersion = "4.2.0"
-val kafkaEEVersion = "3.1.6"
-val testcontainersPostgresqlVersion = "1.17.1"
+val kafkaEEVersion = "3.2.4"
+val testcontainersPostgresqlVersion = "1.19.1"
 val flywayVersion = "8.5.7"
 
 allprojects {
@@ -26,9 +26,9 @@ allprojects {
 
     dependencies {
         implementation("org.apache.kafka:kafka-clients:$kafkaVersion")
-        implementation("org.slf4j:slf4j-api:1.7.36")
-        implementation("ch.qos.logback:logback-classic:1.2.11")
-        implementation("net.logstash.logback:logstash-logback-encoder:7.2")
+        implementation("org.slf4j:slf4j-api:2.0.9")
+        implementation("ch.qos.logback:logback-classic:1.4.11")
+        implementation("net.logstash.logback:logstash-logback-encoder:7.4")
 
         implementation("io.ktor:ktor-server-core:$ktorVersion")
         implementation("io.ktor:ktor-server-cio:$ktorVersion")
@@ -71,7 +71,7 @@ allprojects {
         }
 
         withType<Wrapper> {
-            gradleVersion = "7.4.2"
+            gradleVersion = "8.3"
         }
 
     }

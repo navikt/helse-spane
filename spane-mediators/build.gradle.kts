@@ -1,14 +1,12 @@
-import java.nio.file.Paths
-
-val jacksonVersion = "2.12.5"
+val jacksonVersion = "2.15.3"
 
 
 dependencies {
     implementation(project(":spane-model"))
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
-    implementation("com.github.seratch:kotliquery:1.8.0")
-    implementation("org.postgresql:postgresql:42.3.6")
+    implementation("com.github.seratch:kotliquery:1.9.0")
+    implementation("org.postgresql:postgresql:42.6.0")
 
     implementation("com.zaxxer:HikariCP:5.0.1")
 }
@@ -27,7 +25,7 @@ tasks {
             }
         }
 
-        from({ Paths.get(project(":spane-visning").buildDir.path) }) {
+        from({ project(":spane-visning").layout.buildDirectory.get() }) {
             into("static")
         }
 
@@ -35,9 +33,8 @@ tasks {
             configurations.runtimeClasspath.get()
                 .filter { it.name != "app.jar" }
                 .forEach {
-                    val file = File("$buildDir/libs/${it.name}")
-                    if (!file.exists())
-                        it.copyTo(file)
+                    val file = File("${layout.buildDirectory.get()}/libs/${it.name}")
+                    if (!file.exists()) it.copyTo(file)
                 }
         }
     }
