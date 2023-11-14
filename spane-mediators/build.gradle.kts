@@ -15,7 +15,11 @@ tasks {
 
     jar {
         archiveFileName.set("app.jar")
-        mustRunAfter(":spane-visning:compileTestJava",":spane-visning:compileJava",":spane-visning:jar",":spane-visning:npm_run_build")
+        mustRunAfter(":spane-visning:compileTestJava",":spane-visning:compileJava",
+            ":spane-visning:test",
+            ":spane-visning:processTestResources",
+            ":spane-visning:jar",
+            ":spane-visning:npm_run_build")
 
 
         manifest {
