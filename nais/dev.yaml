@@ -2,3 +2,5 @@ ingresses:
   - https://spane.intern.dev.nav.no
 kafka-pool:
   - nav-dev
+additionalDatabaseUser:
+  - spane-opprydding

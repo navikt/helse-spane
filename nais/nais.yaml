@@ -36,10 +36,15 @@ spec:
   gcp:
     sqlInstances:
       - type: POSTGRES_14
-        diskAutoresize: true
+        diskAutoresize: false
         databases:
           - envVarPrefix: DATABASE
             name: helse-spane
+            {{#if additionalDatabaseUser }}
+            users:
+              - name: {{ additionalDatabaseUser }}
+            {{/if }}
+
   env:
     - name: SUBSUMSJON_TOPIC
       value: "flex.omrade-helse-etterlevelse"
