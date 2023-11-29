@@ -1,15 +1,8 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Deploy app i NAIS
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+    branches: main
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -23,7 +16,6 @@ jobs:
     outputs:
       image: ghcr.io/${{ github.repository }}/helse-spane:${{ env.TAG }}
 
-
   build:
     permissions:
       packages: write
@@ -36,7 +28,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17.x'
-      # Cache npm dependencies
+
       - name: Setup npm cache
         uses: actions/cache@v3
         with:
@@ -45,27 +37,29 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      # Cache Gradle dependencies
       - name: Setup Gradle Dependencies Cache
         uses: actions/cache@v3
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-caches-${{ hashFiles('**/*.gradle', '**/*.gradle.kts') }}
 
-      # Cache Gradle Wrapper
       - name: Setup Gradle Wrapper Cache
         uses: actions/cache@v3
         with:
           path: ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+
       - name: test and build
         run: ./gradlew build
+
       - name: build docker image
         run: docker build . --pull -t ${{ needs.set_version.outputs.image }}
+
       - name: push docker image
         run: |
           docker login --username "$GITHUB_REPOSITORY" -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
           docker push ${{ needs.set_version.outputs.image }}
+
   deployDev:
     name: Deploy to dev
     needs: [ set_version, build ]
