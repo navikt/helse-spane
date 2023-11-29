@@ -27,9 +27,6 @@ jobs:
       - name: Build jar
         run: ./gradlew :spane-opprydding:build
 
-      - name: Build docker image
-        run: docker build . --pull -t ${{ needs.set_version.outputs.image }}
-
       - uses: nais/docker-build-push@v0
         id: docker-build-push
         with:
