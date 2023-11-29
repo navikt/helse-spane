@@ -3,6 +3,15 @@ name: Deploy app i NAIS
 on:
   push:
     branches: main
+    paths-ignore:
+      - 'spane-opprydding/**'
+      - 'workflows/opprydding-dev.yaml'
+      - 'nais/opprydding/nais.yaml'
+      - '.idea/**'
+      - 'README.md'
+      - 'LICENSE'
+      - 'CODEOWNERS'
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
