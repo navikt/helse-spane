@@ -5,7 +5,7 @@ on:
     branches: main
     paths-ignore:
       - 'spane-opprydding/**'
-      - 'workflows/opprydding-dev.yaml'
+      - '.github/workflows/opprydding-dev.yaml'
       - 'nais/opprydding/nais.yaml'
       - '.idea/**'
       - 'README.md'
