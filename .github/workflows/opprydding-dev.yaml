@@ -50,5 +50,5 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: nais/opprydding/nais.yaml,nais/opprydding/db-policy.yaml
-          IMAGE: ${{ needs.set_version.outputs.image }}
+          IMAGE: ${{ needs.build.outputs.image }}
 
