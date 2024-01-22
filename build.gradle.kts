@@ -1,15 +1,15 @@
 plugins {
-    kotlin("jvm") version "1.9.10"
+    kotlin("jvm") version "1.9.21"
 }
 
 val junitJupiterVersion = "5.10.1"
-val jvmTargetVersion = "17"
+val jvmTargetVersion = 21
 val gsonVersion = "2.9.0"
 val kafkaVersion = "3.6.0"
 val ktorVersion = "2.3.6"
 val awaitilityVersion = "4.2.0"
 val kafkaEEVersion = "3.2.4"
-val testcontainersPostgresqlVersion = "1.19.1"
+val testcontainersVersion = "1.19.3"
 val flywayVersion = "8.5.7"
 
 allprojects {
@@ -27,7 +27,7 @@ allprojects {
     dependencies {
         implementation("org.apache.kafka:kafka-clients:$kafkaVersion")
         implementation("org.slf4j:slf4j-api:2.0.9")
-        implementation("ch.qos.logback:logback-classic:1.4.11")
+        implementation("ch.qos.logback:logback-classic:1.4.12")
         implementation("net.logstash.logback:logstash-logback-encoder:7.4")
 
         implementation("io.ktor:ktor-server-core:$ktorVersion")
@@ -49,10 +49,10 @@ allprojects {
         testImplementation("no.nav:kafka-embedded-env:$kafkaEEVersion")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
         testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
-        testImplementation("org.testcontainers:testcontainers:1.17.3")
-        testImplementation("org.testcontainers:junit-jupiter:1.17.3")
+        testImplementation("org.testcontainers:testcontainers:$testcontainersVersion")
+        testImplementation("org.testcontainers:junit-jupiter:$testcontainersVersion")
 
-        testImplementation("org.testcontainers:postgresql:$testcontainersPostgresqlVersion") {
+        testImplementation("org.testcontainers:postgresql:$testcontainersVersion") {
             exclude("com.fasterxml.jackson.core")
         }
 
@@ -62,16 +62,12 @@ allprojects {
     }
 
     tasks {
-        compileKotlin {
-            kotlinOptions.jvmTarget = jvmTargetVersion
-        }
-
-        compileTestKotlin {
-            kotlinOptions.jvmTarget = jvmTargetVersion
+        kotlin {
+            jvmToolchain(jvmTargetVersion)
         }
 
         withType<Wrapper> {
-            gradleVersion = "8.3"
+            gradleVersion = "8.5"
         }
 
     }
