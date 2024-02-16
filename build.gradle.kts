@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "1.9.21"
 }
 
-val junitJupiterVersion = "5.10.1"
+val junitJupiterVersion = "5.10.2"
 val jvmTargetVersion = 21
 val gsonVersion = "2.9.0"
 val kafkaVersion = "3.6.0"
@@ -48,7 +48,7 @@ allprojects {
         testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
         testImplementation("no.nav:kafka-embedded-env:$kafkaEEVersion")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-        testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+        testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
         testImplementation("org.testcontainers:testcontainers:$testcontainersVersion")
         testImplementation("org.testcontainers:junit-jupiter:$testcontainersVersion")
 
