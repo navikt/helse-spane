@@ -9,7 +9,7 @@ val kafkaVersion = "3.6.0"
 val ktorVersion = "2.3.6"
 val awaitilityVersion = "4.2.0"
 val kafkaEEVersion = "3.2.4"
-val testcontainersVersion = "1.19.3"
+val testcontainersVersion = "1.19.5"
 val flywayVersion = "8.5.7"
 
 allprojects {
