@@ -57,7 +57,7 @@ allprojects {
         }
 
 
-        api("io.micrometer:micrometer-registry-prometheus:1.9.0")
+        api("io.micrometer:micrometer-registry-prometheus:1.12.3")
 
     }
 
