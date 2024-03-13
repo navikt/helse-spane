@@ -41,6 +41,10 @@ spec:
     - secret: google-sql-helse-spane-helse-spane-spane-opprydding-d3d613b5
   secureLogs:
     enabled: true
+  observability:
+    autoInstrumentation:
+      enabled: true
+      runtime: java
   env:
     - name: KAFKA_CONSUMER_GROUP_ID
       value: spane-opprydding-v1
