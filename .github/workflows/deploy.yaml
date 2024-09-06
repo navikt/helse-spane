@@ -19,7 +19,8 @@ jobs:
 
   build:
     permissions:
-      packages: write
+      contents: "read"
+      id-token: "write"
     name: build docker image
     runs-on: ubuntu-latest
     steps:
