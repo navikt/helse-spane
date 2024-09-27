@@ -1,5 +1,6 @@
 ingresses:
   - https://spane.intern.dev.nav.no
+  - https://spane.ansatt.dev.nav.no
 kafka-pool:
   - nav-dev
 additionalDatabaseUser:
