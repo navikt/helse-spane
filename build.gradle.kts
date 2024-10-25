@@ -6,7 +6,7 @@ val junitJupiterVersion = "5.10.2"
 val jvmTargetVersion = 21
 val gsonVersion = "2.9.0"
 val kafkaVersion = "3.6.0"
-val ktorVersion = "2.3.6"
+val ktorVersion = "2.3.12"
 val awaitilityVersion = "4.2.0"
 val kafkaEEVersion = "3.2.4"
 val testcontainersVersion = "1.19.5"
@@ -27,7 +27,7 @@ allprojects {
     dependencies {
         implementation("org.apache.kafka:kafka-clients:$kafkaVersion")
         implementation("org.slf4j:slf4j-api:2.0.9")
-        implementation("ch.qos.logback:logback-classic:1.4.12")
+        implementation("ch.qos.logback:logback-classic:1.4.14")
         implementation("net.logstash.logback:logstash-logback-encoder:7.4")
 
         implementation("io.ktor:ktor-server-core:$ktorVersion")
