@@ -65,11 +65,6 @@ allprojects {
         kotlin {
             jvmToolchain(jvmTargetVersion)
         }
-
-        withType<Wrapper> {
-            gradleVersion = "8.5"
-        }
-
     }
 
 }
