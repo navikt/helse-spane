@@ -3,7 +3,6 @@ plugins {
 }
 
 val junitJupiterVersion = "5.10.2"
-val jvmTargetVersion = 21
 val gsonVersion = "2.9.0"
 val kafkaVersion = "3.6.0"
 val ktorVersion = "2.3.12"
@@ -61,12 +60,11 @@ allprojects {
 
     }
 
-    tasks {
-        kotlin {
-            jvmToolchain(jvmTargetVersion)
+    kotlin {
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of("21"))
         }
     }
-
 }
 
 subprojects {
