@@ -6,6 +6,7 @@ private val kotliqueryVersion = "1.9.0"
 private val flywayVersion = "9.3.0"
 private val junitVersion = "5.10.2"
 private val rapidsAndRiversVersion = "2024010209171704183456.6d035b91ffb4"
+val junitJupiterVersion = "5.11.3"
 
 val mainClass = "no.nav.helse.opprydding.App"
 
@@ -22,9 +23,9 @@ dependencies {
     testImplementation("org.testcontainers:postgresql:$testcontainersVersion") {
         exclude("com.fasterxml.jackson.core")
     }
-    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
     implementation(kotlin("stdlib-jdk8"))
+    testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks {

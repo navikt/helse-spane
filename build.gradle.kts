@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "2.0.21"
 }
 
-val junitJupiterVersion = "5.10.2"
+val junitJupiterVersion = "5.11.3"
 val gsonVersion = "2.9.0"
 val kafkaVersion = "3.6.0"
 val ktorVersion = "2.3.12"
@@ -43,11 +43,7 @@ allprojects {
 
 
         testImplementation("org.awaitility:awaitility:$awaitilityVersion")
-        testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-        testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
         testImplementation("no.nav:kafka-embedded-env:$kafkaEEVersion")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-        testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
         testImplementation("org.testcontainers:testcontainers:$testcontainersVersion")
         testImplementation("org.testcontainers:junit-jupiter:$testcontainersVersion")
 
@@ -58,6 +54,8 @@ allprojects {
 
         api("io.micrometer:micrometer-registry-prometheus:1.12.3")
 
+        testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
+        testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     }
 
     kotlin {
@@ -81,8 +79,7 @@ subprojects {
 
     dependencies {
         implementation("com.google.code.gson:gson:$gsonVersion")
-        testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-        testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
+        testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
+        testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     }
 }
