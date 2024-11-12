@@ -1,5 +1,6 @@
 package no.nav.helse
 
+import io.ktor.server.cio.CIOApplicationEngine
 import io.ktor.server.engine.*
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -9,7 +10,7 @@ import no.nav.helse.spane.kafka.Konsument
 
 class Application (
     konfig: Konfig,
-    builder: (PersonRepository) -> ApplicationEngine,
+    builder: (PersonRepository) -> EmbeddedServer<CIOApplicationEngine, CIOApplicationEngine.Configuration>,
     personRepository: PersonRepository
 ) {
 

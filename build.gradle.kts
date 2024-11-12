@@ -5,7 +5,7 @@ plugins {
 val junitJupiterVersion = "5.11.3"
 val gsonVersion = "2.9.0"
 val kafkaVersion = "3.6.0"
-val ktorVersion = "2.3.12"
+val ktorVersion = "3.0.1"
 val awaitilityVersion = "4.2.0"
 val kafkaEEVersion = "3.2.4"
 val testcontainersVersion = "1.19.5"

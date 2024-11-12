@@ -4,8 +4,8 @@ private val postgresqlVersion = "42.7.2"
 private val hikariVersion = "5.0.1"
 private val kotliqueryVersion = "1.9.0"
 private val flywayVersion = "9.3.0"
-private val junitVersion = "5.10.2"
-private val rapidsAndRiversVersion = "2024010209171704183456.6d035b91ffb4"
+private val rapidsAndRiversVersion = "2024111211071731406062.648687519469"
+val tbdLibsVersion = "2024.11.12-11.09-16cf2599"
 val junitJupiterVersion = "5.11.3"
 
 val mainClass = "no.nav.helse.opprydding.App"
@@ -24,6 +24,9 @@ dependencies {
         exclude("com.fasterxml.jackson.core")
     }
     implementation(kotlin("stdlib-jdk8"))
+
+    testImplementation("com.github.navikt.tbd-libs:rapids-and-rivers-test:$tbdLibsVersion")
+
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
