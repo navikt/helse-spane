@@ -4,7 +4,7 @@ plugins {
 
 val junitJupiterVersion = "5.11.3"
 val gsonVersion = "2.9.0"
-val kafkaVersion = "3.6.0"
+val kafkaVersion = "3.9.0"
 val ktorVersion = "3.0.1"
 val awaitilityVersion = "4.2.0"
 val kafkaEEVersion = "3.2.4"
@@ -38,8 +38,8 @@ allprojects {
     dependencies {
         implementation("org.apache.kafka:kafka-clients:$kafkaVersion")
         implementation("org.slf4j:slf4j-api:2.0.9")
-        implementation("ch.qos.logback:logback-classic:1.4.14")
-        implementation("net.logstash.logback:logstash-logback-encoder:7.4")
+        implementation("ch.qos.logback:logback-classic:1.5.12")
+        implementation("net.logstash.logback:logstash-logback-encoder:8.0")
 
         implementation("io.ktor:ktor-server-core:$ktorVersion")
         implementation("io.ktor:ktor-server-cio:$ktorVersion")
