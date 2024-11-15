@@ -4,7 +4,6 @@ val ktorVersion = "3.0.1"
 val flywayVersion = "10.21.0"
 val tbdLibsVersion = "2024.11.15-09.09-08ca346b"
 val awaitilityVersion = "4.2.0"
-val kafkaEEVersion = "3.2.4"
 val hikariCPVersion = "6.1.0"
 val postgresqlVersion = "42.7.4"
 
@@ -33,7 +32,7 @@ dependencies {
 
     testImplementation("io.ktor:ktor-client-cio:$ktorVersion")
     testImplementation("org.awaitility:awaitility:$awaitilityVersion")
-    testImplementation("no.nav:kafka-embedded-env:$kafkaEEVersion")
+    testImplementation("com.github.navikt.tbd-libs:kafka-test:$tbdLibsVersion")
     testImplementation("com.github.navikt.tbd-libs:postgres-testdatabaser:$tbdLibsVersion")
 }
 

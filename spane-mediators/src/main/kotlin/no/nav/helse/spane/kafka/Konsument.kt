@@ -2,8 +2,6 @@ package no.nav.helse.spane.kafka
 
 import io.prometheus.client.Counter
 import net.logstash.logback.argument.StructuredArguments.kv
-import no.nav.helse.Konfig
-import no.nav.helse.KonsumentKonfig
 import no.nav.helse.logger
 import no.nav.helse.spane.SubsumsjonMediator
 import no.nav.helse.spane.VedtakFattetMediator
@@ -12,14 +10,12 @@ import no.nav.helse.spane.db.PersonRepository
 import no.nav.helse.spane.objectMapper
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.errors.WakeupException
-import org.apache.kafka.common.serialization.StringDeserializer
 import java.time.Duration
-import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
 class Konsument(
-    private val konfig: KonsumentKonfig,
-    clientId: String = UUID.randomUUID().toString().slice(1..5),
+    private val topic: String,
+    private val konsument: KafkaConsumer<String, String>,
     private val personRepository: PersonRepository,
     private val subsumsjonMediator: SubsumsjonMediator = SubsumsjonMediator(personRepository),
     private val vedtakFattetMediator: VedtakFattetMediator = VedtakFattetMediator(personRepository),
@@ -27,12 +23,6 @@ class Konsument(
         personRepository
     ),
 ) {
-
-    private val konsument = KafkaConsumer(
-        konfig.konsumentKonfig(clientId, konfig.consumerGroup),
-        StringDeserializer(),
-        StringDeserializer()
-    )
     private val running = AtomicBoolean(false)
 
     companion object {
@@ -43,7 +33,7 @@ class Konsument(
     private fun consumeMessages() {
         var lastException: Exception? = null
         try {
-            konsument.subscribe(listOf(konfig.topic))
+            konsument.subscribe(listOf(topic))
             while (running.get()) {
                 konsument.poll(Duration.ofSeconds(5)).onEach {
                     val melding = objectMapper.readTree(it.value())
@@ -81,6 +71,11 @@ class Konsument(
         if (running.getAndSet(true)) return logger.info("Spane kjører allerede")
 
         consumeMessages()
+    }
+
+    fun stop() {
+        running.set(false)
+        konsument.wakeup()
     }
 
     private fun closeResources(lastException: Exception?) {
