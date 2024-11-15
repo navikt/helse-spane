@@ -1,3 +1,5 @@
+val logbackClassicVersion = "1.5.12"
+val logbackEncoderVersion = "8.0"
 val jacksonVersion = "2.18.1"
 val kafkaVersion = "3.9.0"
 val ktorVersion = "3.0.1"
@@ -11,8 +13,8 @@ dependencies {
     implementation(project(":spane-model"))
 
     implementation("org.apache.kafka:kafka-clients:$kafkaVersion")
-    implementation("ch.qos.logback:logback-classic:1.5.12")
-    implementation("net.logstash.logback:logstash-logback-encoder:8.0")
+    implementation("ch.qos.logback:logback-classic:$logbackClassicVersion")
+    implementation("net.logstash.logback:logstash-logback-encoder:$logbackEncoderVersion")
 
     implementation("org.flywaydb:flyway-database-postgresql:$flywayVersion")
     implementation("com.zaxxer:HikariCP:$hikariCPVersion")
