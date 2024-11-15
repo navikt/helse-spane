@@ -1,11 +1,12 @@
 val jacksonVersion = "2.18.1"
 val kafkaVersion = "3.9.0"
 val ktorVersion = "3.0.1"
-val flywayVersion = "8.5.7"
+val flywayVersion = "10.21.0"
 val tbdLibsVersion = "2024.11.15-09.09-08ca346b"
 val awaitilityVersion = "4.2.0"
 val kafkaEEVersion = "3.2.4"
 val hikariCPVersion = "6.1.0"
+val postgresqlVersion = "42.7.4"
 
 dependencies {
     implementation(project(":spane-model"))
@@ -14,10 +15,10 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.5.12")
     implementation("net.logstash.logback:logstash-logback-encoder:8.0")
 
-    implementation("org.flywaydb:flyway-core:$flywayVersion")
+    implementation("org.flywaydb:flyway-database-postgresql:$flywayVersion")
     implementation("com.zaxxer:HikariCP:$hikariCPVersion")
     implementation("com.github.seratch:kotliquery:1.9.0")
-    implementation("org.postgresql:postgresql:42.7.2")
+    implementation("org.postgresql:postgresql:$postgresqlVersion")
 
     implementation("io.ktor:ktor-server-core:$ktorVersion")
     implementation("io.ktor:ktor-server-cio:$ktorVersion")

@@ -72,7 +72,7 @@ class Konfig(
                 ),
                 dbUsername = System.getenv("DATABASE_USERNAME") ?: "",
                 dbPassword = System.getenv("DATABASE_PASSWORD") ?: "",
-                dbMaximumPoolSize = 1,
+                dbMaximumPoolSize = 4,
                 dbConnectionTimeout = Duration.ofSeconds(30).toMillis(),
                 dbMaxLifetime = Duration.ofMinutes(30).toMillis(),
                 dbInitializationFailTimeout = Duration.ofMinutes(1).toMillis()
