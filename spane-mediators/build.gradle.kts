@@ -5,6 +5,7 @@ val flywayVersion = "8.5.7"
 val tbdLibsVersion = "2024.11.15-09.09-08ca346b"
 val awaitilityVersion = "4.2.0"
 val kafkaEEVersion = "3.2.4"
+val hikariCPVersion = "6.1.0"
 
 dependencies {
     implementation(project(":spane-model"))
@@ -14,7 +15,7 @@ dependencies {
     implementation("net.logstash.logback:logstash-logback-encoder:8.0")
 
     implementation("org.flywaydb:flyway-core:$flywayVersion")
-    implementation("com.zaxxer:HikariCP:5.0.1")
+    implementation("com.zaxxer:HikariCP:$hikariCPVersion")
     implementation("com.github.seratch:kotliquery:1.9.0")
     implementation("org.postgresql:postgresql:42.7.2")
 

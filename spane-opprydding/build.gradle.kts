@@ -1,7 +1,7 @@
 private val testcontainersVersion = "1.19.5"
 private val cloudSqlVersion = "1.11.2"
 private val postgresqlVersion = "42.7.2"
-private val hikariVersion = "5.0.1"
+val hikariCPVersion = "6.1.0"
 private val kotliqueryVersion = "1.9.0"
 private val flywayVersion = "9.3.0"
 private val rapidsAndRiversVersion = "2024111509181731658731.11009b44c672"
@@ -16,7 +16,7 @@ dependencies {
     implementation("com.google.cloud.sql:postgres-socket-factory:$cloudSqlVersion")
     implementation("org.postgresql:postgresql:$postgresqlVersion")
     implementation("com.github.seratch:kotliquery:$kotliqueryVersion")
-    implementation("com.zaxxer:HikariCP:$hikariVersion")
+    implementation("com.zaxxer:HikariCP:$hikariCPVersion")
 
     testImplementation(project(":spane-mediators")) // for å få  tilgang på db/migrations-filene
     testImplementation("org.flywaydb:flyway-core:$flywayVersion")
