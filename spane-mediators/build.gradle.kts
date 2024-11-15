@@ -2,7 +2,7 @@ val jacksonVersion = "2.18.1"
 val kafkaVersion = "3.9.0"
 val ktorVersion = "3.0.1"
 val flywayVersion = "8.5.7"
-val tbdLibsVersion = "2024.11.14-10.46-bc229a23"
+val tbdLibsVersion = "2024.11.15-09.09-08ca346b"
 val awaitilityVersion = "4.2.0"
 val kafkaEEVersion = "3.2.4"
 
