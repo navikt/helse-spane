@@ -3,6 +3,7 @@ package no.nav.helse.spane.kafka
 import io.prometheus.client.Counter
 import net.logstash.logback.argument.StructuredArguments.kv
 import no.nav.helse.Konfig
+import no.nav.helse.KonsumentKonfig
 import no.nav.helse.logger
 import no.nav.helse.spane.SubsumsjonMediator
 import no.nav.helse.spane.VedtakFattetMediator
@@ -17,7 +18,7 @@ import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
 class Konsument(
-    private val konfig: Konfig,
+    private val konfig: KonsumentKonfig,
     clientId: String = UUID.randomUUID().toString().slice(1..5),
     private val personRepository: PersonRepository,
     private val subsumsjonMediator: SubsumsjonMediator = SubsumsjonMediator(personRepository),

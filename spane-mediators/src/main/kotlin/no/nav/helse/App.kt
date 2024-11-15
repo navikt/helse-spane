@@ -14,6 +14,6 @@ fun main() {
     val dataSourceBuilder = DataSourceBuilder(config)
     val personRepository = PersonPostgresRepository(dataSourceBuilder.getDataSource())
 
-    Application(config, ::ktorServer, personRepository).startBlocking()
+    Application(config.kafkaKonsumentKonfig, ::ktorServer, personRepository).startBlocking()
 }
 

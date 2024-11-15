@@ -1,8 +1,10 @@
 package no.nav.helse
 
-import no.nav.common.KafkaEnvironment
+import com.github.navikt.tbd_libs.test_support.TestDataSource
 import no.nav.helse.spane.db.PersonPostgresRepository
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInstance
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -14,40 +16,21 @@ import java.util.*
 internal abstract class AbstractDatabaseTest {
     private lateinit var personRepository: PersonPostgresRepository
 
-    private val testTopic = "testTopic"
     protected val FØDSELSNUMMER = "1234567890"
     protected val VEDTAKSPERIODE_ID = UUID.randomUUID().toString()
 
-    private val embeddedKafkaEnvironment = KafkaEnvironment(
-        autoStart = false,
-        noOfBrokers = 1,
-        topicInfos = listOf(testTopic).map { KafkaEnvironment.TopicInfo(it, partitions = 1) },
-        withSchemaRegistry = false,
-        withSecurity = false
-    )
+    private lateinit var testDataSource: TestDataSource
+    protected val dataSource get() = testDataSource.ds
 
-    @BeforeAll
-    internal fun setupAll() {
-        val konfig = Konfig(
-            "Spane",
-            listOf(embeddedKafkaEnvironment.brokersURL),
-            testTopic,
-            "kaSomHelst",
-            PostgresContainer.instance.jdbcUrl,
-            PostgresContainer.instance.username,
-            PostgresContainer.instance.password,
-            1,
-            250,
-            100,
-            5000,
-            null,
-            null,
-            null
-        )
+    @BeforeEach
+    fun before() {
+        testDataSource = databaseContainer.nyTilkobling()
+        personRepository = PersonPostgresRepository(dataSource)
+    }
 
-        val dataSourceBuilder = DataSourceBuilder(konfig)
-        personRepository = PersonPostgresRepository(dataSourceBuilder.getDataSource())
-
+    @AfterEach
+    fun after() {
+        databaseContainer.droppTilkobling(testDataSource)
     }
 
     protected fun hentPersonJson() = personRepository.hentPerson(FØDSELSNUMMER)?.json

@@ -8,8 +8,8 @@ import kotlinx.coroutines.runBlocking
 import no.nav.helse.spane.db.PersonRepository
 import no.nav.helse.spane.kafka.Konsument
 
-class Application (
-    konfig: Konfig,
+class Application(
+    konfig: KonsumentKonfig,
     builder: (PersonRepository) -> EmbeddedServer<CIOApplicationEngine, CIOApplicationEngine.Configuration>,
     personRepository: PersonRepository
 ) {

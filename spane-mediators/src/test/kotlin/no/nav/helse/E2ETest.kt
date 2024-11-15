@@ -1,5 +1,6 @@
 package no.nav.helse
 
+import com.github.navikt.tbd_libs.test_support.TestDataSource
 import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
@@ -45,30 +46,20 @@ internal class E2ETest : AbstractDatabaseTest() {
     )
 
     fun startApp() {
-        val konfig = Konfig(
-            "Spane",
-            listOf(embeddedKafkaEnvironment.brokersURL),
-            testTopic,
-            "kaSomHelst",
-            PostgresContainer.instance.jdbcUrl,
-            PostgresContainer.instance.username,
-            PostgresContainer.instance.password,
-            1,
-            250,
-            100,
-            100,
-            null,
-            null,
-            null
+        val konfig = KonsumentKonfig(
+            appNavn = "Spane",
+            kafkaBrokers = listOf(embeddedKafkaEnvironment.brokersURL),
+            topic = testTopic,
+            consumerGroup = "kaSomHelst",
+            trustStorePath = null,
+            kafkaKeyStorePath = null,
+            credStorePassword = null
         )
-        val dataSourceBuilder = DataSourceBuilder(konfig)
-        val dataSource = dataSourceBuilder.getDataSource()
         val personRepository = PersonPostgresRepository(dataSource)
         jobb = GlobalScope.launch {
             Application(konfig, ::ktorServer, personRepository).startBlocking()
         }
     }
-
 
     private fun producerProperties() = Properties().apply {
         put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, embeddedKafkaEnvironment.brokersURL)
