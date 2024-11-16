@@ -1,4 +1,3 @@
-private val testcontainersVersion = "1.19.5"
 private val cloudSqlVersion = "1.21.0"
 private val postgresqlVersion = "42.7.4"
 val hikariCPVersion = "6.1.0"
@@ -7,8 +6,6 @@ private val flywayVersion = "10.21.0"
 private val rapidsAndRiversVersion = "2024111509181731658731.11009b44c672"
 val tbdLibsVersion = "2024.11.15-09.09-08ca346b"
 val junitJupiterVersion = "5.11.3"
-
-val mainClass = "no.nav.helse.opprydding.App"
 
 dependencies {
     api("com.github.navikt:rapids-and-rivers:$rapidsAndRiversVersion")
@@ -20,12 +17,10 @@ dependencies {
 
     testImplementation(project(":spane-mediators")) // for å få  tilgang på db/migrations-filene
     testImplementation("org.flywaydb:flyway-database-postgresql:$flywayVersion")
-    testImplementation("org.testcontainers:postgresql:$testcontainersVersion") {
-        exclude("com.fasterxml.jackson.core")
-    }
     implementation(kotlin("stdlib-jdk8"))
 
     testImplementation("com.github.navikt.tbd-libs:rapids-and-rivers-test:$tbdLibsVersion")
+    testImplementation("com.github.navikt.tbd-libs:postgres-testdatabaser:$tbdLibsVersion")
 
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")

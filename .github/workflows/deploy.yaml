@@ -43,6 +43,8 @@ jobs:
 
       - name: test and build
         run: ./gradlew build
+        env:
+          ORG_GRADLE_PROJECT_githubPassword: ${{ secrets.GITHUB_TOKEN }}
 
       - name: build docker image
         uses: nais/docker-build-push@v0
@@ -50,6 +52,8 @@ jobs:
         with:
           team: tbd
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          dockerfile: Dockerfile
+          docker_context: spane-mediators
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
     outputs:
       image: ${{ steps.docker-build-push.outputs.image }}

@@ -5,6 +5,6 @@ WORKDIR /app
 ENV TZ="Europe/Oslo"
 ENV JAVA_OPTS='-XX:MaxRAMPercentage=90'
 
-COPY spane-mediators/build/libs/*.jar .
+COPY build/libs/*.jar /app/
 
 CMD ["app.jar"]

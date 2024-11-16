@@ -2,22 +2,36 @@ package no.nav.helse.opprydding
 
 import com.github.navikt.tbd_libs.rapids_and_rivers.JsonMessage
 import com.github.navikt.tbd_libs.rapids_and_rivers.test_support.TestRapid
+import com.github.navikt.tbd_libs.test_support.CleanupStrategy
+import com.github.navikt.tbd_libs.test_support.DatabaseContainers
+import com.github.navikt.tbd_libs.test_support.TestDataSource
 import kotliquery.queryOf
 import kotliquery.sessionOf
 import org.intellij.lang.annotations.Language
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-internal class AppTest: DataSourceBuilderTest() {
+val databaseContainer = DatabaseContainers.container("spane-db", CleanupStrategy.tables("person"))
+
+internal class AppTest {
+    private lateinit var testDataSource: TestDataSource
+    private val dataSource get() = testDataSource.ds
     private lateinit var testRapid: TestRapid
     private lateinit var personRepository: SlettPersonDao
-
+    
     @BeforeEach
     fun beforeEach() {
+        testDataSource = databaseContainer.nyTilkobling()
         testRapid = TestRapid()
         personRepository = SlettPersonDao(dataSource)
         SlettPersonRiver(testRapid, personRepository)
+    }
+
+    @AfterEach
+    fun teardownDB() {
+        databaseContainer.droppTilkobling(testDataSource)
     }
 
     @Test

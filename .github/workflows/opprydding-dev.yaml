@@ -26,12 +26,14 @@ jobs:
 
       - name: Build jar
         run: ./gradlew :spane-opprydding:build
+        env:
+          ORG_GRADLE_PROJECT_githubPassword: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: nais/docker-build-push@v0
         id: docker-build-push
         with:
           team: tbd
-          dockerfile: spane-opprydding/Dockerfile-opprydding
+          dockerfile: Dockerfile
           docker_context: spane-opprydding
           image_suffix: opprydding-dev
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
