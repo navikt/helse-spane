@@ -16,12 +16,16 @@ import io.micrometer.prometheus.PrometheusMeterRegistry
 import no.nav.helse.logger
 import no.nav.helse.spane.db.PersonRepository
 
-fun ktorServer(database: PersonRepository, meterRegistry: PrometheusMeterRegistry = PrometheusMeterRegistry(PrometheusConfig.DEFAULT)): EmbeddedServer<CIOApplicationEngine, CIOApplicationEngine.Configuration> =
+fun ktorServer(
+    database: PersonRepository,
+    meterRegistry: PrometheusMeterRegistry = PrometheusMeterRegistry(PrometheusConfig.DEFAULT),
+    port: Int = 8080,
+): EmbeddedServer<CIOApplicationEngine, CIOApplicationEngine.Configuration> =
     embeddedServer(CIO, applicationEnvironment {
         log = logger
     }, configure = {
     connector {
-        port = 8080
+        this.port = port
     }
 }) {
     install(ContentNegotiation) { jackson() }

@@ -22,6 +22,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.awaitility.Awaitility.await
 import org.junit.jupiter.api.Test
+import java.net.ServerSocket
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -30,16 +31,16 @@ private val kafkaContainer = KafkaContainers.container("spane-kafka")
 internal class E2ETest {
 
     @Test
-    fun `blir en melding lest`() = spaneE2E {
+    fun `blir en melding lest`() = spaneE2E { port ->
         val client = HttpClient()
 
         await("wait until recods are sent").atMost(30, TimeUnit.SECONDS).until {
-            val response = runBlocking { client.get("http://localhost:8080/fnr/22018219453").bodyAsText()}
+            val response = runBlocking { client.get("http://localhost:$port/fnr/22018219453").bodyAsText()}
             (response.isNotEmpty()).also { println(response) }
         }
     }
 
-    private fun spaneE2E(testblokk: () -> Unit) {
+    private fun spaneE2E(testblokk: (port: Int) -> Unit) {
         kafkaTest(kafkaContainer) {
             val testDataSource = databaseContainer.nyTilkobling()
             try {
@@ -55,12 +56,13 @@ internal class E2ETest {
                     this[ConsumerConfig.AUTO_OFFSET_RESET_CONFIG] = "earliest"
                 }, StringDeserializer(), StringDeserializer())
 
+                val port = ServerSocket(0).use { it.localPort }
                 val konsument = Konsument(topicnavn, consumer, personRepository)
-                val ktor = ktorServer(personRepository)
+                val ktor = ktorServer(personRepository, port = port)
                 val application = Application(konsument, ktor)
 
                 application.start()
-                testblokk()
+                testblokk(port)
                 application.stopBlocking()
             } finally {
                 databaseContainer.droppTilkobling(testDataSource)
