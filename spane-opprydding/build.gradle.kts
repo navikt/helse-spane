@@ -3,7 +3,7 @@ private val postgresqlVersion = "42.7.4"
 val hikariCPVersion = "6.1.0"
 private val kotliqueryVersion = "1.9.0"
 private val flywayVersion = "10.21.0"
-private val rapidsAndRiversVersion = "2024112510241732526640.8542991368ca"
+private val rapidsAndRiversVersion = "2024112511071732529266.253c42b70448"
 val tbdLibsVersion = "2024.11.25-10.59-6f263a10"
 val junitJupiterVersion = "5.11.3"
 
