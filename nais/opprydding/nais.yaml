@@ -50,5 +50,7 @@ spec:
       value: europe-north1
     - name: DATABASE_INSTANCE
       value: helse-spane
-
-
+  observability:
+    logging:
+      destinations:
+        - id: elastic
