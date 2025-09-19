@@ -1,13 +1,13 @@
-val logbackClassicVersion = "1.5.12"
+val logbackClassicVersion = "1.5.18"
 val logbackEncoderVersion = "8.0"
 val jacksonVersion = "2.18.3"
-val kafkaVersion = "3.9.0"
+val kafkaVersion = "4.1.0"
 val ktorVersion = "3.2.3"
 val flywayVersion = "11.5.0"
 val tbdLibsVersion = "2025.09.19-13.31-61342e73"
 val awaitilityVersion = "4.2.0"
 val hikariCPVersion = "6.3.0"
-val postgresqlVersion = "42.7.5"
+val postgresqlVersion = "42.7.7"
 
 dependencies {
     implementation(project(":spane-model"))
