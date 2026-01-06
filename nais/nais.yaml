@@ -33,19 +33,6 @@ spec:
     path: /metrics
   secureLogs:
     enabled: true
-  gcp:
-    sqlInstances:
-      - type: POSTGRES_17
-        cascadingDelete: true
-        diskAutoresize: false
-        tier: db-f1-micro
-        databases:
-          - envVarPrefix: DATABASE
-            name: helse-spane
-            {{#if additionalDatabaseUser }}
-            users:
-              - name: {{ additionalDatabaseUser }}
-            {{/if }}
 
   env:
     - name: SUBSUMSJON_TOPIC
